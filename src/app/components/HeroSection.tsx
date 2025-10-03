@@ -33,7 +33,6 @@ export default function HeroSection() {
 
   return (
     <section className="relative w-full min-h-[700px] flex items-center justify-between px-10 bg-gradient-to-r from-pink-50 to-white">
-      {/* Bên trái: chữ + mô tả + thumbnail */}
       <div className="flex-1 flex flex-col justify-center">
         <AnimatePresence mode="wait">
           <motion.h1
@@ -41,7 +40,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: -40 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 40 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5 }}
             className="text-6xl font-serif font-bold leading-tight mb-4"
           >
             {data[current].title}
@@ -54,7 +53,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
             className="text-lg italic text-gray-500 mb-8"
           >
             {data[current].desc}
