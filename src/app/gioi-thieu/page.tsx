@@ -13,13 +13,13 @@ export default function Home() {
       <ScrollReveal delay={0.2}>
         <CollectionSection />
       </ScrollReveal>
-      <ScrollReveal delay={0.4}>
+      <ScrollReveal delay={0.3}>
         <RiseTogether />
       </ScrollReveal>
-      <ScrollReveal delay={0.6}>
+      <ScrollReveal delay={0.4}>
         <CounterSection />
       </ScrollReveal>
-      <ScrollReveal delay={0.8}>
+      <ScrollReveal delay={0.5}>
         <BlogSection />
       </ScrollReveal>
     </main>
