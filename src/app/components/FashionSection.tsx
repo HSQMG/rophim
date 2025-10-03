@@ -63,14 +63,12 @@ export default function FashionSection() {
           những nhà thiết kế nổi tiếng
         </p>
 
-        {/* Products grid */}
         <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 cursor-pointer">
           {products.map((product) => (
             <div
               key={product.id}
               className="relative group border border-gray-200 pb-4"
             >
-              {/* Badge NEW */}
               {product.isNew && (
                 <span className="absolute top-3 left-3 bg-[#5a3a28] text-white text-xs font-semibold px-2 py-1 z-20">
                   NEW!
@@ -81,22 +79,19 @@ export default function FashionSection() {
                 +
               </button>
 
-              {/* Image wrapper */}
               <div className="relative w-full h-[380px] overflow-hidden">
-                {/* Ảnh mặc định */}
                 <img
                   src={product.img}
                   alt={product.name}
                   className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 group-hover:opacity-0"
                 />
-                {/* Ảnh khi hover */}
+
                 <img
                   src={product.hoverImg}
                   alt={product.name}
                   className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                 />
 
-                {/* Hover actions */}
                 <div className="absolute bottom-0 left-0 right-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
                   <div className="flex">
                     <button className="w-1/2 flex items-center justify-center gap-2 py-3 text-xs font-medium bg-white border-t border-r border-gray-200 hover:bg-gray-100">
@@ -111,7 +106,6 @@ export default function FashionSection() {
                 </div>
               </div>
 
-              {/* Name + Price luôn hiển thị dưới ảnh */}
               <div className="mt-4 text-center">
                 <h3 className="text-sm font-medium text-gray-900 uppercase">
                   {product.name}

@@ -25,20 +25,23 @@ export default function Header() {
 
         {/* Icons */}
         <div className="flex items-center space-x-4">
-          <button>
+          <button className="cursor-pointer">
             <Search size={22} />
           </button>
-          <button>
+          <button className="cursor-pointer">
             <User size={22} />
           </button>
-          <button className="relative">
+          <button className="relative cursor-pointer">
             <ShoppingCart size={22} />
             <span className="absolute -top-2 -right-2 bg-pink-600 text-white text-xs rounded-full px-1">
               0
             </span>
           </button>
           {/* Mobile toggle */}
-          <button className="md:hidden" onClick={() => setMenuOpen(!menuOpen)}>
+          <button
+            className="md:hidden cursor-pointer"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
             <Menu size={24} />
           </button>
         </div>
