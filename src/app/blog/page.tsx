@@ -253,7 +253,7 @@ export default function BlogPage() {
         </div>
 
         {/* Tag Cloud */}
-        <div className="widget bg-white shadow-sm border rounded-md p-5">
+        {/* <div className="widget bg-white shadow-sm border rounded-md p-5">
           <h4
             className={`${playfair.className} widget-title text-lg font-semibold mb-4 border-b pb-2`}
           >
@@ -270,7 +270,7 @@ export default function BlogPage() {
               </a>
             ))}
           </div>
-        </div>
+        </div> */}
       </aside>
     </section>
   );
