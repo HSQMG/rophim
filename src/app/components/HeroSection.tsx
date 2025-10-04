@@ -5,7 +5,6 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function HeroSection() {
-  // Dữ liệu ảnh + chữ
   const data = [
     {
       img: "https://bazaarvietnam.vn/wp-content/uploads/2020/02/0E3A1637-1.jpg",
@@ -23,7 +22,7 @@ export default function HeroSection() {
       desc: "Bộ sưu tập dành cho những tín đồ yêu thích sự thoải mái.",
     },
     {
-      img: "https://bazaarvietnam.vn/wp-content/uploads/2020/02/loi-khuyen-thoi-trang-6.jpg",
+      img: "https://millamona.monamedia.net/wp-content/uploads/revslider/home-01/m1_slider_01.png",
       title: "PHỤ KIỆN ĐỘC ĐÁO",
       desc: "Điểm nhấn hoàn hảo cho bộ trang phục của bạn.",
     },
@@ -32,16 +31,22 @@ export default function HeroSection() {
   const [current, setCurrent] = useState(0);
 
   return (
-    <section className="relative w-full min-h-[700px] flex items-center justify-between px-10 bg-gradient-to-r from-pink-50 to-white">
-      <div className="flex-1 flex flex-col justify-center">
+    <section
+      className="relative w-full h-screen flex items-end justify-between px-20"
+      style={{
+        background: `linear-gradient(135deg, #fdf7f4 0%, #fbeeee 50%, #fff6f2 100%)`,
+      }}
+    >
+      {/* Left text section */}
+      <div className="flex-1 flex flex-col justify-center max-w-xl mb-24">
         <AnimatePresence mode="wait">
           <motion.h1
             key={data[current].title}
             initial={{ opacity: 0, y: -40 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 40 }}
-            transition={{ duration: 0.5 }}
-            className="text-6xl font-serif font-bold leading-tight mb-4"
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+            className="text-6xl font-serif font-bold leading-tight mb-6 text-gray-900"
           >
             {data[current].title}
           </motion.h1>
@@ -53,8 +58,8 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-lg italic text-gray-500 mb-8"
+            transition={{ duration: 0.6, delay: 0.1, ease: "easeInOut" }}
+            className="text-lg italic text-gray-600 mb-10"
           >
             {data[current].desc}
           </motion.p>
@@ -65,10 +70,10 @@ export default function HeroSection() {
           {data.map((item, i) => (
             <div
               key={i}
-              className={`w-20 h-20 overflow-hidden rounded-full border-2 cursor-pointer transition 
+              className={`w-20 h-24 relative overflow-hidden rounded-t-full border transition-all duration-300 cursor-pointer
                 ${
                   current === i
-                    ? "border-black scale-110"
+                    ? "border-black scale-110 shadow-md"
                     : "border-gray-300 hover:scale-105"
                 }`}
               onClick={() => setCurrent(i)}
@@ -76,24 +81,26 @@ export default function HeroSection() {
               <Image
                 src={item.img}
                 alt={`thumbnail ${i}`}
-                width={80}
-                height={80}
+                width={300}
+                height={400}
+                quality={100}
                 className="object-cover w-full h-full"
+                loading="lazy"
               />
             </div>
           ))}
         </div>
       </div>
 
-      {/* Bên phải: ảnh lớn */}
-      <div className="flex-1 flex justify-center relative">
-        <div className="w-[500px] h-[650px] relative overflow-hidden rounded-t-full border border-gray-300 shadow-lg">
+      {/* Right main image (sát đáy) */}
+      <div className="flex-1 flex justify-center items-end relative h-full">
+        <div className="w-[500px] h-[700px] relative overflow-hidden rounded-t-full border border-black shadow-lg self-end">
           <AnimatePresence mode="wait">
             <motion.div
               key={data[current].img}
-              initial={{ opacity: 0, x: 80 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -80 }}
+              initial={{ opacity: 0, y: 80 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -80 }}
               transition={{ duration: 0.6 }}
               className="absolute inset-0"
             >
@@ -101,7 +108,10 @@ export default function HeroSection() {
                 src={data[current].img}
                 alt="main"
                 fill
+                quality={100}
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
+                priority
               />
             </motion.div>
           </AnimatePresence>
