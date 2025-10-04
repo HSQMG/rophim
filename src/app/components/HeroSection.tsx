@@ -7,22 +7,22 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function HeroSection() {
   const data = [
     {
-      img: "https://bazaarvietnam.vn/wp-content/uploads/2020/02/0E3A1637-1.jpg",
+      img: "/home/19.09 LB UNID13738.jpg",
       title: "CỬA HÀNG MILLAMONA",
       desc: "Bộ sưu tập cao cấp cho phong cách cá tính & năng động.",
     },
     {
-      img: "https://bazaarvietnam.vn/wp-content/uploads/2020/02/loi-khuyen-thoi-trang-a.jpg",
+      img: "/home/19.09 LB UNID14630.jpg",
       title: "PHONG CÁCH THANH LỊCH",
       desc: "Khám phá xu hướng thời trang sang trọng & tinh tế.",
     },
     {
-      img: "https://bazaarvietnam.vn/wp-content/uploads/2020/02/loi-khuyen-thoi-trang-2.jpg",
+      img: "/home/19.09 LB UNID14800.jpg",
       title: "THỜI TRANG NĂNG ĐỘNG",
       desc: "Bộ sưu tập dành cho những tín đồ yêu thích sự thoải mái.",
     },
     {
-      img: "https://millamona.monamedia.net/wp-content/uploads/revslider/home-01/m1_slider_01.png",
+      img: "/home/19.09 LB UNID14924.jpg",
       title: "PHỤ KIỆN ĐỘC ĐÁO",
       desc: "Điểm nhấn hoàn hảo cho bộ trang phục của bạn.",
     },
@@ -86,6 +86,7 @@ export default function HeroSection() {
                 quality={100}
                 className="object-cover w-full h-full"
                 loading="lazy"
+                unoptimized
               />
             </div>
           ))}

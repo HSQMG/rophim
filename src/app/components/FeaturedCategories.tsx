@@ -2,31 +2,36 @@
 
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const categories = [
   {
     title: "BLAZER",
     items: "12 items",
     image:
-      "https://hmkeyewear.com/wp-content/uploads/2024/10/phu-kien-thoi-trang-2.jpg",
+      "https://millamona.monamedia.net/wp-content/uploads/2024/01/m1_cat_0001.png",
+    link: "/category/blazer",
   },
   {
     title: "BEAUTY",
     items: "24 items",
     image:
-      "https://hmkeyewear.com/wp-content/uploads/2024/10/phu-kien-thoi-trang-14.jpg",
+      "https://millamona.monamedia.net/wp-content/uploads/2024/01/m1_cat_0002.png",
+    link: "/category/beauty",
   },
   {
     title: "EDITORIAL",
     items: "32 items",
     image:
-      "https://hmkeyewear.com/wp-content/uploads/2024/10/phu-kien-thoi-trang-16.jpg",
+      "https://millamona.monamedia.net/wp-content/uploads/2024/01/m1_cat_0003.png",
+    link: "/category/editorial",
   },
   {
     title: "PHỤ KIỆN",
     items: "48 items",
     image:
-      "https://hmkeyewear.com/wp-content/uploads/2024/10/phu-kien-thoi-trang-3.jpg",
+      "https://millamona.monamedia.net/wp-content/uploads/2024/01/m1_cat_0004.png",
+    link: "/category/phu-kien",
   },
 ];
 
@@ -56,7 +61,10 @@ export default function FeaturedCategories() {
             <p className="text-gray-500 italic text-sm mb-4">{cat.items}</p>
 
             {/* Hình ảnh có hiệu ứng zoom */}
-            <div className="relative w-40 h-52 mb-6 overflow-hidden rounded-md">
+            <Link
+              href={cat.link}
+              className="relative w-40 h-52 mb-6 overflow-hidden rounded-md block"
+            >
               <Image
                 src={cat.image}
                 alt={cat.title}
@@ -64,15 +72,18 @@ export default function FeaturedCategories() {
                 className="object-contain transition-transform duration-300 group-hover:scale-110"
                 sizes="(max-width: 768px) 100vw, 40vw"
               />
-            </div>
+            </Link>
 
-            {/* Nút hover đổi màu */}
-            <button
-              className="peer w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center 
-                         transition-all duration-300 hover:bg-black hover:text-white"
-            >
-              <ArrowRight size={20} />
-            </button>
+            {/* Nút có hiệu ứng và link */}
+            <Link href={cat.link}>
+              <button
+                className="peer w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center 
+                           transition-all duration-300 hover:bg-[#6b4f36] hover:text-white 
+                           hover:scale-110 cursor-pointer"
+              >
+                <ArrowRight size={20} />
+              </button>
+            </Link>
           </div>
         ))}
       </div>
