@@ -7,22 +7,22 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function HeroSection() {
   const data = [
     {
-      img: "/home/19.09 LB UNID13738.jpg",
+      img: "/home/image1.jpg",
       title: "CỬA HÀNG MILLAMONA",
       desc: "Bộ sưu tập cao cấp cho phong cách cá tính & năng động.",
     },
     {
-      img: "/home/19.09 LB UNID14630.jpg",
+      img: "/home/image2.jpg",
       title: "PHONG CÁCH THANH LỊCH",
       desc: "Khám phá xu hướng thời trang sang trọng & tinh tế.",
     },
     {
-      img: "/home/19.09 LB UNID14800.jpg",
+      img: "/home/image3.jpg",
       title: "THỜI TRANG NĂNG ĐỘNG",
       desc: "Bộ sưu tập dành cho những tín đồ yêu thích sự thoải mái.",
     },
     {
-      img: "/home/19.09 LB UNID14924.jpg",
+      img: "/home/image4.jpg",
       title: "PHỤ KIỆN ĐỘC ĐÁO",
       desc: "Điểm nhấn hoàn hảo cho bộ trang phục của bạn.",
     },

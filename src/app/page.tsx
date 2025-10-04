@@ -22,9 +22,9 @@ export default function Home() {
         <ProductCarousel />
       </ScrollReveal>
 
-      <ScrollReveal delay={0.4}>
+      {/* <ScrollReveal delay={0.4}>
         <BrandCarousel />
-      </ScrollReveal>
+      </ScrollReveal> */}
 
       <ScrollReveal delay={0.5}>
         <FashionSection />
