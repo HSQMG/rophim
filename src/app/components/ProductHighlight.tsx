@@ -8,7 +8,7 @@ export default function ProductHighlight() {
       date: "30",
       month: "Th10",
       title: "A. Lange & Söhne – The new Zeitwerk",
-      img: "https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg",
+      img: "/home/image1.jpg",
     },
     {
       id: 2,
@@ -16,7 +16,7 @@ export default function ProductHighlight() {
       date: "30",
       month: "Th10",
       title: "Maurice Lacroix – Aikon Venturer 38mm",
-      img: "https://images.pexels.com/photos/998641/pexels-photo-998641.jpeg",
+      img: "/home/image2.jpg",
     },
     {
       id: 3,
@@ -24,7 +24,7 @@ export default function ProductHighlight() {
       date: "30",
       month: "Th10",
       title: "Mido Ocean Star GMT Special Edition",
-      img: "https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg",
+      img: "/home/image3.jpg",
     },
   ];
 

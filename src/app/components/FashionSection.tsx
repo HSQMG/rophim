@@ -7,47 +7,43 @@ export default function FashionSection() {
       id: 1,
       name: "BLAZER SUIT 100% LINEN",
       price: "999.000đ – 1.299.000đ",
-      img: "https://mabustudio.com/wp-content/uploads/2020/01/chup-trai-quan-ao-1-scaled-1024x1024.jpg",
-      hoverImg:
-        "https://htmediagroup.vn/wp-content/uploads/2021/12/Ao-thun-4-min.jpg.webp",
+      img: "/product/product1.jpg",
+      hoverImg: "/home/image1.jpg",
       isNew: false,
     },
     {
       id: 2,
       name: "QUẦN GIẢ VÁY CÓ KHÓA KIM LOẠI",
       price: "1.690.000đ",
-      img: "https://mabustudio.com/wp-content/uploads/2020/01/chup-trai-quan-ao-1-scaled-1024x1024.jpg",
-      hoverImg:
-        "https://htmediagroup.vn/wp-content/uploads/2021/12/Ao-thun-4-min.jpg.webp",
+      img: "/product/product2.jpg",
+      hoverImg: "/home/image2.jpg",
       isNew: true,
     },
     {
       id: 3,
       name: "BỐT DA CỔ CAO TRANG TRÍ KHÓA CÀI",
       price: "4.799.000đ",
-      img: "https://mabustudio.com/wp-content/uploads/2020/01/chup-trai-quan-ao-1-scaled-1024x1024.jpg",
-      hoverImg:
-        "https://htmediagroup.vn/wp-content/uploads/2021/12/Ao-thun-4-min.jpg.webp",
+      img: "/product/product3.jpg",
+      hoverImg: "/home/image3.jpg",
       isNew: true,
     },
     {
       id: 4,
       name: "ÁO KHOÁC LEN HỌA TIẾT CON RỒNG",
       price: "1.299.000đ",
-      img: "https://mabustudio.com/wp-content/uploads/2020/01/chup-trai-quan-ao-1-scaled-1024x1024.jpg",
-      hoverImg:
-        "https://htmediagroup.vn/wp-content/uploads/2021/12/Ao-thun-4-min.jpg.webp",
+      img: "/product/product4.jpg",
+      hoverImg: "/home/image4.jpg",
       isNew: true,
     },
-    {
-      id: 5,
-      name: "BỐT DA CỔ CAO TRANG TRÍ KHÓA CÀI",
-      price: "4.799.000đ",
-      img: "https://mabustudio.com/wp-content/uploads/2020/01/chup-trai-quan-ao-1-scaled-1024x1024.jpg",
-      hoverImg:
-        "https://htmediagroup.vn/wp-content/uploads/2021/12/Ao-thun-4-min.jpg.webp",
-      isNew: true,
-    },
+    // {
+    //   id: 5,
+    //   name: "BỐT DA CỔ CAO TRANG TRÍ KHÓA CÀI",
+    //   price: "4.799.000đ",
+    //   img: "https://mabustudio.com/wp-content/uploads/2020/01/chup-trai-quan-ao-1-scaled-1024x1024.jpg",
+    //   hoverImg:
+    //     "https://htmediagroup.vn/wp-content/uploads/2021/12/Ao-thun-4-min.jpg.webp",
+    //   isNew: true,
+    // },
   ];
 
   return (

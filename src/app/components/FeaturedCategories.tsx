@@ -8,29 +8,25 @@ const categories = [
   {
     title: "BLAZER",
     items: "12 items",
-    image:
-      "https://millamona.monamedia.net/wp-content/uploads/2024/01/m1_cat_0001.png",
+    image: "/product/product1.jpg",
     link: "/category/blazer",
   },
   {
     title: "BEAUTY",
     items: "24 items",
-    image:
-      "https://millamona.monamedia.net/wp-content/uploads/2024/01/m1_cat_0002.png",
+    image: "/product/product3.jpg",
     link: "/category/beauty",
   },
   {
     title: "EDITORIAL",
     items: "32 items",
-    image:
-      "https://millamona.monamedia.net/wp-content/uploads/2024/01/m1_cat_0003.png",
+    image: "/product/product2.jpg",
     link: "/category/editorial",
   },
   {
     title: "PHỤ KIỆN",
     items: "48 items",
-    image:
-      "https://millamona.monamedia.net/wp-content/uploads/2024/01/m1_cat_0004.png",
+    image: "/product/product4.jpg",
     link: "/category/phu-kien",
   },
 ];

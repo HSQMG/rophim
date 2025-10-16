@@ -12,8 +12,7 @@ const products = [
     name: "ROBETO SUIT BLAZER",
     price: "1,499,000đ",
     oldPrice: null,
-    image:
-      "https://hmkeyewear.com/wp-content/uploads/2024/10/phu-kien-thoi-trang-2.jpg",
+    image: "/product/product1.jpg",
     sale: true,
   },
   {
@@ -21,8 +20,7 @@ const products = [
     name: "BLAZER SUIT 100% LINEN",
     price: "999,000đ – 1,299,000đ",
     oldPrice: null,
-    image:
-      "https://hmkeyewear.com/wp-content/uploads/2024/10/phu-kien-thoi-trang-14.jpg",
+    image: "/product/product2.jpg",
     sale: false,
   },
   {
@@ -30,8 +28,7 @@ const products = [
     name: "POCKETS SUIT BLAZER",
     price: "1,499,000đ",
     oldPrice: "1,739,000đ",
-    image:
-      "https://hmkeyewear.com/wp-content/uploads/2024/10/phu-kien-thoi-trang-14.jpg",
+    image: "/product/product3.jpg",
     sale: true,
   },
   {
@@ -39,8 +36,7 @@ const products = [
     name: "DOUBLE BREASTED SUIT",
     price: "1,699,000đ",
     oldPrice: null,
-    image:
-      "https://hmkeyewear.com/wp-content/uploads/2024/10/phu-kien-thoi-trang-14.jpg",
+    image: "/product/product4.jpg",
     sale: false,
   },
 ];

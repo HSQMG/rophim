@@ -7,21 +7,21 @@ export default function BlogSection() {
       category: "FASHION",
       date: "17 THÁNG CHÍN, 2022",
       title: "THE 7 VERY BEST BIKINI TRIMMERS",
-      img: "https://images.pexels.com/photos/7679464/pexels-photo-7679464.jpeg",
+      img: "/home/image1.jpg",
     },
     {
       id: 2,
       category: "FASHION",
       date: "17 THÁNG CHÍN, 2022",
       title: "THE VERY BEST WORKOUT SHOES FOR WOMEN",
-      img: "https://images.pexels.com/photos/2065195/pexels-photo-2065195.jpeg",
+      img: "/home/image2.jpg",
     },
     {
       id: 3,
       category: "FASHION",
       date: "17 THÁNG CHÍN, 2022",
       title: "ANNA FIELDING, STRATEGIST UK CONTRIBUTOR",
-      img: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg",
+      img: "/home/image3.jpg",
     },
   ];
 
