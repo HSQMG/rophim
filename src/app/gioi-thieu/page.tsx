@@ -4,6 +4,7 @@ import CollectionSection from "./components/CollectionSection";
 import RiseTogether from "./components/RiseTogether";
 import CounterSection from "./components/CounterSection";
 import BlogSection from "./components/BlogSection";
+import ProductCarousel from "../components/ProductCarousel";
 export default function Home() {
   return (
     <main>
