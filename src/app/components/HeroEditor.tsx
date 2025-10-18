@@ -40,7 +40,7 @@ export default function HeroEditor() {
   return (
     <div className="max-w-5xl mx-auto py-10">
       <h1 className="text-3xl font-bold mb-8 text-center text-gray-800">
-        🖼️ Quản lý Hero Section
+         thêm/ xóa hình ảnh trang chủ danh mục ảnh chính
       </h1>
 
       {slides.map((slide, index) => (
@@ -49,7 +49,6 @@ export default function HeroEditor() {
           className="border rounded-2xl p-6 mb-8 bg-white shadow-sm hover:shadow-lg transition"
         >
           <div className="flex flex-col md:flex-row gap-6 items-start">
-            {/* Hình ảnh hiển thị */}
             <div className="relative w-full md:w-56 h-72 bg-gray-100 border rounded-xl flex items-center justify-center overflow-hidden group">
               {slide.img ? (
                 <img
@@ -120,14 +119,11 @@ export default function HeroEditor() {
                 onClick={() => handleDelete(index)}
                 className="text-red-500 text-sm hover:underline"
               >
-                🗑️ Xóa slide này
               </button>
             </div>
           </div>
         </div>
       ))}
-
-      {/* Nút thêm & lưu */}
       <div className="flex justify-center gap-4 mt-8">
         <button
           onClick={handleAdd}
