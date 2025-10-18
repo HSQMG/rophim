@@ -48,8 +48,6 @@ export default function CategoryPage() {
             {category.items} items
           </p>
         )}
-
-        {/* Hình ảnh */}
         {category.image && (
           <div className="relative w-full h-[500px] mb-8 rounded-2xl overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105">
             <Image
@@ -60,8 +58,6 @@ export default function CategoryPage() {
             />
           </div>
         )}
-
-        {/* Script preview */}
         {category.script && (
           <div className="w-full bg-gray-50 border border-gray-200 rounded-xl p-6 shadow-inner text-left">
             <h2 className="text-xl font-semibold mb-3 text-[#6b4f36]">
