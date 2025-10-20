@@ -1,15 +1,21 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Upload } from "lucide-react";
 
 export default function HeroEditor() {
   const [slides, setSlides] = useState<any[]>([]);
 
+  // 🔹 Load slides khi component mount
   useEffect(() => {
     const stored = localStorage.getItem("heroSlides");
     if (stored) setSlides(JSON.parse(stored));
   }, []);
+
+  // 🔹 Auto-save mỗi khi slides thay đổi
+  useEffect(() => {
+    localStorage.setItem("heroSlides", JSON.stringify(slides));
+  }, [slides]);
 
   const handleImageUpload = (e: any, index: number) => {
     const file = e.target.files?.[0];
@@ -28,11 +34,6 @@ export default function HeroEditor() {
     setSlides([...slides, { img: "", title: "", desc: "" }]);
   };
 
-  const handleSave = () => {
-    localStorage.setItem("heroSlides", JSON.stringify(slides));
-    alert("✅ Đã lưu thay đổi!");
-  };
-
   const handleDelete = (index: number) => {
     setSlides(slides.filter((_, i) => i !== index));
   };
@@ -40,7 +41,7 @@ export default function HeroEditor() {
   return (
     <div className="max-w-5xl mx-auto py-10">
       <h1 className="text-3xl font-bold mb-8 text-center text-gray-800">
-         thêm/ xóa hình ảnh trang chủ danh mục ảnh chính
+        thêm/ xóa hình ảnh trang chủ danh mục ảnh chính
       </h1>
 
       {slides.map((slide, index) => (
@@ -49,6 +50,7 @@ export default function HeroEditor() {
           className="border rounded-2xl p-6 mb-8 bg-white shadow-sm hover:shadow-lg transition"
         >
           <div className="flex flex-col md:flex-row gap-6 items-start">
+            {/* Hình ảnh */}
             <div className="relative w-full md:w-56 h-72 bg-gray-100 border rounded-xl flex items-center justify-center overflow-hidden group">
               {slide.img ? (
                 <img
@@ -63,7 +65,6 @@ export default function HeroEditor() {
                 </div>
               )}
 
-              {/* Nút chọn ảnh */}
               <label
                 htmlFor={`file-${index}`}
                 className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-3 py-1 rounded-md cursor-pointer opacity-0 group-hover:opacity-100 transition"
@@ -79,7 +80,7 @@ export default function HeroEditor() {
               />
             </div>
 
-            {/* Nội dung bên phải */}
+            {/* Nội dung */}
             <div className="flex-1 space-y-4">
               <label className="block">
                 <span className="text-sm font-semibold text-gray-700">
@@ -119,23 +120,19 @@ export default function HeroEditor() {
                 onClick={() => handleDelete(index)}
                 className="text-red-500 text-sm hover:underline"
               >
+                🗑 Xóa
               </button>
             </div>
           </div>
         </div>
       ))}
-      <div className="flex justify-center gap-4 mt-8">
+
+      <div className="flex justify-center mt-8">
         <button
           onClick={handleAdd}
           className="bg-gray-900 text-white px-5 py-2 rounded-lg hover:bg-gray-700 transition"
         >
           ➕ Thêm Slide
-        </button>
-        <button
-          onClick={handleSave}
-          className="bg-[#7B3F00] text-white px-5 py-2 rounded-lg hover:bg-[#9a5315] transition"
-        >
-          💾 Lưu thay đổi
         </button>
       </div>
     </div>
