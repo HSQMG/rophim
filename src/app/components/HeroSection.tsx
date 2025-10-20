@@ -8,24 +8,35 @@ export default function HeroSection() {
   const [slides, setSlides] = useState<any[]>([]);
   const [current, setCurrent] = useState(0);
 
+  // 🔹 Đọc dữ liệu từ file JSON thật qua API
   useEffect(() => {
-    const stored = localStorage.getItem("heroSlides");
-    if (stored) setSlides(JSON.parse(stored));
-    else {
-      // nếu chưa có dữ liệu, tạo mặc định
-      setSlides([
-        {
-          img: "/home/image1.jpg",
-          title: "CỬA HÀNG MILLAMONA",
-          desc: "Bộ sưu tập cao cấp cho phong cách cá tính & năng động.",
-        },
-        {
-          img: "/home/image2.jpg",
-          title: "PHONG CÁCH THANH LỊCH",
-          desc: "Khám phá xu hướng thời trang sang trọng & tinh tế.",
-        },
-      ]);
-    }
+    fetch("/api/hero")
+      .then((res) => res.json())
+      .then((data) => {
+        if (Array.isArray(data) && data.length > 0) setSlides(data);
+        else
+          setSlides([
+            {
+              img: "/home/image1.jpg",
+              title: "CỬA HÀNG MILLAMONA",
+              desc: "Bộ sưu tập cao cấp cho phong cách cá tính & năng động.",
+            },
+            {
+              img: "/home/image2.jpg",
+              title: "PHONG CÁCH THANH LỊCH",
+              desc: "Khám phá xu hướng thời trang sang trọng & tinh tế.",
+            },
+          ]);
+      })
+      .catch(() =>
+        setSlides([
+          {
+            img: "/home/image1.jpg",
+            title: "CỬA HÀNG MILLAMONA",
+            desc: "Bộ sưu tập cao cấp cho phong cách cá tính & năng động.",
+          },
+        ])
+      );
   }, []);
 
   if (slides.length === 0) return null;

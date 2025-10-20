@@ -1,48 +1,75 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Upload } from "lucide-react";
 
 export default function HeroEditor() {
   const [slides, setSlides] = useState<any[]>([]);
+  const [saving, setSaving] = useState(false);
 
-  // 🔹 Load slides khi component mount
+  // 🔹 Đọc dữ liệu từ file thật qua API
   useEffect(() => {
-    const stored = localStorage.getItem("heroSlides");
-    if (stored) setSlides(JSON.parse(stored));
+    fetch("/api/hero")
+      .then((res) => res.json())
+      .then((data) => setSlides(data))
+      .catch(() => setSlides([]));
   }, []);
 
-  // 🔹 Auto-save mỗi khi slides thay đổi
-  useEffect(() => {
-    localStorage.setItem("heroSlides", JSON.stringify(slides));
-  }, [slides]);
+  // 🔹 Hàm lưu lại file JSON thật
+  const saveToFile = async (updated: any[]) => {
+    setSlides(updated);
+    setSaving(true);
+    await fetch("/api/hero", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updated),
+    });
+    setSaving(false);
+  };
 
+  // 🖼 Upload ảnh
   const handleImageUpload = (e: any, index: number) => {
     const file = e.target.files?.[0];
     if (!file) return;
-
     const reader = new FileReader();
     reader.onload = () => {
       const updated = [...slides];
       updated[index].img = reader.result;
-      setSlides(updated);
+      saveToFile(updated);
     };
     reader.readAsDataURL(file);
   };
 
+  // ➕ Thêm slide
   const handleAdd = () => {
-    setSlides([...slides, { img: "", title: "", desc: "" }]);
+    const updated = [...slides, { img: "", title: "", desc: "" }];
+    saveToFile(updated);
   };
 
+  // 🗑 Xóa slide
   const handleDelete = (index: number) => {
-    setSlides(slides.filter((_, i) => i !== index));
+    const updated = slides.filter((_, i) => i !== index);
+    saveToFile(updated);
+  };
+
+  // ✏️ Sửa nội dung
+  const handleChange = (index: number, field: string, value: string) => {
+    const updated = [...slides];
+    updated[index][field] = value;
+    saveToFile(updated);
   };
 
   return (
     <div className="max-w-5xl mx-auto py-10">
       <h1 className="text-3xl font-bold mb-8 text-center text-gray-800">
-        thêm/ xóa hình ảnh trang chủ danh mục ảnh chính
+        Thêm / xóa hình ảnh trang chủ
       </h1>
+
+      {saving && (
+        <p className="text-center text-green-600 mb-4 animate-pulse">
+          💾 Đang lưu thay đổi...
+        </p>
+      )}
 
       {slides.map((slide, index) => (
         <div
@@ -82,39 +109,21 @@ export default function HeroEditor() {
 
             {/* Nội dung */}
             <div className="flex-1 space-y-4">
-              <label className="block">
-                <span className="text-sm font-semibold text-gray-700">
-                  Tiêu đề
-                </span>
-                <input
-                  type="text"
-                  className="border border-gray-300 w-full rounded-md px-3 py-2 mt-1 focus:ring-2 focus:ring-black focus:border-black outline-none"
-                  placeholder="Nhập tiêu đề..."
-                  value={slide.title}
-                  onChange={(e) => {
-                    const updated = [...slides];
-                    updated[index].title = e.target.value;
-                    setSlides(updated);
-                  }}
-                />
-              </label>
+              <input
+                type="text"
+                className="border border-gray-300 w-full rounded-md px-3 py-2 mt-1 focus:ring-2 focus:ring-black focus:border-black outline-none"
+                placeholder="Nhập tiêu đề..."
+                value={slide.title}
+                onChange={(e) => handleChange(index, "title", e.target.value)}
+              />
 
-              <label className="block">
-                <span className="text-sm font-semibold text-gray-700">
-                  Mô tả
-                </span>
-                <textarea
-                  className="border border-gray-300 w-full rounded-md px-3 py-2 mt-1 focus:ring-2 focus:ring-black focus:border-black outline-none"
-                  rows={3}
-                  placeholder="Nhập mô tả..."
-                  value={slide.desc}
-                  onChange={(e) => {
-                    const updated = [...slides];
-                    updated[index].desc = e.target.value;
-                    setSlides(updated);
-                  }}
-                />
-              </label>
+              <textarea
+                className="border border-gray-300 w-full rounded-md px-3 py-2 mt-1 focus:ring-2 focus:ring-black focus:border-black outline-none"
+                rows={3}
+                placeholder="Nhập mô tả..."
+                value={slide.desc}
+                onChange={(e) => handleChange(index, "desc", e.target.value)}
+              />
 
               <button
                 onClick={() => handleDelete(index)}

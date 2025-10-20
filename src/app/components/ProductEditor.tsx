@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 
 export default function ProductEditor() {
@@ -14,27 +14,41 @@ export default function ProductEditor() {
     sale: false,
   });
   const [preview, setPreview] = useState<string | null>(null);
+  const [saving, setSaving] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
-  // 🧠 Lấy dữ liệu từ LocalStorage
+  // 🧠 Load từ file thật qua API
   useEffect(() => {
-    const stored = localStorage.getItem("products");
-    if (stored) setProducts(JSON.parse(stored));
+    fetch("/api/products")
+      .then((res) => res.json())
+      .then((data) => {
+        if (Array.isArray(data)) setProducts(data);
+        else setProducts([]);
+      })
+      .catch(() => setProducts([]));
   }, []);
 
-  // 💾 Lưu lại khi thay đổi
-  useEffect(() => {
-    localStorage.setItem("products", JSON.stringify(products));
-  }, [products]);
+  // 💾 Lưu lại file JSON thật
+  const saveToFile = async (updated: any[]) => {
+    setProducts(updated);
+    setSaving(true);
+    await fetch("/api/products", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updated),
+    });
+    setSaving(false);
+  };
 
   // 🔢 Định dạng giá
   const formatPrice = (value: string) => {
-    const numericValue = value.replace(/\D/g, ""); // loại ký tự không phải số
+    const numericValue = value.replace(/\D/g, "");
     if (!numericValue) return "";
     const formatted = numericValue.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     return formatted + "đ";
   };
 
-  // 🖼️ Upload ảnh
+  // 🖼 Upload ảnh
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -48,30 +62,36 @@ export default function ProductEditor() {
     reader.readAsDataURL(file);
   };
 
-  // ➕ Thêm / cập nhật sản phẩm
-  const handleSubmit = () => {
+  // ➕ Thêm hoặc cập nhật
+  const handleSubmit = async () => {
     if (!form.name || !form.price || !form.image)
       return alert("Vui lòng nhập đầy đủ thông tin!");
 
     const cleanForm = {
       ...form,
-      price: form.price.replace(/\D/g, ""), // lưu số thật
+      price: form.price.replace(/\D/g, ""),
       oldPrice: form.oldPrice.replace(/\D/g, ""),
     };
 
+    let updated;
     if (editingId) {
-      setProducts((prev) =>
-        prev.map((p) => (p.id === editingId ? { ...p, ...cleanForm } : p))
+      updated = products.map((p) =>
+        p.id === editingId ? { ...p, ...cleanForm } : p
       );
       setEditingId(null);
     } else {
-      setProducts([...products, { ...cleanForm, id: Date.now() }]);
+      updated = [...products, { ...cleanForm, id: Date.now() }];
     }
 
+    await saveToFile(updated);
+
+    // Reset form
     setForm({ name: "", price: "", oldPrice: "", image: "", sale: false });
     setPreview(null);
+    if (fileInputRef.current) fileInputRef.current.value = "";
   };
 
+  // ✏️ Sửa
   const handleEdit = (product: any) => {
     setEditingId(product.id);
     setForm({
@@ -82,24 +102,31 @@ export default function ProductEditor() {
     setPreview(product.image);
   };
 
-  const handleDelete = (id: number) => {
+  // 🗑 Xóa
+  const handleDelete = async (id: number) => {
     if (confirm("Bạn có chắc muốn xóa sản phẩm này?")) {
-      setProducts(products.filter((p) => p.id !== id));
+      const updated = products.filter((p) => p.id !== id);
+      await saveToFile(updated);
     }
   };
 
   return (
     <div className="max-w-5xl mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-6">🛠️ Quản lý sản phẩm</h1>
+      <h1 className="text-3xl font-bold mb-6">🛍 Quản lý sản phẩm</h1>
+
+      {saving && (
+        <p className="text-green-600 mb-3 text-center animate-pulse">
+          💾 Đang lưu dữ liệu vào file...
+        </p>
+      )}
 
       {/* FORM */}
       <div className="bg-gray-50 p-6 rounded-lg shadow mb-10">
         <h2 className="font-semibold mb-4 text-lg">
-          {editingId ? "✏️ Sửa sản phẩm" : "➕ Thêm sản phẩm"}
+          {editingId ? "✏️ Sửa sản phẩm" : "➕ Thêm sản phẩm mới"}
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {/* Tên sản phẩm */}
           <input
             placeholder="Tên sản phẩm"
             value={form.name}
@@ -107,9 +134,8 @@ export default function ProductEditor() {
             className="border px-3 py-2 rounded"
           />
 
-          {/* Giá */}
           <input
-            placeholder="Giá"
+            placeholder="Giá sản phẩm (đã sale)"
             value={form.price}
             onChange={(e) =>
               setForm({ ...form, price: formatPrice(e.target.value) })
@@ -118,9 +144,8 @@ export default function ProductEditor() {
             inputMode="numeric"
           />
 
-          {/* Giá cũ */}
           <input
-            placeholder="Giá cũ (tùy chọn)"
+            placeholder="Giá cũ (trước khi sale)"
             value={form.oldPrice}
             onChange={(e) =>
               setForm({ ...form, oldPrice: formatPrice(e.target.value) })
@@ -129,10 +154,10 @@ export default function ProductEditor() {
             inputMode="numeric"
           />
 
-          {/* Ảnh */}
           <div className="col-span-1 md:col-span-1">
             <label className="block font-medium mb-1">Hình ảnh</label>
             <input
+              ref={fileInputRef}
               type="file"
               accept="image/*"
               onChange={handleImageUpload}
@@ -150,7 +175,6 @@ export default function ProductEditor() {
             )}
           </div>
 
-          {/* Sale checkbox */}
           <label className="flex items-center gap-2">
             <input
               type="checkbox"
@@ -160,7 +184,6 @@ export default function ProductEditor() {
             <span>Sale</span>
           </label>
 
-          {/* Nút lưu */}
           <button
             onClick={handleSubmit}
             className="bg-[#7B3F00] text-white py-2 px-4 rounded hover:bg-[#5c2e00] transition"
@@ -170,13 +193,9 @@ export default function ProductEditor() {
         </div>
       </div>
 
-      {/* DANH SÁCH SẢN PHẨM */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {products.map((product) => (
-          <div
-            key={product.id}
-            className="border rounded-lg p-4 bg-white shadow-sm"
-          >
+        {Array.isArray(products) && products.map((product) => (
+          <div key={product.id} className="border rounded-lg p-4 bg-white shadow-sm">
             <div className="relative w-full h-64 mb-3">
               <Image
                 src={product.image}
@@ -195,9 +214,7 @@ export default function ProductEditor() {
               </p>
             )}
             {product.sale && (
-              <span className="text-xs bg-yellow-200 px-2 py-1 rounded">
-                SALE
-              </span>
+              <span className="text-xs bg-yellow-200 px-2 py-1 rounded">SALE</span>
             )}
             <div className="mt-3 flex gap-2">
               <button

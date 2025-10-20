@@ -37,38 +37,40 @@ export default function CategoryPage() {
 
   return (
     <section className="min-h-screen py-20 px-6 bg-gradient-to-b from-[#fdf7f4] to-[#fff6f2]">
-      <div className="max-w-4xl mx-auto bg-white shadow-2xl rounded-3xl p-12 flex flex-col items-center">
-        {/* Title */}
-        <h1 className="text-5xl font-serif font-bold mb-4 text-[#3e2c1c] text-center">
+      <div className="max-w-6xl mx-auto bg-white shadow-2xl rounded-3xl p-10 lg:p-14">
+        {/* Tiêu đề danh mục */}
+        <h1 className="text-5xl font-serif font-bold mb-10 text-[#3e2c1c] text-center">
           {category.title}
         </h1>
-        {/* Items */}
-        {category.items && (
-          <p className="text-gray-500 italic mb-8 text-lg">
-            {category.items} items
-          </p>
-        )}
-        {category.image && (
-          <div className="relative w-full h-[500px] mb-8 rounded-2xl overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105">
-            <Image
-              src={category.image}
-              alt={category.title}
-              fill
-              className="object-cover"
-            />
+
+        {/* Layout 2 cột canh ngang */}
+        <div className="flex flex-col lg:flex-row items-start lg:items-stretch gap-10">
+          {/* Ảnh bên trái */}
+          {category.image && (
+            <div className="relative w-full lg:w-1/2 h-[450px] rounded-2xl overflow-hidden shadow-lg">
+              <Image
+                src={category.image}
+                alt={category.title}
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+          )}
+
+          {/* Text bên phải */}
+          <div className="flex-1 text-gray-700 leading-relaxed text-lg flex items-start lg:items-center">
+            <div className="w-full">
+              {category.script ? (
+                <div
+                  className="whitespace-pre-wrap"
+                  dangerouslySetInnerHTML={{ __html: category.script }}
+                ></div>
+              ) : (
+                <p className="italic text-gray-400">Không có nội dung.</p>
+              )}
+            </div>
           </div>
-        )}
-        {category.script && (
-          <div className="w-full bg-gray-50 border border-gray-200 rounded-xl p-6 shadow-inner text-left">
-            <h2 className="text-xl font-semibold mb-3 text-[#6b4f36]">
-              Nội dung tùy chỉnh
-            </h2>
-            <div
-              className="whitespace-pre-wrap"
-              dangerouslySetInnerHTML={{ __html: category.script }}
-            ></div>
-          </div>
-        )}
+        </div>
       </div>
     </section>
   );

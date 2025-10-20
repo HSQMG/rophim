@@ -13,15 +13,20 @@ export default function ProductCarousel() {
   // 🔢 Hàm định dạng giá tiền
   const formatPrice = (value: string | number) => {
     if (!value) return "";
-    const numeric = value.toString().replace(/\D/g, ""); // chỉ giữ số
+    const numeric = value.toString().replace(/\D/g, "");
     if (!numeric) return "";
-    return numeric.replace(/\B(?=(\d{3})+(?!\d))/g, ".") + "đ"; // thêm dấu . ngăn cách nghìn + đơn vị
+    return numeric.replace(/\B(?=(\d{3})+(?!\d))/g, ".") + "đ";
   };
 
-  // Lấy dữ liệu từ LocalStorage (do trang quản lý lưu vào đó)
+  // 🔹 Lấy dữ liệu từ file JSON thật qua API
   useEffect(() => {
-    const stored = localStorage.getItem("products");
-    if (stored) setProducts(JSON.parse(stored));
+    fetch("/api/products")
+      .then((res) => res.json())
+      .then((data) => {
+        if (Array.isArray(data)) setProducts(data);
+        else setProducts([]);
+      })
+      .catch(() => setProducts([]));
   }, []);
 
   if (products.length === 0)
