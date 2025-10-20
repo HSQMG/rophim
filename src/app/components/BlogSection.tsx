@@ -15,11 +15,15 @@ interface Post {
 export default function BlogSection() {
   const [posts, setPosts] = useState<Post[]>([]);
 
+  // 🔹 Đọc dữ liệu từ file JSON thật qua API
   useEffect(() => {
-    const saved = localStorage.getItem("blogPosts");
-    if (saved) {
-      setPosts(JSON.parse(saved));
-    }
+    fetch("/api/blog")
+      .then((res) => res.json())
+      .then((data) => {
+        if (Array.isArray(data)) setPosts(data);
+        else setPosts([]);
+      })
+      .catch(() => setPosts([]));
   }, []);
 
   if (!posts.length) {
@@ -58,12 +62,14 @@ export default function BlogSection() {
                   />
                 )}
               </div>
+
               <p className="text-xs uppercase text-gray-500 mt-4">
                 <span className="font-semibold text-gray-700">
                   {post.category}
                 </span>{" "}
                 / {post.date}
               </p>
+
               <h3 className="mt-2 text-lg font-medium text-gray-900">
                 {post.title}
               </h3>

@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "category": "Watches",
+    "date": "30",
+    "month": "Th10",
+    "title": "A. Lange & Söhne – The new Zeitwerk",
+    "img": "/home/image1.jpg"
+  },
+  {
+    "id": 2,
+    "category": "",
+    "date": "",
+    "month": "",
+    "title": "",
+    "img": ""
+  }
+]

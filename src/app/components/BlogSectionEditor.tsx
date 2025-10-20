@@ -15,37 +15,52 @@ interface Post {
 
 export default function BlogSectionEditor() {
   const [posts, setPosts] = useState<Post[]>([]);
-  const [counter, setCounter] = useState(1);
+  const [saving, setSaving] = useState(false);
 
-  // Load dữ liệu từ localStorage khi mount
+  // 🟢 Đọc dữ liệu từ file thật
   useEffect(() => {
-    const saved = localStorage.getItem("blogPosts");
-    if (saved) {
-      const data: Post[] = JSON.parse(saved);
-      setPosts(data);
-      setCounter(data.length ? Math.max(...data.map((p) => p.id)) + 1 : 1);
-    }
+    fetch("/api/blog")
+      .then((res) => res.json())
+      .then((data) => {
+        if (Array.isArray(data)) setPosts(data);
+        else setPosts([]);
+      })
+      .catch(() => setPosts([]));
   }, []);
 
-  // Lưu dữ liệu vào localStorage khi posts thay đổi
-  useEffect(() => {
-    localStorage.setItem("blogPosts", JSON.stringify(posts));
-  }, [posts]);
+  // 💾 Ghi dữ liệu vào file thật
+  const saveToFile = async (updated: Post[]) => {
+    setPosts(updated);
+    setSaving(true);
+    await fetch("/api/blog", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updated),
+    });
+    setSaving(false);
+  };
 
   const handleAddPost = () => {
-    setPosts([
-      ...posts,
-      { id: counter, category: "", date: "", title: "", img: "", script: "" },
-    ]);
-    setCounter(counter + 1);
+    const newPost: Post = {
+      id: posts.length ? Math.max(...posts.map((p) => p.id)) + 1 : 1,
+      category: "",
+      date: "",
+      title: "",
+      img: "",
+      script: "",
+    };
+    saveToFile([...posts, newPost]);
   };
 
   const handleRemovePost = (id: number) => {
-    setPosts(posts.filter((p) => p.id !== id));
+    saveToFile(posts.filter((p) => p.id !== id));
   };
 
   const handleChange = (id: number, field: keyof Post, value: string) => {
-    setPosts(posts.map((p) => (p.id === id ? { ...p, [field]: value } : p)));
+    const updated = posts.map((p) =>
+      p.id === id ? { ...p, [field]: value } : p
+    );
+    saveToFile(updated);
   };
 
   const handleImageUpload = (id: number, file: File | null) => {
@@ -61,8 +76,14 @@ export default function BlogSectionEditor() {
     <section className="min-h-screen py-16 px-6 bg-[#fefbf9]">
       <div className="max-w-5xl mx-auto bg-white shadow-xl rounded-2xl p-10">
         <h2 className="text-3xl font-bold mb-8 text-center">
-          ✏️ Chỉnh sửa bài viết
+          Thêm/Xóa phần thời trang và xu hướng
         </h2>
+
+        {saving && (
+          <p className="text-center text-green-600 mb-4 animate-pulse">
+            Đang lưu thay đổi...
+          </p>
+        )}
 
         <div className="grid md:grid-cols-2 gap-8">
           {posts.map((post) => (
@@ -70,7 +91,6 @@ export default function BlogSectionEditor() {
               key={post.id}
               className="bg-[#fdfbf9] rounded-xl shadow-md p-6 relative"
             >
-              {/* Xóa bài viết */}
               <button
                 onClick={() => handleRemovePost(post.id)}
                 className="absolute top-3 right-3 text-red-500 hover:text-red-700"
@@ -78,7 +98,6 @@ export default function BlogSectionEditor() {
                 <Trash2 size={20} />
               </button>
 
-              {/* Hình ảnh */}
               <div className="relative w-full h-56 mb-4 rounded-lg overflow-hidden bg-gray-100 flex items-center justify-center">
                 {post.img ? (
                   <Image
@@ -104,7 +123,6 @@ export default function BlogSectionEditor() {
                 </label>
               </div>
 
-              {/* Input */}
               <div className="space-y-3">
                 <input
                   type="text"
@@ -138,7 +156,7 @@ export default function BlogSectionEditor() {
                   onChange={(e) =>
                     handleChange(post.id, "script", e.target.value)
                   }
-                  placeholder="Script / Nội dung HTML tuỳ ý..."
+                  placeholder="Thêm mô tả blog"
                   className="w-full border p-2 rounded-md h-24 resize-none"
                 ></textarea>
               </div>
@@ -146,7 +164,6 @@ export default function BlogSectionEditor() {
           ))}
         </div>
 
-        {/* Thêm bài viết */}
         <div className="flex justify-center mt-10">
           <button
             onClick={handleAddPost}

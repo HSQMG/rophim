@@ -1,32 +1,47 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
+interface HighlightItem {
+  id: number;
+  category: string;
+  date: string;
+  month: string;
+  title: string;
+  img: string;
+}
+
 export default function ProductHighlight() {
-  const items = [
-    {
-      id: 1,
-      category: "Watches",
-      date: "30",
-      month: "Th10",
-      title: "A. Lange & Söhne – The new Zeitwerk",
-      img: "/home/image1.jpg",
-    },
-    {
-      id: 2,
-      category: "Watches",
-      date: "30",
-      month: "Th10",
-      title: "Maurice Lacroix – Aikon Venturer 38mm",
-      img: "/home/image2.jpg",
-    },
-    {
-      id: 3,
-      category: "Watches",
-      date: "30",
-      month: "Th10",
-      title: "Mido Ocean Star GMT Special Edition",
-      img: "/home/image3.jpg",
-    },
-  ];
+  const [items, setItems] = useState<HighlightItem[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  // 🔹 Đọc dữ liệu từ file JSON thật qua API
+  useEffect(() => {
+    fetch("/api/highlight")
+      .then((res) => res.json())
+      .then((data) => {
+        if (Array.isArray(data)) setItems(data);
+        else setItems([]);
+      })
+      .catch(() => setItems([]))
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (loading) {
+    return (
+      <p className="text-center py-20 text-gray-500 italic">
+        Đang tải dữ liệu...
+      </p>
+    );
+  }
+
+  if (items.length === 0) {
+    return (
+      <p className="text-center py-20 text-gray-500 italic">
+        Chưa có sản phẩm nổi bật nào.
+      </p>
+    );
+  }
 
   return (
     <section className="w-full bg-white py-16">
