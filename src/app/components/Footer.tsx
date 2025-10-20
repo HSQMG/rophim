@@ -1,136 +1,123 @@
-// components/Footer.tsx
 "use client";
 
 import { useState } from "react";
+import { Merriweather } from "next/font/google";
+
+const merriweather = Merriweather({
+  subsets: ["vietnamese"],
+  weight: ["400", "700"],
+});
 
 export default function Footer() {
   const [email, setEmail] = useState("");
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!email) {
+    if (!email.trim()) {
       alert("Vui lòng nhập địa chỉ email.");
       return;
     }
     alert(`Cảm ơn! Email đăng ký: ${email}`);
     setEmail("");
-  }
+  };
 
   return (
-    <footer className="bg-[#111111] text-gray-300 py-12">
-      <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-10">
-        {/* LEFT */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <footer className={`bg-[#111111] text-gray-300 py-16 ${merriweather.className}`}>
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        {/* LEFT SIDE */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+          {/* Cột 1 */}
           <div>
-            <h2 className="text-white font-serif text-2xl mb-4">MILLAMONA</h2>
+            <h2 className="text-white text-2xl mb-4 font-bold">MILLAMONA</h2>
             <p className="text-sm leading-relaxed text-gray-400">
-              Millamona là thương hiệu thời trang cao cấp dành cho phụ nữ hiện
-              đại. Chúng tôi mang đến những sản phẩm thời trang tinh tế, sang
-              trọng và đẳng cấp, giúp tôn lên vẻ đẹp của người phụ nữ.
+              Millamona là thương hiệu thời trang cao cấp dành cho phụ nữ hiện đại.
+              Chúng tôi mang đến những sản phẩm tinh tế, sang trọng và đẳng cấp,
+              giúp tôn lên vẻ đẹp của người phụ nữ.
             </p>
           </div>
 
+          {/* Cột 2 */}
           <div>
-            <h3 className="text-white font-medium mb-4">ĐIỀU HƯỚNG</h3>
+            <h3 className="text-white font-semibold mb-4 text-sm tracking-wide">
+              ĐIỀU HƯỚNG
+            </h3>
             <ul className="space-y-2 text-sm">
-              <li>
-                <a href="#" className="hover:text-white">
-                  TRANG CHỦ
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white">
-                  CỬA HÀNG
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white">
-                  VỀ MILLAMONA
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white">
-                  TIN TỨC
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white">
-                  LIÊN HỆ
-                </a>
-              </li>
+              {["TRANG CHỦ", "CỬA HÀNG", "VỀ MILLAMONA", "TIN TỨC", "LIÊN HỆ"].map(
+                (item, idx) => (
+                  <li key={idx}>
+                    <a href="#" className="hover:text-white transition-colors">
+                      {item}
+                    </a>
+                  </li>
+                )
+              )}
             </ul>
           </div>
 
+          {/* Cột 3 */}
           <div>
-            <h3 className="text-white font-medium mb-4">HỖ TRỢ</h3>
+            <h3 className="text-white font-semibold mb-4 text-sm tracking-wide">
+              HỖ TRỢ
+            </h3>
             <ul className="space-y-2 text-sm">
-              <li>
-                <a href="#" className="hover:text-white">
-                  HỎI ĐÁP
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white">
-                  CHÍNH SÁCH ĐỔI TRẢ
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white">
-                  ĐIỀU KHOẢN & CHÍNH SÁCH
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white">
-                  CHÍNH SÁCH BẢO MẬT
-                </a>
-              </li>
+              {[
+                "HỎI ĐÁP",
+                "CHÍNH SÁCH ĐỔI TRẢ",
+                "ĐIỀU KHOẢN & CHÍNH SÁCH",
+                "CHÍNH SÁCH BẢO MẬT",
+              ].map((item, idx) => (
+                <li key={idx}>
+                  <a href="#" className="hover:text-white transition-colors">
+                    {item}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
 
-        {/* RIGHT - Newsletter */}
-        <div className="flex flex-col justify-center">
-          <h3 className="text-white text-2xl md:text-3xl font-serif leading-snug mb-6">
-            NHẬN TẤT CẢ CÁC TIN TỨC
-            <br />
-            MỚI NHẤT & BẢN TIN.
-          </h3>
+        {/* RIGHT SIDE */}
+        <div className="flex flex-col justify-center items-start lg:items-end text-left lg:text-right">
+          <div className="max-w-md w-full">
+            <h3 className="text-white text-2xl md:text-3xl leading-snug mb-6 font-bold">
+              NHẬN TẤT CẢ CÁC TIN TỨC
+              <br />
+              MỚI NHẤT & BẢN TIN.
+            </h3>
 
-          {/* centered input like in your screenshot */}
-          <form
-            onSubmit={handleSubmit}
-            className="mt-2 w-full max-w-[700px] mx-0 md:mx-0"
-            aria-label="newsletter-form"
-          >
-            <div className="flex bg-white rounded-sm overflow-hidden shadow-sm">
-              <label htmlFor="email" className="sr-only">
-                Email
-              </label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Nhập địa chỉ email..."
-                className="flex-1 px-4 py-3 text-sm text-gray-800 placeholder-gray-400 focus:outline-none"
-                aria-label="Nhập địa chỉ email"
-                required
-              />
-              <button
-                type="submit"
-                className="px-6 py-3 text-sm font-semibold text-black bg-white border-l"
-                aria-label="Đăng ký"
-              >
-                ĐĂNG KÍ
-              </button>
-            </div>
-          </form>
+            {/* Newsletter Form */}
+            <form
+              onSubmit={handleSubmit}
+              className="w-full"
+              aria-label="newsletter-form"
+            >
+              <div className="flex bg-white rounded-md overflow-hidden shadow-sm">
+                <label htmlFor="email" className="sr-only">
+                  Email
+                </label>
+                <input
+                  id="email"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Nhập địa chỉ email..."
+                  className="flex-1 px-4 py-3 text-sm text-gray-800 placeholder-gray-500 focus:outline-none"
+                  required
+                />
+                <button
+                  type="submit"
+                  className="px-6 py-3 text-sm font-semibold text-white bg-[#7b5335] hover:bg-[#946a4a] transition"
+                >
+                  ĐĂNG KÍ
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
 
-      {/* optional bottom copyright */}
-      <div className="max-w-7xl mx-auto px-4 mt-8 border-t border-gray-800 pt-6 text-sm text-gray-500">
+      {/* COPYRIGHT */}
+      <div className="max-w-7xl mx-auto px-6 mt-12 border-t border-gray-800 pt-6 text-center text-sm text-gray-500">
         © {new Date().getFullYear()} Millamona. All rights reserved.
       </div>
     </footer>
