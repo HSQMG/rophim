@@ -15,7 +15,7 @@ interface Category {
 export default function FeaturedCategories() {
   const [categories, setCategories] = useState<Category[]>([]);
 
-  // 🔹 Đọc dữ liệu từ file thật qua API
+
   useEffect(() => {
     fetch("/api/categories")
       .then((res) => res.json())
@@ -29,13 +29,6 @@ export default function FeaturedCategories() {
       });
   }, []);
 
-  if (categories.length === 0) {
-    return (
-      <p className="text-center text-gray-500 italic py-20">
-        Đang tải danh mục...
-      </p>
-    );
-  }
 
   return (
     <section className="py-16 bg-white">
@@ -56,11 +49,11 @@ export default function FeaturedCategories() {
             className="group flex flex-col items-center bg-[#fdf9f6] rounded-t-full p-6 shadow-sm hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
           >
             <h3 className="text-lg font-semibold mb-1">{cat.title}</h3>
-            <p className="text-gray-500 italic text-sm mb-4">{cat.items}</p>
+            <p className="text-gray-500 italic text-sm mb-4">{cat.items+" items"}</p>
 
             <Link
               href={cat.link}
-              className="relative w-40 h-52 mb-6 overflow-hidden rounded-md block"
+              className="relative w-55 h-52 mb-6 overflow-hidden rounded-md block"
             >
               <Image
                 src={cat.image}
