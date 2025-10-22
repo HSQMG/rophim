@@ -7,7 +7,6 @@ export default function HeroEditor() {
   const [slides, setSlides] = useState<any[]>([]);
   const [saving, setSaving] = useState(false);
 
-  // 🔹 Đọc dữ liệu từ file thật qua API
   useEffect(() => {
     fetch("/api/hero")
       .then((res) => res.json())
@@ -15,7 +14,6 @@ export default function HeroEditor() {
       .catch(() => setSlides([]));
   }, []);
 
-  // 🔹 Hàm lưu lại file JSON thật
   const saveToFile = async (updated: any[]) => {
     setSlides(updated);
     setSaving(true);
@@ -27,7 +25,6 @@ export default function HeroEditor() {
     setSaving(false);
   };
 
-  // 🖼 Upload ảnh
   const handleImageUpload = (e: any, index: number) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -40,19 +37,16 @@ export default function HeroEditor() {
     reader.readAsDataURL(file);
   };
 
-  // ➕ Thêm slide
   const handleAdd = () => {
     const updated = [...slides, { img: "", title: "", desc: "" }];
     saveToFile(updated);
   };
 
-  // 🗑 Xóa slide
   const handleDelete = (index: number) => {
     const updated = slides.filter((_, i) => i !== index);
     saveToFile(updated);
   };
 
-  // ✏️ Sửa nội dung
   const handleChange = (index: number, field: string, value: string) => {
     const updated = [...slides];
     updated[index][field] = value;
@@ -65,19 +59,12 @@ export default function HeroEditor() {
         Thêm / xóa hình ảnh trang chủ
       </h1>
 
-      {saving && (
-        <p className="text-center text-green-600 mb-4 animate-pulse">
-          💾 Đang lưu thay đổi...
-        </p>
-      )}
-
       {slides.map((slide, index) => (
         <div
           key={index}
           className="border rounded-2xl p-6 mb-8 bg-white shadow-sm hover:shadow-lg transition"
         >
           <div className="flex flex-col md:flex-row gap-6 items-start">
-            {/* Hình ảnh */}
             <div className="relative w-full md:w-56 h-72 bg-gray-100 border rounded-xl flex items-center justify-center overflow-hidden group">
               {slide.img ? (
                 <img
@@ -107,7 +94,6 @@ export default function HeroEditor() {
               />
             </div>
 
-            {/* Nội dung */}
             <div className="flex-1 space-y-4">
               <input
                 type="text"
