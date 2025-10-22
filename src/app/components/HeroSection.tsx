@@ -8,7 +8,6 @@ export default function HeroSection() {
   const [slides, setSlides] = useState<any[]>([]);
   const [current, setCurrent] = useState(0);
 
-  // 🔹 Đọc dữ liệu từ API (hoặc dùng fallback)
   useEffect(() => {
     fetch("/api/hero")
       .then((res) => res.json())
@@ -38,8 +37,6 @@ export default function HeroSection() {
         ])
       );
   }, []);
-
-  // 🔹 Xử lý bàn phím: ← và → để đổi ảnh
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (slides.length === 0) return;
@@ -67,7 +64,6 @@ export default function HeroSection() {
           "linear-gradient(135deg, #fdf7f4 0%, #fbeeee 50%, #fff6f2 100%)",
       }}
     >
-      {/* 🔸 Left text */}
       <div className="flex-1 flex flex-col justify-center max-w-xl mb-24">
         <AnimatePresence mode="wait">
           <motion.h1
@@ -95,7 +91,6 @@ export default function HeroSection() {
           </motion.p>
         </AnimatePresence>
 
-        {/* 🔸 Thumbnails */}
         <div className="flex gap-4">
           {slides.map((item, i) => (
             <div
@@ -121,10 +116,8 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* 🔸 Right main image */}
       <div className="flex-1 flex justify-center items-end relative h-full">
         <div className="relative w-[520px] h-[720px]">
-          {/* Viền ngoài bo tròn & mờ dần từ dưới lên */}
           <div
             className="absolute -top-[10px] left-1/2 translate-x-[calc(-50%+32px)] w-[520px] h-[720px] rounded-t-[260px] z-20 pointer-events-none"
             style={{
@@ -135,12 +128,11 @@ export default function HeroSection() {
             }}
           ></div>
 
-          {/* Ảnh chính (animation xuất hiện từ trên xuống) */}
           <div className="relative w-full h-full overflow-hidden rounded-t-[260px] z-10 translate-x-8">
             <AnimatePresence mode="wait">
               <motion.div
                 key={slides[current].img}
-                initial={{ opacity: 0, y: -120 }} // xuất hiện từ trên xuống
+                initial={{ opacity: 0, y: -120 }} 
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 120 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
