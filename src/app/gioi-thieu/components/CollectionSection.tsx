@@ -8,18 +8,18 @@ import "swiper/css/navigation";
 export default function CollectionCarousel() {
   const collections = [
     {
-      title: "Độc đáo và Nữ tính",
-      desc: "Bộ sưu tập của chúng tôi dành cho phái nữ mang phong cách độc đáo và nữ tính. Những mẫu thiết kế thể hiện phong cách bền vững trong khi vẫn đảm bảo thị hiếu thời trang và xu hướng.",
+      title: "THANH LỊCH VÀ HIỆN ĐẠI",
+      desc: "Bộ sưu tập được thiết kế cho người phụ nữ hiện đại, tự tin, bản lĩnh nhưng vẫn giữ nét mềm mại, duyên dáng. Form dáng basic, chất liệu jean cao cấp cùng những chi tiết tinh tế tạo nên vẻ đẹp sang trọng và thời thượng.",
       img: "https://millamona.monamedia.net/wp-content/uploads/2024/01/ab_collection_001.jpg",
     },
     {
-      title: "Xu hướng và Thoải mái",
-      desc: "Từ may đo truyền thống đến những mẫu trang phục không chính thức nhất. Các bộ sưu tập Mona của chúng tôi mang đến những xu hướng mới nhất với sự thoải mái tối đa.",
+      title: "DẤU ẤN VĂN HÓA VIỆT",
+      desc: "Mỗi đường kim, mũi chỉ đều ẩn chứa tinh thần Việt. Họa tiết Truyền thống được thổi hồn trong từng thiết kế, gợi nhớ về cội nguồn nhưng vẫn hòa nhịp cùng thời trang đương đại.",
       img: "https://millamona.monamedia.net/wp-content/uploads/2024/01/ab_collection_002.jpg",
     },
     {
-      title: "Vui vẻ và Tự nhiên",
-      desc: "Mona TEEN là dành cho tuổi teen. Các thiết kế đã được tạo ra theo xu hướng hiện tại, đồng thời để lại không gian cho sự biểu hiện cá nhân của thanh thiếu niên.",
+      title: "LINH HOẠT VÀ DỄ PHỐI",
+      desc: "Với chất liệu cao cấp, form dáng đa dạng, UNID mang đến những thiết kế dễ phối cho nhiều hoàn cảnh. Thời trang trở nên gần gũi hơn, tự nhiên hơn như chính nhịp sống Việt mỗi ngày.",
       img: "https://millamona.monamedia.net/wp-content/uploads/2024/01/ab_collection_003.jpg",
     },
   ];
@@ -27,13 +27,11 @@ export default function CollectionCarousel() {
   return (
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Title */}
         <div className="text-center max-w-2xl mx-auto mb-12">
           <h2 className="text-3xl font-bold mb-4">BỘ SƯU TẬP</h2>
           <p className="text-gray-600">
-            Bộ sưu tập của chúng tôi dành cho phụ nữ, đàn ông và trẻ em thể hiện
-            bản chất của phong cách Địa Trung Hải với sự kết hợp hiện đại thông
-            qua việc chú trọng vào chất liệu và chi tiết.
+            Bộ sưu tập của UNID tôn vinh vẻ đẹp người phụ nữ Việt hiện đại qua
+            chất liệu jean mềm mại và họa tiết thêu mang đậm bản sắc dân tộc.
           </p>
         </div>
 

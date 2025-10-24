@@ -15,15 +15,16 @@ export default function RiseTogether() {
           className="space-y-6"
         >
           <h2 className="text-4xl md:text-5xl font-bold leading-snug">
-            Chúng ta cùng <br /> nhau trỗi dậy
+            CHÚNG TA CÙNG NHAU <br /> KHỞI DẬY BẢN SẮC
           </h2>
           <p className="text-gray-600 leading-relaxed">
-            Một công ty có thể sản xuất ra những sản phẩm - nhưng việc thay đổi
-            môi trường làm việc cần sự hỗ trợ từ cộng đồng. Chúng tôi đã đặt
-            nhiệm vụ của mình là đảm bảo mỗi thành viên trong đội ngũ toàn cầu
-            của chúng tôi cảm thấy được nhìn thấy, truyền cảm hứng và truyền
-            động lực. Sự nghiệp tại Inditex của bạn không chỉ là một công việc -
-            nó là nguồn cảm hứng và cơ hội không ngừng.
+            Thời trang có thể thay đổi theo mùa, nhưng giá trị văn hóa và cái
+            đẹp truyền thống thì vẫn luôn trường tồn. UNID tin rằng, mỗi chi
+            tiết trên sản phẩm đều là sợi dây gắn kết giữa người phụ nữ hiện đại
+            và cội nguồn Việt. Chúng tôi không chỉ tạo nên trang phục, mà còn
+            gửi gắm vào đó tinh thần của văn hóa, của con người. Tại UNID, thời
+            trang là hành trình khám phá vẻ đẹp Việt trong dáng hình đương đại,
+            giản dị, tinh tế và đầy cảm xúc.
           </p>
           <a
             href="/cua-hang"

@@ -24,12 +24,17 @@ export default function GioiThieuPage() {
               CHÚNG TÔI LÀ CỬA HÀNG THỜI TRANG
             </h1>
             <p className="text-lg leading-relaxed mb-6">
-              Nibh ipsum consequat nisl vel pretium lectus quam. Posuere lorem
-              ipsum dolor sit amet consectetur adipiscing. Viverra suspendisse
-              potenti nullam ac tortor vitae.
+              Lấy cảm hứng từ văn hoá, thiên nhiên và con người Việt Nam, UNID
+              mang đến những thiết kế thanh lịch, tinh tế và đậm bản sắc. Mỗi
+              sản phẩm là sự giao hòa giữa truyền thống và hiện đại, đơn giản mà
+              vẫn cuốn hút.
             </p>
-            <p className="font-semibold">Dula - CEO</p>
-            <img src="/signature.png" alt="Signature" className="mt-4 h-16" />
+            <p className="text-lg leading-relaxed mb-6">
+              Chúng tôi tin rằng thời trang là cách người phụ nữ thể hiện sự tự
+              tin và niềm tự hào về cội nguồn. UNID theo đuổi con đường thời
+              trang bền vững, đề cao chất lượng, giá trị sử dụng và tinh thần
+              Việt trong từng đường kim mũi chỉ.
+            </p>
           </motion.div>
         </div>
       </section>
