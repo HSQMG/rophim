@@ -12,13 +12,12 @@ export default function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">
           <img
-            src="/logo/logounid.png"
+            src="/image/logo/logo UNID.png"
             alt="Millamona"
             className="h-10 w-auto"
           />
         </Link>
 
-        {/* Menu desktop */}
         <nav className="hidden md:flex space-x-6 font-medium">
           <Link href="/">Trang chủ</Link>
           <Link href="/gioi-thieu">Giới thiệu</Link>
@@ -27,7 +26,6 @@ export default function Header() {
           <Link href="/lien-he">Liên hệ</Link>
         </nav>
 
-        {/* Icons */}
         <div className="flex items-center space-x-4">
           <button className="cursor-pointer">
             <Search size={22} />
