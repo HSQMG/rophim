@@ -41,7 +41,6 @@ export default function Header() {
               0
             </span>
           </button>
-          {/* Mobile toggle */}
           <button
             className="md:hidden cursor-pointer"
             onClick={() => setMenuOpen(!menuOpen)}
@@ -51,7 +50,6 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Menu mobile */}
       {menuOpen && (
         <div className="md:hidden bg-gray-50 border-t">
           <nav className="flex flex-col space-y-2 p-4">

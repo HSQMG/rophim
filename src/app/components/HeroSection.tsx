@@ -4,49 +4,37 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
+interface Slide {
+  title: string;
+  desc: string;
+  img: string;
+}
+
 export default function HeroSection() {
-  const [slides, setSlides] = useState<any[]>([]);
+  const [slides, setSlides] = useState<Slide[]>([]);
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
-    fetch("/api/hero")
-      .then((res) => res.json())
-      .then((data) => {
-        if (Array.isArray(data) && data.length > 0) setSlides(data);
-        else
-          setSlides([
-            {
-              img: "/home/image1.jpg",
-              title: "CỬA HÀNG MILLAMONA",
-              desc: "Bộ sưu tập cao cấp cho phong cách cá tính & năng động.",
-            },
-            {
-              img: "/home/image2.jpg",
-              title: "PHONG CÁCH THANH LỊCH",
-              desc: "Khám phá xu hướng thời trang sang trọng & tinh tế.",
-            },
-          ]);
-      })
-      .catch(() =>
-        setSlides([
-          {
-            img: "/home/image1.jpg",
-            title: "CỬA HÀNG MILLAMONA",
-            desc: "Bộ sưu tập cao cấp cho phong cách cá tính & năng động.",
-          },
-        ])
-      );
+    const fetchSlides = async () => {
+      try {
+        const res = await fetch("/api/hero");
+        if (!res.ok) throw new Error("Failed to fetch slides");
+        const data: Slide[] = await res.json();
+        setSlides(data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    fetchSlides();
   }, []);
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (slides.length === 0) return;
-
       if (e.key === "ArrowRight") {
         setCurrent((prev) => (prev + 1) % slides.length);
       } else if (e.key === "ArrowLeft") {
-        setCurrent((prev) =>
-          prev === 0 ? slides.length - 1 : prev - 1
-        );
+        setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
       }
     };
 
@@ -54,25 +42,36 @@ export default function HeroSection() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [slides]);
 
+  useEffect(() => {
+    if (slides.length === 0) return;
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % slides.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [slides]);
+
   if (slides.length === 0) return null;
 
   return (
     <section
-      className="relative w-full h-screen flex items-end justify-between px-20 overflow-hidden"
+      role="region"
+      aria-label="Hero Section"
+      className="relative w-full h-screen flex flex-col md:flex-row items-end justify-between px-8 md:px-20 overflow-hidden"
       style={{
-        background:
-          "linear-gradient(135deg, #fdf7f4 0%, #fbeeee 50%, #fff6f2 100%)",
+        backgroundImage: ` url('/image/background.jpg')`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
       }}
     >
-      <div className="flex-1 flex flex-col justify-center max-w-xl mb-24">
+      <div className="flex-1 flex flex-col justify-center max-w-3xl mb-12 md:mb-24">
         <AnimatePresence mode="wait">
           <motion.h1
-            key={slides[current].title}
-            initial={{ opacity: 0, y: -80 }}
+            key={`title-${current}`}
+            initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 80 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            className="text-6xl font-serif font-bold leading-tight mb-6 text-gray-900"
+            exit={{ opacity: 0, y: 50 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="text-5xl md:text-6xl font-serif font-bold leading-tight mb-6 text-gray-900 max-w-3xl"
           >
             {slides[current].title}
           </motion.h1>
@@ -80,22 +79,21 @@ export default function HeroSection() {
 
         <AnimatePresence mode="wait">
           <motion.p
-            key={slides[current].desc}
-            initial={{ opacity: 0, y: -40 }}
+            key={`desc-${current}`}
+            initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 40 }}
-            transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
-            className="text-lg italic text-gray-600 mb-10"
+            exit={{ opacity: 0, y: 20 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="text-md md:text-lg italic text-gray-600 mb-10 max-w-2xl leading-relaxed"
           >
             {slides[current].desc}
           </motion.p>
         </AnimatePresence>
-
-        <div className="flex gap-4">
+        <div className="flex gap-4 flex-wrap">
           {slides.map((item, i) => (
             <div
               key={i}
-              className={`w-20 h-24 relative overflow-hidden rounded-t-full border transition-all duration-300 cursor-pointer ${
+              className={`w-20 h-24 relative overflow-hidden rounded-t-full border transition-transform duration-300 cursor-pointer ${
                 current === i
                   ? "border-black scale-110 shadow-md"
                   : "border-gray-300 hover:scale-105"
@@ -104,22 +102,21 @@ export default function HeroSection() {
             >
               <Image
                 src={item.img}
-                alt={`thumbnail ${i}`}
+                alt={`Thumbnail for ${item.title}`}
                 width={300}
                 height={400}
-                quality={100}
+                quality={70}
+                loading="lazy"
                 className="object-cover w-full h-full"
-                unoptimized
               />
             </div>
           ))}
         </div>
       </div>
-
-      <div className="flex-1 flex justify-center items-end relative h-full">
-        <div className="relative w-[520px] h-[720px]">
+      <div className="flex-1 flex justify-center items-end relative h-full mt-8 md:mt-0">
+        <div className="relative w-[320px] md:w-[520px] h-[440px] md:h-[720px]">
           <div
-            className="absolute -top-[10px] left-1/2 translate-x-[calc(-50%+32px)] w-[520px] h-[720px] rounded-t-[260px] z-20 pointer-events-none"
+            className="absolute -top-[10px] left-1/2 translate-x-[calc(-50%+16px)] w-full h-full rounded-t-[180px] md:rounded-t-[260px] z-20 pointer-events-none"
             style={{
               borderWidth: "2px",
               borderStyle: "solid",
@@ -127,20 +124,19 @@ export default function HeroSection() {
                 "linear-gradient(to top, rgba(181,181,181,0), rgba(181,181,181,1)) 1",
             }}
           ></div>
-
-          <div className="relative w-full h-full overflow-hidden rounded-t-[260px] z-10 translate-x-8">
+          <div className="relative w-full h-full overflow-hidden rounded-t-[180px] md:rounded-t-[260px] z-10 translate-x-4 md:translate-x-8">
             <AnimatePresence mode="wait">
               <motion.div
-                key={slides[current].img}
-                initial={{ opacity: 0, y: -120 }} 
+                key={`image-${current}`}
+                initial={{ opacity: 0, y: -80 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 120 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
+                exit={{ opacity: 0, y: 80 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
                 className="absolute inset-0"
               >
                 <Image
                   src={slides[current].img}
-                  alt="main"
+                  alt={slides[current].title}
                   fill
                   className="object-cover object-center"
                   priority
