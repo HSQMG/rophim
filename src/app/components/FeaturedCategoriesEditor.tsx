@@ -1,14 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
-import { PlusCircle, Trash2, Upload } from "lucide-react";
+import { PlusCircle, Trash2 } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface Category {
   title: string;
   items: string;
-  image: string;
   link: string;
   script?: string;
 }
@@ -17,18 +15,17 @@ export default function FeaturedCategoriesEditor() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [saving, setSaving] = useState(false);
 
-  // 🔹 Load từ file JSON thật
+  // 🟢 Load dữ liệu từ file JSON
   useEffect(() => {
     fetch("/api/categories")
       .then((res) => res.json())
-      .then((data) => {
-        if (Array.isArray(data)) setCategories(data);
-        else setCategories([]);
-      })
+      .then((data) =>
+        Array.isArray(data) ? setCategories(data) : setCategories([])
+      )
       .catch(() => setCategories([]));
   }, []);
 
-  // 🔹 Hàm lưu dữ liệu vào file JSON thật
+  // 💾 Lưu lại vào file JSON
   const saveToFile = async (updated: Category[]) => {
     setCategories(updated);
     setSaving(true);
@@ -42,7 +39,7 @@ export default function FeaturedCategoriesEditor() {
 
   // ➕ Thêm danh mục
   const handleAddCategory = () => {
-    const updated = [...categories, { title: "", items: "", image: "", link: "" }];
+    const updated = [...categories, { title: "", items: "", link: "" }];
     saveToFile(updated);
   };
 
@@ -52,33 +49,27 @@ export default function FeaturedCategoriesEditor() {
     saveToFile(updated);
   };
 
-  // ✏️ Sửa nội dung
-  const handleChange = (index: number, field: keyof Category, value: string) => {
+  // ✏️ Cập nhật nội dung
+  const handleChange = (
+    index: number,
+    field: keyof Category,
+    value: string
+  ) => {
     const updated = [...categories];
     updated[index][field] = value;
 
+    // Tạo slug tự động khi sửa tiêu đề
     if (field === "title") {
       const slug = value.trim().toLowerCase().replace(/\s+/g, "-");
       updated[index].link = "/category/" + slug;
     }
+
     saveToFile(updated);
   };
 
-  // 📦 Sửa số lượng
+  // 🔢 Chỉ cho phép số trong ô "items"
   const handleChangeItems = (index: number, value: string) => {
     if (/^\d*$/.test(value)) handleChange(index, "items", value);
-  };
-
-  // 🖼 Upload hình
-  const handleImageUpload = (index: number, file: File | null) => {
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const updated = [...categories];
-      updated[index].image = e.target?.result as string;
-      saveToFile(updated);
-    };
-    reader.readAsDataURL(file);
   };
 
   return (
@@ -95,14 +86,14 @@ export default function FeaturedCategoriesEditor() {
         )}
 
         <div className="grid md:grid-cols-2 gap-8">
-          {Array.isArray(categories) && categories.map((cat, index) => (
+          {categories.map((cat, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               className="bg-[#fdf9f6] rounded-xl shadow-md p-6 relative"
             >
-              {/* Nút xóa */}
+              {/* 🗑 Nút xóa */}
               <button
                 onClick={() => handleRemoveCategory(index)}
                 className="absolute top-3 right-3 text-red-500 hover:text-red-700"
@@ -110,28 +101,7 @@ export default function FeaturedCategoriesEditor() {
                 <Trash2 size={20} />
               </button>
 
-              {/* Ảnh */}
-              <div className="relative w-full h-56 mb-4 rounded-lg overflow-hidden bg-gray-100 flex items-center justify-center">
-                {cat.image ? (
-                  <Image src={cat.image} alt={cat.title} fill className="object-cover" />
-                ) : (
-                  <div className="text-gray-400 text-sm">Chưa có hình ảnh</div>
-                )}
-                <label className="absolute bottom-3 right-3 bg-white px-3 py-1 rounded-lg shadow-md text-sm flex items-center gap-2 cursor-pointer hover:bg-gray-100">
-                  <Upload size={16} />
-                  Thêm ảnh
-                  <input
-                    type="file"
-                    accept="image/*"
-                    className="hidden"
-                    onChange={(e) =>
-                      handleImageUpload(index, e.target.files?.[0] || null)
-                    }
-                  />
-                </label>
-              </div>
-
-              {/* Inputs */}
+              {/* 📝 Form chỉnh sửa */}
               <div className="space-y-3">
                 <input
                   type="text"
@@ -144,13 +114,15 @@ export default function FeaturedCategoriesEditor() {
                   type="text"
                   value={cat.items}
                   onChange={(e) => handleChangeItems(index, e.target.value)}
-                  placeholder="Số lượng items"
+                  placeholder="Số lượng sản phẩm"
                   className="w-full border p-2 rounded-md"
                 />
                 <textarea
                   value={cat.script || ""}
-                  onChange={(e) => handleChange(index, "script", e.target.value)}
-                  placeholder="Mô tả hiển thị khi click vào danh mục"
+                  onChange={(e) =>
+                    handleChange(index, "script", e.target.value)
+                  }
+                  placeholder="Mô tả hiển thị khi click vào danh mục..."
                   className="w-full border p-2 rounded-md h-32 resize-y"
                 />
               </div>
@@ -163,6 +135,8 @@ export default function FeaturedCategoriesEditor() {
             </motion.div>
           ))}
         </div>
+
+        {/* Nút thêm danh mục */}
         <div className="flex justify-center mt-10">
           <button
             onClick={handleAddCategory}
