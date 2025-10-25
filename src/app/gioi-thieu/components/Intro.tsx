@@ -10,11 +10,11 @@ export default function GioiThieuPage() {
           backgroundImage: "url('/image.png')",
         }}
       >
-        {/* Lớp phủ mờ để chữ dễ đọc */}
+        {}
         <div className="absolute inset-0 bg-black/50"></div>
 
         <div className="relative max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center px-5 sm:px-8 py-16 sm:py-0">
-          {/* Text Left */}
+          {}
           <motion.div
             className="z-10 space-y-4 sm:space-y-6 text-center md:text-left"
             initial={{ opacity: 0, y: 40 }}

@@ -60,7 +60,6 @@ export default function RootLayout({
           </div>
         </div>
 
-        {/* 🔹 Nội dung chính */}
         <Header />
         <PageTransition>{children}</PageTransition>
         <Footer />

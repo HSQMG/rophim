@@ -35,7 +35,6 @@ export default function CollectionCarousel() {
           </p>
         </div>
 
-        {/* Carousel */}
         <Swiper
           modules={[Navigation]}
           navigation
@@ -50,7 +49,6 @@ export default function CollectionCarousel() {
           {collections.map((item, i) => (
             <SwiperSlide key={i}>
               <div className="group bg-white rounded-lg text-center">
-                {/* Image */}
                 <div className="w-full h-[420px] overflow-hidden rounded-t-full relative mx-auto border border-transparent group-hover:border-black transition duration-300 cursor-pointer">
                   <img
                     src={item.img}
@@ -59,7 +57,6 @@ export default function CollectionCarousel() {
                   />
                 </div>
 
-                {/* Button (nằm dưới ảnh, cách 1 đoạn) */}
                 <div className="relative">
                   <a
                     href="#"
@@ -70,7 +67,6 @@ export default function CollectionCarousel() {
                   </a>
                 </div>
 
-                {/* Text */}
                 <div className="p-6">
                   <h3 className="font-semibold text-lg mb-3">{item.title}</h3>
                   <p className="text-gray-600 text-sm">{item.desc}</p>

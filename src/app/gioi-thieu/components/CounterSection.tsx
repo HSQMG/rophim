@@ -15,15 +15,13 @@ export default function CounterSection() {
     <section
       className="relative py-16 sm:py-20 text-white text-center"
       style={{
-        backgroundImage: "url('/bg-counter.jpg')", // 👉 thay ảnh thật của bạn
+        backgroundImage: "url('/bg-counter.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
-      {/* Overlay mờ để nổi chữ */}
       <div className="absolute inset-0 bg-black/60"></div>
 
-      {/* Nội dung */}
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12">
         {counters.map((item, i) => (
           <motion.div

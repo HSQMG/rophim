@@ -51,7 +51,6 @@ export default function FeaturedCategories() {
 
   return (
     <section className="py-12 sm:py-20 bg-[#fdf9f6]">
-      {/* --- Tiêu đề --- */}
       <div className="text-center mb-10 sm:mb-16 px-4">
         <h2
           className={`${playfair.className} text-3xl sm:text-4xl md:text-5xl font-serif text-[#3e2c1c] tracking-wide mb-3`}
@@ -64,7 +63,6 @@ export default function FeaturedCategories() {
         </p>
       </div>
 
-      {/* --- Danh mục --- */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col gap-10 sm:gap-12">
         {rows.map((row, index) => {
           const isLast = index === rows.length - 1;
@@ -81,7 +79,6 @@ export default function FeaturedCategories() {
                   key={i}
                   className="group bg-white rounded-xl sm:rounded-2xl shadow-sm hover:shadow-lg transition-all duration-500 overflow-hidden w-[48%] sm:w-[45%] lg:w-[30%]"
                 >
-                  {/* Ảnh */}
                   <Link
                     href={`/cua-hang/${slugify(cat.title)}`}
                     className="block relative h-[240px] sm:h-[320px] md:h-[420px] overflow-hidden rounded-t-xl sm:rounded-t-2xl"
@@ -93,11 +90,9 @@ export default function FeaturedCategories() {
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />
-                    {/* Gradient nhẹ be để ảnh không quá sáng */}
                     <div className="absolute inset-0 bg-gradient-to-t from-[#fdf9f6]/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
                   </Link>
 
-                  {/* Nội dung chữ */}
                   <div className="p-4 sm:p-6 text-center">
                     <h3
                       className={`${playfair.className} text-base sm:text-lg md:text-xl text-[#3e2c1c] mb-1 tracking-wide`}

@@ -51,9 +51,7 @@ export default function ProductDetailPage() {
 
   return (
     <main className="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-14 text-[#2b2b2b]">
-      {/* --- Layout chia 2 cột --- */}
       <div className="flex flex-col lg:flex-row gap-10 sm:gap-12">
-        {/* Ảnh sản phẩm */}
         <div className="relative w-full lg:w-1/2 h-[420px] sm:h-[520px] lg:h-[600px] rounded-xl overflow-hidden bg-gray-50 shadow-sm">
           <Image
             src={product.image}
@@ -64,9 +62,7 @@ export default function ProductDetailPage() {
           />
         </div>
 
-        {/* Thông tin sản phẩm */}
         <div className="flex-1 space-y-6">
-          {/* Tên & giá */}
           <div>
             <h1
               className={`${playfair.className} text-2xl sm:text-3xl font-serif font-bold mb-3 uppercase tracking-wide`}
@@ -78,7 +74,6 @@ export default function ProductDetailPage() {
             </p>
           </div>
 
-          {/* Mô tả sản phẩm */}
           {product.description && (
             <div className="border-b border-gray-200 pb-4">
               <h2 className="text-base font-semibold text-[#2b2b2b] mb-3 uppercase tracking-wide">
@@ -108,7 +103,6 @@ export default function ProductDetailPage() {
             </div>
           )}
 
-          {/* Hướng dẫn */}
           <div className="divide-y divide-gray-200 border-t border-b">
             <div
               className="flex items-center justify-between py-3 cursor-pointer hover:text-[#6d4c2f]"
@@ -133,7 +127,6 @@ export default function ProductDetailPage() {
             </div>
           </div>
 
-          {/* Thông tin thêm */}
           <div className="text-sm text-gray-600 space-y-2 pt-4">
             <p>
               <span className="font-semibold text-gray-800">Chất liệu:</span>{" "}
@@ -149,7 +142,6 @@ export default function ProductDetailPage() {
             </p>
           </div>
 
-          {/* Danh mục */}
           <div className="text-sm text-gray-500 border-t border-gray-200 pt-4">
             <span className="font-semibold text-gray-700">Danh mục:</span>{" "}
             <Link
@@ -162,7 +154,6 @@ export default function ProductDetailPage() {
         </div>
       </div>
 
-      {/* --- Popup hướng dẫn size --- */}
       {showSizeGuide && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
@@ -195,7 +186,6 @@ export default function ProductDetailPage() {
         </div>
       )}
 
-      {/* --- Popup hướng dẫn bảo quản --- */}
       {showCareGuide && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"

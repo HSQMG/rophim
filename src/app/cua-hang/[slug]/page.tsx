@@ -113,7 +113,6 @@ export default function CategoryPage() {
 
   return (
     <main className={`${lora.className} bg-white text-[#2b2b2b]`}>
-      {/* --- Breadcrumb --- */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 text-sm text-gray-500">
         <div className="flex items-center space-x-2 flex-wrap">
           <Link href="/" className="hover:text-black">
@@ -128,14 +127,12 @@ export default function CategoryPage() {
         </div>
       </div>
 
-      {/* --- Tiêu đề --- */}
       <section className="border-t border-gray-200 py-6 sm:py-8 text-center">
         <h1 className="text-2xl sm:text-4xl font-bold text-[#2b2b2b] uppercase tracking-wide">
           {displayName}
         </h1>
       </section>
 
-      {/* --- Toolbar (Mobile + Desktop) --- */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-6 flex items-center justify-between text-sm text-gray-600 border-b border-gray-200 pb-4">
         <div className="flex items-center gap-3">
           <button
@@ -189,15 +186,12 @@ export default function CategoryPage() {
         </div>
       </div>
 
-      {/* --- Nội dung chính --- */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-16 grid grid-cols-1 lg:grid-cols-4 gap-8 sm:gap-10">
-        {/* Sidebar danh mục (ẩn trên mobile) */}
         <aside
           className={`fixed lg:static top-0 left-0 z-50 lg:z-auto w-3/4 sm:w-1/2 lg:w-auto h-full lg:h-auto bg-white border-r border-gray-200 shadow-lg lg:shadow-none p-5 lg:p-0 overflow-y-auto transition-transform duration-300 ${
             showSidebar ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
           }`}
         >
-          {/* Header mobile */}
           <div className="flex items-center justify-between mb-4 lg:hidden">
             <h3 className="text-lg font-semibold">Bộ lọc sản phẩm</h3>
             <button
@@ -208,7 +202,6 @@ export default function CategoryPage() {
             </button>
           </div>
 
-          {/* Danh mục */}
           <ul className="space-y-2 text-gray-700">
             {categories.map((group, i) => (
               <li key={i} className="border-b border-gray-200 pb-2">
@@ -257,16 +250,12 @@ export default function CategoryPage() {
             ))}
           </ul>
         </aside>
-
-        {/* Overlay mobile */}
         {showSidebar && (
           <div
             onClick={() => setShowSidebar(false)}
             className="fixed inset-0 bg-black/30 lg:hidden z-40"
           />
         )}
-
-        {/* Danh sách sản phẩm */}
         <section className="lg:col-span-3">
           {filtered.length === 0 ? (
             <p className="text-gray-500 italic text-center py-20">
@@ -286,7 +275,6 @@ export default function CategoryPage() {
                   href={`/cua-hang/${slug}/${item.id}`}
                   className="group bg-white border border-gray-100 rounded-xl overflow-hidden hover:shadow-lg transition block"
                 >
-                  {/* Hình ảnh */}
                   <div
                     className={`relative ${
                       viewMode === "grid"
@@ -313,7 +301,6 @@ export default function CategoryPage() {
                     </div>
                   </div>
 
-                  {/* Thông tin */}
                   <div
                     className={`p-3 sm:p-4 ${
                       viewMode === "list"

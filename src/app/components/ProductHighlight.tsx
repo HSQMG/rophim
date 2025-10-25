@@ -15,7 +15,6 @@ export default function ProductHighlight() {
   const [items, setItems] = useState<HighlightItem[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // 🔹 Đọc dữ liệu từ file JSON thật qua API
   useEffect(() => {
     fetch("/api/highlight")
       .then((res) => res.json())
