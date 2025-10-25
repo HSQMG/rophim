@@ -27,14 +27,11 @@ export default function CategoryPage() {
   const { slug } = useParams();
   const [products, setProducts] = useState<Product[]>([]);
   const [filtered, setFiltered] = useState<Product[]>([]);
-
   const [categories, setCategories] = useState<Category[]>([]);
   const [categoryName, setCategoryName] = useState<string>("");
-
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [showCount, setShowCount] = useState(12);
 
-  // fetch products
   useEffect(() => {
     fetch("/productss.json")
       .then((res) => res.json())
@@ -42,7 +39,6 @@ export default function CategoryPage() {
       .catch((err) => console.error("Lỗi tải sản phẩm:", err));
   }, []);
 
-  // fetch categories
   useEffect(() => {
     fetch("/product.json")
       .then((res) => res.json())
@@ -50,7 +46,6 @@ export default function CategoryPage() {
       .catch((err) => console.error("Lỗi tải categories:", err));
   }, []);
 
-  // sync slug -> filtered list + readable name
   useEffect(() => {
     if (!slug) return;
 
@@ -66,7 +61,6 @@ export default function CategoryPage() {
 
   return (
     <main className="bg-white text-[#2b2b2b]">
-      {/* BREADCRUMB */}
       <div className="max-w-7xl mx-auto px-6 py-6 text-sm text-gray-500">
         <div className="flex items-center space-x-2 flex-wrap">
           <Link href="/" className="hover:text-black">
@@ -81,7 +75,6 @@ export default function CategoryPage() {
         </div>
       </div>
 
-      {/* TIÊU ĐỀ DANH MỤC */}
       <section className="border-t border-gray-200 py-8 text-center">
         <h1
           className={`${playfair.className} text-4xl font-bold text-[#2b2b2b] uppercase tracking-wide`}
@@ -89,28 +82,18 @@ export default function CategoryPage() {
           {categoryName || "Đang tải..."}
         </h1>
       </section>
-
-      {/* KHỐI CHÍNH */}
       <div className="max-w-7xl mx-auto px-6 pb-16">
-        {/* ROW 1: SIDEBAR TITLE + TOOLBAR */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-10 border-b border-gray-200 pb-4 mb-10">
-          {/* Cột trái: tiêu đề sidebar */}
           <div className="lg:col-span-1">
             <h3 className="font-serif text-lg font-semibold tracking-wide text-[#2b2b2b]">
               DANH MỤC SẢN PHẨM
             </h3>
           </div>
-
-          {/* Cột phải: toolbar hiển thị / sort / view */}
           <div className="lg:col-span-3 flex flex-wrap items-center justify-between text-sm text-gray-600">
-            {/* bên trái toolbar */}
             <div className="text-gray-600 mb-4 lg:mb-0">
               Hiển thị kết quả duy nhất
             </div>
-
-            {/* bên phải toolbar */}
             <div className="flex flex-wrap items-center space-x-4 lg:space-x-6 text-gray-700">
-              {/* Show count */}
               <div className="flex items-center space-x-2">
                 <span className="text-gray-500">Show</span>
                 {[12, 15, 30].map((n) => (
@@ -127,16 +110,10 @@ export default function CategoryPage() {
                   </button>
                 ))}
               </div>
-
-              {/* Divider */}
               <span className="hidden lg:inline-block border-l h-4 border-gray-300" />
-
-              {/* Sort placeholder */}
               <button className="text-gray-700 hover:text-black">
                 Mới nhất
               </button>
-
-              {/* view mode buttons */}
               <div className="flex items-center space-x-3 text-gray-500">
                 <button
                   onClick={() => setViewMode("grid")}
@@ -239,8 +216,6 @@ export default function CategoryPage() {
                         NEW!
                       </div>
                     </div>
-
-                    {/* Thông tin sản phẩm */}
                     <div
                       className={`p-4 ${
                         viewMode === "list"
