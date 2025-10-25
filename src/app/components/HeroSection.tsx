@@ -30,23 +30,10 @@ export default function HeroSection() {
     return () => clearInterval(interval);
   }, [slides]);
 
-  useEffect(() => {
-    const handleKey = (e: KeyboardEvent) => {
-      if (slides.length === 0) return;
-      if (e.key === "ArrowRight") {
-        setCurrent((prev) => (prev + 1) % slides.length);
-      } else if (e.key === "ArrowLeft") {
-        setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
-      }
-    };
-    window.addEventListener("keydown", handleKey);
-    return () => window.removeEventListener("keydown", handleKey);
-  }, [slides]);
-
   if (slides.length === 0) return null;
 
   return (
-    <section className="relative w-full h-screen overflow-hidden bg-[#f9f8f5]">
+    <section className="relative w-full h-[90vh] sm:h-screen overflow-hidden bg-[#f9f8f5]">
       {/* --- Background --- */}
       <AnimatePresence mode="wait">
         <motion.div
@@ -61,49 +48,47 @@ export default function HeroSection() {
             src={slides[current].img}
             alt={slides[current].title}
             fill
-            className="object-cover object-top"
+            className="object-cover object-center sm:object-top"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#00000070] via-[#00000020] to-transparent" />
         </motion.div>
       </AnimatePresence>
 
-      <div className="relative z-10 flex flex-col justify-center h-full px-6 md:px-20 max-w-3xl text-white">
-        <AnimatePresence mode="wait">
-          <motion.h1
-            key={`title-${current}`}
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -40 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-5xl md:text-7xl font-serif tracking-wide leading-tight drop-shadow-lg"
-          >
-            {slides[current].title}
-          </motion.h1>
-        </AnimatePresence>
+      {/* --- Text Overlay --- */}
+      <div className="relative z-10 flex flex-col justify-center h-full px-4 sm:px-8 md:px-20 text-white">
+        <motion.h1
+          key={`title-${current}`}
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -40 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-serif tracking-wide leading-snug sm:leading-tight drop-shadow-lg max-w-[90%] sm:max-w-[80%]"
+        >
+          {slides[current].title}
+        </motion.h1>
 
-        <AnimatePresence mode="wait">
-          <motion.p
-            key={`desc-${current}`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="mt-6 text-lg md:text-xl text-[#f4ede2] max-w-2xl leading-relaxed drop-shadow-sm"
-          >
-            {slides[current].desc}
-          </motion.p>
-        </AnimatePresence>
+        <motion.p
+          key={`desc-${current}`}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="mt-3 sm:mt-5 text-base sm:text-lg md:text-xl text-[#f4ede2] max-w-[95%] sm:max-w-2xl leading-relaxed drop-shadow-sm"
+        >
+          {slides[current].desc}
+        </motion.p>
       </div>
 
-      <div className="absolute bottom-0 right-10 md:right-20 flex items-end justify-center h-full pointer-events-none">
+      {/* --- Frame image (ẩn bớt trên mobile) --- */}
+      <div className="hidden sm:flex absolute bottom-0 right-6 md:right-20 items-end justify-center h-full pointer-events-none">
         <motion.div
           key={`frame-${current}`}
           initial={{ opacity: 0, y: 80 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -80 }}
           transition={{ duration: 0.8 }}
-          className="relative w-[280px] md:w-[460px] h-[420px] md:h-[700px] rounded-t-[200px] overflow-hidden shadow-2xl border-2 border-white/60"
+          className="relative w-[220px] sm:w-[300px] md:w-[460px] h-[340px] sm:h-[480px] md:h-[700px] rounded-t-[120px] sm:rounded-t-[160px] md:rounded-t-[200px] overflow-hidden shadow-2xl border-2 border-white/60"
         >
           <Image
             src={slides[current].img}
@@ -114,15 +99,16 @@ export default function HeroSection() {
         </motion.div>
       </div>
 
-      <div className="absolute bottom-8 left-8 md:left-16 z-20 flex gap-4 bg-white/10 backdrop-blur-sm px-5 py-3 rounded-2xl border border-white/30 shadow-lg">
+      {/* --- Thumbnails --- */}
+      <div className="absolute bottom-4 sm:bottom-8 left-4 sm:left-10 z-20 flex gap-2 sm:gap-4 bg-white/10 backdrop-blur-sm px-3 sm:px-5 py-2 sm:py-3 rounded-xl sm:rounded-2xl border border-white/30 shadow-lg overflow-x-auto">
         {slides.map((item, i) => (
           <button
             key={i}
             onClick={() => setCurrent(i)}
-            className={`relative w-16 h-20 md:w-20 md:h-24 overflow-hidden rounded-xl border transition-all duration-300 cursor-pointer ${
+            className={`relative flex-shrink-0 w-14 h-18 sm:w-16 sm:h-20 md:w-20 md:h-24 overflow-hidden rounded-lg sm:rounded-xl border transition-all duration-300 cursor-pointer ${
               current === i
-                ? "border-[#d3b58f] scale-110 shadow-md"
-                : "border-white/40 hover:border-[#e0d1b2] hover:scale-105"
+                ? "border-[#d3b58f] scale-105 shadow-md"
+                : "border-white/40 hover:border-[#e0d1b2]"
             }`}
           >
             <Image

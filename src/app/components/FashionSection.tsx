@@ -27,23 +27,26 @@ export default function ProductList() {
     );
 
   return (
-    <section className="py-16 bg-white">
-      {/* Tiêu đề */}
-      <div className="text-center mb-12">
-        <h2 className="text-3xl font-bold tracking-wide mb-2">SẢN PHẨM MỚI</h2>
-        <div className="w-16 h-[2px] bg-black mx-auto mb-3"></div>
-        <p className="text-gray-500 italic">
+    <section className="py-12 sm:py-16 bg-white">
+      {/* --- Tiêu đề --- */}
+      <div className="text-center mb-10 sm:mb-14 px-4">
+        <h2 className="text-2xl sm:text-3xl font-bold tracking-wide mb-2 text-[#2b2b2b]">
+          SẢN PHẨM MỚI
+        </h2>
+        <div className="w-14 h-[2px] bg-[#2b2b2b] mx-auto mb-3"></div>
+        <p className="text-gray-500 italic text-sm sm:text-base">
           Đón đầu phong cách - Cùng khám phá những thiết kế mới nhất từ UNID.
         </p>
       </div>
 
-      {/* Lưới sản phẩm */}
-      <div className="max-w-7xl mx-auto px-6">
+      {/* --- Lưới sản phẩm --- */}
+      <div className="max-w-7xl mx-auto px-3 sm:px-6">
         <div
           className="
             grid
-            grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4
-            gap-x-8 gap-y-12
+            grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4
+            gap-x-4 sm:gap-x-6 md:gap-x-8
+            gap-y-8 sm:gap-y-10 md:gap-y-12
             justify-items-center
           "
         >
@@ -51,10 +54,10 @@ export default function ProductList() {
             <Link
               key={product.id}
               href={`/cua-hang/${product.category}/${product.id}`}
-              className="group w-full max-w-[300px] text-center cursor-pointer"
+              className="group w-full max-w-[260px] sm:max-w-[280px] md:max-w-[300px] text-center cursor-pointer"
             >
               {/* Ảnh sản phẩm */}
-              <div className="relative w-full h-[400px] overflow-hidden rounded-lg shadow-sm">
+              <div className="relative w-full h-[260px] sm:h-[320px] md:h-[400px] overflow-hidden rounded-lg shadow-sm">
                 <Image
                   src={product.image}
                   alt={product.name}
@@ -72,12 +75,14 @@ export default function ProductList() {
               </div>
 
               {/* Tên & giá */}
-              <h3 className="mt-4 text-lg font-medium text-[#2b2b2b] group-hover:underline underline-offset-4">
-                {product.name}
-              </h3>
-              <p className="text-[#5a3d2b] font-semibold mt-1">
-                {formatPrice(product.price)}
-              </p>
+              <div className="mt-3 sm:mt-4">
+                <h3 className="text-sm sm:text-base md:text-lg font-medium text-[#2b2b2b] group-hover:underline underline-offset-4 px-1 line-clamp-2">
+                  {product.name}
+                </h3>
+                <p className="text-[#6b4f36] font-semibold mt-1 text-sm sm:text-base">
+                  {formatPrice(product.price)}
+                </p>
+              </div>
             </Link>
           ))}
         </div>

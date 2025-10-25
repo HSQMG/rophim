@@ -3,7 +3,7 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Heart, Truck, Ruler, Minus, Plus } from "lucide-react";
+import { Truck, Ruler } from "lucide-react";
 import { Playfair_Display } from "next/font/google";
 
 const playfair = Playfair_Display({
@@ -31,6 +31,7 @@ export default function ProductDetailPage() {
   const [showMore, setShowMore] = useState(false);
   const [showSizeGuide, setShowSizeGuide] = useState(false);
   const [showCareGuide, setShowCareGuide] = useState(false);
+
   useEffect(() => {
     fetch("/productss.json")
       .then((res) => res.json())
@@ -49,32 +50,35 @@ export default function ProductDetailPage() {
     );
 
   return (
-    <main className="max-w-6xl mx-auto px-6 py-12 text-[#2b2b2b]">
-      <div className="flex flex-wrap lg:flex-nowrap gap-12">
-        {}
-        <div className="relative w-full lg:w-1/2 h-[600px] rounded-xl overflow-hidden bg-gray-50 shadow-sm">
+    <main className="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-14 text-[#2b2b2b]">
+      {/* --- Layout chia 2 cột --- */}
+      <div className="flex flex-col lg:flex-row gap-10 sm:gap-12">
+        {/* Ảnh sản phẩm */}
+        <div className="relative w-full lg:w-1/2 h-[420px] sm:h-[520px] lg:h-[600px] rounded-xl overflow-hidden bg-gray-50 shadow-sm">
           <Image
             src={product.image}
             alt={product.name}
             fill
-            className="object-cover"
+            className="object-cover object-center"
+            sizes="(max-width:768px) 100vw, 50vw"
           />
         </div>
 
-        {}
+        {/* Thông tin sản phẩm */}
         <div className="flex-1 space-y-6">
+          {/* Tên & giá */}
           <div>
             <h1
-              className={`${playfair.className} text-3xl font-serif font-bold mb-3 uppercase tracking-wide`}
+              className={`${playfair.className} text-2xl sm:text-3xl font-serif font-bold mb-3 uppercase tracking-wide`}
             >
               {product.name}
             </h1>
-            <p className="text-[#6d4c2f] text-2xl font-semibold">
+            <p className="text-[#6d4c2f] text-xl sm:text-2xl font-semibold">
               {product.price.toLocaleString("vi-VN")}₫
             </p>
           </div>
 
-          {}
+          {/* Mô tả sản phẩm */}
           {product.description && (
             <div className="border-b border-gray-200 pb-4">
               <h2 className="text-base font-semibold text-[#2b2b2b] mb-3 uppercase tracking-wide">
@@ -104,34 +108,32 @@ export default function ProductDetailPage() {
             </div>
           )}
 
-          {}
+          {/* Hướng dẫn */}
           <div className="divide-y divide-gray-200 border-t border-b">
-            {}
             <div
               className="flex items-center justify-between py-3 cursor-pointer hover:text-[#6d4c2f]"
               onClick={() => setShowSizeGuide(true)}
             >
-              <Ruler size={18} />
-              <span className="flex-1 ml-2 text-sm">
-                Hướng dẫn chọn kích thước
-              </span>
+              <div className="flex items-center gap-2 text-sm">
+                <Ruler size={18} />
+                <span>Hướng dẫn chọn kích thước</span>
+              </div>
               <span className="text-xs text-gray-500">▼</span>
             </div>
 
-            {}
             <div
               className="flex items-center justify-between py-3 cursor-pointer hover:text-[#6d4c2f]"
               onClick={() => setShowCareGuide(true)}
             >
-              <Truck size={18} />
-              <span className="flex-1 ml-2 text-sm">
-                Hướng dẫn bảo quản và giặt
-              </span>
+              <div className="flex items-center gap-2 text-sm">
+                <Truck size={18} />
+                <span>Hướng dẫn bảo quản và giặt</span>
+              </div>
               <span className="text-xs text-gray-500">▼</span>
             </div>
           </div>
 
-          {}
+          {/* Thông tin thêm */}
           <div className="text-sm text-gray-600 space-y-2 pt-4">
             <p>
               <span className="font-semibold text-gray-800">Chất liệu:</span>{" "}
@@ -147,9 +149,9 @@ export default function ProductDetailPage() {
             </p>
           </div>
 
-          {}
+          {/* Danh mục */}
           <div className="text-sm text-gray-500 border-t border-gray-200 pt-4">
-            <span className="font-semibold text-gray-700">Categories:</span>{" "}
+            <span className="font-semibold text-gray-700">Danh mục:</span>{" "}
             <Link
               href={`/cua-hang/${slug}`}
               className="hover:text-[#6d4c2f] underline-offset-2"
@@ -160,13 +162,14 @@ export default function ProductDetailPage() {
         </div>
       </div>
 
+      {/* --- Popup hướng dẫn size --- */}
       {showSizeGuide && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
           onClick={() => setShowSizeGuide(false)}
         >
           <div
-            className="bg-white p-4 rounded-lg shadow-lg relative max-w-[90%] max-h-[90%] overflow-auto"
+            className="bg-white p-3 sm:p-4 rounded-lg shadow-lg relative w-[90%] sm:max-w-[600px] max-h-[85%] overflow-auto"
             onClick={(e) => e.stopPropagation()}
           >
             {product.imgsize ? (
@@ -178,7 +181,7 @@ export default function ProductDetailPage() {
                 className="mx-auto rounded-md"
               />
             ) : (
-              <p className="text-sm italic text-gray-500 text-center">
+              <p className="text-sm italic text-gray-500 text-center py-8">
                 Đang cập nhật hướng dẫn kích thước...
               </p>
             )}
@@ -191,13 +194,15 @@ export default function ProductDetailPage() {
           </div>
         </div>
       )}
+
+      {/* --- Popup hướng dẫn bảo quản --- */}
       {showCareGuide && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
           onClick={() => setShowCareGuide(false)}
         >
           <div
-            className="bg-white p-4 rounded-lg shadow-lg relative max-w-[90%] max-h-[90%] overflow-auto"
+            className="bg-white p-3 sm:p-4 rounded-lg shadow-lg relative w-[90%] sm:max-w-[600px] max-h-[85%] overflow-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <Image

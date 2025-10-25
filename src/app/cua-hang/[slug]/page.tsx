@@ -3,7 +3,13 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight, LayoutGrid, List } from "lucide-react";
+import {
+  ChevronRight,
+  LayoutGrid,
+  List,
+  SlidersHorizontal,
+  X,
+} from "lucide-react";
 
 import { Lora } from "next/font/google";
 const lora = Lora({
@@ -40,6 +46,7 @@ export default function CategoryPage() {
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [showCount, setShowCount] = useState(12);
   const [activeGroup, setActiveGroup] = useState<number | null>(null);
+  const [showSidebar, setShowSidebar] = useState(false);
 
   const nameMap: Record<string, string> = {
     ao: "Áo",
@@ -106,8 +113,8 @@ export default function CategoryPage() {
 
   return (
     <main className={`${lora.className} bg-white text-[#2b2b2b]`}>
-      {/* Breadcrumb */}
-      <div className="max-w-7xl mx-auto px-6 py-6 text-sm text-gray-500">
+      {/* --- Breadcrumb --- */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 text-sm text-gray-500">
         <div className="flex items-center space-x-2 flex-wrap">
           <Link href="/" className="hover:text-black">
             Home
@@ -121,201 +128,211 @@ export default function CategoryPage() {
         </div>
       </div>
 
-      {/* Tiêu đề */}
-      <section className="border-t border-gray-200 py-8 text-center">
-        <h1 className="text-4xl font-bold text-[#2b2b2b] uppercase tracking-wide">
+      {/* --- Tiêu đề --- */}
+      <section className="border-t border-gray-200 py-6 sm:py-8 text-center">
+        <h1 className="text-2xl sm:text-4xl font-bold text-[#2b2b2b] uppercase tracking-wide">
           {displayName}
         </h1>
       </section>
 
-      {/* Nội dung */}
-      <div className="max-w-7xl mx-auto px-6 pb-16">
-        {/* Bộ lọc + chế độ xem */}
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-10 border-b border-gray-200 pb-4 mb-10">
-          <div className="lg:col-span-1">
-            <h3 className="text-lg font-semibold tracking-wide text-[#2b2b2b]">
-              DANH MỤC SẢN PHẨM
-            </h3>
-          </div>
-          <div className="lg:col-span-3 flex flex-wrap items-center justify-between text-sm text-gray-600">
-            <div className="text-gray-600 mb-4 lg:mb-0">
-              Hiển thị {filtered.length} kết quả
-            </div>
-            <div className="flex flex-wrap items-center space-x-4 lg:space-x-6 text-gray-700">
-              <div className="flex items-center space-x-2">
-                <span className="text-gray-500">Show</span>
-                {[12, 15, 30].map((n) => (
-                  <button
-                    key={n}
-                    onClick={() => setShowCount(n)}
-                    className={`pb-[2px] ${
-                      showCount === n
-                        ? "border-b border-black text-black font-medium"
-                        : "hover:border-b hover:border-gray-400"
-                    }`}
-                  >
-                    {n}
-                  </button>
-                ))}
-              </div>
-              <span className="hidden lg:inline-block border-l h-4 border-gray-300" />
-              <button className="text-gray-700 hover:text-black">
-                Mới nhất
-              </button>
-              <div className="flex items-center space-x-3 text-gray-500">
-                <button
-                  onClick={() => setViewMode("grid")}
-                  className={`${
-                    viewMode === "grid" ? "text-black" : "hover:text-black"
-                  }`}
-                >
-                  <LayoutGrid size={18} />
-                </button>
-                <button
-                  onClick={() => setViewMode("list")}
-                  className={`${
-                    viewMode === "list" ? "text-black" : "hover:text-black"
-                  }`}
-                >
-                  <List size={18} />
-                </button>
-              </div>
-            </div>
-          </div>
+      {/* --- Toolbar (Mobile + Desktop) --- */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-6 flex items-center justify-between text-sm text-gray-600 border-b border-gray-200 pb-4">
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => setShowSidebar(true)}
+            className="lg:hidden flex items-center gap-1 text-[#3e2c1c] border border-gray-300 px-3 py-1.5 rounded-md hover:bg-gray-50 transition"
+          >
+            <SlidersHorizontal size={16} />
+            Bộ lọc
+          </button>
+          <span className="hidden sm:inline-block">
+            Hiển thị {filtered.length} kết quả
+          </span>
         </div>
 
-        {/* Nội dung chính */}
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
-          <aside className="space-y-10 lg:col-span-1">
-            {/* Danh mục */}
-            <div>
-              <ul className="space-y-2 text-gray-700">
-                {categories.map((group, i) => (
-                  <li key={i} className="border-b border-gray-200 pb-2">
-                    <button
-                      onClick={() =>
-                        setActiveGroup(activeGroup === i ? null : i)
-                      }
-                      className={`flex items-center justify-between w-full px-2 py-2 rounded-md cursor-pointer transition-all ${
-                        activeGroup === i
-                          ? "bg-[#f8f5f2] text-[#b5895b]"
-                          : "hover:bg-[#f9f6f4] hover:text-[#b5895b]"
-                      }`}
-                    >
-                      <span className="text-[15px]">{group.group}</span>
-                      <ChevronRight
-                        size={14}
-                        className={`transition-transform duration-300 ${
-                          activeGroup === i
-                            ? "rotate-90 text-[#b5895b]"
-                            : "rotate-0"
-                        }`}
-                      />
-                    </button>
-                    <ul
-                      className={`pl-4 mt-2 space-y-2 overflow-hidden transition-all duration-500 ease-in-out ${
-                        activeGroup === i
-                          ? "max-h-96 opacity-100 visible"
-                          : "max-h-0 opacity-0 invisible"
-                      }`}
-                    >
-                      {group.items.map((item, j) => (
-                        <li key={j}>
-                          <Link
-                            href={`/cua-hang/${item.slug}`}
-                            className={`block py-1 pl-2 border-l border-[#d4b48a] text-[14px] transition-all cursor-pointer ${
-                              slug === item.slug
-                                ? "text-[#3e2c1c]"
-                                : "text-gray-600 hover:text-[#b5895b]"
-                            }`}
-                          >
-                            {item.name}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Bộ lọc giá */}
-            <div>
-              <h4 className="text-lg font-semibold mb-4 tracking-wide text-[#2b2b2b]">
-                GIÁ
-              </h4>
-              <div className="text-sm text-gray-600 italic">
-                (Bộ lọc giá sẽ đặt ở đây)
-              </div>
-            </div>
-          </aside>
-
-          {/* DANH SÁCH SẢN PHẨM */}
-          <section className="lg:col-span-3">
-            {filtered.length === 0 ? (
-              <p className="text-gray-500 italic text-center py-20">
-                Không có sản phẩm trong danh mục này.
-              </p>
-            ) : (
-              <div
-                className={`grid ${
-                  viewMode === "grid"
-                    ? "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8"
-                    : "grid-cols-1 gap-4"
+        <div className="flex items-center gap-4 text-gray-700">
+          <div className="hidden sm:flex items-center space-x-2">
+            <span className="text-gray-500">Hiển thị:</span>
+            {[12, 15, 30].map((n) => (
+              <button
+                key={n}
+                onClick={() => setShowCount(n)}
+                className={`pb-[2px] ${
+                  showCount === n
+                    ? "border-b border-black text-black font-medium"
+                    : "hover:border-b hover:border-gray-400"
                 }`}
               >
-                {filtered.slice(0, showCount).map((item) => (
-                  <Link
-                    key={item.id}
-                    href={`/cua-hang/${slug}/${item.id}`}
-                    className="group bg-white border border-gray-100 rounded-xl overflow-hidden hover:shadow-lg transition block"
-                  >
-                    {/* Hình ảnh */}
-                    <div
-                      className={`relative ${
-                        viewMode === "grid" ? "h-[360px]" : "h-[200px]"
-                      } w-full overflow-hidden cursor-pointer`}
-                    >
-                      <Image
-                        src={item.image}
-                        alt={item.name}
-                        fill
-                        className="object-cover transition-all duration-700 group-hover:opacity-0 group-hover:scale-105"
-                      />
-                      {item.hoverImage && (
-                        <Image
-                          src={item.hoverImage}
-                          alt={item.name + " hover"}
-                          fill
-                          className="object-cover opacity-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
-                        />
-                      )}
-                      <div className="absolute top-3 left-3 bg-[#5a3d2b] text-white text-xs font-medium px-3 py-1 rounded-md">
-                        NEW !
-                      </div>
-                    </div>
+                {n}
+              </button>
+            ))}
+          </div>
 
-                    {/* Thông tin */}
-                    <div
-                      className={`p-4 ${
-                        viewMode === "list"
-                          ? "flex items-center justify-between"
-                          : "text-center"
-                      }`}
-                    >
-                      <h3 className="font-medium text-[#2b2b2b] mb-1 group-hover:underline underline-offset-4 transition cursor-pointer">
-                        {item.name}
-                      </h3>
-                      <p className="text-[#5a3d2b] font-semibold">
-                        {item.price.toLocaleString("vi-VN")}₫
-                      </p>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            )}
-          </section>
+          <div className="flex items-center space-x-2 sm:space-x-3 text-gray-500">
+            <button
+              onClick={() => setViewMode("grid")}
+              className={`${
+                viewMode === "grid" ? "text-black" : "hover:text-black"
+              }`}
+            >
+              <LayoutGrid size={18} />
+            </button>
+            <button
+              onClick={() => setViewMode("list")}
+              className={`${
+                viewMode === "list" ? "text-black" : "hover:text-black"
+              }`}
+            >
+              <List size={18} />
+            </button>
+          </div>
         </div>
+      </div>
+
+      {/* --- Nội dung chính --- */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-16 grid grid-cols-1 lg:grid-cols-4 gap-8 sm:gap-10">
+        {/* Sidebar danh mục (ẩn trên mobile) */}
+        <aside
+          className={`fixed lg:static top-0 left-0 z-50 lg:z-auto w-3/4 sm:w-1/2 lg:w-auto h-full lg:h-auto bg-white border-r border-gray-200 shadow-lg lg:shadow-none p-5 lg:p-0 overflow-y-auto transition-transform duration-300 ${
+            showSidebar ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
+          }`}
+        >
+          {/* Header mobile */}
+          <div className="flex items-center justify-between mb-4 lg:hidden">
+            <h3 className="text-lg font-semibold">Bộ lọc sản phẩm</h3>
+            <button
+              onClick={() => setShowSidebar(false)}
+              className="text-gray-500 hover:text-black"
+            >
+              <X size={20} />
+            </button>
+          </div>
+
+          {/* Danh mục */}
+          <ul className="space-y-2 text-gray-700">
+            {categories.map((group, i) => (
+              <li key={i} className="border-b border-gray-200 pb-2">
+                <button
+                  onClick={() => setActiveGroup(activeGroup === i ? null : i)}
+                  className={`flex items-center justify-between w-full px-2 py-2 rounded-md cursor-pointer transition-all ${
+                    activeGroup === i
+                      ? "bg-[#f8f5f2] text-[#b5895b]"
+                      : "hover:bg-[#f9f6f4] hover:text-[#b5895b]"
+                  }`}
+                >
+                  <span className="text-[15px]">{group.group}</span>
+                  <ChevronRight
+                    size={14}
+                    className={`transition-transform duration-300 ${
+                      activeGroup === i
+                        ? "rotate-90 text-[#b5895b]"
+                        : "rotate-0"
+                    }`}
+                  />
+                </button>
+                <ul
+                  className={`pl-4 mt-2 space-y-2 overflow-hidden transition-all duration-500 ease-in-out ${
+                    activeGroup === i
+                      ? "max-h-96 opacity-100 visible"
+                      : "max-h-0 opacity-0 invisible"
+                  }`}
+                >
+                  {group.items.map((item, j) => (
+                    <li key={j}>
+                      <Link
+                        href={`/cua-hang/${item.slug}`}
+                        onClick={() => setShowSidebar(false)}
+                        className={`block py-1 pl-2 border-l border-[#d4b48a] text-[14px] transition-all cursor-pointer ${
+                          slug === item.slug
+                            ? "text-[#3e2c1c]"
+                            : "text-gray-600 hover:text-[#b5895b]"
+                        }`}
+                      >
+                        {item.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+        </aside>
+
+        {/* Overlay mobile */}
+        {showSidebar && (
+          <div
+            onClick={() => setShowSidebar(false)}
+            className="fixed inset-0 bg-black/30 lg:hidden z-40"
+          />
+        )}
+
+        {/* Danh sách sản phẩm */}
+        <section className="lg:col-span-3">
+          {filtered.length === 0 ? (
+            <p className="text-gray-500 italic text-center py-20">
+              Không có sản phẩm trong danh mục này.
+            </p>
+          ) : (
+            <div
+              className={`grid ${
+                viewMode === "grid"
+                  ? "grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-5 sm:gap-8"
+                  : "grid-cols-1 gap-4"
+              }`}
+            >
+              {filtered.slice(0, showCount).map((item) => (
+                <Link
+                  key={item.id}
+                  href={`/cua-hang/${slug}/${item.id}`}
+                  className="group bg-white border border-gray-100 rounded-xl overflow-hidden hover:shadow-lg transition block"
+                >
+                  {/* Hình ảnh */}
+                  <div
+                    className={`relative ${
+                      viewMode === "grid"
+                        ? "h-[280px] sm:h-[340px]"
+                        : "h-[200px]"
+                    } w-full overflow-hidden cursor-pointer`}
+                  >
+                    <Image
+                      src={item.image}
+                      alt={item.name}
+                      fill
+                      className="object-cover transition-all duration-700 group-hover:opacity-0 group-hover:scale-105"
+                    />
+                    {item.hoverImage && (
+                      <Image
+                        src={item.hoverImage}
+                        alt={item.name + " hover"}
+                        fill
+                        className="object-cover opacity-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+                      />
+                    )}
+                    <div className="absolute top-3 left-3 bg-[#5a3d2b] text-white text-xs font-medium px-2 py-1 rounded-md">
+                      NEW !
+                    </div>
+                  </div>
+
+                  {/* Thông tin */}
+                  <div
+                    className={`p-3 sm:p-4 ${
+                      viewMode === "list"
+                        ? "flex items-center justify-between"
+                        : "text-center"
+                    }`}
+                  >
+                    <h3 className="font-medium text-sm sm:text-base text-[#2b2b2b] mb-1 group-hover:underline underline-offset-4 transition cursor-pointer">
+                      {item.name}
+                    </h3>
+                    <p className="text-[#5a3d2b] font-semibold text-sm sm:text-base">
+                      {item.price.toLocaleString("vi-VN")}₫
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
+        </section>
       </div>
     </main>
   );
