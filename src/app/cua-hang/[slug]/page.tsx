@@ -193,29 +193,6 @@ export default function CategoryPage() {
                 </div>
               </div>
             </div>
-
-            <div>
-              <h4 className="font-serif text-lg font-semibold mb-4 tracking-wide text-[#2b2b2b]">
-                CÁC THẺ
-              </h4>
-              <div className="flex flex-wrap gap-2 text-xs">
-                {[
-                  "Clean",
-                  "Fashion",
-                  "Women",
-                  "Trends",
-                  "Nova",
-                  "Woocommerce",
-                ].map((tag) => (
-                  <span
-                    key={tag}
-                    className="border border-gray-300 px-2 py-1 rounded hover:bg-gray-100 cursor-pointer"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
           </aside>
 
           {/* GRID SẢN PHẨM */}
