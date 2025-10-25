@@ -28,7 +28,6 @@ export default function ProductList() {
 
   return (
     <section className="py-12 sm:py-16 bg-white">
-      {/* --- Tiêu đề --- */}
       <div className="text-center mb-10 sm:mb-14 px-4">
         <h2 className="text-2xl sm:text-3xl font-bold tracking-wide mb-2 text-[#2b2b2b]">
           SẢN PHẨM MỚI
@@ -38,8 +37,6 @@ export default function ProductList() {
           Đón đầu phong cách - Cùng khám phá những thiết kế mới nhất từ UNID.
         </p>
       </div>
-
-      {/* --- Lưới sản phẩm --- */}
       <div className="max-w-7xl mx-auto px-3 sm:px-6">
         <div
           className="
@@ -56,7 +53,6 @@ export default function ProductList() {
               href={`/cua-hang/${product.category}/${product.id}`}
               className="group w-full max-w-[260px] sm:max-w-[280px] md:max-w-[300px] text-center cursor-pointer"
             >
-              {/* Ảnh sản phẩm */}
               <div className="relative w-full h-[260px] sm:h-[320px] md:h-[400px] overflow-hidden rounded-lg shadow-sm">
                 <Image
                   src={product.image}
@@ -74,7 +70,6 @@ export default function ProductList() {
                 )}
               </div>
 
-              {/* Tên & giá */}
               <div className="mt-3 sm:mt-4">
                 <h3 className="text-sm sm:text-base md:text-lg font-medium text-[#2b2b2b] group-hover:underline underline-offset-4 px-1 line-clamp-2">
                   {product.name}

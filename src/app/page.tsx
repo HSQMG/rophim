@@ -1,9 +1,15 @@
 import HeroSection from "@/app/components/HeroSection";
 import FeaturedCategories from "@/app/components/FeaturedCategories";
-import ProductCarousel from "@/app/components/ProductCarousel";
+
 import FashionSection from "./components/FashionSection";
 import ScrollReveal from "./components/ScrollReveal";
-
+import dynamic from "next/dynamic";
+const ProductCarousel = dynamic(
+  () => import("@/app/components/ProductCarousel"),
+  {
+    ssr: false,
+  }
+);
 export default function Home() {
   return (
     <main>
