@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, ReactNode } from "react";
-import ScrollRevealLib from "scrollreveal";
 
 interface Props {
   children: ReactNode;
@@ -17,18 +16,21 @@ export default function ScrollReveal({
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!ref.current) return;
-
-    ScrollRevealLib().reveal(ref.current, {
-      origin: "bottom",
-      distance: "20px",
-      duration: 600,
-      delay: delay * 1000,
-      easing: "ease-out",
-      reset: false,
-      opacity: 0,
-      interval: 100,
-      cleanup: true, // tránh giữ style cũ
+    // ✅ Chỉ import scrollreveal khi có window (client)
+    if (typeof window === "undefined") return;
+    import("scrollreveal").then((ScrollRevealLib) => {
+      if (!ref.current) return;
+      ScrollRevealLib.default().reveal(ref.current, {
+        origin: "bottom",
+        distance: "20px",
+        duration: 600,
+        delay: delay * 1000,
+        easing: "ease-out",
+        reset: false,
+        opacity: 0,
+        interval: 100,
+        cleanup: true, // tránh giữ style cũ
+      });
     });
   }, [delay]);
 
