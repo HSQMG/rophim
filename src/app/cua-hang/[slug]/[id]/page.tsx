@@ -10,6 +10,7 @@ const playfair = Playfair_Display({
   subsets: ["latin", "vietnamese"],
   weight: ["400", "700"],
 });
+
 interface Product {
   id: number;
   name: string;
@@ -21,6 +22,7 @@ interface Product {
   color?: string;
   size?: string[];
   description?: string;
+  imgsize?: string;
 }
 
 export default function ProductDetailPage() {
@@ -28,6 +30,8 @@ export default function ProductDetailPage() {
   const [product, setProduct] = useState<Product | null>(null);
   const [quantity, setQuantity] = useState(1);
   const [showMore, setShowMore] = useState(false);
+  const [showSizeGuide, setShowSizeGuide] = useState(false);
+  const [showCareGuide, setShowCareGuide] = useState(false);
   useEffect(() => {
     fetch("/productss.json")
       .then((res) => res.json())
@@ -48,6 +52,7 @@ export default function ProductDetailPage() {
   return (
     <main className="max-w-6xl mx-auto px-6 py-12 text-[#2b2b2b]">
       <div className="flex flex-wrap lg:flex-nowrap gap-12">
+        {/* Ảnh sản phẩm */}
         <div className="relative w-full lg:w-1/2 h-[600px] rounded-xl overflow-hidden bg-gray-50 shadow-sm">
           <Image
             src={product.image}
@@ -57,10 +62,11 @@ export default function ProductDetailPage() {
           />
         </div>
 
+        {/* Thông tin chi tiết */}
         <div className="flex-1 space-y-6">
           <div>
             <h1
-              className={`${playfair.className} text-3xl font-serif font-bold mb-3 uppercase tracking-wide}`}
+              className={`${playfair.className} text-3xl font-serif font-bold mb-3 uppercase tracking-wide`}
             >
               {product.name}
             </h1>
@@ -68,6 +74,8 @@ export default function ProductDetailPage() {
               {product.price.toLocaleString("vi-VN")}₫
             </p>
           </div>
+
+          {/* Mô tả sản phẩm */}
           {product.description && (
             <div className="border-b border-gray-200 pb-4">
               <h2 className="text-base font-semibold text-[#2b2b2b] mb-3 uppercase tracking-wide">
@@ -76,7 +84,7 @@ export default function ProductDetailPage() {
 
               <div className="relative text-gray-700 leading-relaxed whitespace-pre-line text-[15px]">
                 <div
-                  className={`transition-all duration-500 text-gray-700 leading-relaxed whitespace-pre-line text-[15px] ${
+                  className={`transition-all duration-500 ${
                     showMore ? "max-h-full" : "max-h-32 overflow-hidden"
                   }`}
                   dangerouslySetInnerHTML={{
@@ -97,20 +105,30 @@ export default function ProductDetailPage() {
             </div>
           )}
 
+          {/* Các hướng dẫn */}
           <div className="divide-y divide-gray-200 border-t border-b">
-            <div className="flex items-center justify-between py-3 cursor-pointer hover:text-[#6d4c2f]">
+            {/* Hướng dẫn kích thước */}
+            <div
+              className="flex items-center justify-between py-3 cursor-pointer hover:text-[#6d4c2f]"
+              onClick={() => setShowSizeGuide(true)}
+            >
               <Ruler size={18} />
               <span className="flex-1 ml-2 text-sm">
                 Hướng dẫn chọn kích thước
               </span>
-              <span>+</span>
+              <span className="text-xs text-gray-500">▼</span>
             </div>
-            <div className="flex items-center justify-between py-3 cursor-pointer hover:text-[#6d4c2f]">
+
+            {/* Hướng dẫn giặt */}
+            <div
+              className="flex items-center justify-between py-3 cursor-pointer hover:text-[#6d4c2f]"
+              onClick={() => setShowCareGuide(true)} // 👈 mở popup ảnh cố định
+            >
               <Truck size={18} />
               <span className="flex-1 ml-2 text-sm">
                 Hướng dẫn bảo quản và giặt
               </span>
-              <span>+</span>
+              <span className="text-xs text-gray-500">▼</span>
             </div>
           </div>
 
@@ -142,6 +160,63 @@ export default function ProductDetailPage() {
           </div>
         </div>
       </div>
+
+      {showSizeGuide && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
+          onClick={() => setShowSizeGuide(false)}
+        >
+          <div
+            className="bg-white p-4 rounded-lg shadow-lg relative max-w-[90%] max-h-[90%] overflow-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {product.imgsize ? (
+              <Image
+                src={product.imgsize}
+                alt={`Bảng size cho ${product.name}`}
+                width={600}
+                height={600}
+                className="mx-auto rounded-md"
+              />
+            ) : (
+              <p className="text-sm italic text-gray-500 text-center">
+                Đang cập nhật hướng dẫn kích thước...
+              </p>
+            )}
+            <button
+              onClick={() => setShowSizeGuide(false)}
+              className="absolute top-2 right-3 text-gray-500 hover:text-black text-lg font-bold cursor-pointer transition-transform duration-200 hover:scale-110"
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+      )}
+      {showCareGuide && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
+          onClick={() => setShowCareGuide(false)}
+        >
+          <div
+            className="bg-white p-4 rounded-lg shadow-lg relative max-w-[90%] max-h-[90%] overflow-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src="/image/size/bao quan.jpg"
+              alt="Hướng dẫn bảo quản và giặt"
+              width={600}
+              height={600}
+              className="mx-auto rounded-md"
+            />
+            <button
+              onClick={() => setShowCareGuide(false)}
+              className="absolute top-2 right-3 text-gray-500 hover:text-black text-lg font-bold cursor-pointer transition-transform duration-200 hover:scale-110"
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
