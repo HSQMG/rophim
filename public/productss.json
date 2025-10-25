@@ -1,0 +1,138 @@
+[
+  {
+    "id": 1,
+    "name": "Áo khoác len họa tiết con rồng",
+    "price": 1299000,
+    "category": "ao-khoac",
+    "image": "/image/ẢNH SẢN PHẨM/ÁO KHOÁC/U-AKL025 (1).jpg",
+    "hoverImage": "/image/ẢNH SẢN PHẨM/ÁO KHOÁC/U-AKL025 (2).jpg"
+  },
+  {
+    "id": 2,
+    "name": "Áo sơ mi nữ tay dài",
+    "price": 899000,
+    "category": "ao-so-mi",
+    "image": "/image/ẢNH SẢN PHẨM/ÁO SƠ MI/U-ANR022(2).jpg",
+    "hoverImage": "/image/ẢNH SẢN PHẨM/ÁO SƠ MI/U-ANR022(3).jpg"
+  },
+  {
+    "id": 3,
+    "name": "Áo sơ mi nam cổ đứng",
+    "price": 599000,
+    "category": "ao-so-mi",
+    "image": "/image/ẢNH SẢN PHẨM/ÁO SƠ MI/U-ANR023 (6).jpg",
+    "hoverImage": "/image/ẢNH SẢN PHẨM/ÁO SƠ MI/U-ANR023 (7).jpg"
+  },
+  {
+    "id": 4,
+    "name": "Áo tay dài jumpsuit hoa",
+    "price": 1099000,
+    "category": "ao-tay-dai",
+    "image": "/image/ẢNH SẢN PHẨM/ÁO TAY DÀI/U-ADR021 (1).jpg",
+    "hoverImage": "/image/ẢNH SẢN PHẨM/ÁO TAY DÀI/U-ADR021 (2).jpg"
+  },
+  {
+    "id": 5,
+    "name": "Chân váy dài xếp ly nữ",
+    "price": 899000,
+    "category": "chan-vay-dai",
+    "image": "/image/ẢNH SẢN PHẨM/CHÂN VÁY DÀI/U-VDS018 (1).jpg",
+    "hoverImage": "/image/ẢNH SẢN PHẨM/CHÂN VÁY DÀI/U-VDS018 (2).jpg"
+  },
+  {
+    "id": 6,
+    "name": "Đầm dài cổ V tay bồng",
+    "price": 899000,
+    "category": "dam-dai",
+    "image": "/image/ẢNH SẢN PHẨM/ĐẦM DÀI/U-DDR016 (1).jpg",
+    "hoverImage": "/image/ẢNH SẢN PHẨM/ĐẦM DÀI/U-DDR016 (2).jpg"
+  },
+  {
+    "id": 7,
+    "name": "Đầm lửng hoa nhí",
+    "price": 1699000,
+    "category": "dam-lung",
+    "image": "/image/ẢNH SẢN PHẨM/ĐẦM LỬNG/U-DLS017 (1).jpg",
+    "hoverImage": "/image/ẢNH SẢN PHẨM/ĐẦM LỬNG/U-DLS017 (2).jpg"
+  },
+  {
+    "id": 8,
+    "name": "Quần ống rộng nữ cạp cao",
+    "price": 1699000,
+    "category": "quan-ong-cong",
+    "image": "/image/ẢNH SẢN PHẨM/QUẦN ỐNG CONG/U-QDC012 (2).jpg",
+    "hoverImage": "/image/ẢNH SẢN PHẨM/ĐẦM LỬNG/U-DLS017 (3).jpg"
+  },
+  {
+    "id": 9,
+    "name": "Quần ống loe nam",
+    "price": 1699000,
+    "category": "quan-ong-loe",
+    "image": "/image/ẢNH SẢN PHẨM/QUẦN ỐNG LOE/U-QDL007 (1).jpg",
+    "hoverImage": "/image/ẢNH SẢN PHẨM/QUẦN ỐNG LOE/U-QDL007 (2).jpg"
+  },
+  {
+    "id": 10,
+    "name": "Quần ống loe nam",
+    "price": 1699000,
+    "category": "quan-ong-loe",
+    "image": "/image/ẢNH SẢN PHẨM/QUẦN ỐNG LOE/U-QDL008 (1).jpg",
+    "hoverImage": "/image/ẢNH SẢN PHẨM/QUẦN ỐNG LOE/U-QDL008 (2).jpg"
+  },
+  {
+    "id": 10,
+    "name": "Quần ống loe nam",
+    "price": 1699000,
+    "category": "quan-ong-loe",
+    "image": "/image/ẢNH SẢN PHẨM/QUẦN ỐNG LOE/U-QDL009 (1).jpg",
+    "hoverImage": "/image/ẢNH SẢN PHẨM/QUẦN ỐNG LOE/U-QDL009 (2).jpg"
+  },
+  {
+    "id": 11,
+    "name": "Quần ống rộng ",
+    "price": 1699000,
+    "category": "quan-ong-rong",
+    "image": "/image/ẢNH SẢN PHẨM/QUẦN ỐNG RỘNG/U-QDR001 (1).jpg",
+    "hoverImage": "/image/ẢNH SẢN PHẨM/QUẦN ỐNG RỘNG/U-QDR001 (2).jpg"
+  },
+  {
+    "id": 12,
+    "name": "Quần ống rộng ",
+    "price": 1699000,
+    "category": "quan-ong-rong",
+    "image": "/image/ẢNH SẢN PHẨM/QUẦN ỐNG RỘNG/U-QDR001 (2).jpg",
+    "hoverImage": "/image/ẢNH SẢN PHẨM/QUẦN ỐNG RỘNG/U-QDR002 (2).jpg"
+  },
+  {
+    "id": 13,
+    "name": "Quần ống rộng ",
+    "price": 1699000,
+    "category": "quan-ong-rong",
+    "image": "/image/ẢNH SẢN PHẨM/QUẦN ỐNG RỘNG/U-QDR003 (1).jpg",
+    "hoverImage": "/image/ẢNH SẢN PHẨM/QUẦN ỐNG RỘNG/U-QDR003 (2).jpg"
+  },
+  {
+    "id": 14,
+    "name": "Quần ống suông ",
+    "price": 1699000,
+    "category": "quan-ong-suong",
+    "image": "/image/ẢNH SẢN PHẨM/QUẦN ỐNG SUÔNG/U-QDS004 (1).jpg",
+    "hoverImage": "/image/ẢNH SẢN PHẨM/QUẦN ỐNG SUÔNG/U-QDS004 (2).jpg"
+  },
+  {
+    "id": 15,
+    "name": "Quần short",
+    "price": 1699000,
+    "category": "quan-short",
+    "image": "/image/ẢNH SẢN PHẨM/QUẦN SHORT/U-QSO015 (1).jpg",
+    "hoverImage": "/image/ẢNH SẢN PHẨM/QUẦN SHORT/U-QSO015 (2).jpg"
+  },
+  {
+    "id": 16,
+    "name": "SET GHILE",
+    "price": 1699000,
+    "category": "set-ghile",
+    "image": "/image/ẢNH SẢN PHẨM/SET GHILE/U-GLO026 (1).jpg",
+    "hoverImage": "/image/ẢNH SẢN PHẨM/QUẦN SHORT/U-GLO026 (2).jpg"
+  }
+]

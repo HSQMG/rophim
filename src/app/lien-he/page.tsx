@@ -99,7 +99,6 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* --- CỘT PHẢI --- */}
           <form
             onSubmit={handleSubmit}
             className="flex flex-col space-y-4 text-gray-700"
@@ -182,8 +181,6 @@ export default function ContactPage() {
             </button>
           </form>
         </div>
-
-        {/* Google Map */}
         <div className="mt-20 rounded-xl overflow-hidden shadow-lg">
           <iframe
             src="https://maps.google.com/maps?q=C%C3%B4ng%20ty%20TNHH%20%E2%80%93%20MONA%20MEDIA%201073%2F23%20%C4%90.%20C%C3%A1ch%20M%E1%BA%A1ng%20Th%C3%A1ng%208%2C%20P.7%2C%20T%C3%A2n%20B%C3%ACnh%2C%20Th%C3%A0nh%20ph%E1%BB%91%20H%E1%BB%93%20Ch%C3%AD%20Minh%2072100%2C%20Vi%E1%BB%87t%20Nam&amp;t=m&amp;z=16&amp;output=embed"
