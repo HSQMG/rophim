@@ -10,6 +10,7 @@ const playfair = Playfair_Display({
   subsets: ["latin", "vietnamese"],
   weight: ["400", "700"],
 });
+
 interface Product {
   id: number;
   name: string;
@@ -18,20 +19,27 @@ interface Product {
   image: string;
   hoverImage?: string;
 }
-interface Category {
-  slug: string;
+
+interface SubCategory {
   name: string;
+  slug: string;
+}
+
+interface CategoryGroup {
+  group: string;
+  items: SubCategory[];
 }
 
 export default function CategoryPage() {
   const { slug } = useParams();
   const [products, setProducts] = useState<Product[]>([]);
   const [filtered, setFiltered] = useState<Product[]>([]);
-  const [categories, setCategories] = useState<Category[]>([]);
+  const [categories, setCategories] = useState<CategoryGroup[]>([]);
   const [categoryName, setCategoryName] = useState<string>("");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [showCount, setShowCount] = useState(12);
-
+  const [activeGroup, setActiveGroup] = useState<number | null>(null);
+  /** Load sản phẩm */
   useEffect(() => {
     fetch("/productss.json")
       .then((res) => res.json())
@@ -39,44 +47,62 @@ export default function CategoryPage() {
       .catch((err) => console.error("Lỗi tải sản phẩm:", err));
   }, []);
 
+  /** Load danh mục từ product.json */
   useEffect(() => {
     fetch("/product.json")
       .then((res) => res.json())
-      .then((data: Category[]) => setCategories(data))
-      .catch((err) => console.error("Lỗi tải categories:", err));
+      .then((data: CategoryGroup[]) => setCategories(data))
+      .catch((err) => console.error("Lỗi tải danh mục:", err));
   }, []);
 
+  /** Lọc sản phẩm theo slug */
   useEffect(() => {
-    if (!slug) return;
+    if (!slug || products.length === 0 || categories.length === 0) return;
 
-    if (products.length > 0) {
-      let filteredList: Product[] = [];
+    let filteredList: Product[] = [];
 
-      if (slug === "quan") {
-        filteredList = products.filter((p) => p.category.startsWith("quan"));
-      } else if (slug === "dam") {
-        filteredList = products.filter((p) => p.category.startsWith("dam"));
-      } else if (slug === "chan-vay") {
-        filteredList = products.filter((p) => p.category.startsWith("vay"));
-      } else if (slug === "ao") {
-        filteredList = products.filter(
-          (p) => p.category.startsWith("ao") || p.category === "set-ghile"
+    // Tìm xem slug này thuộc nhóm nào hoặc là item con
+    const foundGroup = categories.find((g) =>
+      g.items.some((item) => item.slug === slug)
+    );
+    const foundItem = foundGroup?.items.find((i) => i.slug === slug);
+
+    // Nếu slug trùng group (vd: "ao", "quan", ...)
+    const isGroupSlug = categories.some(
+      (g) => g.group.toLowerCase().replace(/\s/g, "-") === slug
+    );
+
+    if (isGroupSlug) {
+      // Lấy toàn bộ sản phẩm có prefix theo các items con
+      const group = categories.find(
+        (g) => g.group.toLowerCase().replace(/\s/g, "-") === slug
+      );
+      if (group) {
+        const itemSlugs = group.items.map((i) => i.slug);
+        filteredList = products.filter((p) =>
+          itemSlugs.some((slug) => p.category.startsWith(slug))
         );
-      } else {
-        filteredList = products.filter((p) => p.category === slug);
+        setCategoryName(group.group);
       }
-
-      setFiltered(filteredList);
+    } else if (foundItem) {
+      // Nếu là item con cụ thể
+      filteredList = products.filter((p) => p.category === foundItem.slug);
+      setCategoryName(foundItem.name);
+    } else {
+      // fallback
+      filteredList = products.filter((p) =>
+        p.category.includes(slug.toString())
+      );
+      setCategoryName(slug.toString());
     }
 
-    if (categories.length > 0) {
-      const found = categories.find((c) => c.slug === slug);
-      setCategoryName(found ? found.name : slug.toString());
-    }
+    setFiltered(filteredList);
   }, [slug, products, categories]);
 
+  /** UI hiển thị */
   return (
     <main className="bg-white text-[#2b2b2b]">
+      {/* Breadcrumb */}
       <div className="max-w-7xl mx-auto px-6 py-6 text-sm text-gray-500">
         <div className="flex items-center space-x-2 flex-wrap">
           <Link href="/" className="hover:text-black">
@@ -91,6 +117,7 @@ export default function CategoryPage() {
         </div>
       </div>
 
+      {/* Tiêu đề */}
       <section className="border-t border-gray-200 py-8 text-center">
         <h1
           className={`${playfair.className} text-4xl font-bold text-[#2b2b2b] uppercase tracking-wide`}
@@ -98,7 +125,9 @@ export default function CategoryPage() {
           {categoryName || "Đang tải..."}
         </h1>
       </section>
+
       <div className="max-w-7xl mx-auto px-6 pb-16">
+        {/* Bộ lọc + chế độ xem */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-10 border-b border-gray-200 pb-4 mb-10">
           <div className="lg:col-span-1">
             <h3 className="font-serif text-lg font-semibold tracking-wide text-[#2b2b2b]">
@@ -107,7 +136,7 @@ export default function CategoryPage() {
           </div>
           <div className="lg:col-span-3 flex flex-wrap items-center justify-between text-sm text-gray-600">
             <div className="text-gray-600 mb-4 lg:mb-0">
-              Hiển thị kết quả duy nhất
+              Hiển thị {filtered.length} kết quả
             </div>
             <div className="flex flex-wrap items-center space-x-4 lg:space-x-6 text-gray-700">
               <div className="flex items-center space-x-2">
@@ -152,43 +181,72 @@ export default function CategoryPage() {
           </div>
         </div>
 
+        {/* Nội dung */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
           <aside className="space-y-10 lg:col-span-1">
             <div>
-              <ul className="space-y-3 text-gray-700">
-                {categories.map((item, i) => (
-                  <li
-                    key={i}
-                    className="group flex items-center text-[15px] hover:text-[#6d4c2f] transition-all duration-200 cursor-pointer"
-                  >
-                    <span className="text-[#c7a17a] mr-2 group-hover:translate-x-1 transition-transform duration-300">
-                      ›
-                    </span>
-                    <Link
-                      href={`/cua-hang/${item.slug}`}
-                      className={`group-hover:underline underline-offset-4 ${
-                        slug === item.slug ? "font-semibold text-[#2b2b2b]" : ""
+              <ul className="space-y-2 text-gray-700">
+                {categories.map((group, i) => (
+                  <li key={i} className="border-b border-gray-200 pb-2">
+                    <button
+                      onClick={() =>
+                        setActiveGroup(activeGroup === i ? null : i)
+                      }
+                      className={`flex items-center justify-between w-full px-2 py-2 rounded-md cursor-pointer transition-all ${
+                        activeGroup === i
+                          ? "bg-[#f8f5f2] text-[#b5895b]"
+                          : "hover:bg-[#f9f6f4] hover:text-[#b5895b]"
                       }`}
                     >
-                      {item.name}
-                    </Link>
+                      <span className="text-[15px]">{group.group}</span>
+                      <ChevronRight
+                        size={14}
+                        className={`transition-transform duration-300 ${
+                          activeGroup === i
+                            ? "rotate-90 text-[#b5895b]"
+                            : "rotate-0"
+                        }`}
+                      />
+                    </button>
+                    <ul
+                      className={`pl-4 mt-2 space-y-2 overflow-hidden transition-all duration-500 ease-in-out ${
+                        activeGroup === i
+                          ? "max-h-96 opacity-100 visible"
+                          : "max-h-0 opacity-0 invisible"
+                      }`}
+                    >
+                      {group.items.map((item, j) => (
+                        <li key={j}>
+                          <Link
+                            href={`/cua-hang/${item.slug}`}
+                            className={`block py-1 pl-2 border-l border-[#d4b48a] text-[14px] transition-all cursor-pointer ${
+                              slug === item.slug
+                                ? "text-[#3e2c1c]"
+                                : "text-gray-600 hover:text-[#b5895b]"
+                            }`}
+                          >
+                            {item.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
                   </li>
                 ))}
               </ul>
             </div>
+
+            {/* Bộ lọc giá */}
             <div>
               <h4 className="font-serif text-lg font-semibold mb-4 tracking-wide text-[#2b2b2b]">
                 GIÁ
               </h4>
-              <div className="text-sm text-gray-600">
-                <div className="text-gray-500 italic">
-                  (Bộ lọc giá sẽ đặt ở đây)
-                </div>
+              <div className="text-sm text-gray-600 italic">
+                (Bộ lọc giá sẽ đặt ở đây)
               </div>
             </div>
           </aside>
 
-          {/* GRID SẢN PHẨM */}
+          {/* DANH SÁCH SẢN PHẨM */}
           <section className="lg:col-span-3">
             {filtered.length === 0 ? (
               <p className="text-gray-500 italic text-center py-20">
@@ -208,7 +266,7 @@ export default function CategoryPage() {
                     href={`/cua-hang/${slug}/${item.id}`}
                     className="group bg-white border border-gray-100 rounded-xl overflow-hidden hover:shadow-lg transition block"
                   >
-                    {/* Hình ảnh sản phẩm */}
+                    {/* Hình ảnh */}
                     <div
                       className={`relative ${
                         viewMode === "grid" ? "h-[360px]" : "h-[200px]"
@@ -232,6 +290,8 @@ export default function CategoryPage() {
                         NEW !
                       </div>
                     </div>
+
+                    {/* Thông tin */}
                     <div
                       className={`p-4 ${
                         viewMode === "list"

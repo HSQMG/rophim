@@ -1,14 +1,32 @@
 [
-  { "name": "ÁO KHOÁC", "slug": "ao-khoac" },
-  { "name": "ÁO SƠ MI", "slug": "ao-so-mi" },
-  { "name": "ÁO TAY DÀI", "slug": "ao-tay-dai" },
-  { "name": "CHÂN VÁY DÀI", "slug": "chan-vay-dai" },
-  { "name": "ĐẦM DÀI", "slug": "dam-dai" },
-  { "name": "ĐẦM LỬNG", "slug": "dam-lung" },
-  { "name": "QUẤN ỐNG CONG", "slug": "quan-ong-cong" },
-  { "name": "QUẦN ỐNG LOE", "slug": "quan-ong-loe" },
-  { "name": "QUẦN ỐNG RỘNG", "slug": "quan-ong-rong" },
-  { "name": "QUẦN ỐNG SUÔNG", "slug": "quan-ong-suong" },
-  { "name": "QUẦN SHORT", "slug": "quan-short" },
-  { "name": "SET GHILE", "slug": "set-ghile" }
+  {
+    "group": "ÁO",
+    "items": [
+      { "name": "ÁO KHOÁC", "slug": "ao-khoac" },
+      { "name": "ÁO SƠ MI", "slug": "ao-so-mi" },
+      { "name": "ÁO TAY DÀI", "slug": "ao-tay-dai" },
+      { "name": "SET GHILE", "slug": "set-ghile" }
+    ]
+  },
+  {
+    "group": "ĐẦM",
+    "items": [
+      { "name": "ĐẦM DÀI", "slug": "dam-dai" },
+      { "name": "ĐẦM LỬNG", "slug": "dam-lung" }
+    ]
+  },
+  {
+    "group": "CHÂN VÁY",
+    "items": [{ "name": "CHÂN VÁY DÀI", "slug": "chan-vay-dai" }]
+  },
+  {
+    "group": "QUẦN",
+    "items": [
+      { "name": "QUẦN ỐNG CONG", "slug": "quan-ong-cong" },
+      { "name": "QUẦN ỐNG LOE", "slug": "quan-ong-loe" },
+      { "name": "QUẦN ỐNG RỘNG", "slug": "quan-ong-rong" },
+      { "name": "QUẦN ỐNG SUÔNG", "slug": "quan-ong-suong" },
+      { "name": "QUẦN SHORT", "slug": "quan-short" }
+    ]
+  }
 ]
