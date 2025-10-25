@@ -1,3 +1,4 @@
+"use client";
 import ScrollReveal from "@/app/components/ScrollReveal";
 import Introduce from "./components/Intro";
 import CollectionSection from "./components/CollectionSection";

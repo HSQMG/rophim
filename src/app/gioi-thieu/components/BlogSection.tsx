@@ -1,3 +1,4 @@
+"use client";
 import { Playfair_Display, Inter } from "next/font/google";
 
 const playfair = Playfair_Display({
