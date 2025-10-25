@@ -4,7 +4,12 @@ import { useParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight, LayoutGrid, List } from "lucide-react";
+import { Playfair_Display } from "next/font/google";
 
+const playfair = Playfair_Display({
+  subsets: ["latin", "vietnamese"],
+  weight: ["400", "700"],
+});
 interface Product {
   id: number;
   name: string;
@@ -22,17 +27,22 @@ export default function CategoryPage() {
   const { slug } = useParams();
   const [products, setProducts] = useState<Product[]>([]);
   const [filtered, setFiltered] = useState<Product[]>([]);
-  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
-  const [showCount, setShowCount] = useState(12);
+
   const [categories, setCategories] = useState<Category[]>([]);
   const [categoryName, setCategoryName] = useState<string>("");
 
+  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+  const [showCount, setShowCount] = useState(12);
+
+  // fetch products
   useEffect(() => {
     fetch("/productss.json")
       .then((res) => res.json())
-      .then((data) => setProducts(data))
+      .then((data: Product[]) => setProducts(data))
       .catch((err) => console.error("Lỗi tải sản phẩm:", err));
   }, []);
+
+  // fetch categories
   useEffect(() => {
     fetch("/product.json")
       .then((res) => res.json())
@@ -40,22 +50,25 @@ export default function CategoryPage() {
       .catch((err) => console.error("Lỗi tải categories:", err));
   }, []);
 
+  // sync slug -> filtered list + readable name
   useEffect(() => {
-    if (slug && products.length > 0) {
-      const result = products.filter((p) => p.category === slug);
-      setFiltered(result);
+    if (!slug) return;
+
+    if (products.length > 0) {
+      setFiltered(products.filter((p) => p.category === slug));
     }
-    if (categories.length > 0 && slug) {
-      const cat = categories.find((c) => c.slug === slug);
-      setCategoryName(cat ? cat.name : slug.toString());
+
+    if (categories.length > 0) {
+      const found = categories.find((c) => c.slug === slug);
+      setCategoryName(found ? found.name : slug.toString());
     }
-  }, [slug, products]);
+  }, [slug, products, categories]);
 
   return (
     <main className="bg-white text-[#2b2b2b]">
-      {/* 🔹 Breadcrumb */}
+      {/* BREADCRUMB */}
       <div className="max-w-7xl mx-auto px-6 py-6 text-sm text-gray-500">
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-2 flex-wrap">
           <Link href="/" className="hover:text-black">
             Home
           </Link>
@@ -64,47 +77,40 @@ export default function CategoryPage() {
             Cửa hàng
           </Link>
           <ChevronRight size={14} />
-          <span className="capitalize">{categoryName}</span>
+          <span className="capitalize">{categoryName || "..."}</span>
         </div>
       </div>
 
-      <section className="border-t border-gray-200 py-10 text-center">
-        <h1 className="text-4xl font-serif font-bold text-[#2b2b2b] uppercase tracking-wide">
-          {categoryName}
+      {/* TIÊU ĐỀ DANH MỤC */}
+      <section className="border-t border-gray-200 py-8 text-center">
+        <h1
+          className={`${playfair.className} text-4xl font-bold text-[#2b2b2b] uppercase tracking-wide`}
+        >
+          {categoryName || "Đang tải..."}
         </h1>
       </section>
-      <div className="max-w-7xl mx-auto px-6 pb-16 grid grid-cols-1 lg:grid-cols-4 gap-10">
-        <aside className="space-y-10">
-          <div>
-            <h3 className="font-serif text-lg font-semibold mb-4 tracking-wide">
+
+      {/* KHỐI CHÍNH */}
+      <div className="max-w-7xl mx-auto px-6 pb-16">
+        {/* ROW 1: SIDEBAR TITLE + TOOLBAR */}
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-10 border-b border-gray-200 pb-4 mb-10">
+          {/* Cột trái: tiêu đề sidebar */}
+          <div className="lg:col-span-1">
+            <h3 className="font-serif text-lg font-semibold tracking-wide text-[#2b2b2b]">
               DANH MỤC SẢN PHẨM
             </h3>
-            <ul className="space-y-3 text-gray-700">
-              {categories.map((item, i) => (
-                <li
-                  key={i}
-                  className="group flex items-center text-[15px] hover:text-[#6d4c2f] transition-all duration-200 cursor-pointer"
-                >
-                  <span className="text-[#c7a17a] mr-2 group-hover:translate-x-1 transition-transform duration-300">
-                    ›
-                  </span>
-                  <Link
-                    href={`/cua-hang/${item.slug}`}
-                    className="group-hover:underline underline-offset-4"
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
           </div>
-        </aside>
 
-        <section className="lg:col-span-3">
-          <div className="flex flex-wrap items-center justify-between text-sm text-gray-600 mb-8 border-b pb-3">
-            <span>Hiển thị kết quả duy nhất</span>
+          {/* Cột phải: toolbar hiển thị / sort / view */}
+          <div className="lg:col-span-3 flex flex-wrap items-center justify-between text-sm text-gray-600">
+            {/* bên trái toolbar */}
+            <div className="text-gray-600 mb-4 lg:mb-0">
+              Hiển thị kết quả duy nhất
+            </div>
 
-            <div className="flex items-center space-x-6">
+            {/* bên phải toolbar */}
+            <div className="flex flex-wrap items-center space-x-4 lg:space-x-6 text-gray-700">
+              {/* Show count */}
               <div className="flex items-center space-x-2">
                 <span className="text-gray-500">Show</span>
                 {[12, 15, 30].map((n) => (
@@ -121,10 +127,16 @@ export default function CategoryPage() {
                   </button>
                 ))}
               </div>
-              <span className="border-l h-4 border-gray-300"></span>
-              <div className="text-gray-700 cursor-pointer hover:text-black">
+
+              {/* Divider */}
+              <span className="hidden lg:inline-block border-l h-4 border-gray-300" />
+
+              {/* Sort placeholder */}
+              <button className="text-gray-700 hover:text-black">
                 Mới nhất
-              </div>
+              </button>
+
+              {/* view mode buttons */}
               <div className="flex items-center space-x-3 text-gray-500">
                 <button
                   onClick={() => setViewMode("grid")}
@@ -145,72 +157,136 @@ export default function CategoryPage() {
               </div>
             </div>
           </div>
-          {filtered.length === 0 ? (
-            <p className="text-gray-500 italic text-center py-20">
-              Không có sản phẩm trong danh mục này.
-            </p>
-          ) : (
-            <div
-              className={`grid ${
-                viewMode === "grid"
-                  ? "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8"
-                  : "grid-cols-1 gap-4"
-              }`}
-            >
-              {filtered.slice(0, showCount).map((item) => (
-                <div
-                  key={item.id}
-                  className="group bg-white border border-gray-100 rounded-xl overflow-hidden hover:shadow-lg transition"
-                >
-                  <div
-                    className={`relative ${
-                      viewMode === "grid" ? "h-[360px]" : "h-[200px]"
-                    } w-full overflow-hidden cursor-pointer`}
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
+          <aside className="space-y-10 lg:col-span-1">
+            <div>
+              <ul className="space-y-3 text-gray-700">
+                {categories.map((item, i) => (
+                  <li
+                    key={i}
+                    className="group flex items-center text-[15px] hover:text-[#6d4c2f] transition-all duration-200 cursor-pointer"
                   >
-                    {/* Ảnh chính */}
-                    <Image
-                      src={item.image}
-                      alt={item.name}
-                      fill
-                      className="object-cover transition-all duration-700 group-hover:opacity-0 group-hover:scale-105"
-                    />
+                    <span className="text-[#c7a17a] mr-2 group-hover:translate-x-1 transition-transform duration-300">
+                      ›
+                    </span>
+                    <Link
+                      href={`/cua-hang/${item.slug}`}
+                      className={`group-hover:underline underline-offset-4 ${
+                        slug === item.slug ? "font-semibold text-[#2b2b2b]" : ""
+                      }`}
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-serif text-lg font-semibold mb-4 tracking-wide text-[#2b2b2b]">
+                GIÁ
+              </h4>
+              <div className="text-sm text-gray-600">
+                <div className="text-gray-500 italic">
+                  (Bộ lọc giá sẽ đặt ở đây)
+                </div>
+              </div>
+            </div>
 
-                    {/* Ảnh hover */}
-                    {item.hoverImage && (
+            <div>
+              <h4 className="font-serif text-lg font-semibold mb-4 tracking-wide text-[#2b2b2b]">
+                CÁC THẺ
+              </h4>
+              <div className="flex flex-wrap gap-2 text-xs">
+                {[
+                  "Clean",
+                  "Fashion",
+                  "Women",
+                  "Trends",
+                  "Nova",
+                  "Woocommerce",
+                ].map((tag) => (
+                  <span
+                    key={tag}
+                    className="border border-gray-300 px-2 py-1 rounded hover:bg-gray-100 cursor-pointer"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </aside>
+
+          {/* GRID SẢN PHẨM */}
+          <section className="lg:col-span-3">
+            {filtered.length === 0 ? (
+              <p className="text-gray-500 italic text-center py-20">
+                Không có sản phẩm trong danh mục này.
+              </p>
+            ) : (
+              <div
+                className={`grid ${
+                  viewMode === "grid"
+                    ? "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8"
+                    : "grid-cols-1 gap-4"
+                }`}
+              >
+                {filtered.slice(0, showCount).map((item) => (
+                  <div
+                    key={item.id}
+                    className="group bg-white border border-gray-100 rounded-xl overflow-hidden hover:shadow-lg transition"
+                  >
+                    {/* Hình ảnh sản phẩm */}
+                    <div
+                      className={`relative ${
+                        viewMode === "grid" ? "h-[360px]" : "h-[200px]"
+                      } w-full overflow-hidden cursor-pointer`}
+                    >
+                      {/* ảnh chính */}
                       <Image
-                        src={item.hoverImage}
-                        alt={item.name + " hover"}
+                        src={item.image}
+                        alt={item.name}
                         fill
-                        className="object-cover opacity-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+                        className="object-cover transition-all duration-700 group-hover:opacity-0 group-hover:scale-105"
                       />
-                    )}
+                      {/* ảnh hover */}
+                      {item.hoverImage && (
+                        <Image
+                          src={item.hoverImage}
+                          alt={item.name + " hover"}
+                          fill
+                          className="object-cover opacity-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+                        />
+                      )}
 
-                    {/* Tag NEW */}
-                    <div className="absolute top-3 left-3 bg-[#5a3d2b] text-white text-xs font-medium px-3 py-1 rounded-md">
-                      NEW!
+                      {/* Badge NEW */}
+                      <div className="absolute top-3 left-3 bg-[#5a3d2b] text-white text-xs font-medium px-3 py-1 rounded-md">
+                        NEW!
+                      </div>
+                    </div>
+
+                    {/* Info sản phẩm */}
+                    <div
+                      className={`p-4 ${
+                        viewMode === "list"
+                          ? "flex items-center justify-between"
+                          : "text-center"
+                      }`}
+                    >
+                      <h3 className="font-medium text-[#2b2b2b] mb-1 group-hover:underline underline-offset-4 transition cursor-pointer">
+                        {item.name}
+                      </h3>
+                      <p className="text-[#5a3d2b] font-semibold">
+                        {item.price.toLocaleString("vi-VN")}₫
+                      </p>
                     </div>
                   </div>
-
-                  {/* Thông tin sản phẩm */}
-                  <div
-                    className={`p-4 ${
-                      viewMode === "list"
-                        ? "flex items-center justify-between"
-                        : "text-center"
-                    }`}
-                  >
-                    <h3 className="font-medium text-[#2b2b2b] mb-1 group-hover:underline underline-offset-4 transition cursor-pointer">
-                      {item.name}
-                    </h3>
-                    <p className="text-[#5a3d2b] font-semibold">
-                      {item.price.toLocaleString("vi-VN")}₫
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-        </section>
+                ))}
+              </div>
+            )}
+          </section>
+        </div>
       </div>
     </main>
   );
