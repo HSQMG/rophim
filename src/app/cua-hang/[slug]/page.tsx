@@ -213,7 +213,7 @@ export default function CategoryPage() {
                         />
                       )}
                       <div className="absolute top-3 left-3 bg-[#5a3d2b] text-white text-xs font-medium px-3 py-1 rounded-md">
-                        NE
+                        NEW !
                       </div>
                     </div>
                     <div
