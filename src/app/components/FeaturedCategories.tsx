@@ -5,13 +5,14 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-// 🔹 Hàm bỏ dấu + tạo slug
 function slugify(text: string): string {
   return text
     .toLowerCase()
+    .replace(/đ/g, "d")
+    .replace(/Đ/g, "d")
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9\s-]/g, "")
+    .replace(/[^a-z0-9\s]/g, "")
     .trim()
     .replace(/\s+/g, "-");
 }
@@ -35,7 +36,6 @@ export default function FeaturedCategories() {
       .catch(() => setCategories([]));
   }, []);
 
-  // 🔹 Chia danh sách thành các hàng 3 sản phẩm
   const rows = [];
   for (let i = 0; i < categories.length; i += 3) {
     rows.push(categories.slice(i, i + 3));
@@ -56,7 +56,6 @@ export default function FeaturedCategories() {
           const isLastRow = rowIndex === rows.length - 1;
           const remainder = categories.length % 3;
 
-          // 🔸 Nếu là hàng cuối cùng và dư 1 hoặc 2 sản phẩm => canh giữa
           const justify =
             isLastRow && remainder === 1
               ? "justify-center"
@@ -70,7 +69,8 @@ export default function FeaturedCategories() {
               className={`flex flex-wrap ${justify} gap-8 transition-all`}
             >
               {row.map((cat, i) => {
-                const cleanLink = `/category/${slugify(cat.title)}`;
+                const cleanLink = `/cua-hang/${slugify(cat.title)}`;
+
                 return (
                   <div
                     key={i}

@@ -50,7 +50,23 @@ export default function CategoryPage() {
     if (!slug) return;
 
     if (products.length > 0) {
-      setFiltered(products.filter((p) => p.category === slug));
+      let filteredList: Product[] = [];
+
+      if (slug === "quan") {
+        filteredList = products.filter((p) => p.category.startsWith("quan"));
+      } else if (slug === "dam") {
+        filteredList = products.filter((p) => p.category.startsWith("dam"));
+      } else if (slug === "chan-vay") {
+        filteredList = products.filter((p) => p.category.startsWith("vay"));
+      } else if (slug === "ao") {
+        filteredList = products.filter(
+          (p) => p.category.startsWith("ao") || p.category === "set-ghile"
+        );
+      } else {
+        filteredList = products.filter((p) => p.category === slug);
+      }
+
+      setFiltered(filteredList);
     }
 
     if (categories.length > 0) {

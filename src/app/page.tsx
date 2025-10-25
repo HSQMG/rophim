@@ -28,9 +28,9 @@ export default function Home() {
         <FashionSection />
       </ScrollReveal>
 
-      <ScrollReveal delay={0.6}>
+      {/* <ScrollReveal delay={0.6}>
         <BlogSection />
-      </ScrollReveal>
+      </ScrollReveal> */}
 
       {/* <ScrollReveal delay={0.7}>
         <ProductHighlight />
