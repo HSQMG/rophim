@@ -4,6 +4,9 @@ const nextConfig: NextConfig = {
   images: {
     domains: ["bazaarvietnam.vn", "hmkeyewear.com", "millamona.monamedia.net"],
   },
+  reactStrictMode: true,
+  swcMinify: true,
+  output: "standalone",
 };
 
 export default nextConfig;
