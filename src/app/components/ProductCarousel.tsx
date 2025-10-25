@@ -72,62 +72,6 @@ export default function HomeShowcase() {
 
   return (
     <>
-      {/* ==================== FEATURED CATEGORIES ==================== */}
-      <section className="py-12 sm:py-20 bg-[#fdf9f6]">
-        <div className="text-center mb-10 sm:mb-16 px-4">
-          <h2
-            className={`${playfair.className} text-3xl sm:text-4xl md:text-5xl font-serif text-[#3e2c1c] tracking-wide mb-3`}
-          >
-            DANH MỤC NỔI BẬT
-          </h2>
-          <div className="w-14 sm:w-16 h-[2px] bg-[#c7a17a] mx-auto mb-4"></div>
-          <p className="text-gray-500 italic text-sm sm:text-base">
-            Cập nhật những phong cách mới mỗi tuần
-          </p>
-        </div>
-
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-wrap justify-center sm:justify-between gap-5 sm:gap-8">
-          {categories.map((cat, i) => (
-            <div
-              key={i}
-              className="group bg-white rounded-xl sm:rounded-2xl shadow-sm hover:shadow-lg transition-all duration-500 overflow-hidden w-[48%] sm:w-[45%] lg:w-[30%]"
-            >
-              <Link
-                href={`/cua-hang/${slugify(cat.title)}`}
-                className="block relative h-[240px] sm:h-[320px] md:h-[420px] overflow-hidden rounded-t-xl sm:rounded-t-2xl"
-              >
-                <Image
-                  src={cat.image}
-                  alt={cat.title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#fdf9f6]/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
-              </Link>
-
-              <div className="p-4 sm:p-6 text-center">
-                <h3
-                  className={`${playfair.className} text-base sm:text-lg md:text-xl text-[#3e2c1c] mb-1 tracking-wide`}
-                >
-                  {cat.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-gray-500 italic mb-3 sm:mb-4">
-                  {cat.items} items
-                </p>
-                <Link
-                  href={`/cua-hang/${slugify(cat.title)}`}
-                  className="inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-[#c7a17a] text-[#3e2c1c] hover:bg-[#6d4c2f] hover:text-white transition-all"
-                >
-                  <ArrowRight size={16} />
-                </Link>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ==================== PRODUCT CAROUSEL ==================== */}
       <section className="py-12 sm:py-16 bg-white relative">
         <div className="text-center mb-8 sm:mb-12 px-4">
           <h2 className="text-2xl sm:text-3xl font-bold tracking-wide mb-2 text-[#2b2b2b]">
