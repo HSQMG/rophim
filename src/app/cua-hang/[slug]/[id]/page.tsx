@@ -1,0 +1,147 @@
+"use client";
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { Heart, Truck, Ruler, Minus, Plus } from "lucide-react";
+import { Playfair_Display } from "next/font/google";
+
+const playfair = Playfair_Display({
+  subsets: ["latin", "vietnamese"],
+  weight: ["400", "700"],
+});
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  category: string;
+  image: string;
+  hoverImage?: string;
+  material?: string;
+  color?: string;
+  size?: string[];
+  description?: string;
+}
+
+export default function ProductDetailPage() {
+  const { slug, id } = useParams();
+  const [product, setProduct] = useState<Product | null>(null);
+  const [quantity, setQuantity] = useState(1);
+  const [showMore, setShowMore] = useState(false);
+  useEffect(() => {
+    fetch("/productss.json")
+      .then((res) => res.json())
+      .then((data: Product[]) => {
+        const found = data.find((p) => p.id.toString() === id);
+        setProduct(found || null);
+      })
+      .catch((err) => console.error("Lỗi tải sản phẩm:", err));
+  }, [id]);
+
+  if (!product)
+    return (
+      <main className="max-w-5xl mx-auto py-20 text-center text-gray-500 italic">
+        Đang tải sản phẩm...
+      </main>
+    );
+
+  return (
+    <main className="max-w-6xl mx-auto px-6 py-12 text-[#2b2b2b]">
+      <div className="flex flex-wrap lg:flex-nowrap gap-12">
+        <div className="relative w-full lg:w-1/2 h-[600px] rounded-xl overflow-hidden bg-gray-50 shadow-sm">
+          <Image
+            src={product.image}
+            alt={product.name}
+            fill
+            className="object-cover"
+          />
+        </div>
+
+        <div className="flex-1 space-y-6">
+          <div>
+            <h1
+              className={`${playfair.className} text-3xl font-serif font-bold mb-3 uppercase tracking-wide}`}
+            >
+              {product.name}
+            </h1>
+            <p className="text-[#6d4c2f] text-2xl font-semibold">
+              {product.price.toLocaleString("vi-VN")}₫
+            </p>
+          </div>
+          {product.description && (
+            <div className="border-b border-gray-200 pb-4">
+              <h2 className="text-base font-semibold text-[#2b2b2b] mb-3 uppercase tracking-wide">
+                Mô tả sản phẩm
+              </h2>
+
+              <div className="relative text-gray-700 leading-relaxed whitespace-pre-line text-[15px]">
+                <div
+                  className={`transition-all duration-500 text-gray-700 leading-relaxed whitespace-pre-line text-[15px] ${
+                    showMore ? "max-h-full" : "max-h-32 overflow-hidden"
+                  }`}
+                  dangerouslySetInnerHTML={{
+                    __html: product.description,
+                  }}
+                />
+
+                {!showMore && (
+                  <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+                )}
+                <button
+                  onClick={() => setShowMore(!showMore)}
+                  className="mt-2 text-sm font-medium text-[#6d4c2f] hover:underline"
+                >
+                  {showMore ? "Thu gọn ▲" : "Xem thêm ▼"}
+                </button>
+              </div>
+            </div>
+          )}
+
+          <div className="divide-y divide-gray-200 border-t border-b">
+            <div className="flex items-center justify-between py-3 cursor-pointer hover:text-[#6d4c2f]">
+              <Ruler size={18} />
+              <span className="flex-1 ml-2 text-sm">
+                Hướng dẫn chọn kích thước
+              </span>
+              <span>+</span>
+            </div>
+            <div className="flex items-center justify-between py-3 cursor-pointer hover:text-[#6d4c2f]">
+              <Truck size={18} />
+              <span className="flex-1 ml-2 text-sm">
+                Hướng dẫn bảo quản và giặt
+              </span>
+              <span>+</span>
+            </div>
+          </div>
+
+          {/* Thông tin bổ sung */}
+          <div className="text-sm text-gray-600 space-y-2 pt-4">
+            <p>
+              <span className="font-semibold text-gray-800">Chất liệu:</span>{" "}
+              {product.material || "Đang cập nhật"}
+            </p>
+            <p>
+              <span className="font-semibold text-gray-800">Màu sắc:</span>{" "}
+              {product.color || "Đang cập nhật"}
+            </p>
+            <p>
+              <span className="font-semibold text-gray-800">Kích cỡ:</span>{" "}
+              {product.size ? product.size.join(", ") : "Đang cập nhật"}
+            </p>
+          </div>
+
+          {/* Danh mục */}
+          <div className="text-sm text-gray-500 border-t border-gray-200 pt-4">
+            <span className="font-semibold text-gray-700">Categories:</span>{" "}
+            <Link
+              href={`/cua-hang/${slug}`}
+              className="hover:text-[#6d4c2f] underline-offset-2"
+            >
+              {product.category}
+            </Link>
+          </div>
+        </div>
+      </div>
+    </main>
+  );
+}

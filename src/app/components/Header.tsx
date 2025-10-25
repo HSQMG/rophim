@@ -113,9 +113,9 @@ export default function Header() {
             )}
           </div>
 
-          <Link href="/blog" className="hover:text-[#6d4c2f] transition">
+          {/* <Link href="/blog" className="hover:text-[#6d4c2f] transition">
             Xu hướng
-          </Link>
+          </Link> */}
           <Link href="/lien-he" className="hover:text-[#6d4c2f] transition">
             Liên hệ
           </Link>

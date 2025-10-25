@@ -210,9 +210,10 @@ export default function CategoryPage() {
                 }`}
               >
                 {filtered.slice(0, showCount).map((item) => (
-                  <div
+                  <Link
                     key={item.id}
-                    className="group bg-white border border-gray-100 rounded-xl overflow-hidden hover:shadow-lg transition"
+                    href={`/cua-hang/${slug}/${item.id}`}
+                    className="group bg-white border border-gray-100 rounded-xl overflow-hidden hover:shadow-lg transition block"
                   >
                     {/* Hình ảnh sản phẩm */}
                     <div
@@ -220,14 +221,12 @@ export default function CategoryPage() {
                         viewMode === "grid" ? "h-[360px]" : "h-[200px]"
                       } w-full overflow-hidden cursor-pointer`}
                     >
-                      {/* ảnh chính */}
                       <Image
                         src={item.image}
                         alt={item.name}
                         fill
                         className="object-cover transition-all duration-700 group-hover:opacity-0 group-hover:scale-105"
                       />
-                      {/* ảnh hover */}
                       {item.hoverImage && (
                         <Image
                           src={item.hoverImage}
@@ -236,14 +235,12 @@ export default function CategoryPage() {
                           className="object-cover opacity-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
                         />
                       )}
-
-                      {/* Badge NEW */}
                       <div className="absolute top-3 left-3 bg-[#5a3d2b] text-white text-xs font-medium px-3 py-1 rounded-md">
                         NEW!
                       </div>
                     </div>
 
-                    {/* Info sản phẩm */}
+                    {/* Thông tin sản phẩm */}
                     <div
                       className={`p-4 ${
                         viewMode === "list"
@@ -258,7 +255,7 @@ export default function CategoryPage() {
                         {item.price.toLocaleString("vi-VN")}₫
                       </p>
                     </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
             )}
