@@ -4,11 +4,12 @@ import { useParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight, LayoutGrid, List } from "lucide-react";
-import { Playfair_Display } from "next/font/google";
 
-const playfair = Playfair_Display({
+import { Lora } from "next/font/google";
+const lora = Lora({
   subsets: ["latin", "vietnamese"],
   weight: ["400", "700"],
+  display: "swap",
 });
 
 interface Product {
@@ -39,7 +40,15 @@ export default function CategoryPage() {
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [showCount, setShowCount] = useState(12);
   const [activeGroup, setActiveGroup] = useState<number | null>(null);
-  /** Load sản phẩm */
+
+  const nameMap: Record<string, string> = {
+    ao: "Áo",
+    vay: "Váy",
+    dam: "Đầm",
+    "chan-vay": "Chân váy",
+    quan: "Quần",
+  };
+
   useEffect(() => {
     fetch("/productss.json")
       .then((res) => res.json())
@@ -47,7 +56,6 @@ export default function CategoryPage() {
       .catch((err) => console.error("Lỗi tải sản phẩm:", err));
   }, []);
 
-  /** Load danh mục từ product.json */
   useEffect(() => {
     fetch("/product.json")
       .then((res) => res.json())
@@ -55,41 +63,35 @@ export default function CategoryPage() {
       .catch((err) => console.error("Lỗi tải danh mục:", err));
   }, []);
 
-  /** Lọc sản phẩm theo slug */
   useEffect(() => {
     if (!slug || products.length === 0 || categories.length === 0) return;
 
     let filteredList: Product[] = [];
 
-    // Tìm xem slug này thuộc nhóm nào hoặc là item con
     const foundGroup = categories.find((g) =>
       g.items.some((item) => item.slug === slug)
     );
     const foundItem = foundGroup?.items.find((i) => i.slug === slug);
 
-    // Nếu slug trùng group (vd: "ao", "quan", ...)
     const isGroupSlug = categories.some(
       (g) => g.group.toLowerCase().replace(/\s/g, "-") === slug
     );
 
     if (isGroupSlug) {
-      // Lấy toàn bộ sản phẩm có prefix theo các items con
       const group = categories.find(
         (g) => g.group.toLowerCase().replace(/\s/g, "-") === slug
       );
       if (group) {
         const itemSlugs = group.items.map((i) => i.slug);
         filteredList = products.filter((p) =>
-          itemSlugs.some((slug) => p.category.startsWith(slug))
+          itemSlugs.some((subSlug) => p.category.startsWith(subSlug))
         );
         setCategoryName(group.group);
       }
     } else if (foundItem) {
-      // Nếu là item con cụ thể
       filteredList = products.filter((p) => p.category === foundItem.slug);
       setCategoryName(foundItem.name);
     } else {
-      // fallback
       filteredList = products.filter((p) =>
         p.category.includes(slug.toString())
       );
@@ -99,9 +101,11 @@ export default function CategoryPage() {
     setFiltered(filteredList);
   }, [slug, products, categories]);
 
-  /** UI hiển thị */
+  const displayName =
+    nameMap[categoryName.toLowerCase()] || categoryName || "Đang tải...";
+
   return (
-    <main className="bg-white text-[#2b2b2b]">
+    <main className={`${lora.className} bg-white text-[#2b2b2b]`}>
       {/* Breadcrumb */}
       <div className="max-w-7xl mx-auto px-6 py-6 text-sm text-gray-500">
         <div className="flex items-center space-x-2 flex-wrap">
@@ -113,24 +117,23 @@ export default function CategoryPage() {
             Cửa hàng
           </Link>
           <ChevronRight size={14} />
-          <span className="capitalize">{categoryName || "..."}</span>
+          <span className="capitalize">{displayName}</span>
         </div>
       </div>
 
       {/* Tiêu đề */}
       <section className="border-t border-gray-200 py-8 text-center">
-        <h1
-          className={`${playfair.className} text-4xl font-bold text-[#2b2b2b] uppercase tracking-wide`}
-        >
-          {categoryName || "Đang tải..."}
+        <h1 className="text-4xl font-bold text-[#2b2b2b] uppercase tracking-wide">
+          {displayName}
         </h1>
       </section>
 
+      {/* Nội dung */}
       <div className="max-w-7xl mx-auto px-6 pb-16">
         {/* Bộ lọc + chế độ xem */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-10 border-b border-gray-200 pb-4 mb-10">
           <div className="lg:col-span-1">
-            <h3 className="font-serif text-lg font-semibold tracking-wide text-[#2b2b2b]">
+            <h3 className="text-lg font-semibold tracking-wide text-[#2b2b2b]">
               DANH MỤC SẢN PHẨM
             </h3>
           </div>
@@ -181,9 +184,10 @@ export default function CategoryPage() {
           </div>
         </div>
 
-        {/* Nội dung */}
+        {/* Nội dung chính */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
           <aside className="space-y-10 lg:col-span-1">
+            {/* Danh mục */}
             <div>
               <ul className="space-y-2 text-gray-700">
                 {categories.map((group, i) => (
@@ -237,7 +241,7 @@ export default function CategoryPage() {
 
             {/* Bộ lọc giá */}
             <div>
-              <h4 className="font-serif text-lg font-semibold mb-4 tracking-wide text-[#2b2b2b]">
+              <h4 className="text-lg font-semibold mb-4 tracking-wide text-[#2b2b2b]">
                 GIÁ
               </h4>
               <div className="text-sm text-gray-600 italic">

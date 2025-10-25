@@ -13,6 +13,10 @@ export default function ContactPage() {
     agree: false,
   });
 
+  const [status, setStatus] = useState<
+    "idle" | "success" | "error" | "loading"
+  >("idle");
+
   const handleChange = (e: any) => {
     const { name, value, type, checked } = e.target;
     setFormData({
@@ -23,6 +27,7 @@ export default function ContactPage() {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+    setStatus("loading");
     try {
       const res = await fetch("/api/sendEmail", {
         method: "POST",
@@ -32,7 +37,7 @@ export default function ContactPage() {
 
       const data = await res.json();
       if (data.success) {
-        alert("✅ Gửi thông tin thành công!");
+        setStatus("success");
         setFormData({
           name: "",
           email: "",
@@ -42,11 +47,14 @@ export default function ContactPage() {
           agree: false,
         });
       } else {
-        alert("❌ Gửi thất bại. Vui lòng thử lại!");
+        setStatus("error");
       }
     } catch (err) {
-      alert("❌ Lỗi kết nối server!");
+      setStatus("error");
     }
+
+    // Ẩn thông báo sau 4 giây
+    setTimeout(() => setStatus("idle"), 4000);
   };
 
   return (
@@ -78,7 +86,7 @@ export default function ContactPage() {
               <div className="flex items-center space-x-2 text-gray-700">
                 <FaEnvelope className="text-[#3e2c1c]" />
                 <a
-                  href="mailto:info@themona.global"
+                  href="mailto:unidofficial43@gmail.com"
                   className="hover:text-[#6d4c2f] transition"
                 >
                   info@themona.global
@@ -101,7 +109,7 @@ export default function ContactPage() {
 
           <form
             onSubmit={handleSubmit}
-            className="flex flex-col space-y-4 text-gray-700"
+            className="flex flex-col space-y-4 text-gray-700 relative"
           >
             <h2 className="text-3xl font-bold mb-4 text-[#3e2c1c]">HỖ TRỢ</h2>
 
@@ -175,12 +183,28 @@ export default function ContactPage() {
 
             <button
               type="submit"
-              className="bg-[#6d4c2f] text-white py-3 rounded font-semibold hover:bg-[#5a3f26] transition"
+              disabled={status === "loading"}
+              className={`bg-[#6d4c2f] text-white py-3 rounded font-medium hover:bg-[#5a3f26] transition ${
+                status === "loading" ? "opacity-70 cursor-not-allowed" : ""
+              }`}
             >
-              Gửi Thông Tin
+              {status === "loading" ? "Đang gửi..." : "Gửi Thông Tin"}
             </button>
+            {status === "success" && (
+              <div className="mt-3 text-green-600 bg-green-50 border border-green-200 p-3 rounded text-sm">
+                ✅ Gửi thông tin thành công! Chúng tôi sẽ liên hệ sớm nhất có
+                thể.
+              </div>
+            )}
+            {status === "error" && (
+              <div className="mt-3 text-red-600 bg-red-50 border border-red-200 p-3 rounded text-sm">
+                ❌ Gửi thất bại. Vui lòng thử lại sau!
+              </div>
+            )}
           </form>
         </div>
+
+        {/* --- GOOGLE MAP --- */}
         <div className="mt-20 rounded-xl overflow-hidden shadow-lg">
           <iframe
             src="https://maps.google.com/maps?q=C%C3%B4ng%20ty%20TNHH%20%E2%80%93%20MONA%20MEDIA%201073%2F23%20%C4%90.%20C%C3%A1ch%20M%E1%BA%A1ng%20Th%C3%A1ng%208%2C%20P.7%2C%20T%C3%A2n%20B%C3%ACnh%2C%20Th%C3%A0nh%20ph%E1%BB%91%20H%E1%BB%93%20Ch%C3%AD%20Minh%2072100%2C%20Vi%E1%BB%87t%20Nam&amp;t=m&amp;z=16&amp;output=embed"

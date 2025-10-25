@@ -28,7 +28,6 @@ interface Product {
 export default function ProductDetailPage() {
   const { slug, id } = useParams();
   const [product, setProduct] = useState<Product | null>(null);
-  const [quantity, setQuantity] = useState(1);
   const [showMore, setShowMore] = useState(false);
   const [showSizeGuide, setShowSizeGuide] = useState(false);
   const [showCareGuide, setShowCareGuide] = useState(false);
@@ -52,7 +51,7 @@ export default function ProductDetailPage() {
   return (
     <main className="max-w-6xl mx-auto px-6 py-12 text-[#2b2b2b]">
       <div className="flex flex-wrap lg:flex-nowrap gap-12">
-        {/* Ảnh sản phẩm */}
+        {}
         <div className="relative w-full lg:w-1/2 h-[600px] rounded-xl overflow-hidden bg-gray-50 shadow-sm">
           <Image
             src={product.image}
@@ -62,7 +61,7 @@ export default function ProductDetailPage() {
           />
         </div>
 
-        {/* Thông tin chi tiết */}
+        {}
         <div className="flex-1 space-y-6">
           <div>
             <h1
@@ -75,7 +74,7 @@ export default function ProductDetailPage() {
             </p>
           </div>
 
-          {/* Mô tả sản phẩm */}
+          {}
           {product.description && (
             <div className="border-b border-gray-200 pb-4">
               <h2 className="text-base font-semibold text-[#2b2b2b] mb-3 uppercase tracking-wide">
@@ -97,7 +96,7 @@ export default function ProductDetailPage() {
                 )}
                 <button
                   onClick={() => setShowMore(!showMore)}
-                  className="mt-2 text-sm font-medium text-[#6d4c2f] hover:underline"
+                  className="mt-2 text-sm font-medium text-[#6d4c2f] hover:underline cursor-pointer"
                 >
                   {showMore ? "Thu gọn ▲" : "Xem thêm ▼"}
                 </button>
@@ -105,9 +104,9 @@ export default function ProductDetailPage() {
             </div>
           )}
 
-          {/* Các hướng dẫn */}
+          {}
           <div className="divide-y divide-gray-200 border-t border-b">
-            {/* Hướng dẫn kích thước */}
+            {}
             <div
               className="flex items-center justify-between py-3 cursor-pointer hover:text-[#6d4c2f]"
               onClick={() => setShowSizeGuide(true)}
@@ -119,10 +118,10 @@ export default function ProductDetailPage() {
               <span className="text-xs text-gray-500">▼</span>
             </div>
 
-            {/* Hướng dẫn giặt */}
+            {}
             <div
               className="flex items-center justify-between py-3 cursor-pointer hover:text-[#6d4c2f]"
-              onClick={() => setShowCareGuide(true)} // 👈 mở popup ảnh cố định
+              onClick={() => setShowCareGuide(true)}
             >
               <Truck size={18} />
               <span className="flex-1 ml-2 text-sm">
@@ -132,7 +131,7 @@ export default function ProductDetailPage() {
             </div>
           </div>
 
-          {/* Thông tin bổ sung */}
+          {}
           <div className="text-sm text-gray-600 space-y-2 pt-4">
             <p>
               <span className="font-semibold text-gray-800">Chất liệu:</span>{" "}
@@ -148,7 +147,7 @@ export default function ProductDetailPage() {
             </p>
           </div>
 
-          {/* Danh mục */}
+          {}
           <div className="text-sm text-gray-500 border-t border-gray-200 pt-4">
             <span className="font-semibold text-gray-700">Categories:</span>{" "}
             <Link

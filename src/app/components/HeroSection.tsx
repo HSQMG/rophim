@@ -15,21 +15,23 @@ export default function HeroSection() {
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
-    const fetchSlides = async () => {
-      try {
-        const res = await fetch("/api/hero");
-        if (!res.ok) throw new Error("Failed to fetch slides");
-        const data: Slide[] = await res.json();
-        setSlides(data);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    fetchSlides();
+    fetch("/api/hero")
+      .then((res) => res.json())
+      .then((data: Slide[]) => setSlides(data))
+      .catch(() => setSlides([]));
   }, []);
 
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
+    if (slides.length === 0) return;
+    const interval = setInterval(
+      () => setCurrent((prev) => (prev + 1) % slides.length),
+      6000
+    );
+    return () => clearInterval(interval);
+  }, [slides]);
+
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
       if (slides.length === 0) return;
       if (e.key === "ArrowRight") {
         setCurrent((prev) => (prev + 1) % slides.length);
@@ -37,41 +39,44 @@ export default function HeroSection() {
         setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
       }
     };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [slides]);
-
-  useEffect(() => {
-    if (slides.length === 0) return;
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % slides.length);
-    }, 5000);
-    return () => clearInterval(interval);
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
   }, [slides]);
 
   if (slides.length === 0) return null;
 
   return (
-    <section
-      role="region"
-      aria-label="Hero Section"
-      className="relative w-full h-screen flex flex-col md:flex-row items-end justify-between px-8 md:px-20 overflow-hidden"
-      style={{
-        backgroundImage: ` url('/image/background.jpg')`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      <div className="flex-1 flex flex-col justify-center max-w-3xl mb-12 md:mb-24">
+    <section className="relative w-full h-screen overflow-hidden bg-[#f9f8f5]">
+      {/* --- Background --- */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={slides[current].img}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.2 }}
+          className="absolute inset-0"
+        >
+          <Image
+            src={slides[current].img}
+            alt={slides[current].title}
+            fill
+            className="object-cover object-top"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#00000070] via-[#00000020] to-transparent" />
+        </motion.div>
+      </AnimatePresence>
+
+      <div className="relative z-10 flex flex-col justify-center h-full px-6 md:px-20 max-w-3xl text-white">
         <AnimatePresence mode="wait">
           <motion.h1
             key={`title-${current}`}
-            initial={{ opacity: 0, y: -50 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 50 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="text-5xl md:text-6xl font-serif font-bold leading-tight mb-6 text-gray-900 max-w-3xl"
+            exit={{ opacity: 0, y: -40 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="text-5xl md:text-7xl font-serif tracking-wide leading-tight drop-shadow-lg"
           >
             {slides[current].title}
           </motion.h1>
@@ -80,71 +85,55 @@ export default function HeroSection() {
         <AnimatePresence mode="wait">
           <motion.p
             key={`desc-${current}`}
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="text-md md:text-lg italic text-gray-600 mb-10 max-w-2xl leading-relaxed"
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="mt-6 text-lg md:text-xl text-[#f4ede2] max-w-2xl leading-relaxed drop-shadow-sm"
           >
             {slides[current].desc}
           </motion.p>
         </AnimatePresence>
-        <div className="flex gap-4 flex-wrap">
-          {slides.map((item, i) => (
-            <div
-              key={i}
-              className={`w-20 h-24 relative overflow-hidden rounded-t-full border transition-transform duration-300 cursor-pointer ${
-                current === i
-                  ? "border-black scale-110 shadow-md"
-                  : "border-gray-300 hover:scale-105"
-              }`}
-              onClick={() => setCurrent(i)}
-            >
-              <Image
-                src={item.img}
-                alt={`Thumbnail for ${item.title}`}
-                width={300}
-                height={400}
-                quality={70}
-                loading="lazy"
-                className="object-cover w-full h-full"
-              />
-            </div>
-          ))}
-        </div>
       </div>
-      <div className="flex-1 flex justify-center items-end relative h-full mt-8 md:mt-0">
-        <div className="relative w-[320px] md:w-[520px] h-[440px] md:h-[720px]">
-          <div
-            className="absolute -top-[10px] left-1/2 translate-x-[calc(-50%+16px)] w-full h-full rounded-t-[180px] md:rounded-t-[260px] z-20 pointer-events-none"
-            style={{
-              borderWidth: "2px",
-              borderStyle: "solid",
-              borderImage:
-                "linear-gradient(to top, rgba(181,181,181,0), rgba(181,181,181,1)) 1",
-            }}
-          ></div>
-          <div className="relative w-full h-full overflow-hidden rounded-t-[180px] md:rounded-t-[260px] z-10 translate-x-4 md:translate-x-8">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={`image-${current}`}
-                initial={{ opacity: 0, y: -80 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 80 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-                className="absolute inset-0"
-              >
-                <Image
-                  src={slides[current].img}
-                  alt={slides[current].title}
-                  fill
-                  className="object-cover object-center"
-                  priority
-                />
-              </motion.div>
-            </AnimatePresence>
-          </div>
-        </div>
+
+      <div className="absolute bottom-0 right-10 md:right-20 flex items-end justify-center h-full pointer-events-none">
+        <motion.div
+          key={`frame-${current}`}
+          initial={{ opacity: 0, y: 80 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -80 }}
+          transition={{ duration: 0.8 }}
+          className="relative w-[280px] md:w-[460px] h-[420px] md:h-[700px] rounded-t-[200px] overflow-hidden shadow-2xl border-2 border-white/60"
+        >
+          <Image
+            src={slides[current].img}
+            alt={slides[current].title}
+            fill
+            className="object-cover object-top"
+          />
+        </motion.div>
+      </div>
+
+      <div className="absolute bottom-8 left-8 md:left-16 z-20 flex gap-4 bg-white/10 backdrop-blur-sm px-5 py-3 rounded-2xl border border-white/30 shadow-lg">
+        {slides.map((item, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            className={`relative w-16 h-20 md:w-20 md:h-24 overflow-hidden rounded-xl border transition-all duration-300 cursor-pointer ${
+              current === i
+                ? "border-[#d3b58f] scale-110 shadow-md"
+                : "border-white/40 hover:border-[#e0d1b2] hover:scale-105"
+            }`}
+          >
+            <Image
+              src={item.img}
+              alt={item.title}
+              fill
+              className="object-cover object-top"
+            />
+            {current === i && <div className="absolute inset-0 bg-black/15" />}
+          </button>
+        ))}
       </div>
     </section>
   );
