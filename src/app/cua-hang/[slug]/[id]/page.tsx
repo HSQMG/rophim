@@ -196,7 +196,7 @@ export default function ProductDetailPage() {
             onClick={(e) => e.stopPropagation()}
           >
             <Image
-              src="/image/size/bao quan.jpg"
+              src="/image/size/bao-quan.jpg"
               alt="Hướng dẫn bảo quản và giặt"
               width={600}
               height={600}
