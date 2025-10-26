@@ -19,7 +19,7 @@ export default function CollectionCarousel() {
     },
     {
       title: "LINH HOẠT VÀ DỄ PHỐI",
-      desc: "Mona TEEN là dành cho tuổi teen. Các thiết kế đã được tạo ra theo xu hướng hiện tại, đồng thời để lại không gian cho sự biểu hiện cá nhân của thanh thiếu niên.",
+      desc: "Với chất liệu cao cấp, form dáng đa dạng, UNID mang đến những thiết kế dễ phối cho nhiều hoàn cảnh. Thời trang trở nên gần gũi hơn, tự nhiên hơn như chính nhịp sống Việt mỗi ngày.",
       img: "https://millamona.monamedia.net/wp-content/uploads/2024/01/ab_collection_003.jpg",
     },
   ];
