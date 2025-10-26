@@ -2,12 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import {
-  motion,
-  AnimatePresence,
-  useMotionValue,
-  useAnimation,
-} from "framer-motion";
+import { motion, AnimatePresence, PanInfo } from "framer-motion";
 
 interface Slide {
   title: string;
@@ -19,9 +14,7 @@ export default function HeroSection() {
   const [slides, setSlides] = useState<Slide[]>([]);
   const [current, setCurrent] = useState(0);
 
-  const x = useMotionValue(0);
-  const controls = useAnimation();
-
+  // --- Load slides ---
   useEffect(() => {
     fetch("/api/hero")
       .then((res) => res.json())
@@ -29,80 +22,73 @@ export default function HeroSection() {
       .catch(() => setSlides([]));
   }, []);
 
-  // Tự động chuyển ảnh mỗi 6s
+  // --- Điều khiển phím trái/phải trên desktop ---
   useEffect(() => {
-    if (slides.length === 0) return;
-    const interval = setInterval(() => nextSlide(), 6000);
-    return () => clearInterval(interval);
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (slides.length === 0) return;
+      if (e.key === "ArrowRight") {
+        nextSlide();
+      } else if (e.key === "ArrowLeft") {
+        prevSlide();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [slides]);
 
-  const nextSlide = () => {
-    setCurrent((prev) => (prev + 1) % slides.length);
-    controls.start({ x: 0 });
-  };
+  const nextSlide = () => setCurrent((prev) => (prev + 1) % slides.length);
+  const prevSlide = () =>
+    setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
 
-  const prevSlide = () => {
-    setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
-    controls.start({ x: 0 });
+  // --- Vuốt kéo (mobile) ---
+  const handleDragEnd = (_: any, info: PanInfo) => {
+    const offset = info.offset.x;
+    const velocity = info.velocity.x;
+    const swipe = Math.abs(offset) > 80 || Math.abs(velocity) > 500;
+
+    if (!swipe) return;
+    if (offset < 0) nextSlide();
+    else prevSlide();
   };
 
   if (slides.length === 0) return null;
 
-  const handleDragEnd = (_: any, info: any) => {
-    const offset = info.offset.x;
-    const velocity = info.velocity.x;
-
-    // Nếu kéo mạnh hoặc kéo đủ xa thì đổi ảnh
-    if (offset > 100 || velocity > 500) {
-      prevSlide();
-    } else if (offset < -100 || velocity < -500) {
-      nextSlide();
-    } else {
-      // Nếu kéo nhẹ → quay về giữa
-      controls.start({ x: 0, transition: { type: "spring", stiffness: 300 } });
-    }
-  };
-
   return (
-    <section className="relative w-full h-[90vh] sm:h-screen overflow-hidden bg-[#f9f8f5]">
+    <section className="relative w-full h-[90vh] sm:h-screen overflow-hidden bg-[#f9f8f5] select-none">
+      {/* --- Ảnh nền chính có thể kéo --- */}
       <AnimatePresence mode="wait">
         <motion.div
           key={slides[current].img}
-          className="absolute inset-0"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1 }}
+          drag="x"
+          dragConstraints={{ left: 0, right: 0 }}
+          dragElastic={0.25}
+          onDragEnd={handleDragEnd}
+          whileTap={{ scale: 0.97 }}
+          initial={{ opacity: 0, x: 60 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -60 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="absolute inset-0 touch-pan-y cursor-grab active:cursor-grabbing"
         >
-          <motion.div
-            drag="x"
-            style={{ x }}
-            animate={controls}
-            dragConstraints={{ left: 0, right: 0 }}
-            dragElastic={0.2}
-            onDragEnd={handleDragEnd}
-            className="absolute inset-0 cursor-grab active:cursor-grabbing"
-          >
-            <Image
-              src={slides[current].img}
-              alt={slides[current].title}
-              fill
-              className="object-cover object-center sm:object-top select-none"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#00000070] via-[#00000020] to-transparent" />
-          </motion.div>
+          <Image
+            src={slides[current].img}
+            alt={slides[current].title}
+            fill
+            priority
+            className="object-cover object-center sm:object-top"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#00000070] via-[#00000020] to-transparent" />
         </motion.div>
       </AnimatePresence>
 
       {/* --- Text Overlay --- */}
-      <div className="relative z-10 flex flex-col justify-center h-full px-4 sm:px-8 md:px-20 text-white pointer-events-none">
+      <div className="relative z-10 flex flex-col justify-center h-full px-4 sm:px-8 md:px-20 text-white">
         <motion.h1
           key={`title-${current}`}
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -40 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
           className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-serif tracking-wide leading-snug sm:leading-tight drop-shadow-lg max-w-[90%] sm:max-w-[80%]"
         >
           {slides[current].title}
@@ -113,14 +99,14 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
           className="mt-3 sm:mt-5 text-base sm:text-lg md:text-xl text-[#f4ede2] max-w-[95%] sm:max-w-2xl leading-relaxed drop-shadow-sm"
         >
           {slides[current].desc}
         </motion.p>
       </div>
 
-      {/* --- Frame image (ẩn bớt trên mobile) --- */}
+      {/* --- Frame ảnh (ẩn trên mobile) --- */}
       <div className="hidden sm:flex absolute bottom-0 right-6 md:right-20 items-end justify-center h-full pointer-events-none">
         <motion.div
           key={`frame-${current}`}
