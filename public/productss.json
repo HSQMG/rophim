@@ -7,6 +7,12 @@
     "image": "/image/anh-san-pham/ao-khoac/u-akl025-(3).jpg",
     "hoverImage": "/image/anh-san-pham/ao-khoac/u-akl025-(2).jpg",
     "imgsize": "/image/size/ao-khoac.jpg",
+    "images": [
+      "/image/anh-san-pham/ao-khoac/u-akl025-(1).jpg",
+      "/image/anh-san-pham/ao-khoac/u-akl025-(2).jpg",
+      "/image/anh-san-pham/ao-khoac/u-akl025-(3).jpg",
+      "/image/anh-san-pham/ao-khoac/u-akl025-(4).jpg"
+    ],
     "color": "Xanh đậm, xanh nhạt",
     "size": ["XS", "S", "M", "L", "XL", "XXL"],
     "material": "Jean Cotton",

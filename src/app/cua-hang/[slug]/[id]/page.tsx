@@ -3,7 +3,7 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Truck, Ruler, ShieldCheck } from "lucide-react"; // thêm icon ShieldCheck
+import { Truck, Ruler, ShieldCheck } from "lucide-react";
 import { Playfair_Display } from "next/font/google";
 
 const playfair = Playfair_Display({
@@ -16,7 +16,8 @@ interface Product {
   name: string;
   price: number;
   category: string;
-  image: string;
+  image: string; // ảnh chính
+  images?: string[]; // ảnh phụ
   hoverImage?: string;
   material?: string;
   color?: string;
@@ -50,20 +51,46 @@ export default function ProductDetailPage() {
       </main>
     );
 
+  // ✅ Gộp ảnh chính + ảnh phụ
+  const allImages =
+    product.images && product.images.length > 0
+      ? [product.image, ...product.images]
+      : [product.image];
+
   return (
     <main className="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-14 text-[#2b2b2b]">
       <div className="flex flex-col lg:flex-row gap-10 sm:gap-12">
-        <div className="relative w-full lg:w-1/2 h-[420px] sm:h-[520px] lg:h-[600px] rounded-xl overflow-hidden bg-gray-50 shadow-sm">
-          <Image
-            src={product.image}
-            alt={product.name}
-            fill
-            className="object-cover object-center"
-            sizes="(max-width:768px) 100vw, 50vw"
-          />
+        {/* --- Gallery ảnh: hiển thị ngang, tối đa 2 dòng --- */}
+        <div className="w-full lg:w-1/2">
+          <div
+            className="
+              grid grid-cols-2 gap-4
+              rounded-xl bg-gray-50 shadow-sm p-3
+              overflow-hidden
+              max-h-[640px]
+            "
+          >
+            {allImages.map((img, index) => (
+              <div
+                key={index}
+                className="relative flex items-center justify-center rounded-lg overflow-hidden bg-white"
+                style={{ height: "300px" }} // mỗi ảnh cao 300px
+              >
+                <Image
+                  src={img}
+                  alt={`${product.name} ${index + 1}`}
+                  fill
+                  className="object-contain hover:scale-105 transition-transform duration-300"
+                  sizes="(max-width:768px) 100vw, 50vw"
+                />
+              </div>
+            ))}
+          </div>
         </div>
 
+        {/* --- Thông tin sản phẩm --- */}
         <div className="flex-1 space-y-6">
+          {/* Tên + Giá */}
           <div>
             <h1
               className={`${playfair.className} text-2xl sm:text-3xl font-serif font-bold mb-3 uppercase tracking-wide`}
@@ -75,6 +102,7 @@ export default function ProductDetailPage() {
             </p>
           </div>
 
+          {/* Mô tả */}
           {product.description && (
             <div className="border-b border-gray-200 pb-4">
               <h2 className="text-base font-semibold text-[#2b2b2b] mb-3 uppercase tracking-wide">
@@ -102,40 +130,27 @@ export default function ProductDetailPage() {
               </div>
             </div>
           )}
-          <div className="divide-y divide-gray-200 border-t border-b">
-            <div
-              className="flex items-center justify-between py-3 cursor-pointer hover:text-[#6d4c2f]"
-              onClick={() => setShowSizeGuide(true)}
-            >
-              <div className="flex items-center gap-2 text-sm">
-                <Ruler size={18} />
-                <span>Hướng dẫn chọn kích thước</span>
-              </div>
-              <span className="text-xs text-gray-500">▼</span>
-            </div>
 
-            <div
-              className="flex items-center justify-between py-3 cursor-pointer hover:text-[#6d4c2f]"
+          {/* Các mục phụ */}
+          <div className="divide-y divide-gray-200 border-t border-b">
+            <GuideItem
+              icon={<Ruler size={18} />}
+              label="Hướng dẫn chọn kích thước"
+              onClick={() => setShowSizeGuide(true)}
+            />
+            <GuideItem
+              icon={<Truck size={18} />}
+              label="Hướng dẫn bảo quản và giặt"
               onClick={() => setShowCareGuide(true)}
-            >
-              <div className="flex items-center gap-2 text-sm">
-                <Truck size={18} />
-                <span>Hướng dẫn bảo quản và giặt</span>
-              </div>
-              <span className="text-xs text-gray-500">▼</span>
-            </div>
-            <div
-              className="flex items-center justify-between py-3 cursor-pointer hover:text-[#6d4c2f]"
+            />
+            <GuideItem
+              icon={<ShieldCheck size={18} />}
+              label="Cam kết từ thương hiệu"
               onClick={() => setShowCommitment(true)}
-            >
-              <div className="flex items-center gap-2 text-sm">
-                <ShieldCheck size={18} />
-                <span>Cam kết từ thương hiệu</span>
-              </div>
-              <span className="text-xs text-gray-500">▼</span>
-            </div>
+            />
           </div>
 
+          {/* Chi tiết */}
           <div className="text-sm text-gray-600 space-y-2 pt-4">
             <p>
               <span className="font-semibold text-gray-800">Chất liệu:</span>{" "}
@@ -151,6 +166,7 @@ export default function ProductDetailPage() {
             </p>
           </div>
 
+          {/* Danh mục */}
           <div className="text-sm text-gray-500 border-t border-gray-200 pt-4">
             <span className="font-semibold text-gray-700">Danh mục:</span>{" "}
             <Link
@@ -163,6 +179,7 @@ export default function ProductDetailPage() {
         </div>
       </div>
 
+      {/* Popup hướng dẫn */}
       {showSizeGuide && (
         <Popup onClose={() => setShowSizeGuide(false)}>
           {product.imgsize ? (
@@ -208,6 +225,7 @@ export default function ProductDetailPage() {
   );
 }
 
+/* ---------------- COMPONENT PHỤ ---------------- */
 function Popup({
   children,
   onClose,
@@ -232,6 +250,29 @@ function Popup({
           ✕
         </button>
       </div>
+    </div>
+  );
+}
+
+function GuideItem({
+  icon,
+  label,
+  onClick,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  onClick: () => void;
+}) {
+  return (
+    <div
+      className="flex items-center justify-between py-3 cursor-pointer hover:text-[#6d4c2f]"
+      onClick={onClick}
+    >
+      <div className="flex items-center gap-2 text-sm">
+        {icon}
+        <span>{label}</span>
+      </div>
+      <span className="text-xs text-gray-500">▼</span>
     </div>
   );
 }
