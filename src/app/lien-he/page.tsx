@@ -60,16 +60,14 @@ export default function ContactPage() {
   return (
     <section className="min-h-screen py-12 sm:py-20 px-4 sm:px-6 bg-white text-[#3e2c1c]">
       <div className="max-w-6xl mx-auto space-y-16">
-        {/* --- THÔNG TIN & FORM --- */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16">
-          {/* --- CỘT TRÁI (Thông tin liên hệ) --- */}
           <div>
             <h2 className="text-2xl sm:text-3xl font-bold mb-4">
               THÔNG TIN LIÊN HỆ
             </h2>
             <p className="text-gray-600 mb-8 text-sm sm:text-base leading-relaxed">
-              Chúng tôi làm việc từ <strong>9 giờ sáng - 6 giờ tối</strong>, từ{" "}
-              <strong>thứ 2 đến thứ 6</strong> hàng tuần.
+              Chúng tôi làm việc từ <strong>8 giờ sáng - 5 giờ tối</strong>, từ{" "}
+              <strong>thứ 2 đến thứ 7</strong> hàng tuần.
             </p>
 
             <div className="space-y-6">
@@ -81,7 +79,7 @@ export default function ContactPage() {
                     href="tel:0984320202"
                     className="hover:text-[#6d4c2f] transition"
                   >
-                    1900 636 648
+                    09384320202
                   </a>
                 </div>
               </div>
@@ -98,22 +96,8 @@ export default function ContactPage() {
                   </a>
                 </div>
               </div>
-
-              <div>
-                <h4 className="font-semibold mb-1">Địa chỉ</h4>
-                <div className="flex items-start space-x-2 text-gray-700 text-sm sm:text-base leading-relaxed">
-                  <FaMapMarkerAlt className="text-[#3e2c1c] mt-1 shrink-0" />
-                  <p>
-                    Công ty TNHH – MONA MEDIA <br />
-                    1073/23 Đ. Cách Mạng Tháng 8, P.7, Tân Bình, TP.HCM 72100,
-                    Việt Nam
-                  </p>
-                </div>
-              </div>
             </div>
           </div>
-
-          {/* --- FORM HỖ TRỢ --- */}
           <form
             onSubmit={handleSubmit}
             className="flex flex-col space-y-4 text-gray-700"
