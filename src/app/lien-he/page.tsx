@@ -78,7 +78,7 @@ export default function ContactPage() {
                 <div className="flex items-center space-x-2 text-gray-700 text-sm sm:text-base">
                   <FaPhoneAlt className="text-[#3e2c1c]" />
                   <a
-                    href="tel:1900636648"
+                    href="tel:0984320202"
                     className="hover:text-[#6d4c2f] transition"
                   >
                     1900 636 648

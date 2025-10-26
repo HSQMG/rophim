@@ -68,16 +68,10 @@ export default function FeaturedCategories() {
       {/* Danh mục chia hàng */}
       <div className="max-w-6xl mx-auto px-3 sm:px-6 flex flex-col gap-10 sm:gap-12">
         {rows.map((row, rowIndex) => {
-          const isLast = rowIndex === rows.length - 1;
           const isTwoItems = row.length === 2;
           const isOneItem = row.length === 1;
-
-          // Xử lý căn giữa hàng cuối
-          const justifyClass = isOneItem
-            ? "justify-center"
-            : isTwoItems
-            ? "justify-center"
-            : "justify-between";
+          const justifyClass =
+            isOneItem || isTwoItems ? "justify-center" : "justify-between";
 
           return (
             <div
@@ -92,23 +86,22 @@ export default function FeaturedCategories() {
                     ${isTwoItems ? "sm:w-[42%]" : ""}
                     ${isOneItem ? "sm:w-[60%]" : ""}
                   `}
-                  style={{
-                    minHeight: "480px", // toàn card cao đồng nhất
-                  }}
+                  style={{ minHeight: "480px" }}
                 >
-                  {/* Ảnh danh mục */}
+                  {/* Ảnh danh mục — dùng aspect-ratio để không crop */}
                   <Link
                     href={`/cua-hang/${slugify(cat.title)}`}
-                    className="block relative w-full h-[320px] overflow-hidden rounded-t-xl sm:rounded-t-2xl"
+                    className="block w-full overflow-hidden bg-[#fdf9f6]"
                   >
-                    <Image
-                      src={cat.image}
-                      alt={cat.title}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#fdf9f6]/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+                    <div className="relative w-full aspect-[3/4] flex items-center justify-center">
+                      <Image
+                        src={cat.image}
+                        alt={cat.title}
+                        width={600}
+                        height={800}
+                        className="object-contain w-full h-full transition-transform duration-700 group-hover:scale-105"
+                      />
+                    </div>
                   </Link>
 
                   {/* Nội dung danh mục */}
