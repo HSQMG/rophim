@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence, PanInfo } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface Slide {
   title: string;
@@ -26,11 +27,8 @@ export default function HeroSection() {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (slides.length === 0) return;
-      if (e.key === "ArrowRight") {
-        nextSlide();
-      } else if (e.key === "ArrowLeft") {
-        prevSlide();
-      }
+      if (e.key === "ArrowRight") nextSlide();
+      else if (e.key === "ArrowLeft") prevSlide();
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
@@ -45,7 +43,6 @@ export default function HeroSection() {
     const offset = info.offset.x;
     const velocity = info.velocity.x;
     const swipe = Math.abs(offset) > 80 || Math.abs(velocity) > 500;
-
     if (!swipe) return;
     if (offset < 0) nextSlide();
     else prevSlide();
@@ -123,6 +120,22 @@ export default function HeroSection() {
             className="object-cover object-top"
           />
         </motion.div>
+      </div>
+
+      {/* --- Nút điều hướng trên mobile --- */}
+      <div className="absolute top-1/2 left-0 right-0 flex justify-between items-center px-3 z-30 sm:hidden -translate-y-1/2">
+        <button
+          onClick={prevSlide}
+          className="bg-black/40 p-2 rounded-full backdrop-blur-sm hover:bg-black/60 transition shadow-md active:scale-95"
+        >
+          <ChevronLeft className="w-6 h-6 text-white" />
+        </button>
+        <button
+          onClick={nextSlide}
+          className="bg-black/40 p-2 rounded-full backdrop-blur-sm hover:bg-black/60 transition shadow-md active:scale-95"
+        >
+          <ChevronRight className="w-6 h-6 text-white" />
+        </button>
       </div>
 
       {/* --- Thumbnails --- */}
