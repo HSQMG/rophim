@@ -43,11 +43,14 @@ export default function FeaturedCategories() {
   }, []);
 
   if (categories.length === 0) return null;
-
-  // Chia 3 item mỗi hàng
   const rows: Category[][] = [];
-  for (let i = 0; i < categories.length; i += 3) {
-    rows.push(categories.slice(i, i + 3));
+  if (categories.length === 4) {
+    rows.push(categories.slice(0, 2));
+    rows.push(categories.slice(2, 4));
+  } else {
+    for (let i = 0; i < categories.length; i += 3) {
+      rows.push(categories.slice(i, i + 3));
+    }
   }
 
   return (
