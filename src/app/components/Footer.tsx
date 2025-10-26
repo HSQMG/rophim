@@ -28,11 +28,11 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-14 items-start">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-center sm:text-left">
           <div>
-            <h2 className="text-white text-2xl mb-4 font-bold">MILLAMONA</h2>
+            <h2 className="text-white text-2xl mb-4 font-bold">Unid</h2>
             <p className="text-sm leading-relaxed text-gray-400">
-              Millamona là thương hiệu thời trang cao cấp dành cho phụ nữ hiện
-              đại. Chúng tôi mang đến những sản phẩm tinh tế, sang trọng và đẳng
-              cấp, giúp tôn lên vẻ đẹp của người phụ nữ.
+              Unid là thương hiệu thời trang cao cấp dành cho phụ nữ hiện đại.
+              Chúng tôi mang đến những sản phẩm tinh tế, sang trọng và đẳng cấp,
+              giúp tôn lên vẻ đẹp của người phụ nữ.
             </p>
           </div>
 
@@ -119,7 +119,7 @@ export default function Footer() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 mt-10 sm:mt-12 border-t border-gray-800 pt-6 text-center text-xs sm:text-sm text-gray-500">
-        © {new Date().getFullYear()} Millamona. All rights reserved.
+        © {new Date().getFullYear()} Unid. All rights reserved.
       </div>
     </footer>
   );
