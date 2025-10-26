@@ -7,6 +7,7 @@ import {
   User,
   Search,
   Menu,
+  X,
   ChevronDown,
   ChevronRight,
 } from "lucide-react";
@@ -45,6 +46,8 @@ export default function Header() {
             priority
           />
         </Link>
+
+        {/* -------- NAV DESKTOP -------- */}
         <nav className="hidden md:flex space-x-10 text-[15px] font-medium text-[#3e2c1c]">
           <Link href="/" className="hover:text-[#c7a17a] transition">
             Trang chủ
@@ -52,11 +55,14 @@ export default function Header() {
           <Link href="/gioi-thieu" className="hover:text-[#c7a17a] transition">
             Giới thiệu
           </Link>
+
+          {/* Dropdown desktop */}
           <div className="relative group">
             <button className="flex items-center space-x-1 hover:text-[#c7a17a] transition">
               <span>Cửa hàng</span>
               <ChevronDown size={16} />
             </button>
+
             <div className="absolute left-1/2 -translate-x-1/2 top-full bg-white rounded-2xl shadow-2xl mt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 translate-y-3 transition-all duration-300 ease-out border border-gray-100">
               <div className="relative flex">
                 <div className="bg-[#faf8f6] py-8 px-6 w-[280px] border-r border-gray-200">
@@ -113,7 +119,7 @@ export default function Header() {
                             </div>
                             <div className="w-[200px] h-[260px] relative rounded-xl overflow-hidden shadow-md">
                               <Image
-                                src="https://millamona.monamedia.net/wp-content/uploads/2024/02/big-sale-discounts-products-e1706775560195.jpg"
+                                src={group.image}
                                 alt={group.group}
                                 fill
                                 className="object-cover hover:scale-105 transition-transform duration-700"
@@ -134,7 +140,7 @@ export default function Header() {
           </Link>
         </nav>
 
-        {/* ICONS */}
+        {/* -------- ICONS -------- */}
         <div className="flex items-center space-x-5">
           <button className="cursor-pointer hover:text-[#c7a17a] transition">
             <Search size={22} />
@@ -149,15 +155,92 @@ export default function Header() {
             </span>
           </button>
 
-          {/* MENU MOBILE */}
+          {/* Nút mở menu mobile */}
           <button
             className="md:hidden cursor-pointer"
             onClick={() => setMenuOpen(!menuOpen)}
           >
-            <Menu size={24} />
+            {menuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
+
+      {/* -------- MENU MOBILE -------- */}
+      {menuOpen && (
+        <div className="md:hidden bg-white border-t border-gray-100 shadow-lg px-6 py-4 animate-slideDown">
+          <ul className="space-y-4 text-[#3e2c1c] font-medium">
+            <li>
+              <Link href="/" onClick={() => setMenuOpen(false)}>
+                Trang chủ
+              </Link>
+            </li>
+            <li>
+              <Link href="/gioi-thieu" onClick={() => setMenuOpen(false)}>
+                Giới thiệu
+              </Link>
+            </li>
+
+            {/* Accordion cho danh mục */}
+            <li>
+              <button
+                className="flex items-center justify-between w-full"
+                onClick={() => setActiveGroup(activeGroup === -1 ? null : -1)}
+              >
+                <span>Cửa hàng</span>
+                <ChevronDown
+                  className={`transform transition-transform ${
+                    activeGroup === -1 ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+
+              {activeGroup === -1 && (
+                <div className="mt-2 pl-4 space-y-3">
+                  {categories.map((group, i) => (
+                    <div key={i}>
+                      <button
+                        className="flex items-center justify-between w-full text-sm"
+                        onClick={() =>
+                          setActiveGroup(activeGroup === i ? -1 : i)
+                        }
+                      >
+                        <span>{group.group}</span>
+                        <ChevronRight
+                          className={`transition-transform ${
+                            activeGroup === i ? "rotate-90 text-[#c7a17a]" : ""
+                          }`}
+                          size={16}
+                        />
+                      </button>
+                      {activeGroup === i && (
+                        <ul className="pl-4 mt-2 space-y-2 text-gray-600 text-sm">
+                          {group.items.map((item, j) => (
+                            <li key={j}>
+                              <Link
+                                href={`/cua-hang/${item.slug}`}
+                                onClick={() => setMenuOpen(false)}
+                                className="block hover:text-[#c7a17a] transition"
+                              >
+                                {item.name}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </li>
+
+            <li>
+              <Link href="/lien-he" onClick={() => setMenuOpen(false)}>
+                Liên hệ
+              </Link>
+            </li>
+          </ul>
+        </div>
+      )}
     </header>
   );
 }
