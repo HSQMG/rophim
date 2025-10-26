@@ -113,6 +113,7 @@ export default function CategoryPage() {
 
   return (
     <main className={`${lora.className} bg-white text-[#2b2b2b]`}>
+      {/* ----- Breadcrumb ----- */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 text-sm text-gray-500">
         <div className="flex items-center space-x-2 flex-wrap">
           <Link href="/" className="hover:text-black">
@@ -127,21 +128,24 @@ export default function CategoryPage() {
         </div>
       </div>
 
+      {/* ----- Title ----- */}
       <section className="border-t border-gray-200 py-6 sm:py-8 text-center">
         <h1 className="text-2xl sm:text-4xl font-bold text-[#2b2b2b] uppercase tracking-wide">
           {displayName}
         </h1>
       </section>
 
+      {/* ----- Filter bar ----- */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-6 flex items-center justify-between text-sm text-gray-600 border-b border-gray-200 pb-4">
         <div className="flex items-center gap-3">
+          {/* Nút mở sidebar mobile */}
           <button
             onClick={() => setShowSidebar(true)}
             className="lg:hidden flex items-center gap-1 text-[#3e2c1c] border border-gray-300 px-3 py-1.5 rounded-md hover:bg-gray-50 transition"
           >
             <SlidersHorizontal size={16} />
-            Bộ lọc
           </button>
+
           <span className="hidden sm:inline-block">
             Hiển thị {filtered.length} kết quả
           </span>
@@ -186,9 +190,11 @@ export default function CategoryPage() {
         </div>
       </div>
 
+      {/* ----- Layout (Sidebar + Products) ----- */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-16 grid grid-cols-1 lg:grid-cols-4 gap-8 sm:gap-10">
+        {/* --- SIDEBAR --- */}
         <aside
-          className={`fixed lg:static top-0 left-0 z-50 lg:z-auto w-3/4 sm:w-1/2 lg:w-auto h-full lg:h-auto bg-white border-r border-gray-200 shadow-lg lg:shadow-none p-5 lg:p-0 overflow-y-auto transition-transform duration-300 ${
+          className={`fixed lg:static top-0 left-0 z-[60] lg:z-auto w-[80%] sm:w-[60%] lg:w-auto h-full lg:h-auto bg-white border-r border-gray-200 shadow-lg lg:shadow-none p-5 lg:p-0 overflow-y-auto transition-transform transform-gpu duration-500 ease-in-out ${
             showSidebar ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
           }`}
         >
@@ -198,7 +204,7 @@ export default function CategoryPage() {
               onClick={() => setShowSidebar(false)}
               className="text-gray-500 hover:text-black"
             >
-              <X size={20} />
+              <X size={22} />
             </button>
           </div>
 
@@ -223,6 +229,7 @@ export default function CategoryPage() {
                     }`}
                   />
                 </button>
+
                 <ul
                   className={`pl-4 mt-2 space-y-2 overflow-hidden transition-all duration-500 ease-in-out ${
                     activeGroup === i
@@ -250,12 +257,16 @@ export default function CategoryPage() {
             ))}
           </ul>
         </aside>
+
+        {/* Overlay cho mobile */}
         {showSidebar && (
           <div
             onClick={() => setShowSidebar(false)}
-            className="fixed inset-0 bg-black/30 lg:hidden z-40"
+            className="fixed inset-0 bg-black/40 backdrop-blur-[1px] lg:hidden z-50"
           />
         )}
+
+        {/* --- PRODUCTS --- */}
         <section className="lg:col-span-3">
           {filtered.length === 0 ? (
             <p className="text-gray-500 italic text-center py-20">
