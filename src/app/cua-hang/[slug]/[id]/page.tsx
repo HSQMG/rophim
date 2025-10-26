@@ -3,7 +3,7 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Truck, Ruler } from "lucide-react";
+import { Truck, Ruler, ShieldCheck } from "lucide-react"; // thêm icon ShieldCheck
 import { Playfair_Display } from "next/font/google";
 
 const playfair = Playfair_Display({
@@ -31,6 +31,7 @@ export default function ProductDetailPage() {
   const [showMore, setShowMore] = useState(false);
   const [showSizeGuide, setShowSizeGuide] = useState(false);
   const [showCareGuide, setShowCareGuide] = useState(false);
+  const [showCommitment, setShowCommitment] = useState(false);
 
   useEffect(() => {
     fetch("/productss.json")
@@ -89,7 +90,6 @@ export default function ProductDetailPage() {
                     __html: product.description,
                   }}
                 />
-
                 {!showMore && (
                   <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent pointer-events-none" />
                 )}
@@ -102,7 +102,6 @@ export default function ProductDetailPage() {
               </div>
             </div>
           )}
-
           <div className="divide-y divide-gray-200 border-t border-b">
             <div
               className="flex items-center justify-between py-3 cursor-pointer hover:text-[#6d4c2f]"
@@ -122,6 +121,16 @@ export default function ProductDetailPage() {
               <div className="flex items-center gap-2 text-sm">
                 <Truck size={18} />
                 <span>Hướng dẫn bảo quản và giặt</span>
+              </div>
+              <span className="text-xs text-gray-500">▼</span>
+            </div>
+            <div
+              className="flex items-center justify-between py-3 cursor-pointer hover:text-[#6d4c2f]"
+              onClick={() => setShowCommitment(true)}
+            >
+              <div className="flex items-center gap-2 text-sm">
+                <ShieldCheck size={18} />
+                <span>Cam kết từ thương hiệu</span>
               </div>
               <span className="text-xs text-gray-500">▼</span>
             </div>
@@ -155,62 +164,74 @@ export default function ProductDetailPage() {
       </div>
 
       {showSizeGuide && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
-          onClick={() => setShowSizeGuide(false)}
-        >
-          <div
-            className="bg-white p-3 sm:p-4 rounded-lg shadow-lg relative w-[90%] sm:max-w-[600px] max-h-[85%] overflow-auto"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {product.imgsize ? (
-              <Image
-                src={product.imgsize}
-                alt={`Bảng size cho ${product.name}`}
-                width={600}
-                height={600}
-                className="mx-auto rounded-md"
-              />
-            ) : (
-              <p className="text-sm italic text-gray-500 text-center py-8">
-                Đang cập nhật hướng dẫn kích thước...
-              </p>
-            )}
-            <button
-              onClick={() => setShowSizeGuide(false)}
-              className="absolute top-2 right-3 text-gray-500 hover:text-black text-lg font-bold cursor-pointer transition-transform duration-200 hover:scale-110"
-            >
-              ✕
-            </button>
-          </div>
-        </div>
-      )}
-
-      {showCareGuide && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
-          onClick={() => setShowCareGuide(false)}
-        >
-          <div
-            className="bg-white p-3 sm:p-4 rounded-lg shadow-lg relative w-[90%] sm:max-w-[600px] max-h-[85%] overflow-auto"
-            onClick={(e) => e.stopPropagation()}
-          >
+        <Popup onClose={() => setShowSizeGuide(false)}>
+          {product.imgsize ? (
             <Image
-              src="/image/size/bao-quan.jpg"
-              alt="Hướng dẫn bảo quản và giặt"
+              src={product.imgsize}
+              alt={`Bảng size cho ${product.name}`}
               width={600}
               height={600}
               className="mx-auto rounded-md"
             />
-            <button
-              onClick={() => setShowCareGuide(false)}
-              className="absolute top-2 right-3 text-gray-500 hover:text-black text-lg font-bold cursor-pointer transition-transform duration-200 hover:scale-110"
-            >
-              ✕
-            </button>
-          </div>
-        </div>
+          ) : (
+            <p className="text-sm italic text-gray-500 text-center py-8">
+              Đang cập nhật hướng dẫn kích thước...
+            </p>
+          )}
+        </Popup>
+      )}
+
+      {showCareGuide && (
+        <Popup onClose={() => setShowCareGuide(false)}>
+          <Image
+            src="/image/size/bao-quan.jpg"
+            alt="Hướng dẫn bảo quản và giặt"
+            width={600}
+            height={600}
+            className="mx-auto rounded-md"
+          />
+        </Popup>
+      )}
+
+      {showCommitment && (
+        <Popup onClose={() => setShowCommitment(false)}>
+          <Image
+            src="/image/size/cam-ket.jpg"
+            alt="Cam kết từ thương hiệu"
+            width={600}
+            height={600}
+            className="mx-auto rounded-md"
+          />
+        </Popup>
       )}
     </main>
+  );
+}
+
+function Popup({
+  children,
+  onClose,
+}: {
+  children: React.ReactNode;
+  onClose: () => void;
+}) {
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <div
+        className="bg-white p-3 sm:p-4 rounded-lg shadow-lg relative w-[90%] sm:max-w-[600px] max-h-[85%] overflow-auto"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {children}
+        <button
+          onClick={onClose}
+          className="absolute top-2 right-3 text-gray-500 hover:text-black text-lg font-bold cursor-pointer transition-transform duration-200 hover:scale-110"
+        >
+          ✕
+        </button>
+      </div>
+    </div>
   );
 }

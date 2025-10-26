@@ -38,7 +38,6 @@ export default function HeroSection() {
   const prevSlide = () =>
     setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
 
-  // --- Vuốt kéo (mobile) ---
   const handleDragEnd = (_: any, info: PanInfo) => {
     const offset = info.offset.x;
     const velocity = info.velocity.x;
@@ -52,7 +51,6 @@ export default function HeroSection() {
 
   return (
     <section className="relative w-full h-[90vh] sm:h-screen overflow-hidden bg-[#f9f8f5] select-none">
-      {/* --- Ảnh nền chính có thể kéo --- */}
       <AnimatePresence mode="wait">
         <motion.div
           key={slides[current].img}
@@ -78,7 +76,6 @@ export default function HeroSection() {
         </motion.div>
       </AnimatePresence>
 
-      {/* --- Text Overlay --- */}
       <div className="relative z-10 flex flex-col justify-center h-full px-4 sm:px-8 md:px-20 text-white">
         <motion.h1
           key={`title-${current}`}
@@ -103,7 +100,6 @@ export default function HeroSection() {
         </motion.p>
       </div>
 
-      {/* --- Frame ảnh (ẩn trên mobile) --- */}
       <div className="hidden sm:flex absolute bottom-0 right-6 md:right-20 items-end justify-center h-full pointer-events-none">
         <motion.div
           key={`frame-${current}`}
@@ -121,8 +117,6 @@ export default function HeroSection() {
           />
         </motion.div>
       </div>
-
-      {/* --- Nút điều hướng trên mobile --- */}
       <div className="absolute top-1/2 left-0 right-0 flex justify-between items-center px-3 z-30 sm:hidden -translate-y-1/2">
         <button
           onClick={prevSlide}
@@ -138,7 +132,6 @@ export default function HeroSection() {
         </button>
       </div>
 
-      {/* --- Thumbnails --- */}
       <div className="absolute bottom-4 sm:bottom-8 left-4 sm:left-10 z-20 flex gap-2 sm:gap-4 bg-white/10 backdrop-blur-sm px-3 sm:px-5 py-2 sm:py-3 rounded-xl sm:rounded-2xl border border-white/30 shadow-lg overflow-x-auto">
         {slides.map((item, i) => (
           <button
