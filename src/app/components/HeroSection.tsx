@@ -2,7 +2,12 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useMotionValue,
+  useAnimation,
+} from "framer-motion";
 
 interface Slide {
   title: string;
@@ -14,6 +19,9 @@ export default function HeroSection() {
   const [slides, setSlides] = useState<Slide[]>([]);
   const [current, setCurrent] = useState(0);
 
+  const x = useMotionValue(0);
+  const controls = useAnimation();
+
   useEffect(() => {
     fetch("/api/hero")
       .then((res) => res.json())
@@ -21,48 +29,80 @@ export default function HeroSection() {
       .catch(() => setSlides([]));
   }, []);
 
+  // Tự động chuyển ảnh mỗi 6s
   useEffect(() => {
     if (slides.length === 0) return;
-    const interval = setInterval(
-      () => setCurrent((prev) => (prev + 1) % slides.length),
-      6000
-    );
+    const interval = setInterval(() => nextSlide(), 6000);
     return () => clearInterval(interval);
   }, [slides]);
 
+  const nextSlide = () => {
+    setCurrent((prev) => (prev + 1) % slides.length);
+    controls.start({ x: 0 });
+  };
+
+  const prevSlide = () => {
+    setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
+    controls.start({ x: 0 });
+  };
+
   if (slides.length === 0) return null;
+
+  const handleDragEnd = (_: any, info: any) => {
+    const offset = info.offset.x;
+    const velocity = info.velocity.x;
+
+    // Nếu kéo mạnh hoặc kéo đủ xa thì đổi ảnh
+    if (offset > 100 || velocity > 500) {
+      prevSlide();
+    } else if (offset < -100 || velocity < -500) {
+      nextSlide();
+    } else {
+      // Nếu kéo nhẹ → quay về giữa
+      controls.start({ x: 0, transition: { type: "spring", stiffness: 300 } });
+    }
+  };
 
   return (
     <section className="relative w-full h-[90vh] sm:h-screen overflow-hidden bg-[#f9f8f5]">
-      {/* --- Background --- */}
       <AnimatePresence mode="wait">
         <motion.div
           key={slides[current].img}
+          className="absolute inset-0"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 1.2 }}
-          className="absolute inset-0"
+          transition={{ duration: 1 }}
         >
-          <Image
-            src={slides[current].img}
-            alt={slides[current].title}
-            fill
-            className="object-cover object-center sm:object-top"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#00000070] via-[#00000020] to-transparent" />
+          <motion.div
+            drag="x"
+            style={{ x }}
+            animate={controls}
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.2}
+            onDragEnd={handleDragEnd}
+            className="absolute inset-0 cursor-grab active:cursor-grabbing"
+          >
+            <Image
+              src={slides[current].img}
+              alt={slides[current].title}
+              fill
+              className="object-cover object-center sm:object-top select-none"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#00000070] via-[#00000020] to-transparent" />
+          </motion.div>
         </motion.div>
       </AnimatePresence>
 
       {/* --- Text Overlay --- */}
-      <div className="relative z-10 flex flex-col justify-center h-full px-4 sm:px-8 md:px-20 text-white">
+      <div className="relative z-10 flex flex-col justify-center h-full px-4 sm:px-8 md:px-20 text-white pointer-events-none">
         <motion.h1
           key={`title-${current}`}
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -40 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.6 }}
           className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-serif tracking-wide leading-snug sm:leading-tight drop-shadow-lg max-w-[90%] sm:max-w-[80%]"
         >
           {slides[current].title}
