@@ -5,7 +5,6 @@ const nextConfig: NextConfig = {
     domains: ["bazaarvietnam.vn", "hmkeyewear.com", "millamona.monamedia.net"],
   },
   reactStrictMode: true,
-  swcMinify: true,
   output: "standalone",
 };
 
