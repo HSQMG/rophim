@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Merriweather } from "next/font/google";
-
+import Link from "next/link";
 const merriweather = Merriweather({
   subsets: ["vietnamese"],
   weight: ["400", "700"],
@@ -22,39 +22,43 @@ export default function Footer() {
   };
 
   return (
-    <footer className={`bg-[#111111] text-gray-300 py-16 ${merriweather.className}`}>
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-        {/* LEFT SIDE */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-          {/* Cột 1 */}
+    <footer
+      className={`bg-[#111111] text-gray-300 py-12 sm:py-16 ${merriweather.className}`}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-14 items-start">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-center sm:text-left">
           <div>
             <h2 className="text-white text-2xl mb-4 font-bold">MILLAMONA</h2>
             <p className="text-sm leading-relaxed text-gray-400">
-              Millamona là thương hiệu thời trang cao cấp dành cho phụ nữ hiện đại.
-              Chúng tôi mang đến những sản phẩm tinh tế, sang trọng và đẳng cấp,
-              giúp tôn lên vẻ đẹp của người phụ nữ.
+              Millamona là thương hiệu thời trang cao cấp dành cho phụ nữ hiện
+              đại. Chúng tôi mang đến những sản phẩm tinh tế, sang trọng và đẳng
+              cấp, giúp tôn lên vẻ đẹp của người phụ nữ.
             </p>
           </div>
 
-          {/* Cột 2 */}
           <div>
             <h3 className="text-white font-semibold mb-4 text-sm tracking-wide">
               ĐIỀU HƯỚNG
             </h3>
             <ul className="space-y-2 text-sm">
-              {["TRANG CHỦ", "CỬA HÀNG", "VỀ MILLAMONA", "TIN TỨC", "LIÊN HỆ"].map(
-                (item, idx) => (
-                  <li key={idx}>
-                    <a href="#" className="hover:text-white transition-colors">
-                      {item}
-                    </a>
-                  </li>
-                )
-              )}
+              {[
+                { name: "TRANG CHỦ", href: "/" },
+                { name: "CỬA HÀNG", href: "/cua-hang" },
+                { name: "VỀ UNID", href: "/gioi-thieu" },
+                { name: "LIÊN HỆ", href: "/lien-he" },
+              ].map((item, idx) => (
+                <li key={idx}>
+                  <Link
+                    href={item.href}
+                    className="hover:text-white transition-colors block"
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Cột 3 */}
           <div>
             <h3 className="text-white font-semibold mb-4 text-sm tracking-wide">
               HỖ TRỢ
@@ -76,22 +80,20 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* RIGHT SIDE */}
-        <div className="flex flex-col justify-center items-start lg:items-end text-left lg:text-right">
+        <div className="flex flex-col justify-center items-center sm:items-start lg:items-end text-center sm:text-left lg:text-right w-full">
           <div className="max-w-md w-full">
-            <h3 className="text-white text-2xl md:text-3xl leading-snug mb-6 font-bold">
+            <h3 className="text-white text-xl sm:text-2xl md:text-3xl leading-snug mb-5 sm:mb-6 font-bold">
               NHẬN TẤT CẢ CÁC TIN TỨC
-              <br />
-              MỚI NHẤT & BẢN TIN.
+              <br className="hidden sm:block" />
+              MỚI NHẤT & BẢN TIN
             </h3>
 
-            {/* Newsletter Form */}
             <form
               onSubmit={handleSubmit}
               className="w-full"
               aria-label="newsletter-form"
             >
-              <div className="flex bg-white rounded-md overflow-hidden shadow-sm">
+              <div className="flex flex-col sm:flex-row bg-white rounded-md overflow-hidden shadow-sm">
                 <label htmlFor="email" className="sr-only">
                   Email
                 </label>
@@ -101,7 +103,7 @@ export default function Footer() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Nhập địa chỉ email..."
-                  className="flex-1 px-4 py-3 text-sm text-gray-800 placeholder-gray-500 focus:outline-none"
+                  className="flex-1 px-4 py-3 text-sm text-gray-800 placeholder-gray-500 focus:outline-none border-b sm:border-b-0 sm:border-r border-gray-200"
                   required
                 />
                 <button
@@ -116,8 +118,7 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* COPYRIGHT */}
-      <div className="max-w-7xl mx-auto px-6 mt-12 border-t border-gray-800 pt-6 text-center text-sm text-gray-500">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 mt-10 sm:mt-12 border-t border-gray-800 pt-6 text-center text-xs sm:text-sm text-gray-500">
         © {new Date().getFullYear()} Millamona. All rights reserved.
       </div>
     </footer>

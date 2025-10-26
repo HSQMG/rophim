@@ -23,8 +23,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="min-h-screen flex flex-col bg-[#fffaf8]">
-        <div className="fixed top-1/3 left-6 z-50">
-          <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-xl border border-gray-200 p-4 flex flex-col items-center space-y-5">
+        <div className="hidden sm:flex fixed top-1/2 -translate-y-1/2 left-2 md:left-4 z-50">
+          <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-xl border border-gray-200 p-3 flex flex-col items-center space-y-4">
             <a
               href="https://tiktok.com/@unid.official"
               target="_blank"
@@ -56,6 +56,43 @@ export default function RootLayout({
               className="bg-[#ff5722] text-white p-3 rounded-full hover:scale-110 transition-transform duration-300 shadow-md"
             >
               <FaShoppingBag size={20} />
+            </a>
+          </div>
+        </div>
+
+        <div className="sm:hidden fixed bottom-2 left-1/2 -translate-x-1/2 z-50">
+          <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-lg border border-gray-200 px-4 py-2 flex items-center justify-center space-x-5">
+            <a
+              href="https://tiktok.com/@unid.official"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-black text-white p-2 rounded-full hover:scale-110 transition-transform duration-300 shadow-md"
+            >
+              <FaTiktok size={18} />
+            </a>
+            <a
+              href="https://www.facebook.com/unid.official"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-blue-600 text-white p-2 rounded-full hover:scale-110 transition-transform duration-300 shadow-md"
+            >
+              <FaFacebookF size={18} />
+            </a>
+            <a
+              href="https://instagram.com/unid.official"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 text-white p-2 rounded-full hover:scale-110 transition-transform duration-300 shadow-md"
+            >
+              <FaInstagram size={18} />
+            </a>
+            <a
+              href="https://shopee.vn/unid.vn"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#ff5722] text-white p-2 rounded-full hover:scale-110 transition-transform duration-300 shadow-md"
+            >
+              <FaShoppingBag size={18} />
             </a>
           </div>
         </div>
