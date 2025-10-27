@@ -1,7 +1,6 @@
 import ProductEditor from "../components/ProductEditor";
 // import HeroEditor from "../components/HeroEditor";
 import FeaturedCategoriesEditor from "../components/FeaturedCategoriesEditor";
-import BlogSectionEditor from "../components/BlogSectionEditor";
 import FashionSectionEditor from "../components/FashionSectionEditor";
 import ProductHighlightEditor from "../components/ProductHighlightEditor";
 export default function EditProductsPage() {
@@ -11,7 +10,6 @@ export default function EditProductsPage() {
       <FeaturedCategoriesEditor />
       <ProductEditor />
       <FashionSectionEditor />
-      <BlogSectionEditor />
       <ProductHighlightEditor />
     </main>
   );
