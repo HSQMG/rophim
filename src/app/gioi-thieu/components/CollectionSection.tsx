@@ -10,17 +10,17 @@ export default function CollectionCarousel() {
     {
       title: "THANH LỊCH VÀ HIỆN ĐẠI",
       desc: "Bộ sưu tập được thiết kế cho người phụ nữ hiện đại, tự tin, bản lĩnh nhưng vẫn giữ nét mềm mại, duyên dáng. Form dáng basic, chất liệu jean cao cấp cùng những chi tiết tinh tế tạo nên vẻ đẹp sang trọng và thời thượng.",
-      img: "https://millamona.monamedia.net/wp-content/uploads/2024/01/ab_collection_001.jpg",
+      img: "/image/anh-gioi-thieu/1-min.jpg",
     },
     {
       title: "DẤU ẤN VĂN HÓA VIỆT",
       desc: "Mỗi đường kim, mũi chỉ đều ẩn chứa tinh thần Việt. Họa tiết Truyền thống được thổi hồn trong từng thiết kế, gợi nhớ về cội nguồn nhưng vẫn hòa nhịp cùng thời trang đương đại.",
-      img: "https://millamona.monamedia.net/wp-content/uploads/2024/01/ab_collection_002.jpg",
+      img: "/image/anh-gioi-thieu/2-min.jpg",
     },
     {
       title: "LINH HOẠT VÀ DỄ PHỐI",
       desc: "Với chất liệu cao cấp, form dáng đa dạng, UNID mang đến những thiết kế dễ phối cho nhiều hoàn cảnh. Thời trang trở nên gần gũi hơn, tự nhiên hơn như chính nhịp sống Việt mỗi ngày.",
-      img: "https://millamona.monamedia.net/wp-content/uploads/2024/01/ab_collection_003.jpg",
+      img: "/image/anh-gioi-thieu/3-min.jpg",
     },
   ];
 
