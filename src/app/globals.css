@@ -24,3 +24,15 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+@font-face {
+  font-family: "FCClassyVogue";
+  src: url("/fonts/FC-Classy-Vogue.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "TUV";
+  src: url("/fonts/TUV Coco Gothic - Light.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}

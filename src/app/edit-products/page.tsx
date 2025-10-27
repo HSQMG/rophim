@@ -6,7 +6,6 @@ import ProductHighlightEditor from "../components/ProductHighlightEditor";
 export default function EditProductsPage() {
   return (
     <main className="min-h-screen bg-gray-100">
-      {/* <HeroEditor /> */}
       <FeaturedCategoriesEditor />
       <ProductEditor />
       <FashionSectionEditor />

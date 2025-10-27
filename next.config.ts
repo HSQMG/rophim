@@ -6,6 +6,11 @@ const nextConfig: NextConfig = {
   },
   reactStrictMode: true,
   output: "standalone",
+  extend: {
+    fontFamily: {
+      classy: ["FCClassyVogue", "serif"],
+    },
+  },
 };
 
 export default nextConfig;
