@@ -7,7 +7,7 @@ export default function GioiThieuPage() {
       <section
         className="relative bg-cover bg-center text-white min-h-[70vh] sm:min-h-screen flex items-center"
         style={{
-          backgroundImage: "url('/image.png')",
+          backgroundImage: "url('/image/anh-nhom-bia/anh-chinh.jpg')",
         }}
       >
         {}
@@ -21,10 +21,11 @@ export default function GioiThieuPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
           >
-            <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold leading-snug mb-3 sm:mb-6">
-              CHÚNG TÔI LÀ CỬA HÀNG <br className="hidden sm:block" /> THỜI
-              TRANG
-            </h1>
+            <h1
+  className="text-2xl sm:text-4xl md:text-5xl font-bold leading-snug mb-3 sm:mb-6 text-center sm:text-left max-w-3xl mx-auto break-words"
+>
+  CHÚNG TÔI LÀ CỬA HÀNG THỜI TRANG
+</h1>
 
             <p className="text-sm sm:text-base leading-relaxed text-gray-100 mb-3 sm:mb-4">
               Lấy cảm hứng từ văn hoá, thiên nhiên và con người Việt Nam, UNID
