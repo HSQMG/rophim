@@ -53,7 +53,6 @@ export default function ContactPage() {
       setStatus("error");
     }
 
-    // Ẩn thông báo sau 4 giây
     setTimeout(() => setStatus("idle"), 4000);
   };
 
