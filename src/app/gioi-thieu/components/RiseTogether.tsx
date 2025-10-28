@@ -16,7 +16,7 @@ export default function RiseTogether() {
         >
           <img
             style={{ objectPosition: "center 20%" }}
-            src="/image/anh-nhom-bia/UNID.38972.jpg"
+            src="/image/anh-nhom-bia/UNID.38973.jpg"
             alt="Rise Together"
             className="w-full h-[280px] sm:h-[380px] md:h-[480px] object-cover  rounded-[60px_60px_0px_0px] sm:rounded-[120px_120px_0px_0px]"
           />

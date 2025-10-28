@@ -52,7 +52,7 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-t from-[#00000070] via-[#00000020] to-transparent" />
       </div>
 
-      {/* --- Desktop layout (giữ nguyên bản gốc) --- */}
+      {/* --- Desktop layout --- */}
       <AnimatePresence mode="wait">
         <motion.div
           key={slides[current].title}
@@ -68,34 +68,46 @@ export default function HeroSection() {
           className="absolute inset-0 touch-pan-y cursor-grab active:cursor-grabbing hidden sm:block"
         />
 
-        {/* --- Text hiển thị (desktop) --- */}
-        <div className="hidden sm:flex relative z-10 flex-col justify-center h-full px-4 sm:px-8 md:px-20 text-white">
-            <motion.h1
-              key={`title-${current}`}
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -40 }}
-              transition={{ duration: 0.5 }}
-              style={{ fontFamily: "FCClassyVogue" }}
-              className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl tracking-[0.08em] leading-snug sm:leading-tight text-[#f4ede2] drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] max-w-[95%] sm:max-w-[80%]"
-            >
-              {slides[current].title}
-            </motion.h1>
+        {/* --- Text (desktop) --- */}
+        {/* --- Text (desktop) --- */}
+<div className="hidden sm:flex relative z-10 flex-col justify-center h-full px-6 sm:px-10 md:px-20 text-white">
+  <motion.h1
+    key={`title-${current}`}
+    initial={{ opacity: 0, y: 40 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -40 }}
+    transition={{ duration: 0.5 }}
+    style={{
+      fontFamily: "FCClassyVogue",
+      display: "-webkit-box",
+      WebkitLineClamp: 2,
+      WebkitBoxOrient: "vertical",
+      overflow: "hidden",
+      wordBreak: "break-word",
+    }}
+    className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl tracking-[0.08em] leading-snug sm:leading-tight 
+               text-[#f4ede2] drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] 
+               max-w-[90%] sm:max-w-[70%] md:max-w-[55%]"  // 👈 Giới hạn chiều rộng
+  >
+    {slides[current].title}
+  </motion.h1>
 
-          <motion.p
-            key={`desc-${current}`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            style={{fontFamily:"TUV"}}
-            className="mt-3 sm:mt-5 text-base sm:text-lg md:text-xl text-[#f4ede2] max-w-[95%] sm:max-w-2xl leading-relaxed drop-shadow-sm"
-          >
-            {slides[current].desc}
-          </motion.p>
-        </div>
+  <motion.p
+    key={`desc-${current}`}
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -20 }}
+    transition={{ duration: 0.5, delay: 0.1 }}
+    style={{ fontFamily: "TUV" }}
+    className="mt-3 sm:mt-5 text-sm sm:text-lg md:text-xl text-[#f4ede2] 
+               max-w-[90%] sm:max-w-[60%] md:max-w-[50%] leading-relaxed drop-shadow-sm"
+  >
+    {slides[current].desc}
+  </motion.p>
+</div>
 
-        {/* --- Ảnh desktop (bên phải) --- */}
+
+        {/* --- Ảnh desktop --- */}
         <div className="hidden sm:flex absolute bottom-0 right-6 md:right-20 items-end justify-center h-full pointer-events-none">
           <motion.div
             key={`frame-${current}`}
@@ -123,7 +135,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -60 }}
           transition={{ duration: 0.6 }}
-          className="relative w-[250px] h-[320px] rounded-t-[120px] overflow-hidden shadow-2xl border-2 border-white/60 mb-6"
+          className="relative w-[230px] h-[290px] rounded-t-[100px] overflow-hidden shadow-2xl border-2 border-white/60 mb-6"
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           dragElastic={0.25}
@@ -144,7 +156,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -30 }}
           transition={{ duration: 0.5 }}
-          className="text-2xl font-serif text-white leading-snug drop-shadow-lg max-w-[90%]"
+          className="text-xl sm:text-2xl font-serif text-white leading-snug drop-shadow-lg max-w-[90%]"
         >
           {slides[current].title}
         </motion.h1>
@@ -155,7 +167,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -15 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="mt-3 text-sm text-[#f4ede2] leading-relaxed drop-shadow-sm max-w-[90%]"
+          className="mt-3 text-xs sm:text-sm text-[#f4ede2] leading-relaxed drop-shadow-sm max-w-[90%]"
         >
           {slides[current].desc}
         </motion.p>
