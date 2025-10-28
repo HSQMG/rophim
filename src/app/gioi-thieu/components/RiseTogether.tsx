@@ -15,9 +15,10 @@ export default function RiseTogether() {
           className="order-1 md:order-2"
         >
           <img
-            src="https://millamona.monamedia.net/wp-content/uploads/2024/01/ab_banner.jpg"
+            style={{ objectPosition: "center 20%" }}
+            src="/image/anh-nhom-bia/UNID.38972.jpg"
             alt="Rise Together"
-            className="w-full h-[280px] sm:h-[380px] md:h-[480px] object-cover rounded-[60px_60px_0px_0px] sm:rounded-[120px_120px_0px_0px]"
+            className="w-full h-[280px] sm:h-[380px] md:h-[480px] object-cover  rounded-[60px_60px_0px_0px] sm:rounded-[120px_120px_0px_0px]"
           />
         </motion.div>
 
