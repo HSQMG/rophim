@@ -77,7 +77,7 @@
   {
     "id": 5,
     "name": "Áo sơ mi",
-    "price": 599000,
+    "price": 559000,
     "category": "ao-so-mi",
     "image": "/image/anh-san-pham/ao-so-mi/u-anr023-(7).jpg",
     "hoverImage": "/image/anh-san-pham/ao-so-mi/u-anr023-(8).jpg",
@@ -152,7 +152,7 @@
   {
     "id": 9,
     "name": "Đầm dài",
-    "price": 1190000,
+    "price": 1199000,
     "category": "dam-dai",
     "image": "/image/anh-san-pham/dam-dai/u-ddr016-(2).jpg",
     "hoverImage": "/image/anh-san-pham/dam-dai/u-ddr016-(4).jpg",
@@ -171,7 +171,7 @@
   {
     "id": 10,
     "name": "Đầm lửng",
-    "price": 999999,
+    "price": 999000,
     "category": "dam-lung",
     "image": "/image/anh-san-pham/dam-lung/u-dls017-(1).jpg",
     "hoverImage": "/image/anh-san-pham/dam-lung/u-dls017-(2).jpg",
