@@ -44,7 +44,7 @@ export default function GioiThieuPage() {
               className="text-2xl sm:text-4xl md:text-5xl font-bold leading-snug mb-3 sm:mb-6 
                          text-black md:text-white dark:text-[#f5e7c6] max-w-3xl mx-auto break-words"
             >
-              CHÚNG TÔI LÀ THƯƠNG HIỆU THỜI TRANG
+              CHÚNG TÔI LÀ THƯƠNG HIỆU THỜI TRANG UNID
             </h1>
 
             <p className="text-sm sm:text-base leading-relaxed text-gray-700 md:text-gray-100 dark:text-gray-300">

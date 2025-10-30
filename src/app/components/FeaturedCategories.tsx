@@ -61,7 +61,7 @@ export default function FeaturedCategories() {
         <h2
           className={`${playfair.className} text-2xl sm:text-4xl md:text-5xl font-serif text-[#3e2c1c] dark:text-[#f5e7c6] tracking-wide mb-3`}
         >
-          DANH MỤC NỔI BẬT
+          NHƯNG THIẾT KẾ ĐƯỢC YÊU THÍCH NHẤT TỪ UNID
         </h2>
         <div className="w-14 sm:w-16 h-[2px] bg-[#c7a17a] dark:bg-[#d3b78f] mx-auto mb-4"></div>
         <p className="text-gray-500 dark:text-gray-300 italic text-sm sm:text-base">

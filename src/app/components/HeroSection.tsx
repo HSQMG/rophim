@@ -68,6 +68,7 @@ export default function HeroSection() {
         />
 
         {/* --- Text (desktop) --- */}
+        {/* --- Text (desktop) --- */}
         <div className="hidden sm:flex relative z-10 flex-col justify-center h-full px-6 sm:px-10 md:px-20 text-white dark:text-[#f5e7c6] transition-colors duration-500">
           <motion.h1
             key={`title-${current}`}
@@ -78,15 +79,16 @@ export default function HeroSection() {
             style={{
               fontFamily: "FCClassyVogue",
               display: "-webkit-box",
-              WebkitLineClamp: 2,
+              WebkitLineClamp: 3, // 👈 Hiển thị tối đa 3 dòng
               WebkitBoxOrient: "vertical",
               overflow: "hidden",
+              textOverflow: "ellipsis",
               wordBreak: "break-word",
             }}
             className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl tracking-[0.08em] leading-snug sm:leading-tight 
-                       text-[#f4ede2] dark:text-[#f5e7c6]
-                       drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] 
-                       max-w-[90%] sm:max-w-[70%] md:max-w-[55%]"
+               text-[#f4ede2] dark:text-[#f5e7c6]
+               drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] 
+               max-w-[90%] sm:max-w-[70%] md:max-w-[55%]"
           >
             {slides[current].title}
           </motion.h1>
@@ -99,7 +101,7 @@ export default function HeroSection() {
             transition={{ duration: 0.5, delay: 0.1 }}
             style={{ fontFamily: "TUV" }}
             className="mt-3 sm:mt-5 text-sm sm:text-lg md:text-xl text-[#f4ede2] dark:text-[#e9dcc1]
-                       max-w-[90%] sm:max-w-[60%] md:max-w-[50%] leading-relaxed drop-shadow-sm"
+               max-w-[90%] sm:max-w-[60%] md:max-w-[50%] leading-relaxed drop-shadow-sm"
           >
             {slides[current].desc}
           </motion.p>
