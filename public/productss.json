@@ -207,7 +207,7 @@
     "description": "<strong>Chất liệu:</strong>98% cotton - 2% spandex..."
   },
   {
-    "id": 121,
+    "id": 12,
     "name": "SET GHILE",
     "price": 1100000,
     "category": "set-ghile",
@@ -287,8 +287,8 @@
     "name": "Quần ống loe",
     "price": 519000,
     "category": "quan-ong-loe",
-    "image": "/image/anh-san-pham/quan-ong-loe/u-qdl007-(1).jpg",
-    "hoverImage": "/image/anh-san-pham/quan-ong-loe/u-qdl007-(2).jpg",
+    "image": "/image/anh-san-pham/quan-ong-loe/u-qdl007-(3).jpg",
+    "hoverImage": "/image/anh-san-pham/quan-ong-loe/u-qdl007-(1).jpg",
     "images": [
       "/image/anh-san-pham/quan-ong-loe/u-qdl007-(1).jpg",
       "/image/anh-san-pham/quan-ong-loe/u-qdl007-(2).jpg",
@@ -325,8 +325,8 @@
     "name": "Quần ống loe",
     "price": 519000,
     "category": "quan-ong-loe",
-    "image": "/image/anh-san-pham/quan-ong-loe/u-qdl009-(1).jpg",
-    "hoverImage": "/image/anh-san-pham/quan-ong-loe/u-qdl009-(2).jpg",
+    "image": "/image/anh-san-pham/quan-ong-loe/u-qdl009-(4).jpg",
+    "hoverImage": "/image/anh-san-pham/quan-ong-loe/u-qdl009-(1).jpg",
     "images": [
       "/image/anh-san-pham/quan-ong-loe/u-qdl009-(1).jpg",
       "/image/anh-san-pham/quan-ong-loe/u-qdl009-(2).jpg",
