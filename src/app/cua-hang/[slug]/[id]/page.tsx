@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Truck, Ruler, ShieldCheck, Repeat } from "lucide-react";
 import { Playfair_Display } from "next/font/google";
-
+import { ArrowRight, ArrowLeft } from "lucide-react";
 const playfair = Playfair_Display({
   subsets: ["latin", "vietnamese"],
   weight: ["400", "700"],
@@ -34,6 +34,7 @@ export default function ProductDetailPage() {
   const [showCareGuide, setShowCareGuide] = useState(false);
   const [showCommitment, setShowCommitment] = useState(false);
   const [showReturnPolicy, setShowReturnPolicy] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   useEffect(() => {
     fetch("/productss.json")
@@ -73,8 +74,10 @@ export default function ProductDetailPage() {
             {allImages.map((img, index) => (
               <div
                 key={index}
-                className="relative flex items-center justify-center rounded-lg overflow-hidden bg-white dark:bg-[#111] transition-all"
+                className="relative flex items-center justify-center rounded-lg overflow-hidden 
+             bg-white dark:bg-[#111] transition-all cursor-pointer"
                 style={{ height: "300px" }}
+                onClick={() => setSelectedIndex(index)} // 👈 click vào ảnh
               >
                 <Image
                   src={img}
@@ -245,6 +248,53 @@ export default function ProductDetailPage() {
             className="mx-auto rounded-md"
           />
         </Popup>
+      )}
+      {selectedIndex !== null && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm"
+          onClick={() => setSelectedIndex(null)} // click ra ngoài là đóng
+        >
+          <div
+            className="relative max-w-5xl w-[90%] h-[85vh] flex items-center justify-center"
+            onClick={(e) => e.stopPropagation()} // tránh đóng khi click vào ảnh
+          >
+            {/* --- Ảnh lớn --- */}
+            <Image
+              src={allImages[selectedIndex]}
+              alt={`Ảnh ${selectedIndex + 1}`}
+              fill
+              className="object-contain rounded-lg shadow-2xl transition-transform duration-300 cursor-pointer"
+            />
+
+            {/* --- Nút trái --- */}
+            {selectedIndex > 0 && (
+              <button
+                onClick={() => setSelectedIndex(selectedIndex - 1)}
+                className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 
+                     p-2 sm:p-3 rounded-full bg-white/70 dark:bg-[#222]/70
+                     text-[#2b2b2b] dark:text-gray-100
+                     hover:bg-white hover:scale-110 transition-all duration-200
+                     cursor-pointer backdrop-blur-md"
+              >
+                <ArrowLeft size={24} />
+              </button>
+            )}
+
+            {/* --- Nút phải --- */}
+            {selectedIndex < allImages.length - 1 && (
+              <button
+                onClick={() => setSelectedIndex(selectedIndex + 1)}
+                className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 
+                     p-2 sm:p-3 rounded-full bg-white/70 dark:bg-[#222]/70
+                     text-[#2b2b2b] dark:text-gray-100
+                     hover:bg-white hover:scale-110 transition-all duration-200
+                     cursor-pointer backdrop-blur-md"
+              >
+                <ArrowRight size={24} />
+              </button>
+            )}
+          </div>
+        </div>
       )}
     </main>
   );

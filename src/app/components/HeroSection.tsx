@@ -66,8 +66,6 @@ export default function HeroSection() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="absolute inset-0 touch-pan-y cursor-grab active:cursor-grabbing hidden sm:block"
         />
-
-        {/* --- Text (desktop) --- */}
         <div className="hidden sm:flex relative z-10 flex-col justify-center h-full px-8 sm:px-14 md:px-20 text-white dark:text-[#f5e7c6] transition-colors duration-500">
           <motion.h1
             key={`title-${current}`}

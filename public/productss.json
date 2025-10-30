@@ -132,6 +132,25 @@
   },
   {
     "id": 8,
+    "name": "Chân váy dài",
+    "price": 489000,
+    "category": "chan-vay-dai",
+    "image": "/image/anh-san-pham/chan-vay-dai/u-vds020-(1).jpg",
+    "hoverImage": "/image/anh-san-pham/chan-vay-dai/u-vds020-(2).jpg",
+    "images": [
+      "/image/anh-san-pham/chan-vay-dai/u-vds020-(1).jpg",
+      "/image/anh-san-pham/chan-vay-dai/u-vds020-(2).jpg",
+      "/image/anh-san-pham/chan-vay-dai/u-vds020-(3).jpg",
+      "/image/anh-san-pham/chan-vay-dai/u-vds020-(4).jpg"
+    ],
+    "imgsize": "/image/size/chan-vay.jpg",
+    "color": "xanh đậm, xanh sáng, đen ánh vàng ",
+    "material": "Cotton",
+    "size": ["XS", "S", "M", "L", "XL", "XXL"],
+    "description": "<strong>Chất liệu:</strong>98% cotton - 2% spandex mang lại cảm giác mềm mại, thoáng khí, giữ dáng tốt và ít nhăn khi mặc. Chất vải dày dặn nhưng vẫn mang lại cảm giác thoải mái cả ngày dài. Sản phẩm được xử lý thêm độ cầm màu giúp màu vải lên chuẩn, hạn chế bay màu khi giặt và giữ màu bền đẹp theo thời gian.\n<strong>Thiết kế:</strong>Dáng váy suông dài qua gối, lưng cao tôn dáng. Phần hông được nhấn nhá với chi tiết túi hộp hai bên tạo nét cá tính, giúp tổng thể vừa thanh lịch vừa năng động. Thông số được nghiên cứu chuẩn size vóc dáng người Việt.\n<strong>Chi tiết:</strong>Đường may tỉ mỉ, chỉ nổi tinh tế, cúc và khóa kéo kim loại chắc chắn. Logo UNID tinh giản.\n<strong>Phong cách:</strong>Thanh lịch, thời thượng pha chút cá tính – phù hợp cho phong cách công sở, street style hoặc retro hiện đại.\n<strong>Ứng dụng:</strong>Dễ phối cùng áo sơ mi, áo thun, croptop hoặc blazer. Phù hợp đi làm, dạo phố, cà phê cuối tuần hay đi du lịch."
+  },
+  {
+    "id": 9,
     "name": "Đầm dài",
     "price": 1199000,
     "category": "dam-dai",
@@ -150,7 +169,7 @@
     "description": "Đầm dài dáng chữ A nhẹ nhàng, ôm nhẹ phần eo tôn dáng, tà váy xòe mềm tạo độ bay uyển chuyển theo từng bước chân.\nHàng cúc kim loại mang nét cổ điển, kết hợp họa tiết thêu tinh tế mang lại vẻ thanh lịch và nữ tính. Mỗi chi tiết thêu đều mang hơi thở của sự khéo léo và chăm chút.\nThông số được nghiên cứu chuẩn size vóc dáng người Việt.\nSản phẩm được xử lý thêm độ cầm màu giúp màu vải lên chuẩn, hạn chế bay màu khi giặt và giữ màu bền đẹp theo thời gian. Chất vải mềm mịn, thấm hút mồ hôi tốt, mang lại cảm giác dễ chịu và thoải mái trong suốt ngày dài.\nLựa chọn hoàn hảo cho nàng khi đi làm, dạo phố hay dự tiệc nhẹ.\nThanh thoát và cuốn hút ở mọi góc nhìn."
   },
   {
-    "id": 9,
+    "id": 10,
     "name": "Đầm lửng",
     "price": 999000,
     "category": "dam-lung",
@@ -169,7 +188,7 @@
     "description": "Đầm denim dáng ngắn thiết kế độc đáo với khóa kéo hai bên tay, dễ dàng tháo rời để biến hóa linh hoạt giữa dáng tay dài thanh lịch và dáng blazer sát nách năng động.\nNắp túi được thêu tỉ mỉ, tạo điểm nhấn tinh tế mang lại vẻ thanh lịch và nữ tính.\nMỗi chi tiết thêu đều mang hơi thở của sự khéo léo và chăm chút.\nForm suông nhẹ tôn dáng, giúp người mặc vừa thoải mái di chuyển vừa giữ được nét tự tin, cuốn hút. Thông số được nghiên cứu chuẩn size vóc dáng người Việt.\nChất liệu Denim Cotton mềm, đứng form, thấm hút mồ hôi tốt, mang lại cảm giác dễ chịu và thoải mái trong suốt ngày dài.\nSản phẩm được xử lý thêm độ cầm màu giúp màu vải lên chuẩn, hạn chế bay màu khi giặt và giữ màu bền đẹp theo thời gian.\nMột thiết kế vừa mang hơi thở hiện đại, vừa đủ thanh lịch để đồng hành cùng bạn trong mọi dịp - từ đi làm, dạo phố đến những buổi gặp gỡ cuối tuần."
   },
   {
-    "id": 10,
+    "id": 11,
     "name": "SET GHILE",
     "price": 1100000,
     "category": "set-ghile",
@@ -177,10 +196,10 @@
     "hoverImage": "/image/anh-san-pham/set-ghile/u-glo026-(2).jpg",
     "imgsize": "/image/size/ghile.jpg",
     "images": [
-      "/image/anh-san-pham/set-ghile/u-glo026-(1).jpg",
       "/image/anh-san-pham/set-ghile/u-glo026-(2).jpg",
       "/image/anh-san-pham/set-ghile/u-glo026-(3).jpg",
-      "/image/anh-san-pham/set-ghile/u-glo026-(4).jpg"
+      "/image/anh-san-pham/set-ghile/u-glo026-(4).jpg",
+      "/image/anh-san-pham/set-ghile/u-glo026-(1).jpg"
     ],
     "color": "xanh demin đậm, sọc xanh trắng",
     "size": ["XS", "S", "M", "L", "XL", "XXL"],
@@ -188,7 +207,7 @@
     "description": "<strong>Chất liệu:</strong>98% cotton - 2% spandex mang lại cảm giác mềm mại, thoáng khí, giữ dáng tốt và ít nhăn khi mặc. Chất vải dày dặn nhưng vẫn mang lại cảm giác thoải mái cả ngày dài. Sản phẩm được xử lý thêm độ cầm màu giúp màu vải lên chuẩn, hạn chế bay màu khi giặt và giữ màu bền đẹp theo thời gian.\n<strong>Thiết kế:</strong>Áo gile cổ V tinh giản, cắt may tôn dáng, dễ phối lớp trong với sơ mi hoặc áo thun. Quần suông ống đứng tạo cảm giác dài chân và tôn dáng thanh lịch. Thông số được nghiên cứu chuẩn size vóc dáng người Việt.\n</strong>Chi tiết:</strong>Họa tiết được thêu tinh tế mang lại vẻ thanh lịch và nữ tính. Mỗi chi tiết thêu đều mang hơi thở của sự khéo léo và chăm chút. Cúc kim loại có logo tinh tế sang trọng.\n<strong>Phong cách:</strong>Thanh lịch – hiện đại – mang hơi hướng menswear, phù hợp cho các cô nàng yêu thích sự tự tin và chuyên nghiệp.\n<strong>Ứng dụng:</strong>Phù hợp đi làm, dự tiệc, gặp đối tác, dạo phố hoặc tham gia sự kiện. Có thể tách set để phối riêng từng món linh hoạt với nhiều outfit khác nhau."
   },
   {
-    "id": 11,
+    "id": 12,
     "name": "SET GHILE",
     "price": 1100000,
     "category": "set-ghile",
@@ -207,7 +226,7 @@
     "description": "<strong>Chất liệu:</strong>98% cotton - 2% spandex mang lại cảm giác mềm mại, thoáng khí, giữ dáng tốt và ít nhăn khi mặc. Chất vải dày dặn nhưng vẫn mang lại cảm giác thoải mái cả ngày dài. Sản phẩm được xử lý thêm độ cầm màu giúp màu vải lên chuẩn, hạn chế bay màu khi giặt và giữ màu bền đẹp theo thời gian.\n<strong>Thiết kế:</strong>Áo gile cổ V tinh giản, cắt may tôn dáng, dễ phối lớp trong với sơ mi hoặc áo thun. Quần suông ống đứng tạo cảm giác dài chân và tôn dáng thanh lịch. Thông số được nghiên cứu chuẩn size vóc dáng người Việt.\n</strong>Chi tiết:</strong>Họa tiết được thêu tinh tế mang lại vẻ thanh lịch và nữ tính. Mỗi chi tiết thêu đều mang hơi thở của sự khéo léo và chăm chút. Cúc kim loại có logo tinh tế sang trọng.\n<strong>Phong cách:</strong>Thanh lịch – hiện đại – mang hơi hướng menswear, phù hợp cho các cô nàng yêu thích sự tự tin và chuyên nghiệp.\n<strong>Ứng dụng:</strong>Phù hợp đi làm, dự tiệc, gặp đối tác, dạo phố hoặc tham gia sự kiện. Có thể tách set để phối riêng từng món linh hoạt với nhiều outfit khác nhau."
   },
   {
-    "id": 12,
+    "id": 13,
     "name": "Quần ống cong",
     "price": 519000,
     "category": "quan-ong-cong",
@@ -226,7 +245,7 @@
     "description": "<strong>Chất liệu:</strong> Jean cotton, co giãn nhẹ, bền màu, thoáng mát và giữ form tốt. Sản phẩm được xử lý thêm độ cầm màu giúp màu vải lên chuẩn, hạn chế bay màu khi giặt và giữ màu bền đẹp theo thời gian.\n<strong>Thiết kế:</strong>Dáng ống cong, cạp cao vừa tôn vòng eo vừa tạo sự cân đối cho cơ thể tạo hiệu ứng kéo dài chân, che khuyết điểm giúp cân bằng và phù hợp cho mọi vóc dáng. Thông số được nghiên cứu chuẩn size vóc dáng người Việt.\n<strong>Form dáng:</strong>Ôm nhẹ phần hông, thả suông phần ống.\n<strong>Chi tiết:</strong>Khuy kim loại ánh bạc, đường may tỉ mỉ, logo UNID tinh giản.\n<strong>Phong cách:</strong> Năng động, cá tính, dễ phối cùng áo croptop, sơ mi hoặc blazer.\n<strong>Ứng dụng:</strong> Mặc đi học, đi làm hay dạo phố đều chuẩn vibe thời thượng."
   },
   {
-    "id": 13,
+    "id": 14,
     "name": "Quần ống cong",
     "price": 519000,
     "category": "quan-ong-cong",
@@ -245,7 +264,7 @@
     "description": "<strong>Chất liệu:</strong> Jean cotton, co giãn nhẹ, bền màu, thoáng mát và giữ form tốt. Sản phẩm được xử lý thêm độ cầm màu giúp màu vải lên chuẩn, hạn chế bay màu khi giặt và giữ màu bền đẹp theo thời gian.\n<strong>Thiết kế:</strong>Dáng ống cong, cạp cao vừa tôn vòng eo vừa tạo sự cân đối cho cơ thể tạo hiệu ứng kéo dài chân, che khuyết điểm giúp cân bằng và phù hợp cho mọi vóc dáng. Thông số được nghiên cứu chuẩn size vóc dáng người Việt.\n<strong>Form dáng:</strong>Ôm nhẹ phần hông, thả suông phần ống.\n<strong>Chi tiết:</strong>Khuy kim loại ánh bạc, đường may tỉ mỉ, logo UNID tinh giản.\n<strong>Phong cách:</strong> Năng động, cá tính, dễ phối cùng áo croptop, sơ mi hoặc blazer.\n<strong>Ứng dụng:</strong> Mặc đi học, đi làm hay dạo phố đều chuẩn vibe thời thượng."
   },
   {
-    "id": 14,
+    "id": 15,
     "name": "Quần ống loe",
     "price": 519000,
     "category": "quan-ong-loe",
@@ -264,7 +283,7 @@
     "description": "<strong>Chất liệu:</strong>98% cotton - 2% spandex giúp quần giữ form chuẩn, đàn hồi tốt và thoải mái khi vận động. Sản phẩm được xử lý thêm độ cầm màu giúp màu vải lên chuẩn, hạn chế bay màu khi giặt và giữ màu bền đẹp theo thời gian.\n<strong>Thiết kế:</strong>Dáng quần ống loe lưng cao giúp tôn chiều cao và vòng eo, che khuyết điểm phần đùi và bắp chân. Đường may tỉ mỉ, form đứng dáng tạo hiệu ứng đôi chân thon dài. Thông số được nghiên cứu chuẩn size vóc dáng người Việt.\n<strong>Chi tiết:</strong>Cúc kim loại ánh bạc, túi sau tiện lợi, logo UNID tinh giản.\n<strong>Phong cách:</strong>Trẻ trung, năng động nhưng vẫn thanh lịch.\n<strong>Ứng dụng:</strong>Phù hợp mặc đi làm, dạo phố, hẹn hò hoặc du lịch. Dễ phối với áo croptop, sơ mi, blazer hoặc áo khoác denim để tạo outfit thời thượng."
   },
   {
-    "id": 15,
+    "id": 16,
     "name": "Quần ống loe",
     "price": 519000,
     "category": "quan-ong-loe",
@@ -283,7 +302,7 @@
     "description": "<strong>Chất liệu:</strong>98% cotton - 2% spandex giúp quần giữ form chuẩn, đàn hồi tốt và thoải mái khi vận động. Sản phẩm được xử lý thêm độ cầm màu giúp màu vải lên chuẩn, hạn chế bay màu khi giặt và giữ màu bền đẹp theo thời gian.\n<strong>Thiết kế:</strong>Dáng quần ống loe lưng cao giúp tôn chiều cao và vòng eo, che khuyết điểm phần đùi và bắp chân. Đường may tỉ mỉ, form đứng dáng tạo hiệu ứng đôi chân thon dài. Thông số được nghiên cứu chuẩn size vóc dáng người Việt.\n<strong>Chi tiết:</strong>Cúc kim loại ánh bạc, túi sau tiện lợi, logo UNID tinh giản.\n<strong>Phong cách:</strong>Trẻ trung, năng động nhưng vẫn thanh lịch.\n<strong>Ứng dụng:</strong>Phù hợp mặc đi làm, dạo phố, hẹn hò hoặc du lịch. Dễ phối với áo croptop, sơ mi, blazer hoặc áo khoác denim để tạo outfit thời thượng."
   },
   {
-    "id": 16,
+    "id": 17,
     "name": "Quần ống loe",
     "price": 519000,
     "category": "quan-ong-loe",
@@ -302,7 +321,7 @@
     "description": "<strong>Chất liệu:</strong>98% cotton - 2% spandex giúp quần giữ form chuẩn, đàn hồi tốt và thoải mái khi vận động. Sản phẩm được xử lý thêm độ cầm màu giúp màu vải lên chuẩn, hạn chế bay màu khi giặt và giữ màu bền đẹp theo thời gian.\n<strong>Thiết kế:</strong>Dáng quần ống loe lưng cao giúp tôn chiều cao và vòng eo, che khuyết điểm phần đùi và bắp chân. Đường may tỉ mỉ, form đứng dáng tạo hiệu ứng đôi chân thon dài. Thông số được nghiên cứu chuẩn size vóc dáng người Việt.\n<strong>Chi tiết:</strong>Cúc kim loại ánh bạc, túi sau tiện lợi, logo UNID tinh giản.\n<strong>Phong cách:</strong>Trẻ trung, năng động nhưng vẫn thanh lịch.\n<strong>Ứng dụng:</strong>Phù hợp mặc đi làm, dạo phố, hẹn hò hoặc du lịch. Dễ phối với áo croptop, sơ mi, blazer hoặc áo khoác denim để tạo outfit thời thượng."
   },
   {
-    "id": 17,
+    "id": 18,
     "name": "Quần ống suông",
     "price": 490000,
     "category": "quan-ong-suong",
@@ -321,7 +340,7 @@
     "description": "<strong>Chất liệu:</strong> Jean cotton, co giãn nhẹ, bền màu, thoáng mát và giữ form tốt. Sản phẩm được xử lý thêm độ cầm màu giúp màu vải lên chuẩn, hạn chế bay màu khi giặt và giữ màu bền đẹp theo thời gian.\n<strong>Thiết kế:</strong>Phần ống suông dài, cạp cao vừa tôn vòng eo vừa tạo sự cân đối cho cơ thể tạo hiệu ứng kéo dài chân, che khuyết điểm giúp cân bằng và phù hợp cho mọi vóc dáng. Thông số được nghiên cứu chuẩn size vóc dáng người Việt.\n<strong>Form dáng:</strong>Ôm nhẹ phần hông, thả suông phần ống.\n<strong>Chi tiết:</strong>Khuy kim loại ánh bạc, đường may tỉ mỉ, logo UNID tinh giản. Họa tiết thêu túi sau nổi bật nhưng vẫn giữ được sự nhẹ nhàng, sang trọng. Mỗi chi tiết thêu đều mang hơi thở của sự khéo léo và chăm chút.<strong>Phong cách:</strong>Thanh lịch, nữ tính, dễ phối cùng áo croptop, sơ mi hoặc blazer.\n<strong>Ứng dụng:</strong> Mặc đi học, đi làm hay dạo phố đều chuẩn vibe thời thượng."
   },
   {
-    "id": 18,
+    "id": 19,
     "name": "Quần ống suông",
     "price": 490000,
     "category": "quan-ong-suong",
@@ -340,7 +359,7 @@
     "description": "<strong>Chất liệu:</strong> Jean cotton, co giãn nhẹ, bền màu, thoáng mát và giữ form tốt. Sản phẩm được xử lý thêm độ cầm màu giúp màu vải lên chuẩn, hạn chế bay màu khi giặt và giữ màu bền đẹp theo thời gian.\n<strong>Thiết kế:</strong>Phần ống suông dài, cạp cao vừa tôn vòng eo vừa tạo sự cân đối cho cơ thể tạo hiệu ứng kéo dài chân, che khuyết điểm giúp cân bằng và phù hợp cho mọi vóc dáng. Thông số được nghiên cứu chuẩn size vóc dáng người Việt.\n<strong>Form dáng:</strong>Ôm nhẹ phần hông, thả suông phần ống.\n<strong>Chi tiết:</strong>Khuy kim loại ánh bạc, đường may tỉ mỉ, logo UNID tinh giản. Họa tiết thêu túi sau nổi bật nhưng vẫn giữ được sự nhẹ nhàng, sang trọng. Mỗi chi tiết thêu đều mang hơi thở của sự khéo léo và chăm chút.<strong>Phong cách:</strong>Thanh lịch, nữ tính, dễ phối cùng áo croptop, sơ mi hoặc blazer.\n<strong>Ứng dụng:</strong> Mặc đi học, đi làm hay dạo phố đều chuẩn vibe thời thượng."
   },
   {
-    "id": 19,
+    "id": 20,
     "name": "Quần ống suông",
     "price": 490000,
     "category": "quan-ong-suong",
@@ -359,7 +378,7 @@
     "description": "<strong>Chất liệu:</strong> Jean cotton, co giãn nhẹ, bền màu, thoáng mát và giữ form tốt. Sản phẩm được xử lý thêm độ cầm màu giúp màu vải lên chuẩn, hạn chế bay màu khi giặt và giữ màu bền đẹp theo thời gian.\n<strong>Thiết kế:</strong>Phần ống suông dài, cạp cao vừa tôn vòng eo vừa tạo sự cân đối cho cơ thể tạo hiệu ứng kéo dài chân, che khuyết điểm giúp cân bằng và phù hợp cho mọi vóc dáng. Thông số được nghiên cứu chuẩn size vóc dáng người Việt.\n<strong>Form dáng:</strong>Ôm nhẹ phần hông, thả suông phần ống.\n<strong>Chi tiết:</strong>Khuy kim loại ánh bạc, đường may tỉ mỉ, logo UNID tinh giản. Họa tiết thêu túi sau nổi bật nhưng vẫn giữ được sự nhẹ nhàng, sang trọng. Mỗi chi tiết thêu đều mang hơi thở của sự khéo léo và chăm chút.<strong>Phong cách:</strong>Thanh lịch, nữ tính, dễ phối cùng áo croptop, sơ mi hoặc blazer.\n<strong>Ứng dụng:</strong> Mặc đi học, đi làm hay dạo phố đều chuẩn vibe thời thượng."
   },
   {
-    "id": 20,
+    "id": 21,
     "name": "Quần ống rộng",
     "price": 490000,
     "category": "quan-ong-rong",
@@ -377,7 +396,7 @@
     "description": "<strong>Chất liệu:</strong>Jean cotton, co giãn nhẹ, bền màu, giữ form hoàn hảo. Sản phẩm được xử lý thêm độ cầm màu giúp màu vải lên chuẩn, hạn chế bay màu khi giặt và giữ màu bền đẹp theo thời gian.\n<strong>Thiết kế:</strong>Dáng ống rộng, che khuyết điểm tốt, giúp đôi chân trông dài và thon gọn hơn. Thông số được nghiên cứu chuẩn size vóc dáng người Việt.\n<strong>From dáng:</strong>Ôm nhẹ phần hông, rộng ra ở phần ống.\n<strong>Chi tiết:</strong>Khuy kim loại ánh bạc, đường may tỉ mỉ, logo UNID tinh giản. Họa tiết thêu túi sau nổi bật nhưng vẫn giữ được sự nhẹ nhàng, sang trọng. Mỗi chi tiết thêu đều mang hơi thở của sự khéo léo và chăm chút.<strong>Phong cách:</strong>Thanh lịch, cá tính, dễ phối cùng áo croptop, sơ mi hoặc blazer.\n<strong>Ứng dụng:</strong> Mặc đi học, đi làm hay dạo phố đều chuẩn vibe thời thượng."
   },
   {
-    "id": 21,
+    "id": 22,
     "name": "Quần ống rộng",
     "price": 490000,
     "category": "quan-ong-rong",
@@ -396,7 +415,7 @@
     "description": "<strong>Chất liệu:</strong>Jean cotton, co giãn nhẹ, bền màu, giữ form hoàn hảo. Sản phẩm được xử lý thêm độ cầm màu giúp màu vải lên chuẩn, hạn chế bay màu khi giặt và giữ màu bền đẹp theo thời gian.\n<strong>Thiết kế:</strong>Dáng ống rộng, che khuyết điểm tốt, giúp đôi chân trông dài và thon gọn hơn. Thông số được nghiên cứu chuẩn size vóc dáng người Việt.\n<strong>From dáng:</strong>Ôm nhẹ phần hông, rộng ra ở phần ống.\n<strong>Chi tiết:</strong>Khuy kim loại ánh bạc, đường may tỉ mỉ, logo UNID tinh giản. Họa tiết thêu túi sau nổi bật nhưng vẫn giữ được sự nhẹ nhàng, sang trọng. Mỗi chi tiết thêu đều mang hơi thở của sự khéo léo và chăm chút.<strong>Phong cách:</strong>Thanh lịch, cá tính, dễ phối cùng áo croptop, sơ mi hoặc blazer.\n<strong>Ứng dụng:</strong> Mặc đi học, đi làm hay dạo phố đều chuẩn vibe thời thượng."
   },
   {
-    "id": 22,
+    "id": 23,
     "name": "Quần ống rộng",
     "price": 490000,
     "category": "quan-ong-rong",
@@ -415,7 +434,7 @@
     "description": "<strong>Chất liệu:</strong>Jean cotton, co giãn nhẹ, bền màu, giữ form hoàn hảo. Sản phẩm được xử lý thêm độ cầm màu giúp màu vải lên chuẩn, hạn chế bay màu khi giặt và giữ màu bền đẹp theo thời gian.\n<strong>Thiết kế:</strong>Dáng ống rộng, che khuyết điểm tốt, giúp đôi chân trông dài và thon gọn hơn. Thông số được nghiên cứu chuẩn size vóc dáng người Việt.\n<strong>From dáng:</strong>Ôm nhẹ phần hông, rộng ra ở phần ống.\n<strong>Chi tiết:</strong>Khuy kim loại ánh bạc, đường may tỉ mỉ, logo UNID tinh giản. Họa tiết thêu túi sau nổi bật nhưng vẫn giữ được sự nhẹ nhàng, sang trọng. Mỗi chi tiết thêu đều mang hơi thở của sự khéo léo và chăm chút.<strong>Phong cách:</strong>Thanh lịch, cá tính, dễ phối cùng áo croptop, sơ mi hoặc blazer.\n<strong>Ứng dụng:</strong> Mặc đi học, đi làm hay dạo phố đều chuẩn vibe thời thượng."
   },
   {
-    "id": 23,
+    "id": 24,
     "name": "Quần short",
     "price": 400000,
     "category": "quan-short",
@@ -434,7 +453,7 @@
     "description": "<strong>Chất liệu:</strong> 98% cotton - 2% spandex, co giãn nhẹ, thấm hút mồ hôi tốt.\n<strong>Thiết kế:</strong> Quần short dáng cơ bản, dễ mặc, mang lại cảm giác thoải mái.\n<strong>Chi tiết:</strong> Khóa kéo chắc chắn, túi sau tinh tế.\n<strong>Ứng dụng:</strong> Phù hợp đi chơi, đi biển, hoặc dạo phố."
   },
   {
-    "id": 24,
+    "id": 25,
     "name": "Quần short",
     "price": 400000,
     "category": "quan-short",
@@ -453,7 +472,7 @@
     "description": "<strong>Chất liệu:</strong>98% cotton - 2% spandex giúp quần giữ form chuẩn, đàn hồi tốt và thoải mái khi vận động. Sản phẩm được xử lý thêm độ cầm màu giúp màu vải lên chuẩn, hạn chế bay màu khi giặt và giữ màu bền đẹp theo thời gian.\n<strong>Thiết kế:</strong>Dáng quần short basic lưng cao, tôn eo và kéo dài đôi chân. Họa tiết thêu tinh tế mang lại vẻ thanh lịch và nữ tính. Mỗi chi tiết thêu đều mang hơi thở của sự khéo léo và chăm chút. Thông số được nghiên cứu chuẩn size vóc dáng người Việt.\n<strong>Chi tiết:</strong>Cúc kim loại ánh bạc, túi sau tiện lợi, logo UNID tinh giản.\n<strong>Phong cách:</strong>Trẻ trung, năng động nhưng vẫn thanh lịch.\n<strong>Ứng dụng:</strong>Dễ phối cùng áo thun, croptop, sơ mi hay áo tank. Phù hợp đi chơi, dạo phố, du lịch hoặc mặc hằng ngày."
   },
   {
-    "id": 25,
+    "id": 26,
     "name": "Quần short",
     "price": 400000,
     "category": "quan-short",
@@ -472,7 +491,7 @@
     "description": "<strong>Chất liệu:</strong>98% cotton - 2% spandex giúp quần giữ form chuẩn, đàn hồi tốt và thoải mái khi vận động. Sản phẩm được xử lý thêm độ cầm màu giúp màu vải lên chuẩn, hạn chế bay màu khi giặt và giữ màu bền đẹp theo thời gian.\n<strong>Thiết kế:</strong>Dáng quần short basic lưng cao, tôn eo và kéo dài đôi chân. Họa tiết thêu tinh tế mang lại vẻ thanh lịch và nữ tính. Mỗi chi tiết thêu đều mang hơi thở của sự khéo léo và chăm chút. Thông số được nghiên cứu chuẩn size vóc dáng người Việt.\n<strong>Chi tiết:</strong>Cúc kim loại ánh bạc, túi sau tiện lợi, logo UNID tinh giản.\n<strong>Phong cách:</strong>Trẻ trung, năng động nhưng vẫn thanh lịch.\n<strong>Ứng dụng:</strong>Dễ phối cùng áo thun, croptop, sơ mi hay áo tank. Phù hợp đi chơi, dạo phố, du lịch hoặc mặc hằng ngày."
   },
   {
-    "id": 26,
+    "id": 27,
     "name": "Quần short",
     "price": 400000,
     "category": "quan-short",
