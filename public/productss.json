@@ -495,13 +495,13 @@
     "name": "Quần Short Jean Lưng Cao",
     "price": 400000,
     "category": "quan-short",
-    "image": "/image/anh-san-pham/quan-short/U-QSO014-(4).jpg",
-    "hoverImage": "/image/anh-san-pham/quan-short/U-QSO014-(2).jpg",
+    "image": "/image/anh-san-pham/quan-short/u-qso014-(4).jpg",
+    "hoverImage": "/image/anh-san-pham/quan-short/u-qso014-(2).jpg",
     "images": [
-      "/image/anh-san-pham/quan-short/U-QSO014-(1).jpg",
-      "/image/anh-san-pham/quan-short/U-QSO014-(2).jpg",
-      "/image/anh-san-pham/quan-short/U-QSO014-(3).jpg",
-      "/image/anh-san-pham/quan-short/U-QSO014-(4).jpg"
+      "/image/anh-san-pham/quan-short/u-qso014-(4).jpg",
+      "/image/anh-san-pham/quan-short/u-qso014-(2).jpg",
+      "/image/anh-san-pham/quan-short/u-qso014-(1).jpg",
+      "/image/anh-san-pham/quan-short/u-qso014-(3).jpg"
     ],
     "imgsize": "/image/size/short.jpg",
     "color": "xanh đậm, xanh wash, xanh sáng",
