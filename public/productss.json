@@ -19,6 +19,25 @@
     "description": "<strong>Chất liệu:</strong>Jean Cotton đứng form, thấm hút mồ hôi tốt, mang lại cảm giác dễ chịu và thoải mái trong suốt ngày dài. Sản phẩm được xử lý thêm độ cầm màu giúp màu vải lên chuẩn, hạn chế bay màu khi giặt và giữ màu bền đẹp theo thời gian.\n<strong>Thiết kế:</strong>Áo khoác jean dáng ngắn cổ bẻ, phối túi hộp phía trước. Thông số được nghiên cứu chuẩn size vóc dáng người Việt.\n<strong>Chi tiết:</strong>Hàng khuy kim loại nổi bật, logo UNID tinh giản.\n<strong>Ứng dụng:</strong>Phù hợp đi làm, dạo phố, chụp hình hoặc dự sự kiện casual. Dễ phối với quần jean, chân váy hoặc đầm ôm."
   },
   {
+    "id": 18,
+    "name": "Áo khoác",
+    "price": 650000,
+    "category": "ao-khoac",
+    "image": "/image/anh-san-pham/ao-khoac/U-AKL024.jpg",
+    "hoverImage": "/image/anh-san-pham/ao-khoac/U-AKL024-(2).jpg",
+    "imgsize": "/image/size/ao-khoac.jpg",
+    "images": [
+      "/image/anh-san-pham/ao-khoac/U-AKL024.jpg",
+      "/image/anh-san-pham/ao-khoac/U-AKL024-(2).jpg",
+      "/image/anh-san-pham/ao-khoac/U-AKL024-(3).jpg",
+      "/image/anh-san-pham/ao-khoac/U-AKL024-(4).jpg"
+    ],
+    "color": "Xanh đậm, xanh nhạt",
+    "size": ["XS", "S", "M", "L", "XL", "XXL"],
+    "material": "Jean Cotton",
+    "description": "<strong>Chất liệu:</strong>Jean Cotton đứng form, thấm hút mồ hôi tốt, mang lại cảm giác dễ chịu và thoải mái trong suốt ngày dài. Sản phẩm được xử lý thêm độ cầm màu giúp màu vải lên chuẩn, hạn chế bay màu khi giặt và giữ màu bền đẹp theo thời gian.\n<strong>Thiết kế:</strong>Áo khoác jean dáng ngắn cổ bẻ, phối túi hộp phía trước. Thông số được nghiên cứu chuẩn size vóc dáng người Việt.\n<strong>Chi tiết:</strong>Hàng khuy kim loại nổi bật, logo UNID tinh giản.\n<strong>Ứng dụng:</strong>Phù hợp đi làm, dạo phố, chụp hình hoặc dự sự kiện casual. Dễ phối với quần jean, chân váy hoặc đầm ôm."
+  },
+  {
     "id": 2,
     "name": "Áo sơ mi",
     "price": 559000,
@@ -26,7 +45,7 @@
     "image": "/image/anh-san-pham/ao-so-mi/u-anr022(4).jpg",
     "hoverImage": "/image/anh-san-pham/ao-so-mi/u-anr022(2).jpg",
     "imgsize": "/image/size/so-mi.jpg",
-    "images":[
+    "images": [
       "/image/anh-san-pham/ao-so-mi/u-anr022(4).jpg",
       "/image/anh-san-pham/ao-so-mi/u-anr022(2).jpg",
       "/image/anh-san-pham/ao-so-mi/u-anr022(3).jpg",
@@ -44,7 +63,7 @@
     "category": "ao-so-mi",
     "image": "/image/anh-san-pham/ao-so-mi/u-anr023-(7).jpg",
     "hoverImage": "/image/anh-san-pham/ao-so-mi/u-anr023-(8).jpg",
-    "images":[
+    "images": [
       "/image/anh-san-pham/ao-so-mi/u-anr023-(7).jpg",
       "/image/anh-san-pham/ao-so-mi/u-anr023-(9).jpg",
       "/image/anh-san-pham/ao-so-mi/u-anr023-(6).jpg",
@@ -62,7 +81,7 @@
     "category": "ao-tay-dai",
     "image": "/image/anh-san-pham/ao-tay-dai/u-adr021-(2).jpg",
     "hoverImage": "/image/anh-san-pham/ao-tay-dai/u-adr021-(1).jpg",
-    "images":[
+    "images": [
       "/image/anh-san-pham/ao-tay-dai/u-adr021-(2).jpg",
       "/image/anh-san-pham/ao-tay-dai/u-adr021-(1).jpg",
       "/image/anh-san-pham/ao-tay-dai/u-adr021-(3).jpg",
@@ -80,11 +99,30 @@
     "category": "chan-vay-dai",
     "image": "/image/anh-san-pham/chan-vay-dai/u-vds018-(2).jpg",
     "hoverImage": "/image/anh-san-pham/chan-vay-dai/u-vds018-(1).jpg",
-    "images":[
+    "images": [
       "/image/anh-san-pham/chan-vay-dai/u-vds018-(2).jpg",
       "/image/anh-san-pham/chan-vay-dai/u-vds018-(1).jpg",
       "/image/anh-san-pham/chan-vay-dai/u-vds018-(3).jpg",
       "/image/anh-san-pham/chan-vay-dai/u-vds018-(4).jpg"
+    ],
+    "imgsize": "/image/size/chan-vay.jpg",
+    "color": "xanh đậm, xanh sáng, đen ánh vàng ",
+    "material": "Cotton",
+    "size": ["XS", "S", "M", "L", "XL", "XXL"],
+    "description": "<strong>Chất liệu:</strong>98% cotton - 2% spandex mang lại cảm giác mềm mại, thoáng khí, giữ dáng tốt và ít nhăn khi mặc. Chất vải dày dặn nhưng vẫn mang lại cảm giác thoải mái cả ngày dài. Sản phẩm được xử lý thêm độ cầm màu giúp màu vải lên chuẩn, hạn chế bay màu khi giặt và giữ màu bền đẹp theo thời gian.\n<strong>Thiết kế:</strong>Dáng váy suông dài qua gối, lưng cao tôn dáng. Phần hông được nhấn nhá với chi tiết túi hộp hai bên tạo nét cá tính, giúp tổng thể vừa thanh lịch vừa năng động. Thông số được nghiên cứu chuẩn size vóc dáng người Việt.\n<strong>Chi tiết:</strong>Đường may tỉ mỉ, chỉ nổi tinh tế, cúc và khóa kéo kim loại chắc chắn. Logo UNID tinh giản.\n<strong>Phong cách:</strong>Thanh lịch, thời thượng pha chút cá tính – phù hợp cho phong cách công sở, street style hoặc retro hiện đại.\n<strong>Ứng dụng:</strong>Dễ phối cùng áo sơ mi, áo thun, croptop hoặc blazer. Phù hợp đi làm, dạo phố, cà phê cuối tuần hay đi du lịch."
+  },
+  {
+    "id": 19,
+    "name": "Chân váy dài",
+    "price": 489000,
+    "category": "chan-vay-dai",
+    "image": "/image/anh-san-pham/chan-vay-dai/U-VDS019.jpg",
+    "hoverImage": "/image/anh-san-pham/chan-vay-dai/U-VDS019-(2).jpg",
+    "images": [
+      "/image/anh-san-pham/chan-vay-dai/U-VDS019.jpg",
+      "/image/anh-san-pham/chan-vay-dai/U-VDS019-(2).jpg",
+      "/image/anh-san-pham/chan-vay-dai/U-VDS019-(3).jpg",
+      "/image/anh-san-pham/chan-vay-dai/U-VDS019-(4).jpg"
     ],
     "imgsize": "/image/size/chan-vay.jpg",
     "color": "xanh đậm, xanh sáng, đen ánh vàng ",
@@ -99,7 +137,7 @@
     "category": "dam-dai",
     "image": "/image/anh-san-pham/dam-dai/u-ddr016-(2).jpg",
     "hoverImage": "/image/anh-san-pham/dam-dai/u-ddr016-(4).jpg",
-    "images":[
+    "images": [
       "/image/anh-san-pham/dam-dai/u-ddr016-(2).jpg",
       "/image/anh-san-pham/dam-dai/u-ddr016-(4).jpg",
       "/image/anh-san-pham/dam-dai/u-ddr016-(1).jpg",
@@ -118,7 +156,7 @@
     "category": "dam-lung",
     "image": "/image/anh-san-pham/dam-lung/u-dls017-(1).jpg",
     "hoverImage": "/image/anh-san-pham/dam-lung/u-dls017-(2).jpg",
-    "images":[
+    "images": [
       "/image/anh-san-pham/dam-lung/u-dls017-(1).jpg",
       "/image/anh-san-pham/dam-lung/u-dls017-(2).jpg",
       "/image/anh-san-pham/dam-lung/u-dls017-(3).jpg",
@@ -137,11 +175,49 @@
     "category": "quan-ong-cong",
     "image": "/image/anh-san-pham/quan-ong-cong/u-qdc012-(3).jpg",
     "hoverImage": "/image/anh-san-pham/quan-ong-cong/u-qdc012-(5).jpg",
-    "images":[
+    "images": [
       "/image/anh-san-pham/quan-ong-cong/u-qdc012-(3).jpg",
       "/image/anh-san-pham/quan-ong-cong/u-qdc012-(5).jpg",
       "/image/anh-san-pham/quan-ong-cong/u-qdc012-(2).jpg",
       "/image/anh-san-pham/quan-ong-cong/u-qdc012-(4).jpg"
+    ],
+    "imgsize": "/image/size/ong-cong.jpg",
+    "color": "xanh đậm, xanh wash, xanh sáng",
+    "material": "Jean cotton",
+    "size": ["XS", "S", "M", "L", "XL", "XXL"],
+    "description": "<strong>Chất liệu:</strong> Jean cotton, co giãn nhẹ, bền màu, thoáng mát và giữ form tốt. Sản phẩm được xử lý thêm độ cầm màu giúp màu vải lên chuẩn, hạn chế bay màu khi giặt và giữ màu bền đẹp theo thời gian.\n<strong>Thiết kế:</strong>Dáng ống cong, cạp cao vừa tôn vòng eo vừa tạo sự cân đối cho cơ thể tạo hiệu ứng kéo dài chân, che khuyết điểm giúp cân bằng và phù hợp cho mọi vóc dáng. Thông số được nghiên cứu chuẩn size vóc dáng người Việt.\n<strong>Form dáng:</strong>Ôm nhẹ phần hông, thả suông phần ống.\n<strong>Chi tiết:</strong>Khuy kim loại ánh bạc, đường may tỉ mỉ, logo UNID tinh giản.\n<strong>Phong cách:</strong> Năng động, cá tính, dễ phối cùng áo croptop, sơ mi hoặc blazer.\n<strong>Ứng dụng:</strong> Mặc đi học, đi làm hay dạo phố đều chuẩn vibe thời thượng."
+  },
+  {
+    "id": 23,
+    "name": "Quần ống cong",
+    "price": 519000,
+    "category": "quan-ong-cong",
+    "image": "/image/anh-san-pham/quan-ong-cong/U-QDC010.jpg",
+    "hoverImage": "/image/anh-san-pham/quan-ong-cong/U-QDC010-(2).jpg",
+    "images": [
+      "/image/anh-san-pham/quan-ong-cong/U-QDC010.jpg",
+      "/image/anh-san-pham/quan-ong-cong/U-QDC010-(2).jpg",
+      "/image/anh-san-pham/quan-ong-cong/U-QDC010-(3).jpg",
+      "/image/anh-san-pham/quan-ong-cong/U-QDC010-(4).jpg"
+    ],
+    "imgsize": "/image/size/ong-cong.jpg",
+    "color": "xanh đậm, xanh wash, xanh sáng",
+    "material": "Jean cotton",
+    "size": ["XS", "S", "M", "L", "XL", "XXL"],
+    "description": "<strong>Chất liệu:</strong> Jean cotton, co giãn nhẹ, bền màu, thoáng mát và giữ form tốt. Sản phẩm được xử lý thêm độ cầm màu giúp màu vải lên chuẩn, hạn chế bay màu khi giặt và giữ màu bền đẹp theo thời gian.\n<strong>Thiết kế:</strong>Dáng ống cong, cạp cao vừa tôn vòng eo vừa tạo sự cân đối cho cơ thể tạo hiệu ứng kéo dài chân, che khuyết điểm giúp cân bằng và phù hợp cho mọi vóc dáng. Thông số được nghiên cứu chuẩn size vóc dáng người Việt.\n<strong>Form dáng:</strong>Ôm nhẹ phần hông, thả suông phần ống.\n<strong>Chi tiết:</strong>Khuy kim loại ánh bạc, đường may tỉ mỉ, logo UNID tinh giản.\n<strong>Phong cách:</strong> Năng động, cá tính, dễ phối cùng áo croptop, sơ mi hoặc blazer.\n<strong>Ứng dụng:</strong> Mặc đi học, đi làm hay dạo phố đều chuẩn vibe thời thượng."
+  },
+  {
+    "id": 24,
+    "name": "Quần ống cong",
+    "price": 519000,
+    "category": "quan-ong-cong",
+    "image": "/image/anh-san-pham/quan-ong-cong/U-QDC011-(1).jpg",
+    "hoverImage": "/image/anh-san-pham/quan-ong-cong/U-QDC011-(2).jpg",
+    "images": [
+      "/image/anh-san-pham/quan-ong-cong/U-QDC011-(1).jpg",
+      "/image/anh-san-pham/quan-ong-cong/U-QDC011-(2).jpg",
+      "/image/anh-san-pham/quan-ong-cong/U-QDC011-(3).jpg",
+      "/image/anh-san-pham/quan-ong-cong/U-QDC011-(4).jpg"
     ],
     "imgsize": "/image/size/ong-cong.jpg",
     "color": "xanh đậm, xanh wash, xanh sáng",
@@ -156,7 +232,7 @@
     "category": "quan-ong-loe",
     "image": "/image/anh-san-pham/quan-ong-loe/u-qdl007-(1).jpg",
     "hoverImage": "/image/anh-san-pham/quan-ong-loe/u-qdl007-(2).jpg",
-    "images":[
+    "images": [
       "/image/anh-san-pham/quan-ong-loe/u-qdl007-(1).jpg",
       "/image/anh-san-pham/quan-ong-loe/u-qdl007-(2).jpg",
       "/image/anh-san-pham/quan-ong-loe/u-qdl007-(3).jpg",
@@ -175,7 +251,7 @@
     "category": "quan-ong-loe",
     "image": "/image/anh-san-pham/quan-ong-loe/u-qdl008-(1).jpg",
     "hoverImage": "/image/anh-san-pham/quan-ong-loe/u-qdl008-(2).jpg",
-    "images":[
+    "images": [
       "/image/anh-san-pham/quan-ong-loe/u-qdl008-(1).jpg",
       "/image/anh-san-pham/quan-ong-loe/u-qdl008-(2).jpg",
       "/image/anh-san-pham/quan-ong-loe/u-qdl008-(3).jpg",
@@ -194,7 +270,7 @@
     "category": "quan-ong-loe",
     "image": "/image/anh-san-pham/quan-ong-loe/u-qdl009-(1).jpg",
     "hoverImage": "/image/anh-san-pham/quan-ong-loe/u-qdl009-(2).jpg",
-    "images":[
+    "images": [
       "/image/anh-san-pham/quan-ong-loe/u-qdl009-(1).jpg",
       "/image/anh-san-pham/quan-ong-loe/u-qdl009-(2).jpg",
       "/image/anh-san-pham/quan-ong-loe/u-qdl009-(3).jpg",
@@ -213,7 +289,7 @@
     "category": "quan-ong-rong",
     "image": "/image/anh-san-pham/quan-ong-rong/u-qdr001-(2).jpg",
     "hoverImage": "/image/anh-san-pham/quan-ong-rong/u-qdr001-(1).jpg",
-    "images":[
+    "images": [
       "/image/anh-san-pham/quan-ong-rong/u-qdr001-(2).jpg",
       "/image/anh-san-pham/quan-ong-rong/u-qdr001-(1).jpg",
       "/image/anh-san-pham/quan-ong-rong/u-qdr001-(3).jpg"
@@ -231,7 +307,7 @@
     "category": "quan-ong-rong",
     "image": "/image/anh-san-pham/quan-ong-rong/u-qdr002-(1).jpg",
     "hoverImage": "/image/anh-san-pham/quan-ong-rong/u-qdr002-(2).jpg",
-    "images":[
+    "images": [
       "/image/anh-san-pham/quan-ong-rong/u-qdr001-(1).jpg",
       "/image/anh-san-pham/quan-ong-rong/u-qdr001-(2).jpg",
       "/image/anh-san-pham/quan-ong-rong/u-qdr001-(3).jpg",
@@ -251,7 +327,7 @@
     "image": "/image/anh-san-pham/quan-ong-rong/u-qdr003-(1).jpg",
     "hoverImage": "/image/anh-san-pham/quan-ong-rong/u-qdr003-(2).jpg",
     "imgsize": "/image/size/quan-ong-rong.jpg",
-    "images":[
+    "images": [
       "/image/anh-san-pham/quan-ong-rong/u-qdr003-(1).jpg",
       "/image/anh-san-pham/quan-ong-rong/u-qdr003-(2).jpg",
       "/image/anh-san-pham/quan-ong-rong/u-qdr003-(3).jpg",
@@ -269,7 +345,7 @@
     "category": "quan-ong-suong",
     "image": "/image/anh-san-pham/quan-ong-suong/u-qds004-(1).jpg",
     "hoverImage": "/image/anh-san-pham/quan-ong-suong/u-qds004-(3).jpg",
-    "images":[
+    "images": [
       "/image/anh-san-pham/quan-ong-suong/u-qds004-(1).jpg",
       "/image/anh-san-pham/quan-ong-suong/u-qds004-(3).jpg",
       "/image/anh-san-pham/quan-ong-suong/u-qds004-(2).jpg",
@@ -282,17 +358,74 @@
     "description": "<strong>Chất liệu:</strong> Jean cotton, co giãn nhẹ, bền màu, thoáng mát và giữ form tốt. Sản phẩm được xử lý thêm độ cầm màu giúp màu vải lên chuẩn, hạn chế bay màu khi giặt và giữ màu bền đẹp theo thời gian.\n<strong>Thiết kế:</strong>Phần ống suông dài, cạp cao vừa tôn vòng eo vừa tạo sự cân đối cho cơ thể tạo hiệu ứng kéo dài chân, che khuyết điểm giúp cân bằng và phù hợp cho mọi vóc dáng. Thông số được nghiên cứu chuẩn size vóc dáng người Việt.\n<strong>Form dáng:</strong>Ôm nhẹ phần hông, thả suông phần ống.\n<strong>Chi tiết:</strong>Khuy kim loại ánh bạc, đường may tỉ mỉ, logo UNID tinh giản. Họa tiết thêu túi sau nổi bật nhưng vẫn giữ được sự nhẹ nhàng, sang trọng. Mỗi chi tiết thêu đều mang hơi thở của sự khéo léo và chăm chút.<strong>Phong cách:</strong>Thanh lịch, nữ tính, dễ phối cùng áo croptop, sơ mi hoặc blazer.\n<strong>Ứng dụng:</strong> Mặc đi học, đi làm hay dạo phố đều chuẩn vibe thời thượng."
   },
   {
+    "id": 20,
+    "name": "Quần ống suông ",
+    "price": 490000,
+    "category": "quan-ong-suong",
+    "image": "/image/anh-san-pham/quan-ong-suong/U-QDS005.jpg",
+    "hoverImage": "/image/anh-san-pham/quan-ong-suong/U-QDS005-(2).jpg",
+    "images": [
+      "/image/anh-san-pham/quan-ong-suong/U-QDS005.jpg",
+      "/image/anh-san-pham/quan-ong-suong/U-QDS005-(2).jpg",
+      "/image/anh-san-pham/quan-ong-suong/U-QDS005-(3).jpg",
+      "/image/anh-san-pham/quan-ong-suong/U-QDS005-(4).jpg"
+    ],
+    "imgsize": "/image/size/suong.jpg",
+    "color": "xanh đậm, xanh wash, xanh sáng",
+    "material": "Jean cotton",
+    "size": ["XS", "S", "M", "L", "XL", "XXL"],
+    "description": "<strong>Chất liệu:</strong> Jean cotton, co giãn nhẹ, bền màu, thoáng mát và giữ form tốt. Sản phẩm được xử lý thêm độ cầm màu giúp màu vải lên chuẩn, hạn chế bay màu khi giặt và giữ màu bền đẹp theo thời gian.\n<strong>Thiết kế:</strong>Phần ống suông dài, cạp cao vừa tôn vòng eo vừa tạo sự cân đối cho cơ thể tạo hiệu ứng kéo dài chân, che khuyết điểm giúp cân bằng và phù hợp cho mọi vóc dáng. Thông số được nghiên cứu chuẩn size vóc dáng người Việt.\n<strong>Form dáng:</strong>Ôm nhẹ phần hông, thả suông phần ống.\n<strong>Chi tiết:</strong>Khuy kim loại ánh bạc, đường may tỉ mỉ, logo UNID tinh giản. Họa tiết thêu túi sau nổi bật nhưng vẫn giữ được sự nhẹ nhàng, sang trọng. Mỗi chi tiết thêu đều mang hơi thở của sự khéo léo và chăm chút.<strong>Phong cách:</strong>Thanh lịch, nữ tính, dễ phối cùng áo croptop, sơ mi hoặc blazer.\n<strong>Ứng dụng:</strong> Mặc đi học, đi làm hay dạo phố đều chuẩn vibe thời thượng."
+  },
+  {
+    "id": 21,
+    "name": "Quần ống suông ",
+    "price": 490000,
+    "category": "quan-ong-suong",
+    "image": "/image/anh-san-pham/quan-ong-suong/U-QDS006.jpg",
+    "hoverImage": "/image/anh-san-pham/quan-ong-suong/U-QDS006-(2).jpg",
+    "images": [
+      "/image/anh-san-pham/quan-ong-suong/U-QDS006.jpg",
+      "/image/anh-san-pham/quan-ong-suong/U-QDS006-(2).jpg",
+      "/image/anh-san-pham/quan-ong-suong/U-QDS006-(3).jpg",
+      "/image/anh-san-pham/quan-ong-suong/U-QDS006-(4).jpg"
+    ],
+    "imgsize": "/image/size/suong.jpg",
+    "color": "xanh đậm, xanh wash, xanh sáng",
+    "material": "Jean cotton",
+    "size": ["XS", "S", "M", "L", "XL", "XXL"],
+    "description": "<strong>Chất liệu:</strong> Jean cotton, co giãn nhẹ, bền màu, thoáng mát và giữ form tốt. Sản phẩm được xử lý thêm độ cầm màu giúp màu vải lên chuẩn, hạn chế bay màu khi giặt và giữ màu bền đẹp theo thời gian.\n<strong>Thiết kế:</strong>Phần ống suông dài, cạp cao vừa tôn vòng eo vừa tạo sự cân đối cho cơ thể tạo hiệu ứng kéo dài chân, che khuyết điểm giúp cân bằng và phù hợp cho mọi vóc dáng. Thông số được nghiên cứu chuẩn size vóc dáng người Việt.\n<strong>Form dáng:</strong>Ôm nhẹ phần hông, thả suông phần ống.\n<strong>Chi tiết:</strong>Khuy kim loại ánh bạc, đường may tỉ mỉ, logo UNID tinh giản. Họa tiết thêu túi sau nổi bật nhưng vẫn giữ được sự nhẹ nhàng, sang trọng. Mỗi chi tiết thêu đều mang hơi thở của sự khéo léo và chăm chút.<strong>Phong cách:</strong>Thanh lịch, nữ tính, dễ phối cùng áo croptop, sơ mi hoặc blazer.\n<strong>Ứng dụng:</strong> Mặc đi học, đi làm hay dạo phố đều chuẩn vibe thời thượng."
+  },
+  {
+    "id": 22,
+    "name": "Quần short",
+    "price": 400000,
+    "category": "quan-short",
+    "image": "/image/anh-san-pham/quan-short/U-QSO015.jpg",
+    "hoverImage": "/image/anh-san-pham/quan-short/U-QSO015-(2).jpg",
+    "images": [
+      "/image/anh-san-pham/quan-short/U-QSO015.jpg",
+      "/image/anh-san-pham/quan-short/U-QSO015-(2).jpg",
+      "/image/anh-san-pham/quan-short/U-QSO015-(4).jpg",
+      "/image/anh-san-pham/quan-short/U-QSO015-(3).jpg"
+    ],
+    "imgsize": "/image/size/short.jpg",
+    "color": "xanh đậm, xanh wash, xanh sáng",
+    "material": "Cotton",
+    "size": ["XS", "S", "M", "L", "XL", "XXL"],
+    "description": "<strong>Chất liệu:</strong>98% cotton - 2% spandex giúp quần giữ form chuẩn, đàn hồi tốt và thoải mái khi vận động. Sản phẩm được xử lý thêm độ cầm màu giúp màu vải lên chuẩn, hạn chế bay màu khi giặt và giữ màu bền đẹp theo thời gian.\n<strong>Thiết kế:</strong>Dáng quần short basic lưng cao, tôn eo và kéo dài đôi chân. Họa tiết thêu tinh tế mang lại vẻ thanh lịch và nữ tính. Mỗi chi tiết thêu đều mang hơi thở của sự khéo léo và chăm chút. Thông số được nghiên cứu chuẩn size vóc dáng người Việt.\n<strong>Chi tiết:</strong>Cúc kim loại ánh bạc, túi sau tiện lợi, logo UNID tinh giản.\n<strong>Phong cách:</strong>Trẻ trung, năng động nhưng vẫn thanh lịch.\n<strong>Ứng dụng:</strong>Dễ phối cùng áo thun, croptop, sơ mi hay áo tank. Phù hợp đi chơi, dạo phố, du lịch hoặc mặc hằng ngày."
+  },
+  {
     "id": 15,
     "name": "Quần short",
     "price": 400000,
     "category": "quan-short",
-    "image": "/image/anh-san-pham/quan-short/u-qso015-(3).jpg",
-    "hoverImage": "/image/anh-san-pham/quan-short/u-qso015-(2).jpg",
-    "images":[
-      "/image/anh-san-pham/quan-short/u-qso015-(3).jpg",
-      "/image/anh-san-pham/quan-short/u-qso015-(2).jpg",
-      "/image/anh-san-pham/quan-short/u-qso015-(1).jpg",
-      "/image/anh-san-pham/quan-short/u-qso015-(4).jpg"
+    "image": "/image/anh-san-pham/quan-short/U-QSO013.jpg",
+    "hoverImage": "/image/anh-san-pham/quan-short/U-QSO013-(2).jpg",
+    "images": [
+      "/image/anh-san-pham/quan-short/U-QSO013.jpg",
+      "/image/anh-san-pham/quan-short/U-QSO013-(2).jpg",
+      "/image/anh-san-pham/quan-short/U-QSO013-(3).jpg",
+      "/image/anh-san-pham/quan-short/U-QSO013-(4).jpg"
     ],
     "imgsize": "/image/size/short.jpg",
     "color": "xanh đậm, xanh wash, xanh sáng",
@@ -308,7 +441,7 @@
     "image": "/image/anh-san-pham/set-ghile/u-glo026-(1).jpg",
     "hoverImage": "/image/anh-san-pham/set-ghile/u-glo026-(2).jpg",
     "imgsize": "/image/size/ghile.jpg",
-    "images":[
+    "images": [
       "/image/anh-san-pham/set-ghile/u-glo026-(1).jpg",
       "/image/anh-san-pham/set-ghile/u-glo026-(2).jpg",
       "/image/anh-san-pham/set-ghile/u-glo026-(3).jpg",
@@ -326,7 +459,7 @@
     "category": "set-ghile",
     "image": "/image/anh-san-pham/set-ghile/u-glo027-(1).jpg",
     "hoverImage": "/image/anh-san-pham/set-ghile/u-glo027-(2).jpg",
-    "images":[
+    "images": [
       "/image/anh-san-pham/set-ghile/u-glo027-(1).jpg",
       "/image/anh-san-pham/set-ghile/u-glo027-(2).jpg",
       "/image/anh-san-pham/set-ghile/u-glo027-(3).jpg",

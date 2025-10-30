@@ -3,7 +3,7 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Truck, Ruler, ShieldCheck } from "lucide-react";
+import { Truck, Ruler, ShieldCheck, Repeat } from "lucide-react";
 import { Playfair_Display } from "next/font/google";
 
 const playfair = Playfair_Display({
@@ -33,7 +33,7 @@ export default function ProductDetailPage() {
   const [showSizeGuide, setShowSizeGuide] = useState(false);
   const [showCareGuide, setShowCareGuide] = useState(false);
   const [showCommitment, setShowCommitment] = useState(false);
-
+  const [showReturnPolicy, setShowReturnPolicy] = useState(false);
   useEffect(() => {
     fetch("/productss.json")
       .then((res) => res.json())
@@ -148,6 +148,11 @@ export default function ProductDetailPage() {
               label="Cam kết từ thương hiệu"
               onClick={() => setShowCommitment(true)}
             />
+            <GuideItem
+              icon={<Repeat size={18} />}
+              label="Chính sách đổi trả"
+              onClick={() => setShowReturnPolicy(true)}
+            />
           </div>
 
           {/* Chi tiết */}
@@ -221,11 +226,21 @@ export default function ProductDetailPage() {
           />
         </Popup>
       )}
+      {showReturnPolicy && (
+        <Popup onClose={() => setShowReturnPolicy(false)}>
+          <Image
+            src="/image/size/doi-tra.jpg"
+            alt="Cam kết từ thương hiệu"
+            width={600}
+            height={600}
+            className="mx-auto rounded-md"
+          />
+        </Popup>
+      )}
     </main>
   );
 }
 
-/* ---------------- COMPONENT PHỤ ---------------- */
 function Popup({
   children,
   onClose,
