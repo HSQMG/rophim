@@ -24,21 +24,12 @@ interface CategoryGroup {
 }
 
 export default function Header() {
-  // --- state dùng cho desktop dropdown (hover qua bên phải)
   const [activeGroupDesktop, setActiveGroupDesktop] = useState<number | null>(
     null
   );
-
-  // --- state dùng cho mobile menu (mở/đóng toàn bộ panel mobile)
   const [menuOpen, setMenuOpen] = useState(false);
-
-  // --- state dùng cho accordion trong mobile:
-  // showShop: mở khối "Cửa hàng"
-  // openGroupIdx: nhóm con nào đang expand (ÁO / ĐẦM / QUẦN ...)
   const [showShop, setShowShop] = useState(false);
   const [openGroupIdx, setOpenGroupIdx] = useState<number | null>(null);
-
-  // categories lấy từ product.json
   const [categories, setCategories] = useState<CategoryGroup[]>([]);
 
   useEffect(() => {
@@ -48,27 +39,27 @@ export default function Header() {
       .catch((err) => console.error("Lỗi tải danh mục:", err));
   }, []);
 
-  // helper: toggle 1 group con trong mobile
   const toggleGroup = (idx: number) => {
     setOpenGroupIdx((prev) => (prev === idx ? null : idx));
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100">
+    <header className="sticky top-0 z-50 bg-white/90 dark:bg-[#0f0f0f]/90 text-[#3e2c1c] dark:text-white backdrop-blur-md shadow-sm border-b border-gray-100 dark:border-gray-700 transition-colors duration-500">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
         {/* LOGO */}
         <Link href="/" className="flex items-center space-x-2">
           <Image
-            src="/image/logo/logo UNID.png"
+            src="/image/logo/logo unid.png"
             alt="UNID"
             width={120}
             height={40}
             priority
+            className="dark:bg-white/10 rounded-lg px-2 py-1"
           />
         </Link>
 
         {/* -------- NAV DESKTOP -------- */}
-        <nav className="hidden md:flex space-x-10 text-[15px] font-medium text-[#3e2c1c]">
+        <nav className="hidden md:flex space-x-10 text-[15px] font-medium">
           <Link href="/" className="hover:text-[#c7a17a] transition">
             Trang chủ
           </Link>
@@ -84,12 +75,11 @@ export default function Header() {
               <ChevronDown size={16} />
             </button>
 
-            {/* khối mega menu */}
-            <div className="absolute left-1/2 -translate-x-1/2 top-full bg-white rounded-2xl shadow-2xl mt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 translate-y-3 transition-all duration-300 ease-out border border-gray-100">
+            <div className="absolute left-1/2 -translate-x-1/2 top-full bg-white dark:bg-[#1a1a1a] rounded-2xl shadow-2xl mt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 translate-y-3 transition-all duration-300 ease-out border border-gray-100 dark:border-gray-700">
               <div className="relative flex">
-                {/* cột trái: list group */}
-                <div className="bg-[#faf8f6] py-8 px-6 w-[280px] border-r border-gray-200">
-                  <h4 className="font-semibold text-[#3e2c1c] mb-5 text-lg border-l-4 border-[#c7a17a] pl-3">
+                {/* Cột trái */}
+                <div className="bg-[#faf8f6] dark:bg-[#1e1e1e] py-8 px-6 w-[280px] border-r border-gray-200 dark:border-gray-700">
+                  <h4 className="font-semibold mb-5 text-lg border-l-4 border-[#c7a17a] pl-3">
                     Danh mục
                   </h4>
 
@@ -103,8 +93,8 @@ export default function Header() {
                       <div
                         className={`flex items-center justify-between text-[15px] cursor-pointer px-3 py-2 rounded-lg transition-all ${
                           activeGroupDesktop === i
-                            ? "bg-[#f3ebe3] text-[#c7a17a]"
-                            : "hover:bg-[#f9f6f4]"
+                            ? "bg-[#f3ebe3] dark:bg-[#2a2a2a] text-[#c7a17a]"
+                            : "hover:bg-[#f9f6f4] dark:hover:bg-[#252525]"
                         }`}
                       >
                         <span>{group.group}</span>
@@ -113,17 +103,17 @@ export default function Header() {
 
                       {activeGroupDesktop === i && (
                         <div
-                          className="absolute left-full top-0 bg-white border border-gray-100 shadow-xl rounded-xl w-[600px] py-8 px-8 transition-all duration-300"
+                          className="absolute left-full top-0 bg-white dark:bg-[#1a1a1a] border border-gray-100 dark:border-gray-700 shadow-xl rounded-xl w-[600px] py-8 px-8 transition-all duration-300"
                           onMouseEnter={() => setActiveGroupDesktop(i)}
                           onMouseLeave={() => setActiveGroupDesktop(null)}
                         >
                           <div className="flex gap-8">
                             <div className="flex-1">
-                              <h5 className="font-semibold text-[#3e2c1c] mb-4 uppercase border-b border-gray-200 pb-2">
+                              <h5 className="font-semibold mb-4 uppercase border-b border-gray-200 dark:border-gray-700 pb-2">
                                 {group.group}
                               </h5>
 
-                              <ul className="grid grid-cols-2 gap-y-3 gap-x-8 text-gray-700">
+                              <ul className="grid grid-cols-2 gap-y-3 gap-x-8">
                                 {group.items.map((item, j) => (
                                   <li
                                     key={j}
@@ -199,40 +189,22 @@ export default function Header() {
         </div>
       </div>
 
-      {/* -------- MENU MOBILE DROPDOWN -------- */}
+      {/* -------- MENU MOBILE -------- */}
       {menuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100 shadow-lg px-6 py-4 animate-slideDown">
-          <ul className="space-y-4 text-[#3e2c1c] font-medium">
+        <div className="md:hidden bg-white dark:bg-[#1a1a1a] border-t border-gray-100 dark:border-gray-700 shadow-lg px-6 py-4 animate-slideDown">
+          <ul className="space-y-4 font-medium">
             <li>
-              <Link
-                href="/"
-                onClick={() => {
-                  setMenuOpen(false);
-                }}
-              >
-                Trang chủ
-              </Link>
+              <Link href="/">Trang chủ</Link>
             </li>
-
             <li>
-              <Link
-                href="/gioi-thieu"
-                onClick={() => {
-                  setMenuOpen(false);
-                }}
-              >
-                Giới thiệu
-              </Link>
+              <Link href="/gioi-thieu">Giới thiệu</Link>
             </li>
-
             <li>
               <button
                 className="flex items-center justify-between w-full"
                 onClick={() => {
                   setShowShop((prev) => !prev);
-                  if (!showShop) {
-                    setOpenGroupIdx(null);
-                  }
+                  if (!showShop) setOpenGroupIdx(null);
                 }}
               >
                 <span>Cửa hàng</span>
@@ -252,9 +224,7 @@ export default function Header() {
                     <div key={i}>
                       <button
                         className="flex items-center justify-between w-full text-sm"
-                        onClick={() => {
-                          toggleGroup(i);
-                        }}
+                        onClick={() => toggleGroup(i)}
                       >
                         <span>{group.group}</span>
                         <ChevronRight
@@ -265,19 +235,17 @@ export default function Header() {
                         />
                       </button>
 
-                      {/* danh sách item con: ÁO KHOÁC, ÁO SƠ MI,... */}
                       <div
                         className={`transition-all duration-500 overflow-hidden ${
                           openGroupIdx === i ? "max-h-[600px] mt-2" : "max-h-0"
                         }`}
                       >
-                        <ul className="pl-4 space-y-2 text-gray-600 text-sm">
+                        <ul className="pl-4 space-y-2 text-sm">
                           {group.items.map((item, j) => (
                             <li key={j}>
                               <Link
                                 href={`/cua-hang/${item.slug}`}
                                 onClick={() => {
-                                  // điều hướng và đóng tất cả
                                   setMenuOpen(false);
                                   setShowShop(false);
                                   setOpenGroupIdx(null);
@@ -295,16 +263,8 @@ export default function Header() {
                 </div>
               </div>
             </li>
-
             <li>
-              <Link
-                href="/lien-he"
-                onClick={() => {
-                  setMenuOpen(false);
-                }}
-              >
-                Liên hệ
-              </Link>
+              <Link href="/lien-he">Liên hệ</Link>
             </li>
           </ul>
         </div>

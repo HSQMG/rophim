@@ -25,16 +25,20 @@ export default function CollectionCarousel() {
   ];
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-white dark:bg-[#0f0f0f] transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-6">
+        {/* Tiêu đề */}
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <h2 className="text-3xl font-bold mb-4">BỘ SƯU TẬP</h2>
-          <p className="text-gray-600">
+          <h2 className="text-3xl font-bold mb-4 text-[#3e2c1c] dark:text-white">
+            BỘ SƯU TẬP
+          </h2>
+          <p className="text-gray-600 dark:text-gray-300">
             Bộ sưu tập của UNID tôn vinh vẻ đẹp người phụ nữ Việt hiện đại qua
             chất liệu jean mềm mại và họa tiết thêu mang đậm bản sắc dân tộc.
           </p>
         </div>
 
+        {/* Carousel */}
         <Swiper
           modules={[Navigation]}
           navigation
@@ -48,8 +52,9 @@ export default function CollectionCarousel() {
         >
           {collections.map((item, i) => (
             <SwiperSlide key={i}>
-              <div className="group bg-white rounded-lg text-center">
-                <div className="w-full h-[420px] overflow-hidden rounded-t-full relative mx-auto border border-transparent group-hover:border-black transition duration-300 cursor-pointer">
+              <div className="group bg-white dark:bg-[#1a1a1a] rounded-lg text-center shadow-sm dark:shadow-none transition-colors duration-500">
+                {/* Ảnh */}
+                <div className="w-full h-[420px] overflow-hidden rounded-t-full relative mx-auto border border-transparent group-hover:border-[#c7a17a] transition duration-300 cursor-pointer">
                   <img
                     src={item.img}
                     alt={item.title}
@@ -57,19 +62,25 @@ export default function CollectionCarousel() {
                   />
                 </div>
 
+                {/* Nút xem chi tiết */}
                 <div className="relative">
                   <a
                     href="#"
                     aria-label={`Xem ${item.title}`}
-                    className="absolute left-1/2 -translate-x-1/2 -top-6 bg-white text-black w-12 h-12 rounded-full flex items-center justify-center shadow-md opacity-0 group-hover:opacity-100 transition duration-300 hover:bg-[#8B4513] hover:text-white"
+                    className="absolute left-1/2 -translate-x-1/2 -top-6 bg-white dark:bg-[#2a2a2a] text-black dark:text-white w-12 h-12 rounded-full flex items-center justify-center shadow-md opacity-0 group-hover:opacity-100 transition duration-300 hover:bg-[#8B4513] hover:text-white"
                   >
                     →
                   </a>
                 </div>
 
+                {/* Nội dung */}
                 <div className="p-6">
-                  <h3 className="font-semibold text-lg mb-3">{item.title}</h3>
-                  <p className="text-gray-600 text-sm">{item.desc}</p>
+                  <h3 className="font-semibold text-lg mb-3 text-[#3e2c1c] dark:text-white">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">
+                    {item.desc}
+                  </p>
                 </div>
               </div>
             </SwiperSlide>
