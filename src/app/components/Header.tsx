@@ -170,7 +170,7 @@ export default function Header() {
         </nav>
 
         {/* -------- ICONS / MOBILE MENU BUTTON -------- */}
-        <div className="flex items-center space-x-5">
+        <div className="flex items-center space-x-5 text-[#3e2c1c] dark:text-white">
           <button className="cursor-pointer hover:text-[#c7a17a] transition">
             <Search size={22} />
           </button>
@@ -186,12 +186,10 @@ export default function Header() {
             </span>
           </button>
 
-          {/* button mở menu mobile */}
           <button
-            className="md:hidden cursor-pointer"
+            className="md:hidden cursor-pointer hover:text-[#c7a17a] transition"
             onClick={() => {
               setMenuOpen((prev) => !prev);
-              // reset accordion khi mở/đóng menu
               setShowShop(false);
               setOpenGroupIdx(null);
             }}
