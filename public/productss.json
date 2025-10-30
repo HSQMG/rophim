@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "name": "Áo khoác",
+    "name": "Áo Khoác Jean Dáng Dài Cổ Bẻ",
     "price": 650000,
     "category": "ao-khoac",
     "image": "/image/anh-san-pham/ao-khoac/u-akl025-(3).jpg",
@@ -20,7 +20,7 @@
   },
   {
     "id": 2,
-    "name": "Áo khoác",
+    "name": "Áo Khoác Jean Dáng Ngắn Cổ Bẻ",
     "price": 650000,
     "category": "ao-khoac",
     "image": "/image/anh-san-pham/ao-khoac/U-AKL024.jpg",
@@ -57,7 +57,7 @@
   },
   {
     "id": 4,
-    "name": "Áo sơ mi",
+    "name": "Áo Sơ Mi Jean Tay Ngắn Form Rộng",
     "price": 559000,
     "category": "ao-so-mi",
     "image": "/image/anh-san-pham/ao-so-mi/u-anr022(4).jpg",
@@ -76,7 +76,7 @@
   },
   {
     "id": 5,
-    "name": "Áo sơ mi",
+    "name": "Áo Sơ Mi Jean Tay Ngắn Form Rộng",
     "price": 559000,
     "category": "ao-so-mi",
     "image": "/image/anh-san-pham/ao-so-mi/u-anr023-(7).jpg",
@@ -94,7 +94,7 @@
   },
   {
     "id": 6,
-    "name": "Chân váy dài",
+    "name": " Chân Váy Jean Dáng Suông Co Giãn Tốt",
     "price": 489000,
     "category": "chan-vay-dai",
     "image": "/image/anh-san-pham/chan-vay-dai/u-vds018-(2).jpg",
@@ -113,7 +113,7 @@
   },
   {
     "id": 7,
-    "name": "Chân váy dài",
+    "name": " Chân Váy Jean Dáng Suông Co Giãn Tốt",
     "price": 489000,
     "category": "chan-vay-dai",
     "image": "/image/anh-san-pham/chan-vay-dai/U-VDS019.jpg",
@@ -132,7 +132,7 @@
   },
   {
     "id": 8,
-    "name": "Chân váy dài",
+    "name": " Chân Váy Jean Dáng Suông Co Giãn Tốt",
     "price": 489000,
     "category": "chan-vay-dai",
     "image": "/image/anh-san-pham/chan-vay-dai/u-vds020-(1).jpg",
@@ -151,7 +151,7 @@
   },
   {
     "id": 9,
-    "name": "Đầm dài",
+    "name": "Đầm Jean Dài Chữ A",
     "price": 1199000,
     "category": "dam-dai",
     "image": "/image/anh-san-pham/dam-dai/u-ddr016-(2).jpg",
@@ -170,7 +170,7 @@
   },
   {
     "id": 10,
-    "name": "Đầm lửng",
+    "name": "Đầm Jean Ngắn Dáng Suông Tay Tháo Rời",
     "price": 999000,
     "category": "dam-lung",
     "image": "/image/anh-san-pham/dam-lung/u-dls017-(1).jpg",
@@ -189,7 +189,7 @@
   },
   {
     "id": 11,
-    "name": "SET GHILE",
+    "name": "Set Gile Jean Cổ V",
     "price": 1100000,
     "category": "set-ghile",
     "image": "/image/anh-san-pham/set-ghile/u-glo026-(1).jpg",
@@ -208,7 +208,7 @@
   },
   {
     "id": 12,
-    "name": "SET GHILE",
+    "name": "Set Gile Jean Cổ V",
     "price": 1100000,
     "category": "set-ghile",
     "image": "/image/anh-san-pham/set-ghile/u-glo027-(1).jpg",
@@ -227,7 +227,7 @@
   },
   {
     "id": 13,
-    "name": "Quần ống cong",
+    "name": "Quần Jean Lưng Cao Ống Cong",
     "price": 519000,
     "category": "quan-ong-cong",
     "image": "/image/anh-san-pham/quan-ong-cong/U-QDC010.jpg",
@@ -246,7 +246,7 @@
   },
   {
     "id": 14,
-    "name": "Quần ống cong",
+    "name": "Quần Jean Lưng Cao Ống Cong",
     "price": 519000,
     "category": "quan-ong-cong",
     "image": "/image/anh-san-pham/quan-ong-cong/U-QDC011-(1).jpg",
@@ -265,7 +265,7 @@
   },
   {
     "id": 15,
-    "name": "Quần ống loe",
+    "name": "Quần Jean Lưng Cao Ống Loe",
     "price": 519000,
     "category": "quan-ong-loe",
     "image": "/image/anh-san-pham/quan-ong-loe/u-qdl007-(2).jpg",
@@ -284,7 +284,7 @@
   },
   {
     "id": 16,
-    "name": "Quần ống loe",
+    "name": "Quần Jean Lưng Cao Ống Loe",
     "price": 519000,
     "category": "quan-ong-loe",
     "image": "/image/anh-san-pham/quan-ong-loe/u-qdl008-(1).jpg",
@@ -303,7 +303,7 @@
   },
   {
     "id": 17,
-    "name": "Quần ống loe",
+    "name": "Quần Jean Lưng Cao Ống Loe",
     "price": 519000,
     "category": "quan-ong-loe",
     "image": "/image/anh-san-pham/quan-ong-loe/u-qdl009-(3).jpg",
@@ -322,7 +322,7 @@
   },
   {
     "id": 18,
-    "name": "Quần ống suông",
+    "name": "Quần Jean Ống Suông Basi",
     "price": 490000,
     "category": "quan-ong-suong",
     "image": "/image/anh-san-pham/quan-ong-suong/u-qds004-(1).jpg",
@@ -341,7 +341,7 @@
   },
   {
     "id": 19,
-    "name": "Quần ống suông",
+    "name": "Quần Jean Ống Suông Basi",
     "price": 490000,
     "category": "quan-ong-suong",
     "image": "/image/anh-san-pham/quan-ong-suong/U-QDS005.jpg",
@@ -360,7 +360,7 @@
   },
   {
     "id": 20,
-    "name": "Quần ống suông",
+    "name": "Quần Jean Ống Suông Basi",
     "price": 490000,
     "category": "quan-ong-suong",
     "image": "/image/anh-san-pham/quan-ong-suong/U-QDS006.jpg",
@@ -379,7 +379,7 @@
   },
   {
     "id": 21,
-    "name": "Quần ống rộng",
+    "name": " Quần Jean Ống Rộng Lưng Cao",
     "price": 490000,
     "category": "quan-ong-rong",
     "image": "/image/anh-san-pham/quan-ong-rong/u-qdr001-(2).jpg",
@@ -397,7 +397,7 @@
   },
   {
     "id": 22,
-    "name": "Quần ống rộng",
+    "name": " Quần Jean Ống Rộng Lưng Cao",
     "price": 490000,
     "category": "quan-ong-rong",
     "image": "/image/anh-san-pham/quan-ong-rong/u-qdr002-(1).jpg",
@@ -416,7 +416,7 @@
   },
   {
     "id": 23,
-    "name": "Quần ống rộng",
+    "name": " Quần Jean Ống Rộng Lưng Cao",
     "price": 490000,
     "category": "quan-ong-rong",
     "image": "/image/anh-san-pham/quan-ong-rong/u-qdr003-(1).jpg",
@@ -435,7 +435,7 @@
   },
   {
     "id": 24,
-    "name": "Quần short",
+    "name": "Quần Short Jean Lưng Cao",
     "price": 400000,
     "category": "quan-short",
     "image": "/image/anh-san-pham/quan-short/U-QSO013.jpg",
@@ -454,7 +454,7 @@
   },
   {
     "id": 25,
-    "name": "Quần short",
+    "name": "Quần Short Jean Lưng Cao",
     "price": 400000,
     "category": "quan-short",
     "image": "/image/anh-san-pham/quan-short/U-QSO015.jpg",
@@ -473,7 +473,7 @@
   },
   {
     "id": 26,
-    "name": "Quần short",
+    "name": "Quần Short Jean Lưng Cao",
     "price": 400000,
     "category": "quan-short",
     "image": "/image/anh-san-pham/quan-short/U-QSO013.jpg",
@@ -492,7 +492,7 @@
   },
   {
     "id": 27,
-    "name": "Quần short",
+    "name": "Quần Short Jean Lưng Cao",
     "price": 400000,
     "category": "quan-short",
     "image": "/image/anh-san-pham/quan-short/U-QSO014-(4).jpg",
