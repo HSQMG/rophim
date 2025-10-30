@@ -10,8 +10,8 @@ import {
   SlidersHorizontal,
   X,
 } from "lucide-react";
-
 import { Lora } from "next/font/google";
+
 const lora = Lora({
   subsets: ["latin", "vietnamese"],
   weight: ["400", "700"],
@@ -112,15 +112,20 @@ export default function CategoryPage() {
     nameMap[categoryName.toLowerCase()] || categoryName || "Đang tải...";
 
   return (
-    <main className={`${lora.className} bg-white text-[#2b2b2b]`}>
+    <main
+      className={`${lora.className} bg-white dark:bg-[#0f0f0f] text-[#2b2b2b] dark:text-gray-100 transition-colors duration-500`}
+    >
       {/* ----- Breadcrumb ----- */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 text-sm text-gray-500">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 text-sm text-gray-500 dark:text-gray-400">
         <div className="flex items-center space-x-2 flex-wrap">
-          <Link href="/" className="hover:text-black">
+          <Link href="/" className="hover:text-black dark:hover:text-white">
             Home
           </Link>
           <ChevronRight size={14} />
-          <Link href="/cua-hang" className="hover:text-black">
+          <Link
+            href="/cua-hang"
+            className="hover:text-black dark:hover:text-white"
+          >
             Cửa hàng
           </Link>
           <ChevronRight size={14} />
@@ -129,19 +134,19 @@ export default function CategoryPage() {
       </div>
 
       {/* ----- Title ----- */}
-      <section className="border-t border-gray-200 py-6 sm:py-8 text-center">
-        <h1 className="text-2xl sm:text-4xl font-bold text-[#2b2b2b] uppercase tracking-wide">
+      <section className="border-t border-gray-200 dark:border-gray-700 py-6 sm:py-8 text-center">
+        <h1 className="text-2xl sm:text-4xl font-bold text-[#2b2b2b] dark:text-white uppercase tracking-wide">
           {displayName}
         </h1>
       </section>
 
       {/* ----- Filter bar ----- */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-6 flex items-center justify-between text-sm text-gray-600 border-b border-gray-200 pb-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-6 flex items-center justify-between text-sm text-gray-600 dark:text-gray-300 border-b border-gray-200 dark:border-gray-700 pb-4">
         <div className="flex items-center gap-3">
           {/* Nút mở sidebar mobile */}
           <button
             onClick={() => setShowSidebar(true)}
-            className="lg:hidden flex items-center gap-1 text-[#3e2c1c] border border-gray-300 px-3 py-1.5 rounded-md hover:bg-gray-50 transition"
+            className="lg:hidden flex items-center gap-1 text-[#3e2c1c] dark:text-[#d9a97c] border border-gray-300 dark:border-gray-600 px-3 py-1.5 rounded-md hover:bg-gray-50 dark:hover:bg-[#1a1a1a] transition"
           >
             <SlidersHorizontal size={16} />
           </button>
@@ -151,17 +156,17 @@ export default function CategoryPage() {
           </span>
         </div>
 
-        <div className="flex items-center gap-4 text-gray-700">
+        <div className="flex items-center gap-4 text-gray-700 dark:text-gray-300">
           <div className="hidden sm:flex items-center space-x-2">
-            <span className="text-gray-500">Hiển thị:</span>
+            <span className="text-gray-500 dark:text-gray-400">Hiển thị:</span>
             {[12, 15, 30].map((n) => (
               <button
                 key={n}
                 onClick={() => setShowCount(n)}
                 className={`pb-[2px] ${
                   showCount === n
-                    ? "border-b border-black text-black font-medium"
-                    : "hover:border-b hover:border-gray-400"
+                    ? "border-b border-black dark:border-white text-black dark:text-white font-medium"
+                    : "hover:border-b hover:border-gray-400 dark:hover:border-gray-500"
                 }`}
               >
                 {n}
@@ -169,11 +174,13 @@ export default function CategoryPage() {
             ))}
           </div>
 
-          <div className="flex items-center space-x-2 sm:space-x-3 text-gray-500">
+          <div className="flex items-center space-x-3 text-gray-500 dark:text-gray-400">
             <button
               onClick={() => setViewMode("grid")}
               className={`${
-                viewMode === "grid" ? "text-black" : "hover:text-black"
+                viewMode === "grid"
+                  ? "text-black dark:text-white"
+                  : "hover:text-black dark:hover:text-white"
               }`}
             >
               <LayoutGrid size={18} />
@@ -181,7 +188,9 @@ export default function CategoryPage() {
             <button
               onClick={() => setViewMode("list")}
               className={`${
-                viewMode === "list" ? "text-black" : "hover:text-black"
+                viewMode === "list"
+                  ? "text-black dark:text-white"
+                  : "hover:text-black dark:hover:text-white"
               }`}
             >
               <List size={18} />
@@ -194,29 +203,34 @@ export default function CategoryPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-16 grid grid-cols-1 lg:grid-cols-4 gap-8 sm:gap-10">
         {/* --- SIDEBAR --- */}
         <aside
-          className={`fixed lg:static top-0 left-0 z-[60] lg:z-auto w-[80%] sm:w-[60%] lg:w-auto h-full lg:h-auto bg-white border-r border-gray-200 shadow-lg lg:shadow-none p-5 lg:p-0 overflow-y-auto transition-transform transform-gpu duration-500 ease-in-out ${
+          className={`fixed lg:static top-0 left-0 z-[60] w-[80%] sm:w-[60%] lg:w-auto h-full lg:h-auto bg-white dark:bg-[#141414] border-r border-gray-200 dark:border-gray-700 shadow-lg lg:shadow-none p-5 lg:p-0 overflow-y-auto transition-transform duration-500 ease-in-out ${
             showSidebar ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
           }`}
         >
           <div className="flex items-center justify-between mb-4 lg:hidden">
-            <h3 className="text-lg font-semibold">Bộ lọc sản phẩm</h3>
+            <h3 className="text-lg font-semibold dark:text-white">
+              Bộ lọc sản phẩm
+            </h3>
             <button
               onClick={() => setShowSidebar(false)}
-              className="text-gray-500 hover:text-black"
+              className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white"
             >
               <X size={22} />
             </button>
           </div>
 
-          <ul className="space-y-2 text-gray-700">
+          <ul className="space-y-2 text-gray-700 dark:text-gray-300">
             {categories.map((group, i) => (
-              <li key={i} className="border-b border-gray-200 pb-2">
+              <li
+                key={i}
+                className="border-b border-gray-200 dark:border-gray-700 pb-2"
+              >
                 <button
                   onClick={() => setActiveGroup(activeGroup === i ? null : i)}
                   className={`flex items-center justify-between w-full px-2 py-2 rounded-md cursor-pointer transition-all ${
                     activeGroup === i
-                      ? "bg-[#f8f5f2] text-[#b5895b]"
-                      : "hover:bg-[#f9f6f4] hover:text-[#b5895b]"
+                      ? "bg-[#f8f5f2] dark:bg-[#2a2a2a] text-[#b5895b]"
+                      : "hover:bg-[#f9f6f4] dark:hover:bg-[#222] hover:text-[#b5895b]"
                   }`}
                 >
                   <span className="text-[15px]">{group.group}</span>
@@ -242,10 +256,10 @@ export default function CategoryPage() {
                       <Link
                         href={`/cua-hang/${item.slug}`}
                         onClick={() => setShowSidebar(false)}
-                        className={`block py-1 pl-2 border-l border-[#d4b48a] text-[14px] transition-all cursor-pointer ${
+                        className={`block py-1 pl-2 border-l border-[#d4b48a] text-[14px] transition-all ${
                           slug === item.slug
-                            ? "text-[#3e2c1c]"
-                            : "text-gray-600 hover:text-[#b5895b]"
+                            ? "text-[#3e2c1c] dark:text-[#d9a97c]"
+                            : "text-gray-600 dark:text-gray-400 hover:text-[#b5895b]"
                         }`}
                       >
                         {item.name}
@@ -269,7 +283,7 @@ export default function CategoryPage() {
         {/* --- PRODUCTS --- */}
         <section className="lg:col-span-3">
           {filtered.length === 0 ? (
-            <p className="text-gray-500 italic text-center py-20">
+            <p className="text-gray-500 dark:text-gray-400 italic text-center py-20">
               Không có sản phẩm trong danh mục này.
             </p>
           ) : (
@@ -284,14 +298,14 @@ export default function CategoryPage() {
                 <Link
                   key={item.id}
                   href={`/cua-hang/${slug}/${item.id}`}
-                  className="group bg-white border border-gray-100 rounded-xl overflow-hidden hover:shadow-lg transition block"
+                  className="group bg-white dark:bg-[#1a1a1a] border border-gray-100 dark:border-gray-700 rounded-xl overflow-hidden hover:shadow-lg dark:hover:shadow-[#000]/50 transition block"
                 >
                   <div
                     className={`relative ${
                       viewMode === "grid"
                         ? "h-[280px] sm:h-[340px]"
                         : "h-[200px]"
-                    } w-full overflow-hidden cursor-pointer`}
+                    } w-full overflow-hidden`}
                   >
                     <Image
                       src={item.image}
@@ -319,10 +333,10 @@ export default function CategoryPage() {
                         : "text-center"
                     }`}
                   >
-                    <h3 className="font-medium text-sm sm:text-base text-[#2b2b2b] mb-1 group-hover:underline underline-offset-4 transition cursor-pointer">
+                    <h3 className="font-medium text-sm sm:text-base text-[#2b2b2b] dark:text-gray-100 mb-1 group-hover:underline underline-offset-4 transition">
                       {item.name}
                     </h3>
-                    <p className="text-[#5a3d2b] font-semibold text-sm sm:text-base">
+                    <p className="text-[#5a3d2b] dark:text-[#d9a97c] font-semibold text-sm sm:text-base">
                       {item.price.toLocaleString("vi-VN")}₫
                     </p>
                   </div>

@@ -43,6 +43,7 @@ export default function FeaturedCategories() {
   }, []);
 
   if (categories.length === 0) return null;
+
   const rows: Category[][] = [];
   if (categories.length === 4) {
     rows.push(categories.slice(0, 2));
@@ -54,21 +55,21 @@ export default function FeaturedCategories() {
   }
 
   return (
-    <section className="py-10 sm:py-16 bg-[#fdf9f6]">
-      {/* Tiêu đề */}
+    <section className="py-10 sm:py-16 bg-[#fdf9f6] dark:bg-[#0e0e0e] transition-colors duration-500">
+      {/* --- Tiêu đề --- */}
       <div className="text-center mb-10 px-4">
         <h2
-          className={`${playfair.className} text-2xl sm:text-4xl md:text-5xl font-serif text-[#3e2c1c] tracking-wide mb-3`}
+          className={`${playfair.className} text-2xl sm:text-4xl md:text-5xl font-serif text-[#3e2c1c] dark:text-[#f5e7c6] tracking-wide mb-3`}
         >
           DANH MỤC NỔI BẬT
         </h2>
-        <div className="w-14 sm:w-16 h-[2px] bg-[#c7a17a] mx-auto mb-4"></div>
-        <p className="text-gray-500 italic text-sm sm:text-base">
+        <div className="w-14 sm:w-16 h-[2px] bg-[#c7a17a] dark:bg-[#d3b78f] mx-auto mb-4"></div>
+        <p className="text-gray-500 dark:text-gray-300 italic text-sm sm:text-base">
           Cập nhật phong cách mới mỗi tuần
         </p>
       </div>
 
-      {/* Danh mục chia hàng */}
+      {/* --- Danh mục chia hàng --- */}
       <div className="max-w-6xl mx-auto px-3 sm:px-6 flex flex-col gap-10 sm:gap-12">
         {rows.map((row, rowIndex) => {
           const isTwoItems = row.length === 2;
@@ -84,17 +85,18 @@ export default function FeaturedCategories() {
               {row.map((cat, i) => (
                 <div
                   key={i}
-                  className={`group bg-white rounded-xl sm:rounded-2xl shadow-sm hover:shadow-lg transition-all duration-500 overflow-hidden flex flex-col
+                  className={`group rounded-xl sm:rounded-2xl shadow-sm hover:shadow-lg transition-all duration-500 overflow-hidden flex flex-col
+                    bg-white dark:bg-[#1a1a1a] border border-gray-100 dark:border-gray-700
                     w-full xs:w-[48%] sm:w-[30%]
                     ${isTwoItems ? "sm:w-[42%]" : ""}
                     ${isOneItem ? "sm:w-[60%]" : ""}
                   `}
                   style={{ minHeight: "480px" }}
                 >
-                  {/* Ảnh danh mục — dùng aspect-ratio để không crop */}
+                  {/* --- Ảnh danh mục --- */}
                   <Link
                     href={`/cua-hang/${slugify(cat.title)}`}
-                    className="block w-full overflow-hidden bg-[#fdf9f6]"
+                    className="block w-full overflow-hidden bg-[#fdf9f6] dark:bg-[#1a1a1a]"
                   >
                     <div className="relative w-full aspect-[3/4] flex items-center justify-center">
                       <Image
@@ -107,22 +109,26 @@ export default function FeaturedCategories() {
                     </div>
                   </Link>
 
-                  {/* Nội dung danh mục */}
+                  {/* --- Nội dung danh mục --- */}
                   <div className="flex-1 flex flex-col items-center justify-between p-5 text-center">
                     <div>
                       <h3
-                        className={`${playfair.className} text-lg sm:text-xl text-[#3e2c1c] mb-1 tracking-wide`}
+                        className={`${playfair.className} text-lg sm:text-xl text-[#3e2c1c] dark:text-[#f5e7c6] mb-1 tracking-wide`}
                       >
                         {cat.title}
                       </h3>
-                      <p className="text-xs sm:text-sm text-gray-500 italic mb-3">
+                      <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 italic mb-3">
                         {cat.items} items
                       </p>
                     </div>
 
                     <Link
                       href={`/cua-hang/${slugify(cat.title)}`}
-                      className="inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-[#c7a17a] text-[#3e2c1c] hover:bg-[#6d4c2f] hover:text-white transition-all"
+                      className="inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-[#c7a17a] dark:border-[#d3b78f] 
+                                 text-[#3e2c1c] dark:text-[#f5e7c6]
+                                 hover:bg-[#6d4c2f] dark:hover:bg-[#f5e7c6] 
+                                 hover:text-white dark:hover:text-[#2b1b0f]
+                                 transition-all duration-300"
                     >
                       <ArrowRight size={16} />
                     </Link>
