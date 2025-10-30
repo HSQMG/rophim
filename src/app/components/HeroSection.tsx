@@ -68,8 +68,7 @@ export default function HeroSection() {
         />
 
         {/* --- Text (desktop) --- */}
-        {/* --- Text (desktop) --- */}
-        <div className="hidden sm:flex relative z-10 flex-col justify-center h-full px-6 sm:px-10 md:px-20 text-white dark:text-[#f5e7c6] transition-colors duration-500">
+        <div className="hidden sm:flex relative z-10 flex-col justify-center h-full px-8 sm:px-14 md:px-20 text-white dark:text-[#f5e7c6] transition-colors duration-500">
           <motion.h1
             key={`title-${current}`}
             initial={{ opacity: 0, y: 40 }}
@@ -79,7 +78,7 @@ export default function HeroSection() {
             style={{
               fontFamily: "FCClassyVogue",
               display: "-webkit-box",
-              WebkitLineClamp: 3, // 👈 Hiển thị tối đa 3 dòng
+              WebkitLineClamp: 3,
               WebkitBoxOrient: "vertical",
               overflow: "hidden",
               textOverflow: "ellipsis",
@@ -107,21 +106,32 @@ export default function HeroSection() {
           </motion.p>
         </div>
 
-        {/* --- Ảnh desktop --- */}
-        <div className="hidden sm:flex absolute bottom-0 right-6 md:right-20 items-end justify-center h-full pointer-events-none">
+        {/* --- Ảnh lớn (desktop, responsive) --- */}
+        <div className="hidden sm:flex absolute bottom-0 right-[5vw] items-end justify-center h-full pointer-events-none">
           <motion.div
             key={`frame-${current}`}
-            initial={{ opacity: 0, y: 80 }}
+            initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -80 }}
+            exit={{ opacity: 0, y: -100 }}
             transition={{ duration: 0.8 }}
-            className="relative w-[220px] sm:w-[300px] md:w-[460px] h-[340px] sm:h-[480px] md:h-[700px] rounded-t-[120px] sm:rounded-t-[160px] md:rounded-t-[200px] overflow-hidden shadow-2xl border-2 border-white/60 dark:border-[#e8d8b3]/60"
+            className="
+              relative 
+              w-[24vw] md:w-[26vw] lg:w-[28vw] xl:w-[30vw] 2xl:w-[30vw]
+              h-[65vh] md:h-[72vh] lg:h-[78vh] xl:h-[80vh]
+              rounded-t-[10vw] md:rounded-t-[9vw] lg:rounded-t-[8vw]
+              overflow-hidden 
+              shadow-[0_15px_40px_rgba(0,0,0,0.35)]
+              border-[2px] border-white/70 dark:border-[#e8d8b3]/60
+              bg-[#f9f8f5] dark:bg-[#0d0d0d]
+              transition-all duration-500 ease-out
+            "
           >
             <Image
               src={slides[current].img}
               alt={slides[current].title}
               fill
-              className="object-cover object-top"
+              className="object-cover object-top hover:scale-105 transition-transform duration-700 ease-out"
+              priority
             />
           </motion.div>
         </div>
