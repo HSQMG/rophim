@@ -27,9 +27,7 @@ export default function Footer() {
       className={`bg-[#111111] dark:bg-[#0b0b0b] text-gray-300 dark:text-gray-300 py-12 sm:py-16 transition-colors duration-500 ${merriweather.className}`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-14 items-start">
-        {/* --- Cột thông tin --- */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-center sm:text-left">
-          {/* Giới thiệu */}
           <div>
             <h2 className="text-white dark:text-[#f5e7c6] text-2xl mb-4 font-bold">
               Unid
@@ -65,7 +63,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Hỗ trợ */}
           <div>
             <h3 className="text-white dark:text-[#f5e7c6] font-semibold mb-4 text-sm tracking-wide">
               HỖ TRỢ
@@ -90,7 +87,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* --- Cột đăng ký nhận tin --- */}
         <div className="flex flex-col justify-center items-center sm:items-start lg:items-end text-center sm:text-left lg:text-right w-full">
           <div className="max-w-md w-full">
             <h3 className="text-white dark:text-[#f5e7c6] text-xl sm:text-2xl md:text-3xl leading-snug mb-5 sm:mb-6 font-bold">
@@ -129,7 +125,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* --- Footer Bottom --- */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 mt-10 sm:mt-12 border-t border-gray-800 dark:border-gray-700 pt-6 text-center text-xs sm:text-sm text-gray-500 dark:text-gray-400">
         © {new Date().getFullYear()} Unid. All rights reserved.
       </div>
