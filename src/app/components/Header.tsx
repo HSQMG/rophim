@@ -49,7 +49,7 @@ export default function Header() {
         {/* LOGO */}
         <Link href="/" className="flex items-center space-x-2">
           <Image
-            src="/image/logo/logo unid.png"
+            src="/image/logo/logo UNID.png"
             alt="UNID"
             width={120}
             height={40}
