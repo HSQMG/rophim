@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 
 export default function RiseTogether() {
   return (
-    <section className="py-12 sm:py-20 bg-white">
+    <section className="py-12 sm:py-20 bg-white dark:bg-[#0f0f0f] transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 items-center">
-        {}
+        {/* Ảnh bên phải */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -18,11 +18,11 @@ export default function RiseTogether() {
             style={{ objectPosition: "center 10%" }}
             src="/image/anh-nhom-bia/UNID.38973.jpg"
             alt="Rise Together"
-            className="w-full h-[280px] sm:h-[380px] md:h-[480px] object-cover  rounded-[60px_60px_0px_0px] sm:rounded-[120px_120px_0px_0px]"
+            className="w-full h-[280px] sm:h-[380px] md:h-[480px] object-cover rounded-[60px_60px_0px_0px] sm:rounded-[120px_120px_0px_0px]"
           />
         </motion.div>
 
-        {}
+        {/* Nội dung bên trái */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -30,12 +30,12 @@ export default function RiseTogether() {
           viewport={{ once: true }}
           className="order-2 md:order-1 space-y-4 sm:space-y-6 text-center md:text-left"
         >
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold leading-snug tracking-wide">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold leading-snug tracking-wide text-[#3e2c1c] dark:text-white">
             CHÚNG TA CÙNG NHAU <br className="hidden sm:block" /> KHỞI DẬY BẢN
             SẮC
           </h2>
 
-          <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+          <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base leading-relaxed">
             Thời trang có thể thay đổi theo mùa, nhưng giá trị văn hóa và cái
             đẹp truyền thống thì vẫn luôn trường tồn. UNID tin rằng, mỗi chi
             tiết trên sản phẩm đều là sợi dây gắn kết giữa người phụ nữ hiện đại
@@ -47,7 +47,7 @@ export default function RiseTogether() {
 
           <a
             href="/cua-hang"
-            className="inline-block px-6 py-3 border border-black text-black rounded hover:bg-black hover:text-white transition text-sm sm:text-base"
+            className="inline-block px-6 py-3 border border-black dark:border-white text-black dark:text-white rounded hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition text-sm sm:text-base"
           >
             Khám phá ngay
           </a>
