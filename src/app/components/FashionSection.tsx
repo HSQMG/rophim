@@ -8,7 +8,11 @@ const formatPrice = (value: string | number) => {
   const numeric = value.toString().replace(/\D/g, "");
   return numeric.replace(/\B(?=(\d{3})+(?!\d))/g, ".") + "đ";
 };
-
+import { Playfair_Display } from "next/font/google";
+const playfair = Playfair_Display({
+  subsets: ["latin", "vietnamese"],
+  weight: ["400", "500", "600", "700"],
+});
 export default function ProductList() {
   const [products, setProducts] = useState<any[]>([]);
 
@@ -30,7 +34,10 @@ export default function ProductList() {
     <section className="py-12 sm:py-16 bg-white dark:bg-[#0e0e0e] transition-colors duration-500">
       {/* --- Tiêu đề --- */}
       <div className="text-center mb-10 sm:mb-14 px-4">
-        <h2 className="text-2xl sm:text-3xl font-bold tracking-wide mb-2 text-[#2b2b2b] dark:text-[#f5e7c6] transition-colors">
+        <h2
+          className={`${playfair.className} text-2xl sm:text-3xl md:text-4xl font-bold tracking-wide mb-2 
+                     text-[#2b2b2b] dark:text-[#f5e7c6]`}
+        >
           SẢN PHẨM MỚI
         </h2>
         <div className="w-14 h-[2px] bg-[#2b2b2b] dark:bg-[#d3b78f] mx-auto mb-3"></div>
