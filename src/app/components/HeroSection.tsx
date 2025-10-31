@@ -66,7 +66,7 @@ export default function HeroSection() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="absolute inset-0 touch-pan-y cursor-grab active:cursor-grabbing hidden sm:block"
         />
-        <div className="hidden sm:flex relative z-10 flex-col justify-center h-full px-8 sm:px-14 md:px-20 text-white dark:text-[#f5e7c6] transition-colors duration-500">
+        <div className="hidden sm:flex relative z-10 flex-col mt-[30%] ml-[1%] h-full px-8 sm:px-14 md:px-20 text-white dark:text-[#f5e7c6] transition-colors duration-500">
           <motion.h1
             key={`title-${current}`}
             initial={{ opacity: 0, y: 40 }}
@@ -82,10 +82,10 @@ export default function HeroSection() {
               textOverflow: "ellipsis",
               wordBreak: "break-word",
             }}
-            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl tracking-[0.08em] leading-snug sm:leading-tight 
-               text-[#f4ede2] dark:text-[#f5e7c6]
-               drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] 
-               max-w-[90%] sm:max-w-[70%] md:max-w-[55%]"
+            className="text-lg sm:text-xl md:text-3xl lg:text-4xl tracking-[0.05em] leading-snug sm:leading-tight 
+           text-[#f4ede2] dark:text-[#f5e7c6]
+           drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] 
+           max-w-[80%] sm:max-w-[70%] md:max-w-[60%]"
           >
             {slides[current].title}
           </motion.h1>
