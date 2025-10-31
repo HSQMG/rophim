@@ -54,132 +54,107 @@ export default function HeroSection() {
       {/* --- Desktop layout --- */}
       <AnimatePresence mode="wait">
         <motion.div
-          key={slides[current].title}
-          drag="x"
-          dragConstraints={{ left: 0, right: 0 }}
-          dragElastic={0.25}
-          onDragEnd={handleDragEnd}
-          whileTap={{ scale: 0.97 }}
-          initial={{ opacity: 0, x: 60 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -60 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="absolute inset-0 touch-pan-y cursor-grab active:cursor-grabbing hidden sm:block"
-        />
-        <div className="hidden sm:flex relative z-10 flex-col justify-center h-full px-8 sm:px-14 md:px-20 text-white dark:text-[#f5e7c6] transition-colors duration-500">
-          <motion.h1
-            key={`title-${current}`}
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -40 }}
-            transition={{ duration: 0.5 }}
-            style={{
-              fontFamily: "FCClassyVogue",
-              display: "-webkit-box",
-              WebkitLineClamp: 3,
-              WebkitBoxOrient: "vertical",
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-              wordBreak: "break-word",
-            }}
-            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl tracking-[0.08em] leading-snug sm:leading-tight 
-               text-[#f4ede2] dark:text-[#f5e7c6]
-               drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] 
-               max-w-[90%] sm:max-w-[70%] md:max-w-[55%]"
-          >
-            {slides[current].title}
-          </motion.h1>
+          key={slides[current].img}
+          className="absolute inset-0 hidden sm:flex"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          {/* --- Text (dịch sang phải 20%) --- */}
+          <div className="relative z-10 flex flex-col justify-center h-full px-8 sm:px-20 md:px-28 text-white dark:text-[#f5e7c6]">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -40 }}
+              transition={{ duration: 0.5 }}
+              className=" sm:mt-40 md:mt-48 lg:mt-52 ml-[5%] mt-[30%]" // 🔥 chữ cách mép trái 20%
+            >
+              <h1
+                style={{ fontFamily: "FCClassyVogue" }}
+                className="text-xl sm:text-2xl md:text-4xl lg:text-5xl tracking-[0.05em] leading-snug sm:leading-tight 
+                  text-[#f4ede2] dark:text-[#f5e7c6]
+                  drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] 
+                  mb-3 max-w-[70%]"
+              >
+                {slides[current].title}
+              </h1>
 
-          <motion.p
-            key={`desc-${current}`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            style={{ fontFamily: "TUV" }}
-            className="mt-3 sm:mt-5 text-sm sm:text-lg md:text-xl text-[#f4ede2] dark:text-[#e9dcc1]
-               max-w-[90%] sm:max-w-[60%] md:max-w-[50%] leading-relaxed drop-shadow-sm"
-          >
-            {slides[current].desc}
-          </motion.p>
-        </div>
+              <p
+                className="text-sm sm:text-base md:text-lg text-[#f4ede2] dark:text-[#e9dcc1]
+                  leading-relaxed drop-shadow-sm opacity-95 max-w-[60%]"
+              >
+                {slides[current].desc}
+              </p>
+            </motion.div>
+          </div>
 
-        {/* --- Ảnh lớn (desktop, responsive) --- */}
-        <div className="hidden sm:flex absolute bottom-0 right-[5vw] items-end justify-center h-full pointer-events-none">
+          {/* --- Ảnh lớn (bên phải) --- */}
           <motion.div
-            key={`frame-${current}`}
+            key={`img-${current}`}
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -100 }}
             transition={{ duration: 0.8 }}
-            className="
-              relative 
-              w-[24vw] md:w-[26vw] lg:w-[28vw] xl:w-[30vw] 2xl:w-[30vw]
-              h-[65vh] md:h-[72vh] lg:h-[78vh] xl:h-[80vh]
-              rounded-t-[10vw] md:rounded-t-[9vw] lg:rounded-t-[8vw]
-              overflow-hidden 
-              shadow-[0_15px_40px_rgba(0,0,0,0.35)]
-              border-[2px] border-white/70 dark:border-[#e8d8b3]/60
-              bg-[#f9f8f5] dark:bg-[#0d0d0d]
-              transition-all duration-500 ease-out
-            "
+            className="absolute bottom-0 right-[8vw] flex items-end justify-center h-full pointer-events-none"
           >
-            <Image
-              src={slides[current].img}
-              alt={slides[current].title}
-              fill
-              className="object-cover object-top hover:scale-105 transition-transform duration-700 ease-out"
-              priority
-            />
+            <div
+              className="
+                relative 
+                w-[22vw] md:w-[25vw] lg:w-[26vw] xl:w-[28vw]
+                h-[60vh] md:h-[70vh] lg:h-[75vh]
+                rounded-t-[9vw] overflow-hidden 
+                shadow-[0_15px_40px_rgba(0,0,0,0.35)]
+                border-[2px] border-white/70 dark:border-[#e8d8b3]/60
+                bg-[#f9f8f5] dark:bg-[#0d0d0d]
+                transition-all duration-500 ease-out
+              "
+            >
+              <Image
+                src={slides[current].img}
+                alt={slides[current].title}
+                fill
+                className="object-cover object-top hover:scale-105 transition-transform duration-700 ease-out"
+                priority
+              />
+            </div>
           </motion.div>
-        </div>
+        </motion.div>
       </AnimatePresence>
 
-      {/* --- Mobile layout (ảnh trên, text dưới) --- */}
-      <div className="sm:hidden relative z-10 flex flex-col items-center justify-center h-full pt-16 pb-10 px-4 text-center">
+      {/* --- Mobile layout (giữ nguyên) --- */}
+      <AnimatePresence mode="wait">
         <motion.div
-          key={`mobile-frame-${current}`}
+          key={slides[current].img + "-mobile"}
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -60 }}
           transition={{ duration: 0.6 }}
-          className="relative w-[230px] h-[290px] rounded-t-[100px] overflow-hidden shadow-2xl border-2 border-white/60 dark:border-[#e8d8b3]/60 mb-6"
+          className="sm:hidden relative z-10 flex flex-col items-center justify-center h-full pt-20 pb-10 px-4 text-center"
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           dragElastic={0.25}
           onDragEnd={handleDragEnd}
           whileTap={{ scale: 0.97 }}
         >
-          <Image
-            src={slides[current].img}
-            alt={slides[current].title}
-            fill
-            className="object-cover object-top"
-          />
+          <div className="relative w-[220px] h-[280px] rounded-t-[90px] overflow-hidden shadow-2xl border-2 border-white/60 dark:border-[#e8d8b3]/60 mb-6">
+            <Image
+              src={slides[current].img}
+              alt={slides[current].title}
+              fill
+              className="object-cover object-top"
+            />
+          </div>
+
+          <h1 className="text-lg sm:text-xl font-serif text-white dark:text-[#f5e7c6] leading-snug drop-shadow-lg max-w-[90%]">
+            {slides[current].title}
+          </h1>
+
+          <p className="mt-3 text-xs sm:text-sm text-[#f4ede2] dark:text-[#e9dcc1] leading-relaxed drop-shadow-sm max-w-[90%]">
+            {slides[current].desc}
+          </p>
         </motion.div>
-
-        <motion.h1
-          key={`title-mobile-${current}`}
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -30 }}
-          transition={{ duration: 0.5 }}
-          className="text-xl sm:text-2xl font-serif text-white dark:text-[#f5e7c6] leading-snug drop-shadow-lg max-w-[90%]"
-        >
-          {slides[current].title}
-        </motion.h1>
-
-        <motion.p
-          key={`desc-mobile-${current}`}
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -15 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="mt-3 text-xs sm:text-sm text-[#f4ede2] dark:text-[#e9dcc1] leading-relaxed drop-shadow-sm max-w-[90%]"
-        >
-          {slides[current].desc}
-        </motion.p>
-      </div>
+      </AnimatePresence>
 
       {/* --- Nút điều hướng Mobile --- */}
       <div className="absolute top-1/2 left-0 right-0 flex justify-between items-center px-3 z-30 sm:hidden -translate-y-1/2">
@@ -195,31 +170,6 @@ export default function HeroSection() {
         >
           <ChevronRight className="w-6 h-6 text-white dark:text-[#f8eac8]" />
         </button>
-      </div>
-
-      {/* --- Thumbnail nhỏ --- */}
-      <div className="absolute bottom-4 sm:bottom-8 left-4 sm:left-10 z-20 flex gap-2 sm:gap-4 bg-white/10 dark:bg-[#1a1a1a]/60 backdrop-blur-sm px-3 sm:px-5 py-2 sm:py-3 rounded-xl sm:rounded-2xl border border-white/30 dark:border-[#e8d8b3]/40 shadow-lg overflow-x-auto">
-        {slides.map((item, i) => (
-          <button
-            key={i}
-            onClick={() => setCurrent(i)}
-            className={`relative flex-shrink-0 w-14 h-18 sm:w-16 sm:h-20 md:w-20 md:h-24 overflow-hidden rounded-lg sm:rounded-xl border transition-all duration-300 cursor-pointer ${
-              current === i
-                ? "border-[#d3b58f] dark:border-[#f0dba9] scale-105 shadow-md"
-                : "border-white/40 dark:border-[#e8d8b3]/30 hover:border-[#e0d1b2]"
-            }`}
-          >
-            <Image
-              src={item.img}
-              alt={item.title}
-              fill
-              className="object-cover object-top"
-            />
-            {current === i && (
-              <div className="absolute inset-0 bg-black/15 dark:bg-white/10" />
-            )}
-          </button>
-        ))}
       </div>
     </section>
   );
