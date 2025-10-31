@@ -166,7 +166,7 @@
     "material": "Denim",
     "color": "Xanh denim",
     "size": ["XS", "S", "M", "L", "XL", "XXL"],
-    "description": "Đầm dài dáng chữ A nhẹ nhàng, ôm nhẹ phần eo tôn dáng, tà váy xòe mềm tạo độ bay uyển chuyển theo từng bước chân.\n\nHàng cúc kim loại mang nét cổ điển, kết hợp họa tiết thêu tinh tế mang lại vẻ thanh lịch và nữ tính. Mỗi chi tiết thêu đều mang hơi thở của sự khéo léo và chăm chút.\n\nThông số được nghiên cứu chuẩn size vóc dáng người Việt.\n\nSản phẩm được xử lý thêm độ cầm màu giúp màu vải lên chuẩn, hạn chế bay màu khi giặt và giữ màu bền đẹp theo thời gian. Chất vải mềm mịn, thấm hút mồ hôi tốt, mang lại cảm giác dễ chịu và thoải mái trong suốt ngày dài.\n\nLựa chọn hoàn hảo cho nàng khi đi làm, dạo phố hay dự tiệc nhẹ.\n\nThanh thoát và cuốn hút ở mọi góc nhìn."
+    "description": "Đầm dài dáng chữ A nhẹ nhàng, ôm nhẹ phần eo tôn dáng, tà váy xòe mềm tạo độ bay uyển chuyển theo từng bước chân.\n\nHàng cúc kim loại mang nét cổ điển, kết hợp họa tiết thêu tinh tế mang lại vẻ thanh lịch và nữ tính. Mỗi chi tiết thêu đều mang hơi thở của sự khéo léo và chăm chút.\n\nThông số được nghiên cứu chuẩn size vóc dáng người Việt.\n\nSản phẩm được xử lý thêm độ cầm màu giúp màu vải lên chuẩn, hạn chế bay màu khi giặt và giữ màu bền đẹp theo thời gian. Chất vải mềm mịn, thấm hút mồ hôi tốt, mang lại cảm giác dễ chịu và thoải mái trong suốt ngày dài.\n\nLựa chọn hoàn hảo cho nàng khi đi làm, dạo phố hay dự tiệc nhẹ.Thanh thoát và cuốn hút ở mọi góc nhìn."
   },
   {
     "id": 10,
@@ -422,10 +422,10 @@
     "image": "/image/anh-san-pham/quan-ong-rong/u-qdr002-(1).jpg",
     "hoverImage": "/image/anh-san-pham/quan-ong-rong/u-qdr002-(2).jpg",
     "images": [
-      "/image/anh-san-pham/quan-ong-rong/u-qdr001-(1).jpg",
-      "/image/anh-san-pham/quan-ong-rong/u-qdr001-(2).jpg",
-      "/image/anh-san-pham/quan-ong-rong/u-qdr001-(3).jpg",
-      "/image/anh-san-pham/quan-ong-rong/u-qdr001-(4).jpg"
+      "/image/anh-san-pham/quan-ong-rong/u-qdr002-(1).jpg",
+      "/image/anh-san-pham/quan-ong-rong/u-qdr002-(2).jpg",
+      "/image/anh-san-pham/quan-ong-rong/u-qdr002-(3).jpg",
+      "/image/anh-san-pham/quan-ong-rong/u-qdr002-(4).jpg"
     ],
     "imgsize": "/image/size/quan-ong-rong.jpg",
     "color": "xanh đậm, xanh wash, xanh sáng",
@@ -492,25 +492,6 @@
   },
   {
     "id": 27,
-    "name": "Quần Short Jean Lưng Cao",
-    "price": 400000,
-    "category": "quan-short",
-    "image": "/image/anh-san-pham/quan-short/U-QSO013.jpg",
-    "hoverImage": "/image/anh-san-pham/quan-short/U-QSO013-(2).jpg",
-    "images": [
-      "/image/anh-san-pham/quan-short/U-QSO013.jpg",
-      "/image/anh-san-pham/quan-short/U-QSO013-(2).jpg",
-      "/image/anh-san-pham/quan-short/U-QSO013-(3).jpg",
-      "/image/anh-san-pham/quan-short/U-QSO013-(4).jpg"
-    ],
-    "imgsize": "/image/size/short.jpg",
-    "color": "xanh đậm, xanh wash, xanh sáng",
-    "material": "Cotton",
-    "size": ["XS", "S", "M", "L", "XL", "XXL"],
-    "description": "<strong>Chất liệu:</strong> 98% cotton - 2% spandex giúp quần giữ form chuẩn, đàn hồi tốt và thoải mái khi vận động. Sản phẩm được xử lý thêm độ cầm màu giúp màu vải lên chuẩn, hạn chế bay màu khi giặt và giữ màu bền đẹp theo thời gian.\n\n<strong>Thiết kế:</strong> Dáng quần short Basicc lưng cao, tôn eo và kéo dài đôi chân. Họa tiết thêu tinh tế mang lại vẻ thanh lịch và nữ tính. Mỗi chi tiết thêu đều mang hơi thở của sự khéo léo và chăm chút. Thông số được nghiên cứu chuẩn size vóc dáng người Việt.\n\n<strong>Chi tiết:</strong> Cúc kim loại ánh bạc, túi sau tiện lợi, logo UNID tinh giản.\n\n<strong>Phong cách:</strong> Trẻ trung, năng động nhưng vẫn thanh lịch.\n\n<strong>Ứng dụng:</strong> Dễ phối cùng áo thun, croptop, sơ mi hay áo tank. Phù hợp đi chơi, dạo phố, du lịch hoặc mặc hằng ngày."
-  },
-  {
-    "id": 28,
     "name": "Quần Short Jean Lưng Cao",
     "price": 400000,
     "category": "quan-short",

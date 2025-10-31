@@ -31,7 +31,7 @@ export default function RiseTogether() {
           className="order-2 md:order-1 space-y-4 sm:space-y-6 text-center md:text-left"
         >
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold leading-snug tracking-wide text-[#3e2c1c] dark:text-white">
-            CHÚNG TA CÙNG NHAU <br className="hidden sm:block" /> KHỞI DẬY BẢN
+            CHÚNG TA CÙNG NHAU <br className="hidden sm:block" /> KHƠI DẬY BẢN
             SẮC
           </h2>
 
