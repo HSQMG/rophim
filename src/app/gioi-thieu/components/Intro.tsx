@@ -35,7 +35,7 @@ export default function GioiThieuPage() {
 
           {/* Text */}
           <motion.div
-            className="relative z-10 space-y-4 sm:space-y-6 text-center md:text-left order-2"
+            className="relative z-10 space-y-4 sm:space-y-6 text-center md:text-left order-2 ml-[5%]"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
