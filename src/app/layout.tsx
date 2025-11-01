@@ -19,7 +19,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="min-h-screen flex flex-col bg-[#fffaf8]">
-        {/* --- Thanh icon mạng xã hội (Desktop) --- */}
         <div className="hidden sm:flex fixed top-1/2 -translate-y-1/2 left-6 md:left-10 lg:left-1 z-50">
           <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-xl border border-gray-200 p-2 flex flex-col items-center space-y-4">
             <a
@@ -56,8 +55,6 @@ export default function RootLayout({
             </a>
           </div>
         </div>
-
-        {/* --- Thanh icon mạng xã hội (Mobile) --- */}
         <div className="sm:hidden fixed bottom-2 left-1/2 -translate-x-1/2 z-50">
           <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-lg border border-gray-200 px-4 py-2 flex items-center justify-center space-x-5">
             <a
@@ -94,8 +91,6 @@ export default function RootLayout({
             </a>
           </div>
         </div>
-
-        {/* --- Header + Nội dung chính + Footer --- */}
         <Header />
         <PageTransition>{children}</PageTransition>
         <Footer />
