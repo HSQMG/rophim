@@ -39,7 +39,6 @@ export default function HeroSection() {
 
   return (
     <section className="relative w-full h-[90vh] sm:h-screen overflow-hidden bg-[#f9f8f5] dark:bg-[#0d0d0d] transition-colors duration-500 select-none">
-      {/* --- Background --- */}
       <div className="absolute inset-0">
         <Image
           src="/image/anh-nhom-bia/anh-nen-bia.jpg"
@@ -50,8 +49,6 @@ export default function HeroSection() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#00000070] via-[#00000020] to-transparent dark:from-[#00000090] dark:via-[#00000050]" />
       </div>
-
-      {/* --- Desktop layout --- */}
       <AnimatePresence mode="wait">
         <motion.div
           key={slides[current].title}
@@ -66,13 +63,10 @@ export default function HeroSection() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="absolute inset-0 touch-pan-y cursor-grab active:cursor-grabbing hidden sm:block"
         />
-
-        {/* --- Cột bên trái (title + desc + thumbnail) --- */}
         <div
           className="hidden sm:flex absolute top-1/2 left-[8vw] -translate-y-1/2 z-10 flex-col gap-8 
         text-white dark:text-[#f5e7c6] transition-colors duration-500 max-w-[40vw]"
         >
-          {/* --- Text section --- */}
           <div className="flex flex-col items-center justify-center text-center">
             <motion.h1
               key={`title-${current}`}
@@ -106,11 +100,11 @@ export default function HeroSection() {
                 fontFamily: "TUV",
                 display: "-webkit-box",
                 WebkitBoxOrient: "vertical",
-                WebkitLineClamp: 2, // hiển thị tối đa 2 dòng, có thể đổi lại 1
+                WebkitLineClamp: 2,
                 overflow: "hidden",
                 textOverflow: "ellipsis",
-                textAlign: "justify", // ✅ canh đều hai bên
-                textJustify: "inter-word", // ✅ căn chữ theo từ
+                textAlign: "justify",
+                textJustify: "inter-word",
               }}
               className="mt-3 sm:mt-5 text-sm sm:text-lg md:text-xl 
       text-[#f4ede2] dark:text-[#e9dcc1] 
@@ -123,11 +117,11 @@ export default function HeroSection() {
 
           <div
             className="flex gap-3 sm:gap-4 bg-white/10 dark:bg-[#1a1a1a]/60 
-  backdrop-blur-md px-0 sm:px-0 py-2 sm:py-3 rounded-xl sm:rounded-2xl 
-  border border-white/30 dark:border-[#e8d8b3]/40 shadow-lg 
-  overflow-x-auto items-center justify-start 
-  max-w-[85%] mx-auto scroll-smooth scrollbar-thin 
-  scrollbar-thumb-white/40 dark:scrollbar-thumb-[#e8d8b3]/30 scrollbar-track-transparent"
+              backdrop-blur-md px-0 sm:px-0 py-2 sm:py-3 rounded-xl sm:rounded-2xl 
+              border border-white/30 dark:border-[#e8d8b3]/40 shadow-lg 
+              overflow-x-auto items-center justify-start 
+              max-w-[85%] mx-auto scroll-smooth scrollbar-thin 
+              scrollbar-thumb-white/40 dark:scrollbar-thumb-[#e8d8b3]/30 scrollbar-track-transparent"
           >
             {slides.map((item, i) => (
               <button
@@ -154,8 +148,6 @@ export default function HeroSection() {
             ))}
           </div>
         </div>
-
-        {/* --- Ảnh lớn bên phải --- */}
         <div className="hidden sm:flex absolute top-1/2 right-[8vw] -translate-y-1/2 items-center justify-center h-full pointer-events-none">
           <motion.div
             key={`frame-${current}`}
@@ -181,8 +173,6 @@ export default function HeroSection() {
           </motion.div>
         </div>
       </AnimatePresence>
-
-      {/* --- Mobile layout (ảnh trên, text dưới) --- */}
       <div className="sm:hidden relative z-10 flex flex-col items-center justify-center h-full pt-16 pb-10 px-4 text-center">
         <motion.div
           key={`mobile-frame-${current}`}
@@ -227,7 +217,7 @@ export default function HeroSection() {
           style={{
             display: "-webkit-box",
             WebkitBoxOrient: "vertical",
-            WebkitLineClamp: 2, // 👈 số dòng tối đa hiển thị
+            WebkitLineClamp: 2,
             overflow: "hidden",
             textOverflow: "ellipsis",
           }}
@@ -237,8 +227,6 @@ export default function HeroSection() {
           {slides[current].desc}
         </motion.p>
       </div>
-
-      {/* --- Nút điều hướng Mobile --- */}
       <div className="absolute top-1/2 left-0 right-0 flex justify-between items-center px-3 z-30 sm:hidden -translate-y-1/2">
         <button
           onClick={prevSlide}
