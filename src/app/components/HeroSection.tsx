@@ -82,18 +82,16 @@ export default function HeroSection() {
               transition={{ duration: 0.5 }}
               style={{
                 fontFamily: "FCClassyVogue",
-                display: "-webkit-box",
-                WebkitBoxOrient: "vertical",
-                WebkitLineClamp: 2, // <-- Giới hạn tối đa 2 dòng
-                overflow: "hidden",
-                textOverflow: "ellipsis",
               }}
-              className="text-lg sm:text-xl md:text-3xl lg:text-4xl xl:text-5xl 
-  tracking-[0.05em] leading-snug text-[#f4ede2] dark:text-[#f5e7c6]
+              className="text-[2rem] md:text-[2.8rem] lg:text-[3.2rem] xl:text-[3.8rem]
+  leading-snug text-[#f4ede2] dark:text-[#f5e7c6]
   drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]
-  max-w-[100%] sm:max-w-[60%] lg:max-w-[100%] text-center" // <-- Giới hạn độ rộng dòng
+  text-center tracking-wide"
             >
-              {slides[current].title}
+              <span className="block font-[600]">THƯƠNG HIỆU</span>
+              <span className="block text-[1.6rem] md:text-[2rem] font-[400] mt-1 tracking-[0.15em]">
+                THỜI TRANG UNID
+              </span>
             </motion.h1>
 
             <motion.p
@@ -116,8 +114,6 @@ export default function HeroSection() {
               {slides[current].desc}
             </motion.p>
           </div>
-
-          {/* --- Thumbnail nhỏ (cùng cột dọc) --- */}
           <div
             className="flex gap-3 sm:gap-4 bg-white/10 dark:bg-[#1a1a1a]/60 
             backdrop-blur-md px-4 sm:px-5 py-2 sm:py-3 rounded-xl sm:rounded-2xl 
