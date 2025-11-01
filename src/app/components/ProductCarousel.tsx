@@ -44,7 +44,6 @@ export default function HomeShowcase() {
   const [products, setProducts] = useState<any[]>([]);
   const prevRef = useRef<HTMLButtonElement | null>(null);
   const nextRef = useRef<HTMLButtonElement | null>(null);
-
   useEffect(() => {
     fetch("/api/categories")
       .then((res) => res.json())

@@ -16,7 +16,6 @@ export default function ScrollReveal({
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // ✅ Chỉ import scrollreveal khi có window (client)
     if (typeof window === "undefined") return;
     import("scrollreveal").then((ScrollRevealLib) => {
       if (!ref.current) return;
@@ -29,7 +28,7 @@ export default function ScrollReveal({
         reset: false,
         opacity: 0,
         interval: 100,
-        cleanup: true, // tránh giữ style cũ
+        cleanup: true,
       });
     });
   }, [delay]);
