@@ -38,7 +38,7 @@ export default function GioiThieuPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
           >
-            <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold leading-snug text-black md:text-white dark:text-[#f5e7c6] break-words">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold leading-snug text-black md:text-white dark:text-[#f5e7c6] break-words ">
               CHÚNG TÔI LÀ THƯƠNG HIỆU THỜI TRANG UNID
             </h1>
 
