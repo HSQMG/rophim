@@ -25,17 +25,14 @@ interface Product {
   image: string;
   hoverImage?: string;
 }
-
 interface SubCategory {
   name: string;
   slug: string;
 }
-
 interface CategoryGroup {
   group: string;
   items: SubCategory[];
 }
-
 export default function AllProductsPage() {
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<CategoryGroup[]>([]);
@@ -69,18 +66,13 @@ export default function AllProductsPage() {
           <span className="text-black font-medium">Tất cả sản phẩm</span>
         </div>
       </div>
-
-      {/* Tiêu đề */}
       <section className="border-t border-gray-200 py-6 sm:py-8 text-center">
         <h1 className="text-2xl sm:text-4xl font-bold text-[#2b2b2b] uppercase tracking-wide">
           TẤT CẢ SẢN PHẨM
         </h1>
       </section>
-
-      {/* Thanh công cụ trên đầu */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-6 flex items-center justify-between text-sm text-gray-600 border-b border-gray-200 pb-4">
         <div className="flex items-center gap-3">
-          {/* Nút mở sidebar trên mobile */}
           <button
             onClick={() => setShowSidebar(true)}
             className="lg:hidden flex items-center gap-1 text-[#3e2c1c] border border-gray-300 px-3 py-1.5 rounded-md hover:bg-gray-50 transition"
@@ -115,8 +107,6 @@ export default function AllProductsPage() {
               </button>
             ))}
           </div>
-
-          {/* Grid / List toggle */}
           <div className="flex items-center space-x-2 sm:space-x-3 text-gray-500">
             <button
               onClick={() => setViewMode("grid")}
@@ -153,7 +143,6 @@ export default function AllProductsPage() {
               <X size={20} />
             </button>
           </div>
-
           <ul className="space-y-2 text-gray-700">
             {categories.map((group, i) => (
               <li key={i} className="border-b border-gray-200 pb-2">
@@ -198,14 +187,12 @@ export default function AllProductsPage() {
             ))}
           </ul>
         </aside>
-
         {showSidebar && (
           <div
             onClick={() => setShowSidebar(false)}
             className="fixed inset-0 bg-black/30 lg:hidden z-40"
           />
         )}
-
         <section className="lg:col-span-3">
           {products.length === 0 ? (
             <p className="text-gray-500 italic text-center py-20">
@@ -250,7 +237,6 @@ export default function AllProductsPage() {
                       NEW !
                     </div>
                   </div>
-
                   <div
                     className={`p-3 sm:p-4 ${
                       viewMode === "list"

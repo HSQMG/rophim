@@ -5,7 +5,6 @@ export default function GioiThieuPage() {
   return (
     <main>
       <section className="relative min-h-[90vh] sm:min-h-[110vh] flex items-center bg-white dark:bg-[#0e0e0e] transition-colors">
-        {/* Ảnh nền desktop */}
         <div
           className="hidden md:block absolute inset-0 bg-cover bg-top bg-no-repeat"
           style={{
@@ -13,10 +12,7 @@ export default function GioiThieuPage() {
           }}
         />
         <div className="hidden md:block absolute inset-0 bg-black/50" />
-
-        {/* Nội dung */}
         <div className="relative max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center px-5 sm:px-8 py-16 sm:py-0 gap-8">
-          {/* Ảnh mobile */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -30,8 +26,6 @@ export default function GioiThieuPage() {
               className="w-full h-[380px] sm:h-[420px] object-contain object-top rounded-[50px]"
             />
           </motion.div>
-
-          {/* Text */}
           <motion.div
             className="relative z-10 order-2 ml-0 md:ml-[2%] text-center md:text-left space-y-6 max-w-[600px] mx-auto md:mx-0"
             initial={{ opacity: 0, y: 40 }}

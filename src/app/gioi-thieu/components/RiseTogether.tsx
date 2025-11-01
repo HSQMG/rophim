@@ -6,7 +6,6 @@ export default function RiseTogether() {
   return (
     <section className="py-12 sm:py-20 bg-white dark:bg-[#0f0f0f] transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 items-center">
-        {/* Ảnh bên phải */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -21,8 +20,6 @@ export default function RiseTogether() {
             className="w-full h-[280px] sm:h-[380px] md:h-[480px] object-cover rounded-[60px_60px_0px_0px] sm:rounded-[120px_120px_0px_0px]"
           />
         </motion.div>
-
-        {/* Nội dung bên trái */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}

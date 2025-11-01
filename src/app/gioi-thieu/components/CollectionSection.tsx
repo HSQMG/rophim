@@ -27,7 +27,6 @@ export default function CollectionCarousel() {
   return (
     <section className="py-16 bg-white dark:bg-[#0f0f0f] transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Tiêu đề */}
         <div className="text-center max-w-2xl mx-auto mb-12">
           <h2 className="text-3xl font-bold mb-4 text-[#3e2c1c] dark:text-white">
             BỘ SƯU TẬP
@@ -37,8 +36,6 @@ export default function CollectionCarousel() {
             chất liệu jean mềm mại và họa tiết thêu mang đậm bản sắc dân tộc.
           </p>
         </div>
-
-        {/* Carousel */}
         <Swiper
           modules={[Navigation]}
           navigation
@@ -53,7 +50,6 @@ export default function CollectionCarousel() {
           {collections.map((item, i) => (
             <SwiperSlide key={i}>
               <div className="group bg-white dark:bg-[#1a1a1a] rounded-lg text-center shadow-sm dark:shadow-none transition-colors duration-500">
-                {/* Ảnh */}
                 <div className="w-full h-[420px] overflow-hidden rounded-t-full relative mx-auto border border-transparent group-hover:border-[#c7a17a] transition duration-300 cursor-pointer">
                   <img
                     src={item.img}
@@ -61,8 +57,6 @@ export default function CollectionCarousel() {
                     className="w-full h-full object-cover transform group-hover:scale-105 transition duration-500"
                   />
                 </div>
-
-                {/* Nút xem chi tiết */}
                 <div className="relative">
                   <a
                     href="#"
@@ -72,8 +66,6 @@ export default function CollectionCarousel() {
                     →
                   </a>
                 </div>
-
-                {/* Nội dung */}
                 <div className="p-6">
                   <h3 className="font-semibold text-lg mb-3 text-[#3e2c1c] dark:text-white">
                     {item.title}

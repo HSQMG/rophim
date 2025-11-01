@@ -25,7 +25,6 @@ interface Product {
   description?: string;
   imgsize?: string;
 }
-
 export default function ProductDetailPage() {
   const { slug, id } = useParams();
   const [product, setProduct] = useState<Product | null>(null);
@@ -35,7 +34,6 @@ export default function ProductDetailPage() {
   const [showCommitment, setShowCommitment] = useState(false);
   const [showReturnPolicy, setShowReturnPolicy] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-
   useEffect(() => {
     fetch("/productss.json")
       .then((res) => res.json())
@@ -61,7 +59,6 @@ export default function ProductDetailPage() {
   return (
     <main className="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-14 text-[#2b2b2b] dark:text-gray-100 transition-colors duration-500">
       <div className="flex flex-col lg:flex-row gap-10 sm:gap-12">
-        {/* --- Gallery ảnh --- */}
         <div className="w-full lg:w-1/2">
           <div
             className="
@@ -77,7 +74,7 @@ export default function ProductDetailPage() {
                 className="relative flex items-center justify-center rounded-lg overflow-hidden 
              bg-white dark:bg-[#111] transition-all cursor-pointer"
                 style={{ height: "300px" }}
-                onClick={() => setSelectedIndex(index)} // 👈 click vào ảnh
+                onClick={() => setSelectedIndex(index)}
               >
                 <Image
                   src={img}
@@ -90,10 +87,7 @@ export default function ProductDetailPage() {
             ))}
           </div>
         </div>
-
-        {/* --- Thông tin sản phẩm --- */}
         <div className="flex-1 space-y-6">
-          {/* Tên + Giá */}
           <div>
             <h1
               className={`${playfair.className} text-2xl sm:text-3xl font-serif font-bold mb-3 uppercase tracking-wide text-[#2b2b2b] dark:text-white`}
@@ -104,8 +98,6 @@ export default function ProductDetailPage() {
               {product.price.toLocaleString("vi-VN")}₫
             </p>
           </div>
-
-          {/* Mô tả */}
           {product.description && (
             <div className="border-b border-gray-200 dark:border-gray-700 pb-4">
               <h2 className="text-base font-semibold text-[#2b2b2b] dark:text-white mb-3 uppercase tracking-wide">
@@ -133,8 +125,6 @@ export default function ProductDetailPage() {
               </div>
             </div>
           )}
-
-          {/* Các mục phụ */}
           <div className="divide-y divide-gray-200 dark:divide-gray-700 border-t border-b border-gray-200 dark:border-gray-700">
             <GuideItem
               icon={<Ruler size={18} />}
@@ -157,8 +147,6 @@ export default function ProductDetailPage() {
               onClick={() => setShowReturnPolicy(true)}
             />
           </div>
-
-          {/* Chi tiết */}
           <div className="text-sm text-gray-600 dark:text-gray-300 space-y-2 pt-4">
             <p>
               <span className="font-semibold text-gray-800 dark:text-white">
@@ -179,8 +167,6 @@ export default function ProductDetailPage() {
               {product.size ? product.size.join(", ") : "Đang cập nhật"}
             </p>
           </div>
-
-          {/* Danh mục */}
           <div className="text-sm text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-gray-700 pt-4">
             <span className="font-semibold text-gray-700 dark:text-white">
               Danh mục:
@@ -194,8 +180,6 @@ export default function ProductDetailPage() {
           </div>
         </div>
       </div>
-
-      {/* Popup hướng dẫn */}
       {showSizeGuide && (
         <Popup onClose={() => setShowSizeGuide(false)}>
           {product.imgsize ? (
@@ -258,15 +242,12 @@ export default function ProductDetailPage() {
             className="relative max-w-5xl w-[90%] h-[85vh] flex items-center justify-center"
             onClick={(e) => e.stopPropagation()} // tránh đóng khi click vào ảnh
           >
-            {/* --- Ảnh lớn --- */}
             <Image
               src={allImages[selectedIndex]}
               alt={`Ảnh ${selectedIndex + 1}`}
               fill
               className="object-contain rounded-lg shadow-2xl transition-transform duration-300 cursor-pointer"
             />
-
-            {/* --- Nút trái --- */}
             {selectedIndex > 0 && (
               <button
                 onClick={() => setSelectedIndex(selectedIndex - 1)}
@@ -279,8 +260,6 @@ export default function ProductDetailPage() {
                 <ArrowLeft size={24} />
               </button>
             )}
-
-            {/* --- Nút phải --- */}
             {selectedIndex < allImages.length - 1 && (
               <button
                 onClick={() => setSelectedIndex(selectedIndex + 1)}

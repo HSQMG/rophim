@@ -108,14 +108,11 @@ export default function CategoryPage() {
     setFiltered(filteredList);
   }, [slug, products, categories]);
 
-  const displayName =
-    nameMap[categoryName.toLowerCase()] || categoryName || "Đang tải...";
-
+  const displayName = nameMap[categoryName.toLowerCase()] || categoryName;
   return (
     <main
       className={`${lora.className} bg-white dark:bg-[#0f0f0f] text-[#2b2b2b] dark:text-gray-100 transition-colors duration-500`}
     >
-      {/* ----- Breadcrumb ----- */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 text-sm text-gray-500 dark:text-gray-400">
         <div className="flex items-center space-x-2 flex-wrap">
           <Link href="/" className="hover:text-black dark:hover:text-white">
@@ -132,18 +129,13 @@ export default function CategoryPage() {
           <span className="capitalize">{displayName}</span>
         </div>
       </div>
-
-      {/* ----- Title ----- */}
       <section className="border-t border-gray-200 dark:border-gray-700 py-6 sm:py-8 text-center">
         <h1 className="text-2xl sm:text-4xl font-bold text-[#2b2b2b] dark:text-white uppercase tracking-wide">
           {displayName}
         </h1>
       </section>
-
-      {/* ----- Filter bar ----- */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-6 flex items-center justify-between text-sm text-gray-600 dark:text-gray-300 border-b border-gray-200 dark:border-gray-700 pb-4">
         <div className="flex items-center gap-3">
-          {/* Nút mở sidebar mobile */}
           <button
             onClick={() => setShowSidebar(true)}
             className="lg:hidden flex items-center gap-1 text-[#3e2c1c] dark:text-[#d9a97c] border border-gray-300 dark:border-gray-600 px-3 py-1.5 rounded-md hover:bg-gray-50 dark:hover:bg-[#1a1a1a] transition"
@@ -198,10 +190,7 @@ export default function CategoryPage() {
           </div>
         </div>
       </div>
-
-      {/* ----- Layout (Sidebar + Products) ----- */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-16 grid grid-cols-1 lg:grid-cols-4 gap-8 sm:gap-10">
-        {/* --- SIDEBAR --- */}
         <aside
           className={`fixed lg:static top-0 left-0 z-[60] w-[80%] sm:w-[60%] lg:w-auto h-full lg:h-auto bg-white dark:bg-[#141414] border-r border-gray-200 dark:border-gray-700 shadow-lg lg:shadow-none p-5 lg:p-0 overflow-y-auto transition-transform duration-500 ease-in-out ${
             showSidebar ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
@@ -243,7 +232,6 @@ export default function CategoryPage() {
                     }`}
                   />
                 </button>
-
                 <ul
                   className={`pl-4 mt-2 space-y-2 overflow-hidden transition-all duration-500 ease-in-out ${
                     activeGroup === i
@@ -271,8 +259,6 @@ export default function CategoryPage() {
             ))}
           </ul>
         </aside>
-
-        {/* Overlay cho mobile */}
         {showSidebar && (
           <div
             onClick={() => setShowSidebar(false)}
@@ -325,7 +311,6 @@ export default function CategoryPage() {
                       NEW !
                     </div>
                   </div>
-
                   <div
                     className={`p-3 sm:p-4 ${
                       viewMode === "list"
