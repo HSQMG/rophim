@@ -91,7 +91,7 @@ export default function HeroSection() {
               className="text-lg sm:text-xl md:text-3xl lg:text-4xl xl:text-5xl 
   tracking-[0.05em] leading-snug text-[#f4ede2] dark:text-[#f5e7c6]
   drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]
-  max-w-[40vw] xl:max-w-[35vw] 2xl:max-w-[25vw] text-center" // <-- Giới hạn độ rộng dòng
+  max-w-[80%] sm:max-w-[60%] lg:max-w-[80%] text-center" // <-- Giới hạn độ rộng dòng
             >
               {slides[current].title}
             </motion.h1>
