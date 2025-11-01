@@ -91,7 +91,7 @@ export default function HeroSection() {
               className="text-lg sm:text-xl md:text-3xl lg:text-4xl xl:text-5xl 
   tracking-[0.05em] leading-snug text-[#f4ede2] dark:text-[#f5e7c6]
   drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]
-  max-w-[80%] sm:max-w-[60%] lg:max-w-[80%] text-center" // <-- Giới hạn độ rộng dòng
+  max-w-[100%] sm:max-w-[60%] lg:max-w-[100%] text-center" // <-- Giới hạn độ rộng dòng
             >
               {slides[current].title}
             </motion.h1>
@@ -111,7 +111,7 @@ export default function HeroSection() {
                 textOverflow: "ellipsis",
               }}
               className="mt-3 sm:mt-5 text-sm sm:text-lg md:text-xl text-[#f4ede2] dark:text-[#e9dcc1]
-  max-w-[85%] md:max-w-[70%] lg:max-w-[65%] xl:max-w-[90%] leading-relaxed drop-shadow-sm"
+  max-w-[85%] md:max-w-[70%] lg:max-w-[65%] xl:max-w-[90%] leading-relaxed drop-shadow-sm "
             >
               {slides[current].desc}
             </motion.p>
