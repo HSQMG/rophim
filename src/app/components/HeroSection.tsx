@@ -66,98 +66,63 @@ export default function HeroSection() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="absolute inset-0 touch-pan-y cursor-grab active:cursor-grabbing hidden sm:block"
         />
-
-        {/* --- Cột bên trái (title + desc + thumbnail) --- */}
-        <div
-          className="hidden sm:flex absolute top-1/2 left-[8vw] -translate-y-1/2 z-10 flex-col gap-8 
-        text-white dark:text-[#f5e7c6] transition-colors duration-500 max-w-[40vw]"
-        >
-          {/* --- Text section --- */}
-          <div>
-            <motion.h1
-              key={`title-${current}`}
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -40 }}
-              transition={{ duration: 0.5 }}
-              style={{
-                fontFamily: "FCClassyVogue",
-                display: "-webkit-box",
-                WebkitLineClamp: 3,
-                WebkitBoxOrient: "vertical",
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-                wordBreak: "break-word",
-              }}
-              className="text-lg sm:text-xl md:text-3xl lg:text-4xl xl:text-5xl tracking-[0.05em] leading-snug 
-              text-[#f4ede2] dark:text-[#f5e7c6] drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] 
-              max-w-[90%] md:max-w-[80%] a"
-            >
-              {slides[current].title}
-            </motion.h1>
-
-            <motion.p
-              key={`desc-${current}`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              style={{ fontFamily: "TUV" }}
-              className="mt-3 sm:mt-5 text-sm sm:text-lg md:text-xl text-[#f4ede2] dark:text-[#e9dcc1]
-              max-w-[90%] sm:max-w-[60%] md:max-w-[50%] leading-relaxed drop-shadow-sm"
-            >
-              {slides[current].desc}
-            </motion.p>
-          </div>
-
-          {/* --- Thumbnail nhỏ (cùng cột dọc) --- */}
-          <div
-            className="flex gap-3 sm:gap-4 bg-white/10 dark:bg-[#1a1a1a]/60 
-            backdrop-blur-md px-4 sm:px-5 py-2 sm:py-3 rounded-xl sm:rounded-2xl 
-            border border-white/30 dark:border-[#e8d8b3]/40 shadow-lg 
-            overflow-x-auto justify-start items-center max-w-[85%]"
+        <div className="hidden sm:flex relative z-10 flex-col mt-[30%] ml-[1%] h-full px-8 sm:px-14 md:px-20 text-white dark:text-[#f5e7c6] transition-colors duration-500">
+          <motion.h1
+            key={`title-${current}`}
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -40 }}
+            transition={{ duration: 0.5 }}
+            style={{
+              fontFamily: "FCClassyVogue",
+              display: "-webkit-box",
+              WebkitLineClamp: 3,
+              WebkitBoxOrient: "vertical",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              wordBreak: "break-word",
+            }}
+            className="text-lg sm:text-xl md:text-3xl lg:text-4xl tracking-[0.05em] leading-snug sm:leading-tight 
+           text-[#f4ede2] dark:text-[#f5e7c6]
+           drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] 
+           max-w-[80%] sm:max-w-[70%] md:max-w-[60%]"
           >
-            {slides.map((item, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrent(i)}
-                className={`relative flex-shrink-0 w-14 h-18 sm:w-16 sm:h-20 md:w-20 md:h-24 
-                overflow-hidden rounded-lg sm:rounded-xl border transition-all 
-                duration-300 cursor-pointer ${
-                  current === i
-                    ? "border-[#d3b58f] dark:border-[#f0dba9] scale-105 shadow-md"
-                    : "border-white/40 dark:border-[#e8d8b3]/30 hover:border-[#e0d1b2]"
-                }`}
-              >
-                <Image
-                  src={item.img}
-                  alt={item.title}
-                  fill
-                  className="object-cover object-top"
-                />
-                {current === i && (
-                  <div className="absolute inset-0 bg-black/15 dark:bg-white/10" />
-                )}
-              </button>
-            ))}
-          </div>
+            {slides[current].title}
+          </motion.h1>
+
+          <motion.p
+            key={`desc-${current}`}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            style={{ fontFamily: "TUV" }}
+            className="mt-3 sm:mt-5 text-sm sm:text-lg md:text-xl text-[#f4ede2] dark:text-[#e9dcc1]
+               max-w-[90%] sm:max-w-[60%] md:max-w-[50%] leading-relaxed drop-shadow-sm"
+          >
+            {slides[current].desc}
+          </motion.p>
         </div>
 
-        {/* --- Ảnh lớn bên phải --- */}
-        <div className="hidden sm:flex absolute top-1/2 right-[8vw] -translate-y-1/2 items-center justify-center h-full pointer-events-none">
+        {/* --- Ảnh lớn (desktop, responsive) --- */}
+        <div className="hidden sm:flex absolute bottom-0 right-[5vw] items-end justify-center h-full pointer-events-none">
           <motion.div
             key={`frame-${current}`}
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -100 }}
             transition={{ duration: 0.8 }}
-            className="relative w-[26vw] md:w-[28vw] lg:w-[30vw] xl:w-[32vw] 2xl:w-[34vw]
-            h-[65vh] md:h-[70vh] lg:h-[75vh] xl:h-[80vh]
-            rounded-t-[10vw] md:rounded-t-[9vw] lg:rounded-t-[8vw]
-            overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.35)]
-            border-[2px] border-white/70 dark:border-[#e8d8b3]/60
-            bg-[#f9f8f5] dark:bg-[#0d0d0d]
-            transition-all duration-500 ease-out"
+            className="
+              relative 
+              w-[24vw] md:w-[26vw] lg:w-[28vw] xl:w-[30vw] 2xl:w-[30vw]
+              h-[65vh] md:h-[72vh] lg:h-[78vh] xl:h-[80vh]
+              rounded-t-[10vw] md:rounded-t-[9vw] lg:rounded-t-[8vw]
+              overflow-hidden 
+              shadow-[0_15px_40px_rgba(0,0,0,0.35)]
+              border-[2px] border-white/70 dark:border-[#e8d8b3]/60
+              bg-[#f9f8f5] dark:bg-[#0d0d0d]
+              transition-all duration-500 ease-out
+            "
           >
             <Image
               src={slides[current].img}
@@ -171,7 +136,7 @@ export default function HeroSection() {
       </AnimatePresence>
 
       {/* --- Mobile layout (ảnh trên, text dưới) --- */}
-      <div className="sm:hidden relative z-10 flex flex-col items-center justify-center h-full pt-16 pb-10 px-4 text-center">
+      <div className="sm:hidden relative z-10 flex flex-col items-center justify-center h-full pt-16 pb-10 px-4 text-center ">
         <motion.div
           key={`mobile-frame-${current}`}
           initial={{ opacity: 0, y: 60 }}
@@ -200,8 +165,8 @@ export default function HeroSection() {
           exit={{ opacity: 0, y: -30 }}
           transition={{ duration: 0.5 }}
           className="text-xl sm:text-2xl font-serif text-white dark:text-[#f5e7c6] 
-          leading-snug drop-shadow-lg max-w-[90%] text-center 
-          whitespace-nowrap overflow-hidden text-ellipsis"
+             leading-snug drop-shadow-lg max-w-[90%] text-center 
+             whitespace-nowrap overflow-hidden text-ellipsis"
         >
           {slides[current].title}
         </motion.h1>
@@ -232,6 +197,37 @@ export default function HeroSection() {
         >
           <ChevronRight className="w-6 h-6 text-white dark:text-[#f8eac8]" />
         </button>
+      </div>
+
+      <div
+        className="flex gap-2 sm:gap-3 bg-white/10 dark:bg-[#1a1a1a]/60
+  backdrop-blur-md px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl sm:rounded-2xl
+  border border-white/30 dark:border-[#e8d8b3]/40 shadow-lg
+  overflow-x-auto justify-start items-center max-w-[85%]"
+      >
+        {slides.map((item, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            className={`relative flex-shrink-0 w-14 h-14 sm:w-16 sm:h-16 md:w-18 md:h-18
+      overflow-hidden rounded-lg sm:rounded-xl border transition-all
+      duration-300 cursor-pointer ${
+        current === i
+          ? "border-[#d3b58f] dark:border-[#f0dba9] scale-105 shadow-md"
+          : "border-white/40 dark:border-[#e8d8b3]/30 hover:border-[#e0d1b2]"
+      }`}
+          >
+            <Image
+              src={item.img}
+              alt={item.title}
+              fill
+              className="object-cover object-center"
+            />
+            {current === i && (
+              <div className="absolute inset-0 bg-black/15 dark:bg-white/10" />
+            )}
+          </button>
+        ))}
       </div>
     </section>
   );
