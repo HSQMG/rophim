@@ -111,7 +111,7 @@ export default function HeroSection() {
                 textOverflow: "ellipsis",
               }}
               className="mt-3 sm:mt-5 text-sm sm:text-lg md:text-xl text-[#f4ede2] dark:text-[#e9dcc1]
-  max-w-[85%] md:max-w-[70%] lg:max-w-[65%] xl:max-w-[90%] leading-relaxed drop-shadow-sm "
+  max-w-[85%] md:max-w-[70%] lg:max-w-[65%] xl:max-w-[90%] leading-relaxed drop-shadow-sm text-center"
             >
               {slides[current].desc}
             </motion.p>
