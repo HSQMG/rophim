@@ -12,5 +12,7 @@ const nextConfig: NextConfig = {
       classy: ["FCClassyVogue", "serif"],
     },
   },
+  content: ["./src/**/*.{js,ts,jsx,tsx}"],
+  plugins: [require("@tailwindcss/line-clamp")],
 };
 export default nextConfig;

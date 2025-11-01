@@ -33,12 +33,16 @@ export default function GioiThieuPage() {
 
           {/* Text */}
           <motion.div
-            className="relative z-10 order-2 ml-0 md:ml-[5%] text-center md:text-left space-y-6 max-w-[600px] mx-auto md:mx-0"
+            className="relative z-10 order-2 ml-0 md:ml-[2%] text-center md:text-left space-y-6 max-w-[600px] mx-auto md:mx-0"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
           >
-            <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold leading-snug text-black md:text-white dark:text-[#f5e7c6] break-words ">
+            <h1
+              className="text-2xl sm:text-4xl md:text-5xl font-bold leading-tight 
+  text-black md:text-white dark:text-[#f5e7c6] text-center md:text-left 
+  line-clamp-2 "
+            >
               CHÚNG TÔI LÀ THƯƠNG HIỆU THỜI TRANG UNID
             </h1>
 
