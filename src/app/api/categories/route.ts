@@ -19,7 +19,7 @@ export async function GET() {
 
 export async function POST(req: NextRequest) {
   try {
-    const slides = await req.json(); // nhận JSON trực tiếp từ fetch
+    const slides = await req.json();
     fs.writeFileSync(dataFile, JSON.stringify(slides, null, 2));
     return NextResponse.json(slides);
   } catch (err) {

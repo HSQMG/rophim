@@ -7,14 +7,12 @@ interface Props {
   delay?: number;
   className?: string;
 }
-
 export default function ScrollReveal({
   children,
   delay = 0,
   className = "",
 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
     if (typeof window === "undefined") return;
     import("scrollreveal").then((ScrollRevealLib) => {

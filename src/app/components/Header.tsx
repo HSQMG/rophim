@@ -46,7 +46,6 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white/90 dark:bg-[#0f0f0f]/90 text-[#3e2c1c] dark:text-white backdrop-blur-md shadow-sm border-b border-gray-100 dark:border-gray-700 transition-colors duration-500">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-        {/* LOGO */}
         <Link href="/" className="flex items-center space-x-2">
           <Image
             src="/image/logo/logo UNID.png"
@@ -57,8 +56,6 @@ export default function Header() {
             className="dark:bg-white/10 rounded-lg px-2 py-1"
           />
         </Link>
-
-        {/* -------- NAV DESKTOP -------- */}
         <nav className="hidden md:flex space-x-10 text-[15px] font-medium">
           <Link href="/" className="hover:text-[#c7a17a] transition">
             Trang chủ
@@ -67,8 +64,6 @@ export default function Header() {
           <Link href="/gioi-thieu" className="hover:text-[#c7a17a] transition">
             Giới thiệu
           </Link>
-
-          {/* Dropdown desktop "Cửa hàng" */}
           <div className="relative group">
             <button className="flex items-center space-x-1 hover:text-[#c7a17a] transition">
               <span>Cửa hàng</span>
@@ -77,7 +72,6 @@ export default function Header() {
 
             <div className="absolute left-1/2 -translate-x-1/2 top-full bg-white dark:bg-[#1a1a1a] rounded-2xl shadow-2xl mt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 translate-y-3 transition-all duration-300 ease-out border border-gray-100 dark:border-gray-700">
               <div className="relative flex">
-                {/* Cột trái */}
                 <div className="bg-[#faf8f6] dark:bg-[#1e1e1e] py-8 px-6 w-[280px] border-r border-gray-200 dark:border-gray-700">
                   <h4 className="font-semibold mb-5 text-lg border-l-4 border-[#c7a17a] pl-3">
                     Danh mục
@@ -133,7 +127,6 @@ export default function Header() {
                                 ))}
                               </ul>
                             </div>
-
                             {group.image && (
                               <div className="w-[200px] h-[260px] relative rounded-xl overflow-hidden shadow-md">
                                 <Image
@@ -159,7 +152,6 @@ export default function Header() {
           </Link>
         </nav>
 
-        {/* -------- ICONS / MOBILE MENU BUTTON -------- */}
         <div className="flex items-center space-x-5 text-[#3e2c1c] dark:text-white">
           <button className="cursor-pointer hover:text-[#c7a17a] transition">
             <Search size={22} />
@@ -189,7 +181,6 @@ export default function Header() {
         </div>
       </div>
 
-      {/* -------- MENU MOBILE -------- */}
       {menuOpen && (
         <div className="md:hidden bg-white dark:bg-[#1a1a1a] border-t border-gray-100 dark:border-gray-700 shadow-lg px-6 py-4 animate-slideDown">
           <ul className="space-y-4 font-medium">

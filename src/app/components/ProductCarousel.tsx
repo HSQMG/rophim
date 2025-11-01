@@ -9,7 +9,6 @@ import "swiper/css/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { Playfair_Display } from "next/font/google";
-
 const playfair = Playfair_Display({
   subsets: ["latin", "vietnamese"],
   weight: ["400", "500", "600", "700"],
@@ -38,7 +37,6 @@ interface Category {
   image: string;
   link: string;
 }
-
 export default function HomeShowcase() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [products, setProducts] = useState<any[]>([]);
@@ -52,24 +50,20 @@ export default function HomeShowcase() {
       )
       .catch(() => setCategories([]));
   }, []);
-
   useEffect(() => {
     fetch("/productss.json")
       .then((res) => res.json())
       .then((data) => setProducts(data))
       .catch(() => setProducts([]));
   }, []);
-
   if (categories.length === 0 && products.length === 0)
     return (
       <p className="text-center py-20 text-gray-500 dark:text-gray-300 italic bg-white dark:bg-[#0e0e0e] transition-colors">
         Đang tải nội dung...
       </p>
     );
-
   return (
     <section className="py-12 sm:py-16 bg-white dark:bg-[#0e0e0e] transition-colors duration-500 relative">
-      {/* --- Tiêu đề --- */}
       <div className="text-center mb-8 sm:mb-12 px-4">
         <h2
           className={`${playfair.className} text-2xl sm:text-3xl md:text-4xl font-bold tracking-wide mb-2 
@@ -82,8 +76,6 @@ export default function HomeShowcase() {
           Đón đầu phong cách - Cùng khám phá những thiết kế mới nhất từ UNID.
         </p>
       </div>
-
-      {/* --- Swiper --- */}
       <div className="relative max-w-6xl mx-auto px-2 sm:px-4">
         <Swiper
           modules={[Navigation]}
@@ -114,7 +106,6 @@ export default function HomeShowcase() {
                 href={`/cua-hang/${product.category}/${product.id}`}
                 className="group relative text-center cursor-pointer block"
               >
-                {/* --- Hình sản phẩm --- */}
                 <div className="relative w-full h-[280px] sm:h-[350px] md:h-[430px] overflow-hidden rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
                   <Image
                     src={product.image}
@@ -131,8 +122,6 @@ export default function HomeShowcase() {
                     />
                   )}
                 </div>
-
-                {/* --- Tên & Giá --- */}
                 <div className="pt-3 sm:pt-4">
                   <h3
                     className="text-sm sm:text-base md:text-lg font-medium text-[#2b2b2b] dark:text-[#f5e7c6] 
@@ -148,8 +137,6 @@ export default function HomeShowcase() {
             </SwiperSlide>
           ))}
         </Swiper>
-
-        {/* --- Nút điều hướng --- */}
         <button
           ref={prevRef}
           className="hidden sm:flex w-10 h-10 sm:w-12 sm:h-12 rounded-full 

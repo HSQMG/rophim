@@ -68,8 +68,6 @@ export default function FeaturedCategories() {
           Những thiết kế được yêu thích nhất từ UNID
         </p>
       </div>
-
-      {/* --- Danh mục chia hàng --- */}
       <div className="max-w-6xl mx-auto px-3 sm:px-6 flex flex-col gap-10 sm:gap-12">
         {rows.map((row, rowIndex) => {
           const isTwoItems = row.length === 2;
@@ -93,7 +91,6 @@ export default function FeaturedCategories() {
                   `}
                   style={{ minHeight: "480px" }}
                 >
-                  {/* --- Ảnh danh mục --- */}
                   <Link
                     href={`/cua-hang/${slugify(cat.title)}`}
                     className="block w-full overflow-hidden bg-[#fdf9f6] dark:bg-[#1a1a1a]"
@@ -108,8 +105,6 @@ export default function FeaturedCategories() {
                       />
                     </div>
                   </Link>
-
-                  {/* --- Nội dung danh mục --- */}
                   <div className="flex-1 flex flex-col items-center justify-between p-5 text-center">
                     <div>
                       <h3

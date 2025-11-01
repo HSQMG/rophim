@@ -89,7 +89,6 @@ export default function HeroSection() {
                 THỜI TRANG UNID
               </span>
             </motion.h1>
-
             <motion.p
               key={`desc-${current}`}
               initial={{ opacity: 0, y: 20 }}
@@ -114,7 +113,6 @@ export default function HeroSection() {
               {slides[current].desc}
             </motion.p>
           </div>
-
           <div
             className="flex gap-3 sm:gap-4 bg-white/10 dark:bg-[#1a1a1a]/60 
               backdrop-blur-md px-0 sm:px-0 py-2 sm:py-3 rounded-xl sm:rounded-2xl 
@@ -194,7 +192,6 @@ export default function HeroSection() {
             className="object-cover object-top"
           />
         </motion.div>
-
         <motion.h1
           key={`title-mobile-${current}`}
           initial={{ opacity: 0, y: 30 }}
@@ -207,7 +204,6 @@ export default function HeroSection() {
         >
           {slides[current].title}
         </motion.h1>
-
         <motion.p
           key={`desc-mobile-${current}`}
           initial={{ opacity: 0, y: 15 }}

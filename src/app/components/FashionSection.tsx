@@ -32,7 +32,6 @@ export default function ProductList() {
 
   return (
     <section className="py-12 sm:py-16 bg-white dark:bg-[#0e0e0e] transition-colors duration-500">
-      {/* --- Tiêu đề --- */}
       <div className="text-center mb-10 sm:mb-14 px-4">
         <h2
           className={`${playfair.className} text-2xl sm:text-3xl md:text-4xl font-bold tracking-wide mb-2 
@@ -46,7 +45,6 @@ export default function ProductList() {
         </p>
       </div>
 
-      {/* --- Danh sách sản phẩm --- */}
       <div className="max-w-7xl mx-auto px-3 sm:px-6">
         <div
           className="
@@ -63,7 +61,6 @@ export default function ProductList() {
               href={`/cua-hang/${product.category}/${product.id}`}
               className="group w-full max-w-[260px] sm:max-w-[280px] md:max-w-[300px] text-center cursor-pointer"
             >
-              {/* --- Hình sản phẩm --- */}
               <div className="relative w-full h-[260px] sm:h-[320px] md:h-[400px] overflow-hidden rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 transition-colors">
                 <Image
                   src={product.image}
@@ -81,7 +78,6 @@ export default function ProductList() {
                 )}
               </div>
 
-              {/* --- Tên & Giá --- */}
               <div className="mt-3 sm:mt-4">
                 <h3 className="text-sm sm:text-base md:text-lg font-medium text-[#2b2b2b] dark:text-[#f5e7c6] group-hover:underline underline-offset-4 px-1 line-clamp-2 transition-colors">
                   {product.name}

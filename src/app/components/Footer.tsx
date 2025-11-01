@@ -38,8 +38,6 @@ export default function Footer() {
               giúp tôn lên vẻ đẹp của người phụ nữ.
             </p>
           </div>
-
-          {/* Điều hướng */}
           <div>
             <h3 className="text-white dark:text-[#f5e7c6] font-semibold mb-4 text-sm tracking-wide">
               ĐIỀU HƯỚNG
@@ -62,7 +60,6 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-
           <div>
             <h3 className="text-white dark:text-[#f5e7c6] font-semibold mb-4 text-sm tracking-wide">
               HỖ TRỢ
