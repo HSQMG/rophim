@@ -21,8 +21,7 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col bg-[#fffaf8]">
         {/* --- Thanh icon mạng xã hội (Desktop) --- */}
         <div className="hidden sm:flex fixed top-1/2 -translate-y-1/2 left-6 md:left-10 lg:left-1 z-50">
-
-          <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-xl border border-gray-200 p-3 flex flex-col items-center space-y-4">
+          <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-xl border border-gray-200 p-2 flex flex-col items-center space-y-4">
             <a
               href="https://tiktok.com/@unid.official"
               target="_blank"
