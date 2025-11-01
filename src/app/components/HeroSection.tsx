@@ -83,15 +83,15 @@ export default function HeroSection() {
               style={{
                 fontFamily: "FCClassyVogue",
                 display: "-webkit-box",
-                WebkitLineClamp: 3,
                 WebkitBoxOrient: "vertical",
+                WebkitLineClamp: 2, // <-- Giới hạn tối đa 2 dòng
                 overflow: "hidden",
                 textOverflow: "ellipsis",
-                wordBreak: "break-word",
               }}
-              className="text-lg sm:text-xl md:text-3xl lg:text-4xl xl:text-5xl tracking-[0.05em] leading-snug 
-              text-[#f4ede2] dark:text-[#f5e7c6] drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] 
-              max-w-[90%] md:max-w-[80%] a"
+              className="text-lg sm:text-xl md:text-3xl lg:text-4xl xl:text-5xl 
+  tracking-[0.05em] leading-snug text-[#f4ede2] dark:text-[#f5e7c6]
+  drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]
+  max-w-[40vw] xl:max-w-[35vw] 2xl:max-w-[25vw]" // <-- Giới hạn độ rộng dòng
             >
               {slides[current].title}
             </motion.h1>
@@ -102,9 +102,16 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              style={{ fontFamily: "TUV" }}
+              style={{
+                fontFamily: "TUV",
+                display: "-webkit-box",
+                WebkitBoxOrient: "vertical",
+                WebkitLineClamp: 1, // Giữ 1 dòng
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+              }}
               className="mt-3 sm:mt-5 text-sm sm:text-lg md:text-xl text-[#f4ede2] dark:text-[#e9dcc1]
-              max-w-[90%] sm:max-w-[60%] md:max-w-[50%] leading-relaxed drop-shadow-sm"
+  max-w-[85%] md:max-w-[70%] lg:max-w-[65%] xl:max-w-[90%] leading-relaxed drop-shadow-sm"
             >
               {slides[current].desc}
             </motion.p>
@@ -200,7 +207,7 @@ export default function HeroSection() {
           exit={{ opacity: 0, y: -30 }}
           transition={{ duration: 0.5 }}
           className="text-xl sm:text-2xl font-serif text-white dark:text-[#f5e7c6] 
-          leading-snug drop-shadow-lg max-w-[90%] text-center 
+          leading-snug drop-shadow-lg max-w-[110%] text-center 
           whitespace-nowrap overflow-hidden text-ellipsis"
         >
           {slides[current].title}
@@ -212,7 +219,15 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -15 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="mt-3 text-xs sm:text-sm text-[#f4ede2] dark:text-[#e9dcc1] leading-relaxed drop-shadow-sm max-w-[90%]"
+          style={{
+            display: "-webkit-box",
+            WebkitBoxOrient: "vertical",
+            WebkitLineClamp: 2, // 👈 số dòng tối đa hiển thị
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          }}
+          className="mt-3 text-xs sm:text-sm text-[#f4ede2] dark:text-[#e9dcc1]
+  leading-relaxed drop-shadow-sm max-w-[100%]"
         >
           {slides[current].desc}
         </motion.p>
