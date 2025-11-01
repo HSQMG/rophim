@@ -73,7 +73,7 @@ export default function HeroSection() {
         text-white dark:text-[#f5e7c6] transition-colors duration-500 max-w-[40vw]"
         >
           {/* --- Text section --- */}
-          <div>
+          <div className="flex flex-col items-center justify-center text-center">
             <motion.h1
               key={`title-${current}`}
               initial={{ opacity: 0, y: 40 }}
@@ -84,12 +84,14 @@ export default function HeroSection() {
                 fontFamily: "FCClassyVogue",
               }}
               className="text-[2rem] md:text-[2.8rem] lg:text-[3.2rem] xl:text-[3.8rem]
-  leading-snug text-[#f4ede2] dark:text-[#f5e7c6]
-  drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]
-  text-center tracking-wide"
+      leading-snug text-[#f4ede2] dark:text-[#f5e7c6]
+      drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]
+      text-center tracking-wide"
             >
-              <span className="block font-[600]">THƯƠNG HIỆU</span>
-              <span className="block text-[1.6rem] md:text-[2rem] font-[400] mt-1 tracking-[0.15em]">
+              <span className="block text-[1.6rem] md:text-[2rem] font-[600] text-center">
+                THƯƠNG HIỆU
+              </span>
+              <span className="block text-[1.6rem] md:text-[2rem] font-[400] mt-1 tracking-[0.15em] text-center">
                 THỜI TRANG UNID
               </span>
             </motion.h1>
@@ -104,16 +106,21 @@ export default function HeroSection() {
                 fontFamily: "TUV",
                 display: "-webkit-box",
                 WebkitBoxOrient: "vertical",
-                WebkitLineClamp: 1, // Giữ 1 dòng
+                WebkitLineClamp: 2, // hiển thị tối đa 2 dòng, có thể đổi lại 1
                 overflow: "hidden",
                 textOverflow: "ellipsis",
+                textAlign: "justify", // ✅ canh đều hai bên
+                textJustify: "inter-word", // ✅ căn chữ theo từ
               }}
-              className="mt-3 sm:mt-5 text-sm sm:text-lg md:text-xl text-[#f4ede2] dark:text-[#e9dcc1]
-  max-w-[85%] md:max-w-[70%] lg:max-w-[65%] xl:max-w-[90%] leading-relaxed drop-shadow-sm text-center"
+              className="mt-3 sm:mt-5 text-sm sm:text-lg md:text-xl 
+      text-[#f4ede2] dark:text-[#e9dcc1] 
+      max-w-[85%] md:max-w-[70%] lg:max-w-[65%] xl:max-w-[90%]
+      leading-relaxed drop-shadow-sm mx-auto text-justify"
             >
               {slides[current].desc}
             </motion.p>
           </div>
+
           <div
             className="flex gap-3 sm:gap-4 bg-white/10 dark:bg-[#1a1a1a]/60 
             backdrop-blur-md px-4 sm:px-5 py-2 sm:py-3 rounded-xl sm:rounded-2xl 

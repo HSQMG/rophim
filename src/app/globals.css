@@ -36,3 +36,33 @@ body {
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: "Hagrid-Italic-trial";
+  src: url("/fonts/Hagrid-Italic-trial.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Hagrid-Regular-trial";
+  src: url("/fonts/Hagrid-Regular-trial.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Hatton-Light";
+  src: url("/fonts/Hatton-Light.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Hatton-Semibold";
+  src: url("/fonts/Hatton-Semibold.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Hatton-Ultralight";
+  src: url("/fonts/Hatton-Ultralight.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
