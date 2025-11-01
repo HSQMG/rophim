@@ -123,9 +123,11 @@ export default function HeroSection() {
 
           <div
             className="flex gap-3 sm:gap-4 bg-white/10 dark:bg-[#1a1a1a]/60 
-            backdrop-blur-md px-4 sm:px-5 py-2 sm:py-3 rounded-xl sm:rounded-2xl 
-            border border-white/30 dark:border-[#e8d8b3]/40 shadow-lg 
-            overflow-x-auto justify-start items-center max-w-[85%]"
+  backdrop-blur-md px-0 sm:px-0 py-2 sm:py-3 rounded-xl sm:rounded-2xl 
+  border border-white/30 dark:border-[#e8d8b3]/40 shadow-lg 
+  overflow-x-auto items-center justify-start 
+  max-w-[85%] mx-auto scroll-smooth scrollbar-thin 
+  scrollbar-thumb-white/40 dark:scrollbar-thumb-[#e8d8b3]/30 scrollbar-track-transparent"
           >
             {slides.map((item, i) => (
               <button
