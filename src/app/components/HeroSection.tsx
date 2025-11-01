@@ -91,7 +91,7 @@ export default function HeroSection() {
               }}
               className="text-lg sm:text-xl md:text-3xl lg:text-4xl xl:text-5xl tracking-[0.05em] leading-snug 
               text-[#f4ede2] dark:text-[#f5e7c6] drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] 
-              max-w-[90%] md:max-w-[80%] text-balance text-pretty"
+              max-w-[90%] md:max-w-[80%] a"
             >
               {slides[current].title}
             </motion.h1>
