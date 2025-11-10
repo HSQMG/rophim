@@ -9,7 +9,7 @@ export async function POST(req: Request) {
       host: "smtp.gmail.com",
       port: 465,
       secure: true,
-      service: "gmail",
+      service: "gmail", // Hoặc: "hotmail", "yahoo", "outlook"
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
@@ -18,7 +18,7 @@ export async function POST(req: Request) {
     console.log("📧 EMAIL_USER =", process.env.EMAIL_USER);
     const mailOptions = {
       from: `"Website Liên hệ" <${process.env.EMAIL_USER}>`,
-      to: process.env.RECEIVER_EMAIL || process.env.EMAIL_USER,
+      to: process.env.RECEIVER_EMAIL || process.env.EMAIL_USER, // email nhận
       subject: `📩 ${subject} - từ ${name}`,
       html: `
         <div style="font-family: sans-serif; line-height:1.5;">
